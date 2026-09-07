@@ -3,9 +3,9 @@
 	"id": "from-stone-to-stars",
 	"version": "${version}",
 	"name": "From Stone to Stars",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod is about progressing through the Stone Age to the \"Star Age\"",
 	"authors": [
-		"Me!"
+		"Jaymanh"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
