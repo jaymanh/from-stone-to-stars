@@ -19,13 +19,11 @@ public final class ModCreativeTabs {
 	);
 
 	public static final CreativeModeTab MAIN = FabricCreativeModeTab.builder()
-			//.icon(() -> new ItemStack(ModItems.))
+			.icon(() -> new ItemStack(ModItems.RAW_LEATHER))
 			.title(Component.translatable("itemGroup.from-stone-to-stars.main"))
 			.displayItems((params, output) -> {
-				/*
-				output.accept(ModItems.TEST_ITEM);
-				output.accept(ModBlocks.TEST_BLOCK);
-				 */
+				output.accept(ModItems.RAW_LEATHER);
+				output.accept(ModBlocks.PEBBLE);
 			})
 			.build();
 

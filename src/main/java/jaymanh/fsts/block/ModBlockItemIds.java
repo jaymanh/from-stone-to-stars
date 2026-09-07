@@ -6,7 +6,7 @@ import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.Identifier;
 
 public final class ModBlockItemIds {
-	//public static final BlockItemId TEST_BLOCK = create("test_block");
+	public static final BlockItemId PEBBLE = create("pebble");
 
 	private ModBlockItemIds() {
 	}

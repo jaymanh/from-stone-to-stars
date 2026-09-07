@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,waterlogged=false": { "model": "from-stone-to-stars:block/pebble", "y": 0 },
+    "facing=east,waterlogged=false": { "model": "from-stone-to-stars:block/pebble", "y": 90 },
+    "facing=south,waterlogged=false": { "model": "from-stone-to-stars:block/pebble", "y": 180 },
+    "facing=west,waterlogged=false": { "model": "from-stone-to-stars:block/pebble", "y": 270 },
+    "facing=north,waterlogged=true": { "model": "from-stone-to-stars:block/pebble", "y": 0 },
+    "facing=east,waterlogged=true": { "model": "from-stone-to-stars:block/pebble", "y": 90 },
+    "facing=south,waterlogged=true": { "model": "from-stone-to-stars:block/pebble", "y": 180 },
+    "facing=west,waterlogged=true": { "model": "from-stone-to-stars:block/pebble", "y": 270 }
+  }
+}

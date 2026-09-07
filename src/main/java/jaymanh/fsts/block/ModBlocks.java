@@ -9,17 +9,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.PushReaction;
 
 public final class ModBlocks {
-
-	/*
-	public static final Block TEST_BLOCK = register(
-			ModBlockItemIds.TEST_BLOCK,
+	public static final Block PEBBLE = register(
+			ModBlockItemIds.PEBBLE,
 			Block::new,
-			BlockBehaviour.Properties.of()
-	);
-	 */
+			BlockBehaviour.Properties.of().noCollision().sound(SoundType.STONE).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable() //Add water loggable latter
+			);
 
 	private ModBlocks() {
 	}
