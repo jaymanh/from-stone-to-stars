@@ -12,11 +12,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public final class ModBlocks {
+
+	/*
 	public static final Block TEST_BLOCK = register(
 			ModBlockItemIds.TEST_BLOCK,
 			Block::new,
 			BlockBehaviour.Properties.of()
 	);
+	 */
 
 	private ModBlocks() {
 	}

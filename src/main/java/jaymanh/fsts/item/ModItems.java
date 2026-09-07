@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
 public final class ModItems {
-	public static final Item TEST_ITEM = register(ModItemIds.TEST_ITEM, Item::new, new Item.Properties());
+	//public static final Item TEST_ITEM = register(ModItemIds.TEST_ITEM, Item::new, new Item.Properties());
 
 	private ModItems() {
 	}

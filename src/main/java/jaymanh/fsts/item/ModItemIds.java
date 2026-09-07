@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
 public final class ModItemIds {
-	public static final ResourceKey<Item> TEST_ITEM = create("test_item");
+	//public static final ResourceKey<Item> TEST_ITEM = create("test_item");
 
 	private ModItemIds() {
 	}

@@ -22,8 +22,10 @@ public final class ModCreativeTabs {
 			.icon(() -> new ItemStack(ModItems.TEST_ITEM))
 			.title(Component.translatable("itemGroup.from-stone-to-stars.main"))
 			.displayItems((params, output) -> {
+				/*
 				output.accept(ModItems.TEST_ITEM);
 				output.accept(ModBlocks.TEST_BLOCK);
+				 */
 			})
 			.build();
 
