@@ -1,0 +1,50 @@
+{
+	"type": "minecraft:simple_block",
+	"config": {
+		"to_place": {
+			"type": "minecraft:weighted_state_provider",
+			"entries": [
+				{
+					"weight": 1,
+					"data": {
+						"Name": "from-stone-to-stars:pebble",
+						"Properties": {
+							"facing": "north",
+							"waterlogged": "true"
+						}
+					}
+				},
+				{
+					"weight": 1,
+					"data": {
+						"Name": "from-stone-to-stars:pebble",
+						"Properties": {
+							"facing": "south",
+							"waterlogged": "true"
+						}
+					}
+				},
+				{
+					"weight": 1,
+					"data": {
+						"Name": "from-stone-to-stars:pebble",
+						"Properties": {
+							"facing": "east",
+							"waterlogged": "true"
+						}
+					}
+				},
+				{
+					"weight": 1,
+					"data": {
+						"Name": "from-stone-to-stars:pebble",
+						"Properties": {
+							"facing": "west",
+							"waterlogged": "true"
+						}
+					}
+				}
+			]
+		}
+	}
+}

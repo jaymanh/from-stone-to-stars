@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": "minecraft:cobblestone"
+    },
+    "result": {
+        "count": 9,
+        "id": "from-stone-to-stars:pebble"
+    }
+}

@@ -2,6 +2,7 @@ package jaymanh.fsts.block;
 
 import java.util.function.Function;
 
+import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
@@ -16,7 +17,7 @@ import net.minecraft.world.level.material.PushReaction;
 public final class ModBlocks {
 	public static final Block PEBBLE = register(
 			ModBlockItemIds.PEBBLE,
-			Block::new,
+			PebbleBlock::new,
 			BlockBehaviour.Properties.of().noCollision().sound(SoundType.STONE).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable() //Add water loggable latter
 			);
 
