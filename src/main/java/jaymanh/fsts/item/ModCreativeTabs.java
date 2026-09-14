@@ -3,6 +3,7 @@ package jaymanh.fsts.item;
 import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModBlocks;
 
+import jaymanh.fsts.tools.ModTools;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 
 import net.minecraft.core.Registry;
@@ -23,7 +24,14 @@ public final class ModCreativeTabs {
 			.title(Component.translatable("itemGroup.from-stone-to-stars.main"))
 			.displayItems((params, output) -> {
 				output.accept(ModItems.RAW_LEATHER);
+
 				output.accept(ModBlocks.PEBBLE);
+
+				output.accept(ModTools.BONE_SWORD);
+				output.accept(ModTools.BONE_AXE);
+				output.accept(ModTools.BONE_PICKAXE);
+				output.accept(ModTools.BONE_SHOVEL);
+				output.accept(ModTools.BONE_HOE);
 			})
 			.build();
 

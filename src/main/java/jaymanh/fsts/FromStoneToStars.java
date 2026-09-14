@@ -3,6 +3,7 @@ package jaymanh.fsts;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.item.ModCreativeTabs;
 import jaymanh.fsts.item.ModItems;
+import jaymanh.fsts.tools.ModTools;
 import jaymanh.fsts.worldgen.ModWorldgen;
 
 import net.fabricmc.api.ModInitializer;
@@ -21,6 +22,7 @@ public class FromStoneToStars implements ModInitializer {
 	public void onInitialize() {
 		ModBlocks.initialize();
 		ModItems.initialize();
+		ModTools.initialize();
 		ModCreativeTabs.initialize();
 		ModWorldgen.initialize();
 	}
