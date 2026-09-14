@@ -11,6 +11,7 @@ This living reference defines the intended player fantasy, progression structure
 1. [Core Vision and Design Principles](#core-vision-and-design-principles)
 2. [Progression Loop and Player Transformation](#progression-loop-and-player-transformation)
 3. [Age Progression](#age-progression)
+    - [Age 0 Primitive and Stone](#age-0-primitive-and-stone)
 4. [Technology Disciplines and Research](#technology-disciplines-and-research)
 5. [Automation Progression](#automation-progression)
 6. [Factories Logistics and Infrastructure](#factories-logistics-and-infrastructure)
@@ -63,7 +64,7 @@ The proposed structure uses twelve substantial ages. Names may evolve, but every
 
 | No. | Age | Theme | Example technologies | New automation | Primary goal |
 | --- | --- | --- | --- | --- | --- |
-| 0 | Primitive and Stone | Survival and settlement | Knapping, flint and bone tools, fire, rope, clay, pottery, hunting, farming, stone construction | Drying racks, simple traps, animal power, water wheels | Establish a permanent settlement |
+| 0 | Primitive and Stone | Survival and settlement | Pebbles, knapping, flint knife, hideworking, cordage, bone-hafted tools, fire, pottery, thatch, quern | Drying racks, snares, pit kiln, player then animal quern | Establish a permanent settlement |
 | 1 | Copper and Bronze | Early metallurgy | Copper, bronze, crucibles, furnaces, bellows, metal tools, axles, gears | Water wheel, shaft, gearbox, mechanical hammer | Create dependable metalworking |
 | 2 | Iron and Steel | Mechanical engineering | Iron, steel, blast furnace, pistons, springs, bearings, chains, pumps, drills, saws | Mechanised mining and ore processing | Operate the first automated factory |
 | 3 | Steam | Industrial Revolution | Boilers, engines, turbines, pipes, pumps, pressure tanks, locomotives, cranes | Steam network feeding multiple machines | Generate and distribute controlled steam power |
@@ -80,7 +81,254 @@ The proposed structure uses twelve substantial ages. Names may evolve, but every
 
 #### Primitive and Stone
 
-The opening should feel grounded. The player learns that environment, tools, fire, food, and storage are systems. Automation is deliberately modest: passive processing and simple mechanical assistance.
+The opening should feel grounded. The player learns that environment, tools, fire, food, and storage are systems. Automation is deliberately modest: passive processing and simple mechanical assistance. The full Age 0 spec is below.
+
+### Age 0 Primitive and Stone
+
+This is the first playable age and the tutorial for the whole mod: **look at the world, gather what it already dropped, bind it into tools, then make a camp that works while you are elsewhere.** Wood and stone are materials, not starter tool tiers. Vanilla wooden and stone tools are removed.
+
+Exact recipe counts, timings, and durability numbers are left for a later balance pass.
+
+#### Prototype spine already in the mod
+
+Build Age 0 outward from content that already exists. Do not invent a parallel starter kit.
+
+| Existing content | Role in Age 0 |
+| --- | --- |
+| Pebble block (land and water worldgen, cobble compact/split recipes) | First material. Stone construction without a pickaxe. Teaches "the ground is the chest." |
+| Flint knife (wooden harvest tier, sword-like use) | First crafted tool. Cutting, skinning, cordage, plant harvest. Not a pickaxe and not a full tool set. |
+| Bone sword, axe, pickaxe, shovel, hoe (stone harvest tier today) | First *hafted* toolkit. Replaces vanilla stone tools for survival work. Must **not** mine copper or iron; metal ore is Age 1. |
+| Raw leather | Hide drop. Unprocessed. Replaces vanilla leather as a mob drop. |
+| Leather strips | Binding. Required to haft bone tools. Cut from processed hide with the flint knife. |
+| Pebble pickup / cobble advancements | Pattern for the rest of Age 0: finding a material unlocks the next process, not a tech-tree GUI. |
+
+Repair tags already exist (`flint_repair_item`, `bone_repair_item`). Flint repairs flint. Bone repairs bone.
+
+#### Player fantasy
+
+You wake with empty hands. Logs will not fall to fists. There is no wooden pickaxe. Pebbles lie on beaches, riverbeds, and fields. Grass holds fibre. Animals hold hide and bone. Clay sits in the bank. Fire is made, not crafted from iron.
+
+The first hour is stooping, knapping, cutting, and binding. The first night is a fire and a hide. The first week is a camp whose racks, snares, and pots keep working while you sleep. The age ends when that camp is a settlement, and when fire has been aimed at rock hard enough to suggest metal.
+
+#### Vanilla removals
+
+Disable or replace these so the opening cannot be skipped with the vanilla 30-second tool rush.
+
+| Vanilla feature | Age 0 treatment |
+| --- | --- |
+| Wooden tool recipes and loot | Removed. Flint is the sharp hand tool. |
+| Stone tool recipes and loot | Removed. Bone-hafted tools cover the jobs. |
+| Punching logs for wood | Logs do not harvest by hand. Leaves, dead bushes, and knife-work give sticks. Logs require a bone axe. |
+| 1 log = 4 planks | Too industrial. Split logs at a work stump with an axe and a pebble wedge. Planks are labour. |
+| Crafting table as first station | Gated. 2x2 in the inventory remains for knapping, cordage, and the knife. 3x3 waits on a **work stump**. |
+| Furnace | Gated behind pottery. Cook on a campfire. Fire clay in a pit kiln. |
+| Cow/horse/llama leather drops | Drop **raw leather** (hides). Finished leather is processed. |
+| Iron bucket | Gated to Age 1. Age 0 water is a waterskin or a clay vessel. Source blocks are not moved. |
+| Flint and steel | Gated. Fire starts with a fire plough or bow-drill (time, hunger, dry tinder). |
+| Wool bed | Gated. Sleep on straw and hides. |
+| Chest | Optional delay. Early storage is baskets, hide bags, and clay pots. |
+| Boat | Replaced by a lashed raft (logs + rope), slower and fragile. |
+| Wooden hoe / instant farmland | Farming waits on the bone hoe and a prepared plot. |
+| Villager stone-tool trades | Strip wooden and stone tools from trades so they cannot refund the skip. |
+
+Keep vanilla dirt, gravel, clay, bones, sticks-from-leaves, campfires (once fire exists), and the overworld as-is unless a later pass needs otherwise.
+
+#### Tool philosophy
+
+Do not clone the vanilla five-tool set at every material. Materials have jobs.
+
+**Hands.** Pick up pebbles, clay, fibre, sticks, flint from gravel. Dig dirt and gravel slowly. Cannot fell trees or mine stone.
+
+**Flint is an edge.** Small, sharp, held or short-hafted. It cuts, scrapes, and pierces. It is not a mining tier.
+
+| Flint tool | Job |
+| --- | --- |
+| Flint knife (exists) | Cut fibre, meat, hides into strips; harvest some plants; weak melee |
+| Flint handaxe / chopper | Strip bark, baton sticks off a log, crude butchery. Still cannot fell a tree for logs. |
+| Flint scraper | Required station tool for hideworking |
+| Flint spear | Hunting. Reach and a thrown option. Better at killing than the knife, worse at everything else |
+| Flint flake / blade | Intermediate knapping output, not a hotbar tool |
+
+**Bone is a hafted head.** A bone tool is always three parts: **head + shaft + binding**. That assembly is the seed of every later machine (parts, not lumps). Leather strips are the binding. Sticks are the shaft. Bone (or antler, later) is the head. A flint edge may be lashed on for the axe and spear.
+
+| Bone tool (exists) | Job | Must not do |
+| --- | --- | --- |
+| Bone axe | First real woodcutting. Logs, then splitting | Instant plank factory |
+| Bone shovel | Clay, gravel, sand, dirt at a useful speed | |
+| Bone hoe | Turns a prepared plot into farmland | |
+| Bone pick | Soft stone, cobble, coal-adjacent rock, packed pebbles | Copper, iron, gold, diamond, redstone, lapis as metal-age gates |
+| Bone sword | Camp defence and hunting upgrade | |
+
+Harvest tags: give bone its own `incorrect_for_bone_tool` tag. Do **not** keep vanilla `incorrect_for_stone_tool`, or a bone pickaxe will open copper and iron and skip Age 1.
+
+When a hafted tool breaks, consider returning the stick. Binding is consumed. That makes strips a steady hide-economy sink.
+
+**Wood is lumber, not a tool tier.** **Stone is masonry, not a tool tier.** No wooden pick, no stone pick, no "next material, same five tools."
+
+#### Opening loop
+
+```text
+Look down -> gather pebbles, flint, fibre, sticks
+    -> knap a flint knife
+    -> cut cordage and hunt
+    -> raw hide + bone
+    -> dry and cut strips
+    -> haft bone tools
+    -> fell wood, dig clay, build fire
+    -> dry, trap, pot, grind
+    -> settlement
+    -> fire against rock / native copper -> Age 1
+```
+
+**First minutes.** Pebbles are visible on the ground (already generated). Grass with a knife, or even by hand, yields plant fibre. Two pebbles knapped together (or pebble on flint) yield flakes. Knife = flake + stick + fibre or a strip if the player already has hide.
+
+**First hunt.** Knife or spear. Drops: raw hide, bone, meat. Meat cooks on a campfire, not in a furnace.
+
+**First binding.** Hide is scraped (flint scraper or knife) and dried on a rack. Dried hide cuts into leather strips. Strips haft the bone set. This is the first *process*, not the first *craft*.
+
+**First wood.** Bone axe. Until then the player is a stick-and-thatch person.
+
+**First stone building.** Nine pebbles already compact to cobble. Age 0 houses can be cobble, thatch, or wattle-and-daub without ever mining a stone block.
+
+#### Processing systems
+
+Each system has a manual step, then a modest automated step. That is the Age 0 version of the design motto.
+
+##### Knapping
+
+Pebble and flint are worked against each other, not in a shapeless lump-to-tool craft. Prefer a ground action or a dedicated knapping surface (a placed cobble or a work stump) so it feels like striking stone. Failures can consume a pebble or yield a useless chip; chips stay useful as fire striker tinder or quern grit later.
+
+Pebble <-> cobble recipes stay. They are the settlement masonry loop, not the tool loop.
+
+##### Cordage and rope
+
+Plant fibre from grass, vines, kelp, and similar. Knife improves the harvest. Fibre twists into cordage (string analogue). Cordage becomes rope, snares, raft lashings, and bow-drill string. Leather strips are the strong binding; cordage is the cheap binding. Both should stay useful into later ages (belts, cable cores, packing).
+
+##### Hideworking
+
+```text
+Kill -> raw leather -> scrape with flint -> drying rack -> dried hide -> knife into leather strips
+                                                     \-> waterskin, hide bag, hide bed, leather armor
+```
+
+Rain should spoil or reset drying hides. That makes roofing the rack a real camp decision and gives thatch a job besides looking primitive.
+
+Vanilla leather, if kept at all, is the finished hide after drying. Otherwise keep `raw_leather` / dried hide / `leather_strips` as the whole chain.
+
+##### Fire
+
+Fire is a procedure. Tinder (fibre, birch bark, dry grass) + spindle + patience. Success lights a campfire. Campfire cooks food and is the heat source for the pit kiln. No iron, no furnace, no blast of instant charcoal.
+
+Charcoal comes from a covered wood pile or the pit kiln, not from a vanilla furnace recipe. Charcoal is the Age 0 fuel that still matters in Age 1 smelting.
+
+##### Clay and pottery
+
+Clay is dug by hand slowly, by bone shovel well. Form wet pots, bricks, and a crucible-shaped vessel by hand. They must dry on the rack, then fire in a **pit kiln**: a hole, the ware, fuel, a dirt cap, and time. Fired pottery is:
+
+- Storage that is mouse-proof and stack-efficient compared to hide bags
+- A clay bucket analogue that carries water but does not place source blocks
+- Cooking pots (stews, better hunger than dry roasting)
+- The first crucible, which is the Age 1 gate item even if it cannot yet melt copper reliably
+
+This is the first thermal process. It teaches heat, fuel, waiting, and that clay is not dirt.
+
+##### Wood
+
+Sticks: leaves, knife, handaxe. Logs: bone axe only. Planks: work stump + axe + pebble wedge. Thatched roofs and wattle walls should be cheaper than plank boxes so early bases look like camps, not oak cubes.
+
+Bark stripped with the handaxe can be tinder or fibre. Keep wood relevant later as charcoal, ash, potash, and construction.
+
+##### Stone
+
+Pebbles are gathered. Cobble is compacted pebbles. Breaking cobble or stone with a bone pick is slow on-purpose; fire-setting is the interesting way to crack a face of rock (build a hot fire against stone, quench or wait, harvest rubble). Fire-setting is also how native copper or malachite can be hinted before metal tools exist.
+
+Do not let the bone pick replace a mining drill. Age 2 owns mechanised mining.
+
+#### Food, water, and farming
+
+- Hunt and gather first. Berries, eggs, meat, fish.
+- Campfire roast is inefficient. Drying racks make jerky that lasts. Clay pot stews are the best Age 0 food.
+- Waterskin (hide) sips from sources. Clay vessel carries more. No moving the river until copper buckets.
+- Bone hoe unlocks a small plot. Seeds from breaking grass can stay, but farmland should feel prepared (cleared, maybe mulched) rather than instant bread-empire.
+- Animal husbandry is late Age 0: lead with rope, pen with wattle, then hitch to the quern.
+
+Water-near-camp matters because buckets are gone. That is a settlement decision, not a QoL skip.
+
+#### Shelter
+
+A valid Age 0 house is any of: thatch hut, wattle-and-daub, cobble foundation with hide roof. Wool beds are not the sleep item. Hide bed = dried hides + straw. Spawn-point settlement is the emotional beat of the age.
+
+#### Automation in Age 0
+
+Modest on purpose. Each one removes a chore the player just learned by hand.
+
+| Automation | Replaces | How it plays | Later evolution |
+| --- | --- | --- | --- |
+| Drying rack | Holding hide/clay/meat in inventory and waiting | Placed block, weather-sensitive, several slots | Age 1 smokehouse / heated dryer |
+| Snare and deadfall | Active hunting every meal | Bait, wait, collect; cheap cordage + stick + pebble | Age 1 animal pens as the reliable version |
+| Fish basket | Standing in a river with a stick | Place in water, wait, collect | Nets, then Age 2 fishing as a food line |
+| Pit kiln | There is no vanilla furnace yet | A built procedure, not a GUI machine | Clay furnace, then bloomery / Age 1 |
+| Quern (player) | No flour, dyes, crushed clay, or crushed charcoal otherwise | Two cobble stones, right-click labour, hunger cost | Same block, better prime mover |
+| Quern (animal) | Player standing at the quern | Hitch a beast; slow, requires feed and a pen | Water wheel in Age 1 turns the same mill |
+
+The water wheel is **not** an Age 0 machine. Age 0 may *notice* current (fish baskets, washing ore dirt, washing pebbles). Rotational power as a network is the Age 1 gift. The animal quern is the proof that "something else can turn it."
+
+#### Proof of Settlement
+
+Age 0 does not end on a single craft. It ends when the camp is obviously a settlement. Surface this with advancements, not a hidden flag.
+
+Suggested proof, all required:
+
+1. Sleep in a hide bed at a fire you started.
+2. Store food or water in fired pottery.
+3. Run a drying rack to completion (hide, jerky, or clay).
+4. Collect from a trap or fish basket you did not babysit.
+5. Own a hafted bone tool set (at least axe + one other).
+6. Produce charcoal or fired ware in a pit kiln.
+
+**Age 1 gate item:** native copper (surface nugget, like a rare pebble) or malachite stained rock revealed by fire-setting, plus a fired clay crucible. Smelting is Age 1. Finding the green stone is the last Age 0 discovery.
+
+#### Discipline mapping for Age 0
+
+| Discipline | Age 0 expression |
+| --- | --- |
+| Engineering | Wedges, snares, work stump, quern |
+| Energy | Fire, human labour, then animal labour |
+| Chemistry | Hide drying, charcoal, pottery firing, ash |
+| Biology | Hunting, fibre plants, plots, hitching animals |
+| Civil engineering | Pebble masonry, thatch, wattle, siting the camp by water |
+| Science | Watching drying time and kiln results; fire-setting as experiment |
+| Computing / aerospace | Absent, correctly |
+
+#### Suggested new content
+
+Implement in this order so each slice is playable.
+
+**Slice 1 — Close the existing loop.** Knife recipe (flint + stick + fibre/strips). Bone tool recipes (bone + stick + strips). Raw leather from animals. Strips from hide + knife. Repair tags filled. Wooden and stone tool recipes disabled. Bone pick harvest tag corrected so it cannot mine metal ores.
+
+**Slice 2 — Hands and fibre.** Plant fibre item. Cordage. Sticks from leaves guaranteed enough to play. Log harvest blocked without an axe.
+
+**Slice 3 — Hide camp.** Scraper. Drying rack. Hide bed. Waterskin. Hide bag.
+
+**Slice 4 — Fire and clay.** Fire plough. Pit kiln. Clay pot, clay vessel, clay bricks. Charcoal pile. Furnace recipe still disabled.
+
+**Slice 5 — Passive food.** Snare, deadfall, fish basket. Jerky on the drying rack.
+
+**Slice 6 — Settlement stations.** Work stump (3x3). Pebble wedge + plank splitting. Wattle and thatch blocks. Quern. Animal hitch.
+
+**Slice 7 — Age 1 door.** Native copper worldgen (sparse, pebble-like). Fire-setting on stone. Fired crucible. Advancement "Proof of Settlement."
+
+Optional flavour, only after the slices above: flint spear and handaxe, raft, bark tinder, ash as a later soap/potash input, antler as a rare bone-tier head.
+
+#### Design rules for this age
+
+- If a feature exists only to be a weaker wooden pickaxe, cut it.
+- If the player can skip hideworking and still haft tools, strips have no economy. Keep the binding cost.
+- If the bone pick mines copper, Age 1 is optional. It must not.
+- If a furnace can be crafted, the pit kiln is flavour. Keep the furnace locked.
+- If planks are cheap, every camp becomes a vanilla house. Keep splitting slow and thatch cheaper.
+- Drying racks and traps must be worth building, not slower than standing still with the item in hand.
+- Age 0 automation waits. Age 1 automation turns. Do not put shafts and gears here.
 
 #### Copper and Bronze
 
@@ -123,6 +371,8 @@ Research should reward demonstrated competence. A breakthrough is unlocked when 
 
 | Target breakthrough | Example proof requirements |
 | --- | --- |
+| Settlement (Age 0) | Start fire; fire pottery in a pit kiln; finish a drying-rack process; collect from an unattended trap; sleep in a hide bed; haft a bone axe. |
+| Copper (Age 1) | Find native copper or fire-set ore; fire a crucible; smelt a usable metal; replace at least one bone tool with a metal one. |
 | Steam | Produce steel; build a steam engine; generate mechanical power; automate iron processing; demonstrate a functioning multi-machine line. |
 | Electricity | Produce copper wire; build a generator; store a threshold of mechanical energy; create an electromagnetic device; deliver electrical power to a machine. |
 | Electronics | Manufacture a circuit board; install a sensor; automate a condition-based response; retain operational data or a timing program. |
@@ -295,7 +545,7 @@ The final objective is not merely to defeat a boss or craft an ultimate componen
 
 | Topic | Questions to resolve |
 | --- | --- |
-| Vanilla integration | Which vanilla recipes, ores, mobs, dimensions, and progression gates are replaced, retained, or recontextualised? |
+| Vanilla integration | Age 0 now commits to removing wooden and stone tools, fist-felling, leather drops, the early furnace, iron buckets, and flint-and-steel. Remaining questions: chests, shields, bows, villager restocks, and whether gravel still drops flint vanilla-style. |
 | Research interface | How are milestones surfaced: journal, tech tree, achievements, lab console, or a combination? |
 | Failure and safety | How punishing should overpressure, radiation, heat, and power overloads be? What warning systems make failure fair? |
 | Multiplayer | Are discoveries shared globally, per player, per team, or configurable? How do large networks perform on servers? |
@@ -307,4 +557,6 @@ The final objective is not merely to defeat a boss or craft an ultimate componen
 ### Working Notes
 
 Add dated decisions, prototype findings, balance targets, and deferred ideas here or in linked feature specifications. When changing a core principle, record why it changed and what systems it affects.
+
+**2026-09-14 — Age 0 spec.** Fleshed out Primitive and Stone from current prototypes (pebble, flint knife, bone set, raw leather, leather strips). Wooden and stone tools are out. Flint is an edge, not a tier. Bone is hafted and must not mine metal ores. First automation is drying racks, traps, pit kiln, then player/animal quern. Water wheel stays Age 1. Age 1 door is native copper plus a fired crucible. Implementation slices 1–7 are the build order.
 
