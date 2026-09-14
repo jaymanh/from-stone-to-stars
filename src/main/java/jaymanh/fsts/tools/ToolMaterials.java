@@ -15,7 +15,7 @@ public enum ToolMaterials {
     ),
     BONEMATERIAL(
             new ToolMaterial(
-                INCORRECT_FOR_STONE_TOOL, 150, 4.5f, 1f, 10,
+                INCORRECT_FOR_WOODEN_TOOL, 150, 4.5f, 1f, 10,
                     BONE_REPAIR_ITEMS
             )
     );
