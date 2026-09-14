@@ -24,6 +24,7 @@ public final class ModCreativeTabs {
 			.title(Component.translatable("itemGroup.from-stone-to-stars.main"))
 			.displayItems((params, output) -> {
 				output.accept(ModItems.RAW_LEATHER);
+				output.accept(ModItems.LEATHER_STRIPS);
 
 				output.accept(ModBlocks.PEBBLE);
 
