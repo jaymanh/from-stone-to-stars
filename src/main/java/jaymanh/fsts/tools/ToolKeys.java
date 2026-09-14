@@ -9,6 +9,7 @@ import static jaymanh.fsts.FromStoneToStars.MOD_ID;
 
 public class ToolKeys{
     public static class ItemKey{
+        public static final TagKey<Item> FLINT_REPAIR_ITEMS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "flint_repair_item"));
         public static final TagKey<Item> BONE_REPAIR_ITEMS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID,"bone_repair_item"));
     }
 }

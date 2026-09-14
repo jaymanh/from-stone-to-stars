@@ -27,6 +27,8 @@ public final class ModCreativeTabs {
 
 				output.accept(ModBlocks.PEBBLE);
 
+				output.accept(ModTools.FLINT_KNIFE);
+
 				output.accept(ModTools.BONE_SWORD);
 				output.accept(ModTools.BONE_AXE);
 				output.accept(ModTools.BONE_PICKAXE);

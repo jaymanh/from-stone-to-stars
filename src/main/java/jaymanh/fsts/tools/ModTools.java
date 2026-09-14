@@ -10,6 +10,12 @@ import static jaymanh.fsts.item.ModItems.register;
 
 public class ModTools {
 
+    public static final Item FLINT_KNIFE = register(
+            ModItemIds.FLINT_KNIFE,
+            Item::new,
+            new Item.Properties().sword(ToolMaterials.FLINTMATERIAL.getMaterial(), 3F, -2.4F)
+    );
+
     public static final Item BONE_SWORD = register(
             ModItemIds.BONE_SWORD,
             Item::new,
