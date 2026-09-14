@@ -1,6 +1,8 @@
 package jaymanh.fsts;
 
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.compat.energy.TeamRebornEnergyCompat;
+import jaymanh.fsts.config.FstsConfig;
 import jaymanh.fsts.item.ModCreativeTabs;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.tools.ModTools;
@@ -20,11 +22,13 @@ public class FromStoneToStars implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		FstsConfig.load();
 		ModBlocks.initialize();
 		ModItems.initialize();
 		ModTools.initialize();
 		ModCreativeTabs.initialize();
 		ModWorldgen.initialize();
+		TeamRebornEnergyCompat.initialize();
 	}
 
 	public static Identifier id(String path) {

@@ -4,11 +4,30 @@ plugins {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven {
+		name = 'Terraformers'
+		url = 'https://maven.terraformersmc.com/'
+	}
+	maven {
+		name = 'Xander'
+		url = 'https://maven.isxander.dev/releases'
+	}
+	maven {
+		name = 'BlameJared'
+		url = 'https://maven.blamejared.com/'
+	}
+	maven {
+		name = 'Modrinth'
+		url = 'https://api.modrinth.com/maven'
+	}
+	maven {
+		name = 'WTHIT'
+		url = 'https://maven2.bai.lol'
+		content {
+			includeGroup 'lol.bai'
+			includeGroup 'mcp.mobius.waila'
+		}
+	}
 }
 
 loom {
@@ -35,6 +54,19 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Optional integrations: compile against APIs, never require them at runtime.
+	// Team Reborn Energy is the Fabric equivalent of Forge Energy; it is jar-in-jar'd
+	// so AE2 and other energy mods can attach without a separate install.
+	compileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+	compileOnly "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+	localRuntime "dev.isxander:yet-another-config-lib:${project.yacl_version}"
+
+	compileOnly "mezz.jei:jei-26.2-fabric-api:${project.jei_version}"
+	compileOnly "maven.modrinth:jade:${project.jade_version}"
+	compileOnly "mcp.mobius.waila:wthit-api:fabric-${project.wthit_version}"
+
+	implementation include("teamreborn:energy:${project.energy_version}")
 }
 
 processResources {

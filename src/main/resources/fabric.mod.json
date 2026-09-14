@@ -23,6 +23,15 @@
 		],
 		"fabric-datagen": [
 			"jaymanh.fsts.client.FromStoneToStarsDataGenerator"
+		],
+		"modmenu": [
+			"jaymanh.fsts.client.compat.modmenu.ModMenuCompat"
+		],
+		"jei_mod_plugin": [
+			"jaymanh.fsts.client.compat.jei.FstsJeiPlugin"
+		],
+		"jade": [
+			"jaymanh.fsts.client.compat.jade.FstsJadePlugin"
 		]
 	},
 	"mixins": [
@@ -37,5 +46,19 @@
 		"minecraft": "~26.2",
 		"java": ">=25",
 		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*",
+		"yet_another_config_lib_v3": "*",
+		"jei": "*",
+		"emi": "*",
+		"jade": "*",
+		"wthit": "*",
+		"ae2": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"update_checker": true
+		}
 	}
 }

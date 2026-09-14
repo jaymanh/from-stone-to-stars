@@ -1,0 +1,6 @@
+{
+	"from-stone-to-stars:wthit": {
+		"initializer": "jaymanh.fsts.client.compat.wthit.FstsWthitPlugin",
+		"side": "client"
+	}
+}

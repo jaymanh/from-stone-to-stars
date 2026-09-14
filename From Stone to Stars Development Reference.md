@@ -18,7 +18,8 @@ This living reference defines the intended player fantasy, progression structure
 7. [Power Generation](#power-generation)
 8. [Production Chain Examples](#production-chain-examples)
 9. [Civilisation Project and Endgame](#civilisation-project-and-endgame)
-10. [Development Guardrails and Future Questions](#development-guardrails-and-future-questions)
+10. [Optional Mod Integrations](#optional-mod-integrations)
+11. [Development Guardrails and Future Questions](#development-guardrails-and-future-questions)
 
 ## Core Vision and Design Principles
 
@@ -529,6 +530,47 @@ The final objective is not merely to defeat a boss or craft an ultimate componen
 >
 > Now build the future.
 
+## Optional Mod Integrations
+
+All player-facing companion mods are **optional**. The game must launch and Age 0 must be playable with none of them installed. Integrations load through Fabric entrypoints or plugin JSON so their classes are never touched unless that mod is present.
+
+**Policy**
+
+- Do not hard-depend on content mods (AE2, Tech Reborn, recipe viewers, overlay mods).
+- Compile against APIs only (`compileOnly`). Never jar-in-jar GUI or overlay mods.
+- Fabric has no Forge Energy. **Team Reborn Energy** is the Fabric FE equivalent and *is* jar-in-jar'd (tiny MIT API) so electrical machines can speak a shared lookup. AE2 and other energy *content* mods remain optional; they attach when installed.
+- Heat, shaft rotation, and pressure stay first-party lookups. Do not force them through TR Energy.
+- EMI has no Fabric 26.2 artifact yet. JEI is the live recipe-viewer plugin. Add the `emi` entrypoint when EMI ports.
+
+| Mod | Mod ID | Role | Load mechanism | Status |
+| --- | --- | --- | --- | --- |
+| Mod Menu | `modmenu` | Config button in the mod list | `modmenu` entrypoint | Live. Button is a no-op unless YACL is also installed. |
+| YetAnotherConfigLib | `yet_another_config_lib_v3` | Config screen | Called from Mod Menu factory | Live. Dev runtime includes YACL so the screen can be tested. |
+| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live plugin stub. Add custom recipe categories when pit kiln / knapping / drying exist. |
+| EMI | `emi` | Recipe viewer (preferred long-term on Fabric) | `emi` entrypoint, not registered yet | **Blocked:** no 26.2 Maven artifact. Placeholder: `FstsEmiPlugin`. |
+| Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. |
+| WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Same pebble line as Jade. |
+| Team Reborn Energy | `team_reborn_energy` | Fabric energy API (FE analogue) | Included in this mod's jar | Live API. Register `EnergyStorage.SIDED` when the first electrical block entity exists. |
+| Applied Energistics 2 | `ae2` | Energy consumer / later storage network | Detected via `CompatMods.AE2`; no compile dependency | Optional. Uses TR Energy acceptors. No AE2-specific code until we have machines. |
+
+**Config** (`config/from-stone-to-stars.json`, works without YACL)
+
+| Key | Default | Notes |
+| --- | --- | --- |
+| `generatePebbles` | `true` | Overworld pebble patches. Requires a game restart. Existing chunks are unchanged. |
+| `debugLogging` | `false` | Extra diagnostic log lines. |
+
+**When adding a new system, also update**
+
+1. Recipe viewers (JEI now, EMI when ported) for any non-crafting process.
+2. Jade and WTHIT for machine state the player cannot see from the model (drying %, kiln heat, energy, fluid).
+3. `EnergyStorage.SIDED` (and later heat / rotation lookups) for any block with a power face.
+4. This table, so optional support does not drift from the code.
+
+**Versions** (bump in `gradle.properties` when those mods update)
+
+Mod Menu 20.0.1, YACL 3.9.6+26.2-fabric, JEI 30.32.0.221, Jade 26.2.11+fabric, WTHIT 20.0.0, Team Reborn Energy 5.0.0.
+
 ## Development Guardrails and Future Questions
 
 ### Feature Evaluation Checklist
@@ -550,7 +592,7 @@ The final objective is not merely to defeat a boss or craft an ultimate componen
 | Failure and safety | How punishing should overpressure, radiation, heat, and power overloads be? What warning systems make failure fair? |
 | Multiplayer | Are discoveries shared globally, per player, per team, or configurable? How do large networks perform on servers? |
 | Scale and pacing | How long should each age last? Which ages may merge or split after prototype testing? |
-| Compatibility | Which external tech, world-generation, and space mods should be optional partners rather than duplicated systems? |
+| Compatibility | Optional integrations committed: Mod Menu, YACL, JEI, Jade, WTHIT, TR Energy (jar-in-jar API), AE2 detect-only. EMI waits on a 26.2 port. Remaining: Create-like rotation, other space mods, worldgen partners. |
 | Accessibility | How can the UI explain complex networks without hiding the satisfaction of learning them? |
 | Performance | What simulation limits, chunk-loading expectations, and visualisation tools are necessary for large factories? |
 
@@ -559,4 +601,6 @@ The final objective is not merely to defeat a boss or craft an ultimate componen
 Add dated decisions, prototype findings, balance targets, and deferred ideas here or in linked feature specifications. When changing a core principle, record why it changed and what systems it affects.
 
 **2026-09-14 — Age 0 spec.** Fleshed out Primitive and Stone from current prototypes (pebble, flint knife, bone set, raw leather, leather strips). Wooden and stone tools are out. Flint is an edge, not a tier. Bone is hafted and must not mine metal ores. First automation is drying racks, traps, pit kiln, then player/animal quern. Water wheel stays Age 1. Age 1 door is native copper plus a fired crucible. Implementation slices 1–7 are the build order.
+
+**2026-09-14 — Optional integrations.** Wired Mod Menu + YACL config, JEI plugin stub, Jade/WTHIT pebble overlay, and jar-in-jar Team Reborn Energy as the Fabric FE API. AE2 is detected only. EMI is documented but not registered until a 26.2 artifact exists. All remain `suggests`, not `depends`.
 

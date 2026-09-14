@@ -1,6 +1,7 @@
 package jaymanh.fsts.worldgen;
 
 import jaymanh.fsts.FromStoneToStars;
+import jaymanh.fsts.config.FstsConfig;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -25,6 +26,10 @@ public final class ModWorldgen {
 
 	public static void initialize() {
 		MinYPlacement.initialize();
+		if (!FstsConfig.INSTANCE.generatePebbles) {
+			return;
+		}
+
 		BiomeModifications.addFeature(
 				BiomeSelectors.foundInOverworld(),
 				GenerationStep.Decoration.VEGETAL_DECORATION,

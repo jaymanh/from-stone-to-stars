@@ -1,3 +1,13 @@
 {
-	"itemGroup.from-stone-to-stars.main": "From Stone to Stars"
+	"itemGroup.from-stone-to-stars.main": "From Stone to Stars",
+
+	"config.from-stone-to-stars.title": "From Stone to Stars",
+	"config.from-stone-to-stars.category.general": "General",
+	"config.from-stone-to-stars.generatePebbles": "Generate pebbles",
+	"config.from-stone-to-stars.generatePebbles.desc": "Place pebble patches in the overworld. Requires a game restart. Already generated chunks are unchanged.",
+	"config.from-stone-to-stars.debugLogging": "Debug logging",
+	"config.from-stone-to-stars.debugLogging.desc": "Write extra diagnostic messages to the log.",
+
+	"tooltip.from-stone-to-stars.waterlogged": "Waterlogged",
+	"config.jade.plugin_from-stone-to-stars.pebble": "Pebble waterlogged state"
 }
