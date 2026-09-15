@@ -1,6 +1,19 @@
 {
 	"itemGroup.from-stone-to-stars.main": "From Stone to Stars",
 
+	"block.from-stone-to-stars.pebble": "Pebble",
+
+	"item.from-stone-to-stars.raw_leather": "Raw Leather",
+	"item.from-stone-to-stars.leather_strips": "Leather Strips",
+
+	"item.from-stone-to-stars.flint_knife": "Flint Knife",
+
+	"item.from-stone-to-stars.bone_sword": "Bone Sword",
+	"item.from-stone-to-stars.bone_axe": "Bone Axe",
+	"item.from-stone-to-stars.bone_pickaxe": "Bone Pickaxe",
+	"item.from-stone-to-stars.bone_shovel": "Bone Shovel",
+	"item.from-stone-to-stars.bone_hoe": "Bone Hoe",
+
 	"config.from-stone-to-stars.title": "From Stone to Stars",
 	"config.from-stone-to-stars.category.general": "General",
 	"config.from-stone-to-stars.generatePebbles": "Generate pebbles",
