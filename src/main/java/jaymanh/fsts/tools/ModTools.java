@@ -10,6 +10,12 @@ import static jaymanh.fsts.item.ModItems.register;
 
 public class ModTools {
 
+    public static final Item HAMMERSTONE = register(
+            ModItemIds.HAMMERSTONE,
+            HammerstoneItem::new,
+            new Item.Properties().durability(2)
+    );
+
     public static final Item FLINT_KNIFE = register(
             ModItemIds.FLINT_KNIFE,
             FlintKnifeItem::new,

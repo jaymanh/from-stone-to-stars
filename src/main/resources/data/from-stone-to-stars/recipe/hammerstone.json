@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "from-stone-to-stars:pebble"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:hammerstone",
+    "count": 1
+  }
+}
