@@ -26,6 +26,11 @@ public final class ModBlocks {
 			SticksBlock::new,
 			BlockBehaviour.Properties.of().noCollision().sound(SoundType.WOOD).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable()
 			);
+	public static final Block TANNING_RACK = register(
+			ModBlockItemIds.TANNING_RACK,
+			TanningRackBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F).pushReaction(PushReaction.DESTROY)
+			);
 
 	private ModBlocks() {
 	}

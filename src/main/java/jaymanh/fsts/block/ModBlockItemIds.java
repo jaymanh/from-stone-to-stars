@@ -8,6 +8,7 @@ import net.minecraft.resources.Identifier;
 public final class ModBlockItemIds {
 	public static final BlockItemId PEBBLE = create("pebble");
 	public static final BlockItemId STICKS = create("sticks");
+	public static final BlockItemId TANNING_RACK = create("tanning_rack");
 
 	private ModBlockItemIds() {
 	}

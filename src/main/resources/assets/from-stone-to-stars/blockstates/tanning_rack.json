@@ -1,0 +1,48 @@
+{
+  "multipart": [
+    { "when": { "facing": "north" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack" } },
+    { "when": { "facing": "east" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack", "y": 90 } },
+    { "when": { "facing": "south" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack", "y": 180 } },
+    { "when": { "facing": "west" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_0": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_0" } },
+    { "when": { "facing": "east", "slot_0": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_0", "y": 90 } },
+    { "when": { "facing": "south", "slot_0": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_0", "y": 180 } },
+    { "when": { "facing": "west", "slot_0": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_0", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_0": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_0" } },
+    { "when": { "facing": "east", "slot_0": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_0", "y": 90 } },
+    { "when": { "facing": "south", "slot_0": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_0", "y": 180 } },
+    { "when": { "facing": "west", "slot_0": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_0", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_1": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_1" } },
+    { "when": { "facing": "east", "slot_1": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_1", "y": 90 } },
+    { "when": { "facing": "south", "slot_1": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_1", "y": 180 } },
+    { "when": { "facing": "west", "slot_1": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_1", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_1": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_1" } },
+    { "when": { "facing": "east", "slot_1": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_1", "y": 90 } },
+    { "when": { "facing": "south", "slot_1": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_1", "y": 180 } },
+    { "when": { "facing": "west", "slot_1": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_1", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_2": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_2" } },
+    { "when": { "facing": "east", "slot_2": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_2", "y": 90 } },
+    { "when": { "facing": "south", "slot_2": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_2", "y": 180 } },
+    { "when": { "facing": "west", "slot_2": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_2", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_2": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_2" } },
+    { "when": { "facing": "east", "slot_2": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_2", "y": 90 } },
+    { "when": { "facing": "south", "slot_2": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_2", "y": 180 } },
+    { "when": { "facing": "west", "slot_2": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_2", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_3": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_3" } },
+    { "when": { "facing": "east", "slot_3": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_3", "y": 90 } },
+    { "when": { "facing": "south", "slot_3": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_3", "y": 180 } },
+    { "when": { "facing": "west", "slot_3": "raw" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_raw_3", "y": 270 } },
+
+    { "when": { "facing": "north", "slot_3": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_3" } },
+    { "when": { "facing": "east", "slot_3": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_3", "y": 90 } },
+    { "when": { "facing": "south", "slot_3": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_3", "y": 180 } },
+    { "when": { "facing": "west", "slot_3": "tanned" }, "apply": { "model": "from-stone-to-stars:block/tanning_rack_tanned_3", "y": 270 } }
+  ]
+}

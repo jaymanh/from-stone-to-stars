@@ -1,0 +1,20 @@
+{
+  "textures": {
+    "0": "from-stone-to-stars:block/tanned_hide",
+    "particle": "from-stone-to-stars:block/tanned_hide"
+  },
+  "elements": [
+    {
+      "from": [9, 6, 3],
+      "to": [13, 14, 4],
+      "faces": {
+        "north": {"uv": [0, 0, 4, 8], "texture": "#0"},
+        "east": {"uv": [0, 0, 1, 8], "texture": "#0"},
+        "south": {"uv": [0, 0, 4, 8], "texture": "#0"},
+        "west": {"uv": [0, 0, 1, 8], "texture": "#0"},
+        "up": {"uv": [0, 0, 4, 1], "texture": "#0"},
+        "down": {"uv": [0, 0, 4, 1], "texture": "#0"}
+      }
+    }
+  ]
+}

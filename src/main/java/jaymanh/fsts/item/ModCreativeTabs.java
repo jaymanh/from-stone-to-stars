@@ -29,6 +29,7 @@ public final class ModCreativeTabs {
 
 				output.accept(ModBlocks.PEBBLE);
 				output.accept(ModBlocks.STICKS);
+				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModTools.HAMMERSTONE);
 
 				output.accept(ModTools.FLINT_KNIFE);

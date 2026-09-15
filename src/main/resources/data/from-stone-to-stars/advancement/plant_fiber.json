@@ -13,7 +13,8 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:flint_knife"
+      "from-stone-to-stars:flint_knife",
+      "from-stone-to-stars:tanning_rack"
     ]
   }
 }
