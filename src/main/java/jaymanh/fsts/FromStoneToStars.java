@@ -5,6 +5,7 @@ import jaymanh.fsts.compat.energy.TeamRebornEnergyCompat;
 import jaymanh.fsts.config.FstsConfig;
 import jaymanh.fsts.item.ModCreativeTabs;
 import jaymanh.fsts.item.ModItems;
+import jaymanh.fsts.progression.VanillaProgression;
 import jaymanh.fsts.tools.ModTools;
 import jaymanh.fsts.worldgen.ModWorldgen;
 
@@ -28,6 +29,7 @@ public class FromStoneToStars implements ModInitializer {
 		ModTools.initialize();
 		ModCreativeTabs.initialize();
 		ModWorldgen.initialize();
+		VanillaProgression.initialize();
 		TeamRebornEnergyCompat.initialize();
 	}
 
