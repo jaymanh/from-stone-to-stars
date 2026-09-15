@@ -12,7 +12,7 @@ public class ModTools {
 
     public static final Item FLINT_KNIFE = register(
             ModItemIds.FLINT_KNIFE,
-            Item::new,
+            FlintKnifeItem::new,
             new Item.Properties().sword(ToolMaterials.FLINTMATERIAL.getMaterial(), 3F, -2.4F)
     );
 
