@@ -23,6 +23,7 @@ public final class ModCreativeTabs {
 			.icon(() -> new ItemStack(ModItems.RAW_LEATHER))
 			.title(Component.translatable("itemGroup.from-stone-to-stars.main"))
 			.displayItems((params, output) -> {
+				output.accept(ModItems.PLANT_FIBER);
 				output.accept(ModItems.RAW_LEATHER);
 				output.accept(ModItems.LEATHER_STRIPS);
 

@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
 public final class ModItemIds {
+	public static final ResourceKey<Item> PLANT_FIBER = create("plant_fiber");
 	public static final ResourceKey<Item> RAW_LEATHER = create("raw_leather");
 	public static final ResourceKey<Item> LEATHER_STRIPS = create("leather_strips");
 
