@@ -20,25 +20,33 @@ public final class ModWorldgen {
 			Registries.PLACED_FEATURE,
 			FromStoneToStars.id("pebble_gen_waterlogged")
 	);
+	public static final ResourceKey<PlacedFeature> STICKS_GEN = ResourceKey.create(
+			Registries.PLACED_FEATURE,
+			FromStoneToStars.id("sticks_gen")
+	);
 
 	private ModWorldgen() {
 	}
 
 	public static void initialize() {
 		MinYPlacement.initialize();
-		if (!FstsConfig.INSTANCE.generatePebbles) {
-			return;
+		if (FstsConfig.INSTANCE.generatePebbles) {
+			BiomeModifications.addFeature(
+					BiomeSelectors.foundInOverworld(),
+					GenerationStep.Decoration.VEGETAL_DECORATION,
+					PEBBLE_GEN_NON_WATERLOGGED
+			);
+			BiomeModifications.addFeature(
+					BiomeSelectors.foundInOverworld(),
+					GenerationStep.Decoration.VEGETAL_DECORATION,
+					PEBBLE_GEN_WATERLOGGED
+			);
 		}
 
 		BiomeModifications.addFeature(
 				BiomeSelectors.foundInOverworld(),
 				GenerationStep.Decoration.VEGETAL_DECORATION,
-				PEBBLE_GEN_NON_WATERLOGGED
-		);
-		BiomeModifications.addFeature(
-				BiomeSelectors.foundInOverworld(),
-				GenerationStep.Decoration.VEGETAL_DECORATION,
-				PEBBLE_GEN_WATERLOGGED
+				STICKS_GEN
 		);
 	}
 }

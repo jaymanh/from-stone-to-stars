@@ -3,6 +3,7 @@ package jaymanh.fsts.block;
 import java.util.function.Function;
 
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SticksBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
@@ -18,7 +19,12 @@ public final class ModBlocks {
 	public static final Block PEBBLE = register(
 			ModBlockItemIds.PEBBLE,
 			PebbleBlock::new,
-			BlockBehaviour.Properties.of().noCollision().sound(SoundType.STONE).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable() //Add water loggable latter
+			BlockBehaviour.Properties.of().noCollision().sound(SoundType.STONE).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable()
+			);
+	public static final Block STICKS = register(
+			ModBlockItemIds.STICKS,
+			SticksBlock::new,
+			BlockBehaviour.Properties.of().noCollision().sound(SoundType.WOOD).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable()
 			);
 
 	private ModBlocks() {

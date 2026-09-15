@@ -28,6 +28,7 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.LEATHER_STRIPS);
 
 				output.accept(ModBlocks.PEBBLE);
+				output.accept(ModBlocks.STICKS);
 				output.accept(ModTools.HAMMERSTONE);
 
 				output.accept(ModTools.FLINT_KNIFE);

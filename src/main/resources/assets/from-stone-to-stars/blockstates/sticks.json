@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "from-stone-to-stars:block/sticks", "y": 0 },
+    "facing=east": { "model": "from-stone-to-stars:block/sticks", "y": 90 },
+    "facing=south": { "model": "from-stone-to-stars:block/sticks", "y": 180 },
+    "facing=west": { "model": "from-stone-to-stars:block/sticks", "y": 270 }
+  }
+}
