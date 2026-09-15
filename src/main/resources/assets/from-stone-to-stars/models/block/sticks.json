@@ -7,8 +7,8 @@
 	"elements": [
 		{
 			"name": "rod",
-			"from": [5, 0, 2],
-			"to": [6, 1, 15],
+			"from": [4.9, -0.1, 1.9],
+			"to": [6.1, 1.1, 15.1],
 			"rotation": {"angle": 22.5, "axis": "y", "origin": [6, 0, 9]},
 			"faces": {
 				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
@@ -47,8 +47,8 @@
 		},
 		{
 			"name": "rod",
-			"from": [2, 1, 8],
-			"to": [15, 2, 9],
+			"from": [1.9, 0.9, 7.9],
+			"to": [15.1, 2.1, 9.1],
 			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 1, 9]},
 			"faces": {
 				"north": {"uv": [0, 0, 13, 1], "texture": "#0"},
@@ -87,8 +87,8 @@
 		},
 		{
 			"name": "rod",
-			"from": [10, 0, 1],
-			"to": [11, 1, 14],
+			"from": [9.9, -0.1, 0.9],
+			"to": [11.1, 1.1, 14.1],
 			"rotation": {"angle": 0, "axis": "y", "origin": [10, 0, 7]},
 			"faces": {
 				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
