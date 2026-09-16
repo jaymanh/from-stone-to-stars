@@ -4,6 +4,8 @@ import java.util.function.Function;
 
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SticksBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
@@ -24,7 +26,7 @@ public final class ModBlocks {
 	public static final Block STICKS = register(
 			ModBlockItemIds.STICKS,
 			SticksBlock::new,
-			BlockBehaviour.Properties.of().noCollision().sound(SoundType.WOOD).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable()
+			BlockBehaviour.Properties.of().noCollision().sound(SoundType.WOOD).instabreak().explosionResistance(0).pushReaction(PushReaction.DESTROY).replaceable().ignitedByLava()
 			);
 	public static final Block TANNING_RACK = register(
 			ModBlockItemIds.TANNING_RACK,

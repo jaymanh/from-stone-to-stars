@@ -1,7 +1,7 @@
 package jaymanh.fsts.block.entity;
 
-import jaymanh.fsts.block.TanningRackBlock;
-import jaymanh.fsts.block.TanningRackBlock.HideStage;
+import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock.HideStage;
 import jaymanh.fsts.item.ModItems;
 
 import net.minecraft.core.BlockPos;

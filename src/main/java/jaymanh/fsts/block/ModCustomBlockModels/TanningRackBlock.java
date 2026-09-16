@@ -1,4 +1,4 @@
-package jaymanh.fsts.block;
+package jaymanh.fsts.block.ModCustomBlockModels;
 
 import org.jspecify.annotations.Nullable;
 
