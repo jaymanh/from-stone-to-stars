@@ -1,8 +1,6 @@
 package jaymanh.fsts.client.ModTagGenerators;
 
-import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
-import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -18,6 +16,7 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         builder(ModTags.FSTS_FLAMMABLE)
-                .add(ModBlockItemIds.STICKS);
+                .add(ModBlockItemIds.STICKS)
+                .add(ModBlockItemIds.TANNING_RACK);
     }
 }
