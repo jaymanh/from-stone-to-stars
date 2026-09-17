@@ -20,7 +20,8 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
                 .add(ModItemIds.BONE_SWORD);
 
         builder(ItemTags.AXES)
-                .add(ModItemIds.BONE_AXE);
+                .add(ModItemIds.BONE_AXE)
+                .add(ModItemIds.FLINT_AXE);
 
         builder(ItemTags.PICKAXES)
                 .add(ModItemIds.BONE_PICKAXE);

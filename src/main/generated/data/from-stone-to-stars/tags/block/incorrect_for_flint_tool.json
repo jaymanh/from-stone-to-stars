@@ -1,0 +1,17 @@
+{
+  "values": [
+    "#from-stone-to-stars:needs_wooden_tool",
+    {
+      "id": "#minecraft:needs_stone_tool",
+      "required": false
+    },
+    {
+      "id": "#minecraft:needs_iron_tool",
+      "required": false
+    },
+    {
+      "id": "#minecraft:needs_diamond_tool",
+      "required": false
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import jaymanh.fsts.item.ModCreativeTabs;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.progression.VanillaProgression;
 import jaymanh.fsts.tags.ModTags;
+import jaymanh.fsts.tools.LogStrip;
 import jaymanh.fsts.tools.ModTools;
 import jaymanh.fsts.worldgen.ModWorldgen;
 
@@ -35,6 +36,7 @@ public class FromStoneToStars implements ModInitializer {
 		VanillaProgression.initialize();
 		TeamRebornEnergyCompat.initialize();
 		ModTags.initialize();
+		LogStrip.initlise();
 	}
 
 	public static Identifier id(String path) {

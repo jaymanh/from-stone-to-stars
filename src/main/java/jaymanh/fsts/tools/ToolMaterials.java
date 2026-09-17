@@ -1,5 +1,6 @@
 package jaymanh.fsts.tools;
 
+import jaymanh.fsts.tags.ModTags;
 import net.minecraft.world.item.ToolMaterial;
 
 import static jaymanh.fsts.tools.ToolKeys.ItemKey.BONE_REPAIR_ITEMS;
@@ -9,7 +10,7 @@ import static net.minecraft.tags.BlockTags.*;
 public enum ToolMaterials {
     FLINTMATERIAL(
             new ToolMaterial(
-                    INCORRECT_FOR_WOODEN_TOOL, 80, 3f, 0f, 8,
+                    ModTags.FSTS_INCORRECT_FOR_FLINT_TOOL, 80, 3f, 0f, 8,
                     FLINT_REPAIR_ITEMS
             )
     ),

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:flint",
+    "minecraft:flint",
+    "from-stone-to-stars:plant_fiber"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:flint_axe",
+    "count": 1
+  }
+}

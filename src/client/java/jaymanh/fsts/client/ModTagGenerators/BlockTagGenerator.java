@@ -5,6 +5,7 @@ import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,5 +19,14 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
         builder(ModTags.FSTS_FLAMMABLE)
                 .add(ModBlockItemIds.STICKS)
                 .add(ModBlockItemIds.TANNING_RACK);
+
+        builder(ModTags.FSTS_NEEDS_WOODEN_TOOL)
+                .addOptionalTag(BlockTags.LOGS);
+
+        builder(ModTags.FSTS_INCORRECT_FOR_FLINT_TOOL)
+                .addTag(ModTags.FSTS_NEEDS_WOODEN_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
     }
 }

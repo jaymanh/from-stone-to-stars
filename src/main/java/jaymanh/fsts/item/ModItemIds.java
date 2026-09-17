@@ -10,9 +10,11 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> PLANT_FIBER = create("plant_fiber");
 	public static final ResourceKey<Item> RAW_LEATHER = create("raw_leather");
 	public static final ResourceKey<Item> LEATHER_STRIPS = create("leather_strips");
+	public static final ResourceKey<Item> BARK = create("bark");
 
 	public static final ResourceKey<Item> HAMMERSTONE = create("hammerstone");
 	public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");
+	public static final ResourceKey<Item> FLINT_AXE =  create("flint_axe");
 
 	public static final ResourceKey<Item> BONE_SWORD = create("bone_sword");
 	public static final ResourceKey<Item> BONE_AXE = create("bone_axe");

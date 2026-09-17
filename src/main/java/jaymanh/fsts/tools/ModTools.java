@@ -22,6 +22,12 @@ public class ModTools {
             new Item.Properties().sword(ToolMaterials.FLINTMATERIAL.getMaterial(), 3F, -2.4F)
     );
 
+    public static final Item FLINT_AXE = register(
+            ModItemIds.FLINT_AXE,
+            settings -> new AxeItem(ToolMaterials.FLINTMATERIAL.getMaterial(), 1.0F, -2.8F, settings),
+            new Item.Properties()
+    );
+
     public static final Item BONE_SWORD = register(
             ModItemIds.BONE_SWORD,
             Item::new,

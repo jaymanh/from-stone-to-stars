@@ -11,6 +11,7 @@ public final class ModItems {
 	public static final Item PLANT_FIBER = register(ModItemIds.PLANT_FIBER, Item::new, new Item.Properties());
 	public static final Item RAW_LEATHER = register(ModItemIds.RAW_LEATHER, Item::new, new Item.Properties());
 	public static final Item LEATHER_STRIPS = register(ModItemIds.LEATHER_STRIPS, Item::new, new Item.Properties());
+	public static final Item BARK = register(ModItemIds.BARK, Item::new, new Item.Properties());
 
 	private ModItems() {
 	}
