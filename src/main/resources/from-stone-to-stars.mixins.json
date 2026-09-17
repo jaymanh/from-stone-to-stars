@@ -1,16 +1,17 @@
 {
-	"required": true,
-	"package": "jaymanh.fsts.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [
-		"BlockStateBaseMixin",
-		"LootItemMixin",
-		"RecipeManagerMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
+  "required": true,
+  "package": "jaymanh.fsts.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BlockStateBaseMixin",
+    "CreeperNoDamageMixin",
+    "LootItemMixin",
+    "RecipeManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
 	}
 }
