@@ -44,6 +44,7 @@ public final class ModCreativeTabs {
 				output.accept(ModTools.BONE_PICKAXE);
 				output.accept(ModTools.BONE_SHOVEL);
 				output.accept(ModTools.BONE_HOE);
+				output.accept(ModTools.BONE_SAW);
 			})
 			.build();
 

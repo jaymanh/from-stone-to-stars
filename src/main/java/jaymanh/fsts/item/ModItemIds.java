@@ -22,6 +22,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BONE_PICKAXE = create("bone_pickaxe");
 	public static final ResourceKey<Item> BONE_SHOVEL = create("bone_shovel");
 	public static final ResourceKey<Item> BONE_HOE = create("bone_hoe");
+	public static final ResourceKey<Item> BONE_SAW = create("bone_saw");
 
 	private ModItemIds() {
 	}

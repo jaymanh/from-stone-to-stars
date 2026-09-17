@@ -1,5 +1,6 @@
 package jaymanh.fsts.item;
 
+import jaymanh.fsts.tools.SawToolItem;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.core.BlockPos;
@@ -36,6 +37,20 @@ public class UseInteractions {
             }
 
             Block.popResourceFromFace(level, pos, face, new ItemStack(ModItems.BARK));
+            return InteractionResult.PASS;
+        }));
+
+        //Turn log into planks (Unfinished)
+        UseBlockCallback.EVENT.register(((player, level, hand, hitResult) -> {
+            if (level.isClientSide()){
+                return InteractionResult.PASS;
+            }
+            ItemStack tool = player.getItemInHand(hand);
+            if (!(tool.getItem() instanceof SawToolItem)){
+                return InteractionResult.PASS;
+            }
+
+
             return InteractionResult.PASS;
         }));
 

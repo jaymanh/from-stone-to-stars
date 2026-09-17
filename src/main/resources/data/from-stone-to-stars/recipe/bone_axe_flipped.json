@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " FF",
+    "ASF",
+    " S "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "from-stone-to-stars:sharpened_bone",
+    "A": "from-stone-to-stars:leather_strips"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bone_axe",
+    "count": 1
+  }
+}

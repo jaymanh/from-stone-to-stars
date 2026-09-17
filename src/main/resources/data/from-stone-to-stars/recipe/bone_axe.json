@@ -3,7 +3,7 @@
   "category": "equipment",
   "pattern": [
     "FF ",
-    "AS ",
+    "FSA",
     " S "
   ],
   "key": {
