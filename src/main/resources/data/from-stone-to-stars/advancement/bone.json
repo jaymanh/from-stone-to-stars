@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bone"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:sharpened_bone",
+      "from-stone-to-stars:bone_sword",
+      "from-stone-to-stars:bone_axe",
+      "from-stone-to-stars:bone_pickaxe",
+      "from-stone-to-stars:bone_shovel",
+      "from-stone-to-stars:bone_hoe"
+    ]
+  }
+}

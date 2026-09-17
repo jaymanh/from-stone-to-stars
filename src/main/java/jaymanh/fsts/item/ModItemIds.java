@@ -11,6 +11,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> RAW_LEATHER = create("raw_leather");
 	public static final ResourceKey<Item> LEATHER_STRIPS = create("leather_strips");
 	public static final ResourceKey<Item> BARK = create("bark");
+	public static final ResourceKey<Item> SHARPENED_BONE = create("sharped_bone");
 
 	public static final ResourceKey<Item> HAMMERSTONE = create("hammerstone");
 	public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");

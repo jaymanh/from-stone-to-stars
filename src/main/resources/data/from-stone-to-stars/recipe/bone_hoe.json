@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "FF ",
+    "AS ",
+    " S "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "from-stone-to-stars:sharpened_bone",
+    "A": "from-stone-to-stars:leather_strips"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bone_hoe",
+    "count": 1
+  }
+}

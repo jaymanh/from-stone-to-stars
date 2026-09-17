@@ -27,6 +27,7 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.RAW_LEATHER);
 				output.accept(ModItems.LEATHER_STRIPS);
 				output.accept(ModItems.BARK);
+				output.accept(ModItems.SHARPENED_BONE);
 
 				output.accept(ModBlocks.PEBBLE);
 				output.accept(ModBlocks.STICKS);
