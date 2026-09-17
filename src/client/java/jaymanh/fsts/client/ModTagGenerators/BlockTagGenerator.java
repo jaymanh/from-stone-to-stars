@@ -21,11 +21,11 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockItemIds.KINDLING);
 
-        builder(ModTags.FSTS_NEEDS_WOODEN_TOOL)
+        builder(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.LOGS);
 
         builder(ModTags.FSTS_INCORRECT_FOR_FLINT_TOOL)
-                .addTag(ModTags.FSTS_NEEDS_WOODEN_TOOL)
+                .addTag(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);

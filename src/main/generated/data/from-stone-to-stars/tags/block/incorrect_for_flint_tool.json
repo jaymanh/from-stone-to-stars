@@ -1,6 +1,6 @@
 {
   "values": [
-    "#from-stone-to-stars:needs_wooden_tool",
+    "#from-stone-to-stars:needs_bone_tool",
     {
       "id": "#minecraft:needs_stone_tool",
       "required": false
