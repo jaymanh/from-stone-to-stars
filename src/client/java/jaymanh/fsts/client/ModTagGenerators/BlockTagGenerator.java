@@ -18,7 +18,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         builder(ModTags.FSTS_FLAMMABLE)
                 .add(ModBlockItemIds.STICKS)
-                .add(ModBlockItemIds.TANNING_RACK);
+                .add(ModBlockItemIds.TANNING_RACK)
+                .add(ModBlockItemIds.KINDLING);
 
         builder(ModTags.FSTS_NEEDS_WOODEN_TOOL)
                 .addOptionalTag(BlockTags.LOGS);
@@ -28,5 +29,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
+
+        builder(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlockItemIds.KINDLING)
+                .add(ModBlockItemIds.TANNING_RACK);
     }
 }

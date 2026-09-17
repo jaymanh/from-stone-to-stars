@@ -34,6 +34,12 @@ public final class ModBlocks {
 			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F).pushReaction(PushReaction.DESTROY)
 			);
 
+	public static final Block KINDLING = register(
+			ModBlockItemIds.KINDLING,
+			Block::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F, 3.0F).ignitedByLava()
+	);
+
 	private ModBlocks() {
 	}
 

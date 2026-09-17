@@ -1,4 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	From Stone to Stars/Tags for minecraft:block
-4cdab2dc7feb4338444f8e3a3ddd75c192a435e0 data/from-stone-to-stars/tags/block/flammable.json
+b00b368eaa31e86e8c6d85f672e9a977b5bbfb77 data/from-stone-to-stars/tags/block/flammable.json
 5ea8879baf7ba71b88efbabda7a0665c9b460469 data/from-stone-to-stars/tags/block/incorrect_for_flint_tool.json
 692596115bdbee171c4d635edaf1da45912fa5e5 data/from-stone-to-stars/tags/block/needs_wooden_tool.json
+034b4c28c63b880584c338c892d2969202bf3382 data/minecraft/tags/block/mineable/axe.json

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:stick",
+    "from-stone-to-stars:bark",
+    "from-stone-to-stars:bark"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:kindling",
+    "count": 1
+  }
+}
