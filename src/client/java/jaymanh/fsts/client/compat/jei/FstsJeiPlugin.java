@@ -61,8 +61,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 				FromStoneToStars.id("charcoal_pile/logs"),
 				List.of(
 						SimpleProcessRecipe.tag(ItemTags.LOGS),
-						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 3)),
-						SimpleProcessRecipe.any(Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 4)),
+						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 				),
 				List.of(),
 				SimpleProcessRecipe.item(ModBlocks.CHARCOAL_BLOCK),
@@ -100,12 +100,14 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.PEBBLE, Component.translatable("jei.from-stone-to-stars.info.pebble"));
 		registration.addIngredientInfo(ModItems.BARK, Component.translatable("jei.from-stone-to-stars.info.bark"));
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
+		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 	}
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 		registration.addCraftingStation(TANNING, ModBlocks.TANNING_RACK);
 		registration.addCraftingStation(CHARCOAL_PILE, ModBlocks.KINDLING);
+		registration.addCraftingStation(CHARCOAL_PILE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);

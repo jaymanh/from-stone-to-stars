@@ -1,5 +1,6 @@
 package jaymanh.fsts.block.ModCustomBlockModels;
 
+import jaymanh.fsts.tools.ModTools;
 import org.jspecify.annotations.Nullable;
 
 import com.mojang.serialization.MapCodec;
@@ -86,7 +87,7 @@ public class KindlingBlock extends BaseEntityBlock {
 		if (state.getValue(LIT)) {
 			return InteractionResult.PASS;
 		}
-		if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE)) {
+		if (!stack.is(Items.FLINT_AND_STEEL) && !stack.is(Items.FIRE_CHARGE) && !stack.is(ModTools.BOW_AND_DRILL)) {
 			return InteractionResult.PASS;
 		}
 
@@ -115,7 +116,7 @@ public class KindlingBlock extends BaseEntityBlock {
 		level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
 
 		if (!player.hasInfiniteMaterials()) {
-			if (stack.is(Items.FLINT_AND_STEEL)) {
+			if (stack.is(Items.FLINT_AND_STEEL) || stack.is(ModTools.BOW_AND_DRILL)) {
 				stack.hurtAndBreak(1, (ServerLevel) level, player instanceof ServerPlayer serverPlayer ? serverPlayer : null, broken -> {
 				});
 			} else if (stack.is(Items.FIRE_CHARGE)) {

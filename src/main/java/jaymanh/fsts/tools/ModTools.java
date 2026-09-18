@@ -1,14 +1,17 @@
 package jaymanh.fsts.tools;
 
 import jaymanh.fsts.item.ModItemIds;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.*;
 
 import static jaymanh.fsts.item.ModItems.register;
 
 public class ModTools {
+
+    public static final Item BOW_AND_DRILL = register(
+            ModItemIds.BOW_AND_DRILL,
+            FlintAndSteelItem::new,
+            new Item.Properties().durability(4)
+    );
 
     public static final Item HAMMERSTONE = register(
             ModItemIds.HAMMERSTONE,

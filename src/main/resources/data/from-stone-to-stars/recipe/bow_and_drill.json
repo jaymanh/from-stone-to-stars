@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "SSS",
+    "FSF"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "minecraft:string"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bow_and_drill",
+    "count": 1
+  }
+}

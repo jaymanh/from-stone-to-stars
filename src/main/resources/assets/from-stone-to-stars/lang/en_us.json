@@ -17,6 +17,7 @@
 	"item.from-stone-to-stars.hammerstone": "Hammerstone",
 	"item.from-stone-to-stars.flint_knife": "Flint Knife",
 	"item.from-stone-to-stars.flint_axe":  "Flint Axe",
+	"item.from-stone-to-stars.bow_and_drill": "Bow and Drill",
 
 	"item.from-stone-to-stars.bone_sword": "Bone Sword",
 	"item.from-stone-to-stars.bone_axe": "Bone Axe",
@@ -58,7 +59,8 @@
 	"jei.from-stone-to-stars.world_interaction": "World Interaction",
 	"jei.from-stone-to-stars.duration": "Time: %s",
 	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Take finished leather with an empty hand, or sneak to remove everything.",
-	"jei.from-stone-to-stars.info.kindling": "Place one log with three kindling around it and light the kindling with flint and steel or a fire charge. After one minute the log becomes a charcoal block and the kindling is consumed.",
+	"jei.from-stone-to-stars.info.kindling": "Place one log with four kindling around it and light the kindling with a bow and drill. After one minute the log becomes a charcoal block and the kindling is consumed.",
+	"jei.from-stone-to-stars.info.bow_and_drill": "Age 0 fire starter. Use on a formed charcoal pile (one log surrounded by four kindling). Four uses.",
 	"jei.from-stone-to-stars.info.charcoal_block": "Made in a charcoal pile, not a furnace. Crafts back into charcoal.",
 	"jei.from-stone-to-stars.info.bone_saw": "Use on top of a log to place the saw. Right-click the placed saw to cut the log into 4 matching planks. The saw is returned.",
 	"jei.from-stone-to-stars.info.raw_leather": "Dropped by animals instead of leather. Dry it on a tanning rack before cutting strips or making a crafting table.",
