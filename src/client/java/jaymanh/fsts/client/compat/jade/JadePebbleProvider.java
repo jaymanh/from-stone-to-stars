@@ -15,6 +15,9 @@ public enum JadePebbleProvider implements IBlockComponentProvider {
 
 	@Override
 	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
+		if (!config.get(this)) {
+			return;
+		}
 		PebbleTooltip.waterloggedLine(accessor.getBlockState()).ifPresent(tooltip::add);
 	}
 

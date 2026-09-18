@@ -12,6 +12,9 @@ public enum WthitPebbleProvider implements IBlockComponentProvider {
 
 	@Override
 	public void appendBody(ITooltip tooltip, IBlockAccessor accessor, IPluginConfig config) {
+		if (!config.getBoolean(FstsWthitPlugin.PEBBLE)) {
+			return;
+		}
 		PebbleTooltip.waterloggedLine(accessor.getBlockState()).ifPresent(tooltip::addLine);
 	}
 }

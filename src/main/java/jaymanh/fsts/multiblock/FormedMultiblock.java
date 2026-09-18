@@ -32,6 +32,10 @@ public final class FormedMultiblock {
 		return this.process;
 	}
 
+	public int getProcessProgress() {
+		return this.process instanceof ProgressAware aware ? aware.getProgress() : 0;
+	}
+
 	public boolean isActive() {
 		return this.active;
 	}

@@ -33,5 +33,36 @@
 	"config.from-stone-to-stars.debugLogging.desc": "Write extra diagnostic messages to the log.",
 
 	"tooltip.from-stone-to-stars.waterlogged": "Waterlogged",
-	"config.jade.plugin_from-stone-to-stars.pebble": "Pebble waterlogged state"
+	"tooltip.from-stone-to-stars.progress": "Progress: %s%%",
+	"tooltip.from-stone-to-stars.remaining": "Remaining: %s",
+	"tooltip.from-stone-to-stars.time.sec": "%ss",
+	"tooltip.from-stone-to-stars.time.min_sec": "%sm %ss",
+	"tooltip.from-stone-to-stars.tanning.slot": "Hide %s: %s%% (%s)",
+	"tooltip.from-stone-to-stars.tanning.ready": "Hide %s: ready",
+	"tooltip.from-stone-to-stars.burning": "Burning",
+	"tooltip.from-stone-to-stars.sawing": "Sawing: %s/%s",
+
+	"config.jade.plugin_from-stone-to-stars.pebble": "Pebble waterlogged state",
+	"config.jade.plugin_from-stone-to-stars.tanning": "Tanning rack progress",
+	"config.jade.plugin_from-stone-to-stars.kindling": "Charcoal pile progress",
+	"config.jade.plugin_from-stone-to-stars.bone_saw": "Bone saw progress",
+
+	"config.waila.plugin_from-stone-to-stars.pebble": "Pebble waterlogged state",
+	"config.waila.plugin_from-stone-to-stars.tanning": "Tanning rack progress",
+	"config.waila.plugin_from-stone-to-stars.kindling": "Charcoal pile progress",
+	"config.waila.plugin_from-stone-to-stars.bone_saw": "Bone saw progress",
+
+	"jei.from-stone-to-stars.tanning": "Tanning",
+	"jei.from-stone-to-stars.charcoal_pile": "Charcoal Pile",
+	"jei.from-stone-to-stars.bone_saw": "Bone Sawing",
+	"jei.from-stone-to-stars.world_interaction": "World Interaction",
+	"jei.from-stone-to-stars.duration": "Time: %s",
+	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Take finished leather with an empty hand, or sneak to remove everything.",
+	"jei.from-stone-to-stars.info.kindling": "Place one log with three kindling around it and light the kindling with flint and steel or a fire charge. After one minute the log becomes a charcoal block and the kindling is consumed.",
+	"jei.from-stone-to-stars.info.charcoal_block": "Made in a charcoal pile, not a furnace. Crafts back into charcoal.",
+	"jei.from-stone-to-stars.info.bone_saw": "Use on top of a log to place the saw. Right-click the placed saw to cut the log into 4 matching planks. The saw is returned.",
+	"jei.from-stone-to-stars.info.raw_leather": "Dropped by animals instead of leather. Dry it on a tanning rack before cutting strips or making a crafting table.",
+	"jei.from-stone-to-stars.info.pebble": "Found on the ground. Nine pebbles compact into cobblestone. One cobblestone splits back into pebbles.",
+	"jei.from-stone-to-stars.info.bark": "Strip a log with any axe. Two bark and two sticks craft kindling.",
+	"jei.from-stone-to-stars.info.hammerstone": "Crafted from a pebble. Breaks gravel and is used to sharpen bone. It has two uses."
 }

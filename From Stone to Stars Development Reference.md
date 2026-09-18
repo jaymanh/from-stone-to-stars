@@ -546,10 +546,10 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 | --- | --- | --- | --- | --- |
 | Mod Menu | `modmenu` | Config button in the mod list | `modmenu` entrypoint | Live. Button is a no-op unless YACL is also installed. |
 | YetAnotherConfigLib | `yet_another_config_lib_v3` | Config screen | Called from Mod Menu factory | Live. Dev runtime includes YACL so the screen can be tested. |
-| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live plugin stub. Add custom recipe categories when pit kiln / knapping / drying exist. |
+| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, bone sawing, and world interactions (bark, work stump). Info pages on the related items. |
 | EMI | `emi` | Recipe viewer (preferred long-term on Fabric) | `emi` entrypoint, not registered yet | **Blocked:** no 26.2 Maven artifact. Placeholder: `FstsEmiPlugin`. |
-| Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. |
-| WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Same pebble line as Jade. |
+| Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. Tanning racks show hide %. Lit kindling shows charcoal-pile burn. Placed bone saws show stroke progress. |
+| WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Same overlay lines as Jade. |
 | Team Reborn Energy | `team_reborn_energy` | Fabric energy API (FE analogue) | Included in this mod's jar | Live API. Register `EnergyStorage.SIDED` when the first electrical block entity exists. |
 | Applied Energistics 2 | `ae2` | Energy consumer / later storage network | Detected via `CompatMods.AE2`; no compile dependency | Optional. Uses TR Energy acceptors. No AE2-specific code until we have machines. |
 
@@ -569,7 +569,7 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 
 **Versions** (bump in `gradle.properties` when those mods update)
 
-Mod Menu 20.0.1, YACL 3.9.6+26.2-fabric, JEI 30.32.0.221, Jade 26.2.11+fabric, WTHIT 20.0.0, Team Reborn Energy 5.0.0.
+Mod Menu 20.0.2, YACL 3.9.6+26.2-fabric, JEI 30.32.0.221, Jade 26.2.11+fabric, WTHIT 20.0.0 (needs Bad Packets 0.12.2), Team Reborn Energy 5.0.0. Dev runs load these via `localRuntime`; do not also copy them into `run/mods`.
 
 ## Development Guardrails and Future Questions
 
@@ -603,4 +603,6 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-09-14 — Age 0 spec.** Fleshed out Primitive and Stone from current prototypes (pebble, flint knife, bone set, raw leather, leather strips). Wooden and stone tools are out. Flint is an edge, not a tier. Bone is hafted and must not mine metal ores. First automation is drying racks, traps, pit kiln, then player/animal quern. Water wheel stays Age 1. Age 1 door is native copper plus a fired crucible. Implementation slices 1–7 are the build order.
 
 **2026-09-14 — Optional integrations.** Wired Mod Menu + YACL config, JEI plugin stub, Jade/WTHIT pebble overlay, and jar-in-jar Team Reborn Energy as the Fabric FE API. AE2 is detected only. EMI is documented but not registered until a 26.2 artifact exists. All remain `suggests`, not `depends`.
+
+**2026-09-18 — Companion mods catch up.** JEI now shows tanning, charcoal pile, bone sawing, and world interactions (axe bark, leather-on-log crafting table). Jade and WTHIT show tanning %, charcoal-pile burn time, and bone-saw strokes in addition to pebble waterlogging. Mod Menu bumped to 20.0.2. YACL still exposes the two live config keys.
 

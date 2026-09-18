@@ -32,6 +32,14 @@ public class TanningRackBlockEntity extends BlockEntity {
 		return this.items;
 	}
 
+	public int getProgress(int slot) {
+		return this.progress[slot];
+	}
+
+	public int[] copyProgress() {
+		return this.progress.clone();
+	}
+
 	public boolean insertRawLeather() {
 		for (int slot = 0; slot < SLOT_COUNT; slot++) {
 			if (this.items.get(slot).isEmpty()) {

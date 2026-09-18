@@ -58,13 +58,23 @@ dependencies {
 	// Optional integrations: compile against APIs, never require them at runtime.
 	// Team Reborn Energy is the Fabric equivalent of Forge Energy; it is jar-in-jar'd
 	// so AE2 and other energy mods can attach without a separate install.
+	// localRuntime loads the full mods in runClient/runServer so plugins can be tested.
+	// Do not also drop those jars into run/mods or Fabric will load them twice.
 	compileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+	localRuntime "com.terraformersmc:modmenu:${project.modmenu_version}"
+
 	compileOnly "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 	localRuntime "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 
 	compileOnly "mezz.jei:jei-26.2-fabric-api:${project.jei_version}"
+	localRuntime "mezz.jei:jei-26.2-fabric:${project.jei_version}"
+
 	compileOnly "maven.modrinth:jade:${project.jade_version}"
+	localRuntime "maven.modrinth:jade:${project.jade_version}"
+
 	compileOnly "mcp.mobius.waila:wthit-api:fabric-${project.wthit_version}"
+	localRuntime "mcp.mobius.waila:wthit:fabric-${project.wthit_version}"
+	localRuntime "lol.bai:badpackets:fabric-${project.badpackets_version}"
 
 	implementation include("teamreborn:energy:${project.energy_version}")
 }

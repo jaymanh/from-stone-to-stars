@@ -31,6 +31,10 @@ public class PlacedBoneSawBlockEntity extends BlockEntity {
 		return this.sawing;
 	}
 
+	public int getStrokes() {
+		return this.strokes;
+	}
+
 	public boolean tryStartSawing() {
 		if (this.sawing || this.level == null || this.level.isClientSide()) {
 			return false;

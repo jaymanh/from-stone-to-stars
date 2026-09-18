@@ -5,6 +5,7 @@ import java.util.Optional;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.multiblock.FormedMultiblock;
 import jaymanh.fsts.multiblock.MultiblockMatch;
+import jaymanh.fsts.multiblock.process.CharcoalPileProcess;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -24,6 +25,14 @@ public class KindlingBlockEntity extends BlockEntity {
 
 	public boolean isBurning() {
 		return this.formed != null && this.formed.isActive();
+	}
+
+	public int getProcessProgress() {
+		return this.isBurning() ? this.formed.getProcessProgress() : 0;
+	}
+
+	public int getProcessDuration() {
+		return CharcoalPileProcess.DURATION_TICKS;
 	}
 
 	public boolean start(MultiblockMatch match) {
