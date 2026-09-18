@@ -35,5 +35,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.KINDLING)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockIds.PLACED_BONE_SAW);
+
+        builder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlockItemIds.CHARCOAL_BLOCK);
     }
 }

@@ -2,11 +2,11 @@ package jaymanh.fsts.block;
 
 import java.util.function.Function;
 
+import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SticksBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public final class ModBlocks {
@@ -37,8 +38,14 @@ public final class ModBlocks {
 
 	public static final Block KINDLING = register(
 			ModBlockItemIds.KINDLING,
+			KindlingBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F, 3.0F).ignitedByLava().lightLevel(state -> state.getValue(KindlingBlock.LIT) ? 10 : 0)
+	);
+
+	public static final Block CHARCOAL_BLOCK = register(
+			ModBlockItemIds.CHARCOAL_BLOCK,
 			Block::new,
-			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F, 3.0F).ignitedByLava()
+			BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).sound(SoundType.STONE).strength(3.0F, 6.0F)
 	);
 
 	public static final Block PLACED_BONE_SAW = register(

@@ -23,6 +23,12 @@ public final class ModBlockEntities {
 			ModBlocks.PLACED_BONE_SAW
 	);
 
+	public static final BlockEntityType<KindlingBlockEntity> KINDLING = register(
+			"kindling",
+			KindlingBlockEntity::new,
+			ModBlocks.KINDLING
+	);
+
 	private ModBlockEntities() {
 	}
 

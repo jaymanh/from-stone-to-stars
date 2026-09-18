@@ -1,0 +1,25 @@
+package jaymanh.fsts.multiblock;
+
+import java.util.Locale;
+
+import net.minecraft.util.StringRepresentable;
+
+/**
+ * Semantic role of a matched part. Used by processes and (later) machines
+ * to find igniters, inputs, frames, and controllers without hardcoding offsets.
+ */
+public enum MultiblockRole implements StringRepresentable {
+	/** Pattern origin / ignition point (e.g. kindling). */
+	ORIGIN,
+	/** Material consumed or converted by the process (e.g. logs). */
+	INPUT,
+	/** Structural blocks required to form but not transformed. */
+	FRAME,
+	/** Dedicated machine brain for larger factories. */
+	CONTROLLER;
+
+	@Override
+	public String getSerializedName() {
+		return this.name().toLowerCase(Locale.ROOT);
+	}
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "from-stone-to-stars:charcoal_block"
+  ],
+  "result": {
+    "id": "minecraft:charcoal",
+    "count": 4
+  }
+}

@@ -2,4 +2,5 @@
 b00b368eaa31e86e8c6d85f672e9a977b5bbfb77 data/from-stone-to-stars/tags/block/flammable.json
 75ddd4ea4cbe9a65f89251cdfc43b21959a4bcff data/from-stone-to-stars/tags/block/incorrect_for_flint_tool.json
 692596115bdbee171c4d635edaf1da45912fa5e5 data/from-stone-to-stars/tags/block/needs_bone_tool.json
-034b4c28c63b880584c338c892d2969202bf3382 data/minecraft/tags/block/mineable/axe.json
+6488c6db1e4c41f56602e34c6d343b6c3da14aa8 data/minecraft/tags/block/mineable/axe.json
+70e744d66c140071c9b730bad06017a5bd6c84d9 data/minecraft/tags/block/mineable/pickaxe.json
