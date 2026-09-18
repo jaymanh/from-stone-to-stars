@@ -15,7 +15,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import static jaymanh.fsts.FromStoneToStars.MOD_ID;
 
 public class ModTags {
-    public static final TagKey<Block> FSTS_FLAMMABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "flammable"));
+    public static final TagKey<Block> FSTS_WOOD_FLAMMABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "fsts_wood_flammable"));
+    public static final TagKey<Block> FSTS_CHARCOAL_FLAMMABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "fsts_charcoal_flammable"));
 
     public static final TagKey<Block> FSTS_NEEDS_BONE_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "needs_bone_tool"));
     public static final TagKey<Block> FSTS_INCORRECT_FOR_FLINT_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "incorrect_for_flint_tool"));
@@ -24,7 +25,8 @@ public class ModTags {
     public static final ResourceKey<LootTable> BONES_INJECT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "inject/bones"));
 
     public static void initialize() {
-        FlammableBlockRegistry.getDefaultInstance().add(FSTS_FLAMMABLE, 25, 10);
+        FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);
+        FlammableBlockRegistry.getDefaultInstance().add(FSTS_CHARCOAL_FLAMMABLE, 5, 5);
 
         // Entity-type tags are not bound while loot tables load (Stable builtin registry).
         // Resolve #from-stone-to-stars:drops_bones when drops are generated instead.

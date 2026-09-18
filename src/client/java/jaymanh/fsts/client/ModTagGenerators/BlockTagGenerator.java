@@ -17,10 +17,13 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        builder(ModTags.FSTS_FLAMMABLE)
+        builder(ModTags.FSTS_WOOD_FLAMMABLE)
                 .add(ModBlockItemIds.STICKS)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockItemIds.KINDLING);
+
+        builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
+                .add(ModBlockItemIds.CHARCOAL_BLOCK);
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.LOGS);
