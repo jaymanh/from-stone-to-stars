@@ -7,6 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 
 public final class ModBlockIds {
+	public static final ResourceKey<Block> PLACED_BONE_SAW = create("placed_bone_saw");
+
 	private ModBlockIds() {
 	}
 

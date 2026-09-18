@@ -5,6 +5,7 @@
 	"block.from-stone-to-stars.sticks": "Sticks Pile",
 	"block.from-stone-to-stars.tanning_rack": "Tanning Rack",
 	"block.from-stone-to-stars.kindling": "Kindling",
+	"block.from-stone-to-stars.placed_bone_saw": "Placed Bone Saw",
 
 	"item.from-stone-to-stars.plant_fiber": "Plant Fiber",
 	"item.from-stone-to-stars.raw_leather": "Raw Leather",
@@ -21,6 +22,7 @@
 	"item.from-stone-to-stars.bone_pickaxe": "Bone Pickaxe",
 	"item.from-stone-to-stars.bone_shovel": "Bone Shovel",
 	"item.from-stone-to-stars.bone_hoe": "Bone Hoe",
+	"item.from-stone-to-stars.bone_saw": "Bone Saw",
 
 	"config.from-stone-to-stars.title": "From Stone to Stars",
 	"config.from-stone-to-stars.category.general": "General",

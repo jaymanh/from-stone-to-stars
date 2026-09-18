@@ -17,6 +17,12 @@ public final class ModBlockEntities {
 			ModBlocks.TANNING_RACK
 	);
 
+	public static final BlockEntityType<PlacedBoneSawBlockEntity> PLACED_BONE_SAW = register(
+			"placed_bone_saw",
+			PlacedBoneSawBlockEntity::new,
+			ModBlocks.PLACED_BONE_SAW
+	);
+
 	private ModBlockEntities() {
 	}
 

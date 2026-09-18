@@ -1,5 +1,7 @@
 package jaymanh.fsts.item;
 
+import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
 import jaymanh.fsts.tools.SawToolItem;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -40,18 +42,36 @@ public class UseInteractions {
             return InteractionResult.PASS;
         }));
 
-        //Turn log into planks (Unfinished)
+        // Place bone saw on top of a log
         UseBlockCallback.EVENT.register(((player, level, hand, hitResult) -> {
-            if (level.isClientSide()){
-                return InteractionResult.PASS;
-            }
             ItemStack tool = player.getItemInHand(hand);
             if (!(tool.getItem() instanceof SawToolItem)){
                 return InteractionResult.PASS;
             }
 
+            BlockPos pos = hitResult.getBlockPos();
+            BlockState state = level.getBlockState(pos);
 
-            return InteractionResult.PASS;
+            if (!(state.is(BlockTags.LOGS))){
+                return InteractionResult.PASS;
+            }
+            if (!(level.getBlockState(pos.above()).isAir())){
+                return InteractionResult.PASS;
+            }
+
+            if (level.isClientSide()){
+                return InteractionResult.SUCCESS;
+            }
+
+            BlockState sawState = ModBlocks.PLACED_BONE_SAW.defaultBlockState()
+                    .setValue(PlacedBoneSawBlock.FACING, player.getDirection());
+            level.setBlockAndUpdate(pos.above(), sawState);
+
+            if (!player.hasInfiniteMaterials()) {
+                tool.shrink(1);
+            }
+
+            return InteractionResult.SUCCESS;
         }));
 
         //Use leather on log for 3x3 crafting

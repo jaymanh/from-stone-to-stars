@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,offset=false": { "model": "from-stone-to-stars:block/placed_bone_saw", "y": 0 },
+    "facing=east,offset=false": { "model": "from-stone-to-stars:block/placed_bone_saw", "y": 90 },
+    "facing=south,offset=false": { "model": "from-stone-to-stars:block/placed_bone_saw", "y": 180 },
+    "facing=west,offset=false": { "model": "from-stone-to-stars:block/placed_bone_saw", "y": 270 },
+    "facing=north,offset=true": { "model": "from-stone-to-stars:block/placed_bone_saw_offset", "y": 0 },
+    "facing=east,offset=true": { "model": "from-stone-to-stars:block/placed_bone_saw_offset", "y": 90 },
+    "facing=south,offset=true": { "model": "from-stone-to-stars:block/placed_bone_saw_offset", "y": 180 },
+    "facing=west,offset=true": { "model": "from-stone-to-stars:block/placed_bone_saw_offset", "y": 270 }
+  }
+}

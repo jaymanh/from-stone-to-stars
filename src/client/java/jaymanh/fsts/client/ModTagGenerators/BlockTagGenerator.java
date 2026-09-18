@@ -1,5 +1,6 @@
 package jaymanh.fsts.client.ModTagGenerators;
 
+import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -32,6 +33,7 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
-                .add(ModBlockItemIds.TANNING_RACK);
+                .add(ModBlockItemIds.TANNING_RACK)
+                .add(ModBlockIds.PLACED_BONE_SAW);
     }
 }

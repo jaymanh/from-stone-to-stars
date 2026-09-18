@@ -1,0 +1,62 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"frame": "minecraft:block/oak_planks",
+		"blade": "minecraft:block/bone_block_side",
+		"particle": "minecraft:block/oak_planks"
+	},
+	"elements": [
+		{
+			"name": "frame_left",
+			"from": [-2, 0, 6],
+			"to": [0, 7, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 7], "texture": "#frame"},
+				"east": {"uv": [0, 0, 4, 7], "texture": "#frame"},
+				"south": {"uv": [0, 0, 2, 7], "texture": "#frame"},
+				"west": {"uv": [0, 0, 4, 7], "texture": "#frame"},
+				"up": {"uv": [0, 0, 2, 4], "texture": "#frame"},
+				"down": {"uv": [0, 0, 2, 4], "texture": "#frame"}
+			}
+		},
+		{
+			"name": "frame_right",
+			"from": [12, 0, 6],
+			"to": [14, 7, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 7], "texture": "#frame"},
+				"east": {"uv": [0, 0, 4, 7], "texture": "#frame"},
+				"south": {"uv": [0, 0, 2, 7], "texture": "#frame"},
+				"west": {"uv": [0, 0, 4, 7], "texture": "#frame"},
+				"up": {"uv": [0, 0, 2, 4], "texture": "#frame"},
+				"down": {"uv": [0, 0, 2, 4], "texture": "#frame"}
+			}
+		},
+		{
+			"name": "frame_top",
+			"from": [0, 5, 6],
+			"to": [12, 7, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 2], "texture": "#frame"},
+				"east": {"uv": [0, 0, 4, 2], "texture": "#frame"},
+				"south": {"uv": [0, 0, 12, 2], "texture": "#frame"},
+				"west": {"uv": [0, 0, 4, 2], "texture": "#frame"},
+				"up": {"uv": [0, 0, 12, 4], "texture": "#frame"},
+				"down": {"uv": [0, 0, 12, 4], "texture": "#frame"}
+			}
+		},
+		{
+			"name": "blade",
+			"from": [0, 1, 7.5],
+			"to": [12, 5, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 4], "texture": "#blade"},
+				"east": {"uv": [0, 0, 1, 4], "texture": "#blade"},
+				"south": {"uv": [0, 0, 12, 4], "texture": "#blade"},
+				"west": {"uv": [0, 0, 1, 4], "texture": "#blade"},
+				"up": {"uv": [0, 0, 12, 1], "texture": "#blade"},
+				"down": {"uv": [0, 0, 12, 1], "texture": "#blade"}
+			}
+		}
+	]
+}

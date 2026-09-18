@@ -3,6 +3,7 @@ package jaymanh.fsts.block;
 import java.util.function.Function;
 
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SticksBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -38,6 +39,12 @@ public final class ModBlocks {
 			ModBlockItemIds.KINDLING,
 			Block::new,
 			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F, 3.0F).ignitedByLava()
+	);
+
+	public static final Block PLACED_BONE_SAW = register(
+			ModBlockIds.PLACED_BONE_SAW,
+			PlacedBoneSawBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
 
 	private ModBlocks() {
