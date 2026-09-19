@@ -1,11 +1,21 @@
 package jaymanh.fsts.tools;
 
 import jaymanh.fsts.item.ModItemIds;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 
 import static jaymanh.fsts.item.ModItems.register;
 
 public class ModTools {
+
+    public static final Item LEATHER_SKIN = register(
+            ModItemIds.LEATHER_SKIN,
+            LeatherSkinItem::new,
+            // maxDamage = CAPACITY + 1 so damage == CAPACITY (empty) is not considered broken
+            new Item.Properties()
+                    .durability(LeatherSkinItem.CAPACITY + 1)
+                    .component(DataComponents.DAMAGE, LeatherSkinItem.CAPACITY)
+    );
 
     public static final Item BOW_AND_DRILL = register(
             ModItemIds.BOW_AND_DRILL,

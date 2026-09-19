@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:leather",
+    "from-stone-to-stars:rope"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:leather_skin",
+    "count": 1,
+    "components": {
+      "minecraft:damage": 16
+    }
+  }
+}

@@ -30,7 +30,7 @@ public class ModTags {
     public static void initialize() {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_CHARCOAL_FLAMMABLE, 5, 5);
-        
+
         FuelValueEvents.BUILD.register((builder, context) ->
                 builder.add(ModBlocks.CHARCOAL_BLOCK, context.baseSmeltTime() * 8 * 5));
 

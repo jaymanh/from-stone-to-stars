@@ -6,8 +6,10 @@
     "BlockStateBaseMixin",
     "CreeperNoDamageMixin",
     "LootItemMixin",
-    "RecipeManagerMixin"
+    "RecipeManagerMixin",
+    "RepairItemRecipeMixin"
   ],
+
   "injectors": {
     "defaultRequire": 1
   },
