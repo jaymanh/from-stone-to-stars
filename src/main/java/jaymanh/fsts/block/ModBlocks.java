@@ -75,6 +75,11 @@ public final class ModBlocks {
 					.requiresCorrectToolForDrops()
 					.lightLevel(state -> state.getValue(BasicSmelter.LIT) ? 13 : 0)
 	);
+	public static final Block MORTAR_AND_PESTLE = register(
+			ModBlockItemIds.MORTAR_AND_PESTLE,
+			MortarAndPestle::new,
+			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3.5f).noOcclusion()
+	);
 
 	private ModBlocks() {
 	}

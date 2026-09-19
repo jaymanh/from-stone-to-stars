@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "progress=0": { "model": "from-stone-to-stars:block/mortar_and_pestle_0" },
+    "progress=1": { "model": "from-stone-to-stars:block/mortar_and_pestle_1" },
+    "progress=2": { "model": "from-stone-to-stars:block/mortar_and_pestle_2" },
+    "progress=3": { "model": "from-stone-to-stars:block/mortar_and_pestle_3" }
+  }
+}

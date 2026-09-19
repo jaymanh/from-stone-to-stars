@@ -10,6 +10,7 @@
 	"block.from-stone-to-stars.clay_bricks": "Clay Bricks",
 	"block.from-stone-to-stars.fired_clay_bricks": "Fired Clay Bricks",
 	"block.from-stone-to-stars.basic_smelter": "Basic Smelter",
+	"block.from-stone-to-stars.mortar_and_pestle": "Mortar and Pestle",
 	"container.from-stone-to-stars.basic_smelter": "Basic Smelter",
 
 	"item.from-stone-to-stars.plant_fiber": "Plant Fiber",
@@ -19,6 +20,8 @@
 	"item.from-stone-to-stars.leather_skin.uses": "Water: %s/%s",
 	"item.from-stone-to-stars.bark": "Bark",
 	"item.from-stone-to-stars.sharpened_bone": "Sharpened Bone",
+	"item.from-stone-to-stars.flour": "Flour",
+	"item.from-stone-to-stars.dough": "Dough",
 
 	"item.from-stone-to-stars.hammerstone": "Hammerstone",
 	"item.from-stone-to-stars.flint_knife": "Flint Knife",

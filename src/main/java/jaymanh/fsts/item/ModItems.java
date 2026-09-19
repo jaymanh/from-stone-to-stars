@@ -13,6 +13,8 @@ public final class ModItems {
 	public static final Item LEATHER_STRIPS = register(ModItemIds.LEATHER_STRIPS, Item::new, new Item.Properties());
 	public static final Item BARK = register(ModItemIds.BARK, Item::new, new Item.Properties());
 	public static final Item SHARPENED_BONE = register(ModItemIds.SHARPENED_BONE, Item::new, new Item.Properties());
+	public static final Item FLOUR = register(ModItemIds.FLOUR, Item::new, new Item.Properties());
+	public static final Item DOUGH = register(ModItemIds.DOUGH, Item::new, new Item.Properties());
 
 	private ModItems() {
 	}

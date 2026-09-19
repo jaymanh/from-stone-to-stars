@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "from-stone-to-stars:flour",
+    "from-stone-to-stars:leather_skin"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:dough",
+    "count": 1
+  }
+}

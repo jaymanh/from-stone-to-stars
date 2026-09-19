@@ -15,6 +15,7 @@ public final class ModBlockItemIds {
 	public static final BlockItemId FIRED_CLAY_BRICKS = create("fired_clay_bricks");
 	public static final BlockItemId ROPE = create("rope");
 	public static final BlockItemId BASIC_SMELTER = create("basic_smelter");
+	public static final BlockItemId MORTAR_AND_PESTLE = create("mortar_and_pestle");
 
 	private ModBlockItemIds() {
 	}

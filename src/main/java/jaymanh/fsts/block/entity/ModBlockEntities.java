@@ -35,6 +35,12 @@ public final class ModBlockEntities {
 			ModBlocks.BASIC_SMELTER
 	);
 
+	public static final BlockEntityType<MortarAndPestleEntity> MORTAR_AND_PESTLE = register(
+			"mortar_and_pestle",
+			MortarAndPestleEntity::new,
+			ModBlocks.MORTAR_AND_PESTLE
+	);
+
 	private ModBlockEntities() {
 	}
 

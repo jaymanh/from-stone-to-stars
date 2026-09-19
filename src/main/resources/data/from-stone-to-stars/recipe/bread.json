@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "experience": 0,
+  "cookingtime": 1000,
+  "ingredient": "from-stone-to-stars:dough",
+  "result": {
+    "id": "minecraft:bread"
+  }
+}

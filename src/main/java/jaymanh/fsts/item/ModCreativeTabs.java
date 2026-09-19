@@ -29,6 +29,8 @@ public final class ModCreativeTabs {
 				output.accept(ModTools.LEATHER_SKIN);
 				output.accept(ModItems.BARK);
 				output.accept(ModItems.SHARPENED_BONE);
+				output.accept(ModItems.FLOUR);
+				output.accept(ModItems.DOUGH);
 
 				output.accept(ModBlocks.PEBBLE);
 				output.accept(ModBlocks.STICKS);
@@ -41,6 +43,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModBlocks.BASIC_SMELTER);
 				output.accept(ModTools.HAMMERSTONE);
+				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 
 				output.accept(ModTools.FLINT_KNIFE);
 				output.accept(ModTools.FLINT_AXE);
