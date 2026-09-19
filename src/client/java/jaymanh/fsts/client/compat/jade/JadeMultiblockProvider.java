@@ -18,7 +18,7 @@ import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 
 /**
- * Progress overlay for non-kindling multiblock members (logs, planks, clay, …).
+ * Progress overlay for non-kindling multiblock members (logs, charcoal, clay, …).
  * Kindling uses {@link JadeKindlingProvider}.
  */
 public enum JadeMultiblockProvider implements IBlockComponentProvider {
@@ -39,7 +39,6 @@ public enum JadeMultiblockProvider implements IBlockComponentProvider {
 
 	static boolean isLikelyMember(BlockState state) {
 		return state.is(BlockTags.LOGS)
-				|| state.is(BlockTags.PLANKS)
 				|| state.is(ModBlocks.CLAY_BRICKS)
 				|| state.is(ModBlocks.FIRED_CLAY_BRICKS)
 				|| state.is(ModBlocks.CHARCOAL_BLOCK);

@@ -77,7 +77,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				List.of(
 						SimpleProcessRecipe.item(ModBlocks.CLAY_BRICKS),
 						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
-						SimpleProcessRecipe.stack(new ItemStack(Items.OAK_PLANKS, 4)),
+						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
 						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 				),
 				List.of(),
@@ -128,6 +128,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(CHARCOAL_PILE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.KINDLING);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CLAY_BRICKS);
+		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CHARCOAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
