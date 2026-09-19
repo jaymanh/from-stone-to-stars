@@ -47,11 +47,13 @@
 	"config.jade.plugin_from-stone-to-stars.tanning": "Tanning rack progress",
 	"config.jade.plugin_from-stone-to-stars.kindling": "Charcoal pile progress",
 	"config.jade.plugin_from-stone-to-stars.bone_saw": "Bone saw progress",
+	"config.jade.plugin_from-stone-to-stars.multiblock": "Multiblock progress",
 
 	"config.waila.plugin_from-stone-to-stars.pebble": "Pebble waterlogged state",
 	"config.waila.plugin_from-stone-to-stars.tanning": "Tanning rack progress",
 	"config.waila.plugin_from-stone-to-stars.kindling": "Charcoal pile progress",
 	"config.waila.plugin_from-stone-to-stars.bone_saw": "Bone saw progress",
+	"config.waila.plugin_from-stone-to-stars.multiblock": "Multiblock progress",
 
 	"jei.from-stone-to-stars.tanning": "Tanning",
 	"jei.from-stone-to-stars.charcoal_pile": "Charcoal Pile",
