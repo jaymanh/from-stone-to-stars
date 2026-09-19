@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import static jaymanh.fsts.item.InventoryHelper.*;
 
 public class UseInteractions {
-    public static void initlise(){
+    public static void initialise(){
         //Strip log for bark
         UseBlockCallback.EVENT.register(((player, level, hand, hitResult) -> {
             if (level.isClientSide()){

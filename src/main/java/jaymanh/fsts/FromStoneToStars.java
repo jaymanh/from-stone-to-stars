@@ -38,7 +38,7 @@ public class FromStoneToStars implements ModInitializer {
 		TeamRebornEnergyCompat.initialize();
 		ModTags.initialize();
 		ModMultiblocks.initialize();
-		UseInteractions.initlise();
+		UseInteractions.initialise();
 	}
 
 	public static Identifier id(String path) {
