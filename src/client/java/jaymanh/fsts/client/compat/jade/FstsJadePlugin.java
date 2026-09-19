@@ -8,6 +8,8 @@ import jaymanh.fsts.block.entity.KindlingBlockEntity;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 
+import net.minecraft.world.level.block.Block;
+
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -20,6 +22,7 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(JadeTanningProvider.Data.INSTANCE, TanningRackBlockEntity.class);
 		registration.registerBlockDataProvider(JadeKindlingProvider.Data.INSTANCE, KindlingBlockEntity.class);
 		registration.registerBlockDataProvider(JadeBoneSawProvider.Data.INSTANCE, PlacedBoneSawBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMultiblockProvider.Data.INSTANCE, Block.class);
 	}
 
 	@Override
@@ -28,5 +31,6 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadeTanningProvider.INSTANCE, TanningRackBlock.class);
 		registration.registerBlockComponent(JadeKindlingProvider.INSTANCE, KindlingBlock.class);
 		registration.registerBlockComponent(JadeBoneSawProvider.INSTANCE, PlacedBoneSawBlock.class);
+		registration.registerBlockComponent(JadeMultiblockProvider.INSTANCE, Block.class);
 	}
 }

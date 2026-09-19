@@ -11,8 +11,10 @@ import net.minecraft.util.StringRepresentable;
 public enum MultiblockRole implements StringRepresentable {
 	/** Pattern origin / ignition point (e.g. kindling). */
 	ORIGIN,
-	/** Material consumed or converted by the process (e.g. logs). */
+	/** Material converted by the process (e.g. logs). */
 	INPUT,
+	/** Material consumed by the process (e.g. planks). */
+	CONSUMED,
 	/** Structural blocks required to form but not transformed. */
 	FRAME,
 	/** Dedicated machine brain for larger factories. */

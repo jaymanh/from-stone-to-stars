@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SS"
+  ],
+  "key": {
+    "S": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "from-stone-to-stars:clay_bricks",
+    "count": 1
+  }
+}

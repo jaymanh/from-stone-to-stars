@@ -2,11 +2,7 @@ package jaymanh.fsts.block;
 
 import java.util.function.Function;
 
-import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
-import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
-import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
-import jaymanh.fsts.block.ModCustomBlockModels.SticksBlock;
-import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
@@ -52,6 +48,17 @@ public final class ModBlocks {
 			ModBlockIds.PLACED_BONE_SAW,
 			PlacedBoneSawBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
+	);
+
+	public static final Block CLAY_BRICKS = register(
+			ModBlockItemIds.CLAY_BRICKS,
+			ClayBricksBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
+	);
+	public static final Block FIRED_CLAY_BRICKS = register(
+			ModBlockItemIds.FIRED_CLAY_BRICKS,
+			ClayBricksBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
 
 	private ModBlocks() {

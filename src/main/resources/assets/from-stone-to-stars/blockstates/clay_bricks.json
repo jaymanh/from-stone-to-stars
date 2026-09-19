@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "segment_amount=1": { "model": "from-stone-to-stars:block/clay_bricks_1" },
+    "segment_amount=2": { "model": "from-stone-to-stars:block/clay_bricks_2" },
+    "segment_amount=3": { "model": "from-stone-to-stars:block/clay_bricks_3" },
+    "segment_amount=4": { "model": "from-stone-to-stars:block/clay_bricks_3" }
+  }
+}

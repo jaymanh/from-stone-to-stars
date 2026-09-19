@@ -91,15 +91,15 @@ public class KindlingBlock extends BaseEntityBlock {
 			return InteractionResult.PASS;
 		}
 
-		Optional<MultiblockDefinition> definition = MultiblockRegistry.get(ModMultiblocks.CHARCOAL_PILE_ID);
-		if (definition.isEmpty()) {
-			return InteractionResult.PASS;
-		}
+		Optional<MultiblockDefinition> charcoalDefinition = MultiblockRegistry.get(ModMultiblocks.CHARCOAL_PILE_ID);
+		Optional<MultiblockDefinition> clayDefinition = MultiblockRegistry.get(ModMultiblocks.BRICK_DRYING_PIT);
 
-		Optional<MultiblockMatch> match = MultiblockMatcher.tryMatch(level, pos, definition.get());
-		if (match.isEmpty()) {
+		Optional<MultiblockMatch> charcoalMatch = charcoalDefinition.flatMap(definition -> MultiblockMatcher.tryMatch(level, pos, definition));
+		Optional<MultiblockMatch> clayMatch = clayDefinition.flatMap(definition -> MultiblockMatcher.tryMatch(level, pos, definition));
+		if (charcoalMatch.isEmpty() && clayMatch.isEmpty()) {
 			return InteractionResult.PASS;
 		}
+		MultiblockMatch match = charcoalMatch.orElseGet(clayMatch::get);
 
 		if (level.isClientSide()) {
 			return InteractionResult.SUCCESS;
@@ -108,7 +108,8 @@ public class KindlingBlock extends BaseEntityBlock {
 		if (!(level.getBlockEntity(pos) instanceof KindlingBlockEntity kindling)) {
 			return InteractionResult.PASS;
 		}
-		if (!kindling.start(match.get())) {
+
+		if (!kindling.start(match)) {
 			return InteractionResult.PASS;
 		}
 
