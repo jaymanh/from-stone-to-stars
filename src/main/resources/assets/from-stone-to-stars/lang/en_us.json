@@ -59,16 +59,19 @@
 
 	"jei.from-stone-to-stars.tanning": "Tanning",
 	"jei.from-stone-to-stars.charcoal_pile": "Charcoal Pile",
+	"jei.from-stone-to-stars.brick_drying": "Brick Drying Pit",
 	"jei.from-stone-to-stars.bone_saw": "Bone Sawing",
 	"jei.from-stone-to-stars.world_interaction": "World Interaction",
 	"jei.from-stone-to-stars.duration": "Time: %s",
 	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Take finished leather with an empty hand, or sneak to remove everything.",
-	"jei.from-stone-to-stars.info.kindling": "Place one log with four kindling around it and light the kindling with a bow and drill. After one minute the log becomes a charcoal block and the kindling is consumed.",
-	"jei.from-stone-to-stars.info.bow_and_drill": "Age 0 fire starter. Use on a formed charcoal pile (one log surrounded by four kindling). Four uses.",
+	"jei.from-stone-to-stars.info.kindling": "Lights charcoal piles and brick drying pits. Charcoal: one log with four kindling. Bricks: five kindling around wet clay bricks, four planks on the kindling. Light with a bow and drill.",
+	"jei.from-stone-to-stars.info.bow_and_drill": "Age 0 fire starter. Lights a charcoal pile or a brick drying pit. Four uses.",
 	"jei.from-stone-to-stars.info.charcoal_block": "Made in a charcoal pile, not a furnace. Crafts back into charcoal.",
 	"jei.from-stone-to-stars.info.bone_saw": "Use on top of a log to place the saw. Right-click the placed saw to cut the log into 4 matching planks. The saw is returned.",
 	"jei.from-stone-to-stars.info.raw_leather": "Dropped by animals instead of leather. Dry it on a tanning rack before cutting strips or making a crafting table.",
 	"jei.from-stone-to-stars.info.pebble": "Found on the ground. Nine pebbles compact into cobblestone. One cobblestone splits back into pebbles.",
 	"jei.from-stone-to-stars.info.bark": "Strip a log with any axe. Two bark and two sticks craft kindling.",
-	"jei.from-stone-to-stars.info.hammerstone": "Crafted from a pebble. Breaks gravel and is used to sharpen bone. It has two uses."
+	"jei.from-stone-to-stars.info.hammerstone": "Crafted from a pebble. Breaks gravel and is used to sharpen bone. It has two uses.",
+	"jei.from-stone-to-stars.info.clay_bricks": "Craft two clay balls into wet bricks. Place them, then use more of the same bricks on the pile to stack up to three. Fire in a drying pit: five kindling, four planks on top, clay bricks in the middle. Light with a bow and drill. Takes five minutes.",
+	"jei.from-stone-to-stars.info.fired_clay_bricks": "Fired from wet clay bricks in a drying pit. The plank cover and kindling are consumed. Stack count is kept from the wet pile."
 }
