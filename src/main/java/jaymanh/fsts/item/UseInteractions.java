@@ -52,20 +52,22 @@ public class UseInteractions {
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = level.getBlockState(pos);
 
-            if (!(state.is(BlockTags.LOGS))){
-                return InteractionResult.PASS;
-            }
-            if (!(level.getBlockState(pos.above()).isAir())){
+            if (!state.is(BlockTags.LOGS)) {
                 return InteractionResult.PASS;
             }
 
-            if (level.isClientSide()){
+            BlockPos placePos = pos.above();
+            if (!level.getBlockState(placePos).canBeReplaced()) {
+                return InteractionResult.PASS;
+            }
+
+            if (level.isClientSide()) {
                 return InteractionResult.SUCCESS;
             }
 
             BlockState sawState = ModBlocks.PLACED_BONE_SAW.defaultBlockState()
                     .setValue(PlacedBoneSawBlock.FACING, player.getDirection());
-            level.setBlockAndUpdate(pos.above(), sawState);
+            level.setBlockAndUpdate(placePos, sawState);
 
             if (!player.hasInfiniteMaterials()) {
                 tool.shrink(1);
@@ -76,29 +78,35 @@ public class UseInteractions {
 
         //Use leather on log for 3x3 crafting
         UseBlockCallback.EVENT.register(((player, level, hand, hitResult) -> {
-            if (level.isClientSide()){
-                return InteractionResult.PASS;
-            }
             ItemStack item = player.getItemInHand(hand);
-            if (!(item.getItem() == Items.LEATHER)){
+            if (!item.is(Items.LEATHER)) {
                 return InteractionResult.PASS;
             }
 
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = level.getBlockState(pos);
 
-            if (!(state.is(BlockTags.LOGS))){
+            if (!state.is(BlockTags.LOGS)) {
                 return InteractionResult.PASS;
+            }
+
+            if (!level.getBlockState(pos.above()).canBeReplaced()) {
+                return InteractionResult.PASS;
+            }
+
+            if (level.isClientSide()) {
+                return InteractionResult.SUCCESS;
             }
 
             level.setBlockAndUpdate(pos, Blocks.CRAFTING_TABLE.defaultBlockState());
 
-            ItemStack leather = new ItemStack(Items.LEATHER);
-            int itemSlot = findItemSlot(player, leather);
-            removeItemInInventory(player, itemSlot);
+            if (!player.hasInfiniteMaterials()) {
+                ItemStack leather = new ItemStack(Items.LEATHER);
+                int itemSlot = findItemSlot(player, leather);
+                removeItemInInventory(player, itemSlot);
+            }
 
-            return InteractionResult.PASS;
-
+            return InteractionResult.SUCCESS;
         }));
     }
 }
