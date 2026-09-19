@@ -29,6 +29,12 @@ public final class ModBlockEntities {
 			ModBlocks.KINDLING
 	);
 
+	public static final BlockEntityType<BasicSmelterEntity> BASIC_SMELTER = register(
+			"basic_smelter",
+			BasicSmelterEntity::new,
+			ModBlocks.BASIC_SMELTER
+	);
+
 	private ModBlockEntities() {
 	}
 

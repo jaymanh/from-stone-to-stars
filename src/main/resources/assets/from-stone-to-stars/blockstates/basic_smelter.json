@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=east,lit=false": { "model": "from-stone-to-stars:block/basic_smelter", "y": 90 },
+    "facing=east,lit=true": { "model": "from-stone-to-stars:block/basic_smelter_on", "y": 90 },
+    "facing=north,lit=false": { "model": "from-stone-to-stars:block/basic_smelter" },
+    "facing=north,lit=true": { "model": "from-stone-to-stars:block/basic_smelter_on" },
+    "facing=south,lit=false": { "model": "from-stone-to-stars:block/basic_smelter", "y": 180 },
+    "facing=south,lit=true": { "model": "from-stone-to-stars:block/basic_smelter_on", "y": 180 },
+    "facing=west,lit=false": { "model": "from-stone-to-stars:block/basic_smelter", "y": 270 },
+    "facing=west,lit=true": { "model": "from-stone-to-stars:block/basic_smelter_on", "y": 270 }
+  }
+}

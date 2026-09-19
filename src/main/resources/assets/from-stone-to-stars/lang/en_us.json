@@ -9,6 +9,8 @@
 	"block.from-stone-to-stars.placed_bone_saw": "Placed Bone Saw",
 	"block.from-stone-to-stars.clay_bricks": "Clay Bricks",
 	"block.from-stone-to-stars.fired_clay_bricks": "Fired Clay Bricks",
+	"block.from-stone-to-stars.basic_smelter": "Basic Smelter",
+	"container.from-stone-to-stars.basic_smelter": "Basic Smelter",
 
 	"item.from-stone-to-stars.plant_fiber": "Plant Fiber",
 	"item.from-stone-to-stars.raw_leather": "Raw Leather",
@@ -73,5 +75,6 @@
 	"jei.from-stone-to-stars.info.bark": "Strip a log with any axe. Two bark and two sticks craft kindling.",
 	"jei.from-stone-to-stars.info.hammerstone": "Crafted from a pebble. Breaks gravel and is used to sharpen bone. It has two uses.",
 	"jei.from-stone-to-stars.info.clay_bricks": "Craft two clay balls into wet bricks. Place them, then use more of the same bricks on the pile to stack up to three. Fire in a drying pit: five kindling, wet clay bricks above the center, four charcoal blocks on the outer kindling. Light with a bow and drill. Takes five minutes.",
-	"jei.from-stone-to-stars.info.fired_clay_bricks": "Fired from wet clay bricks in a drying pit. The charcoal cover and kindling are consumed. Stack count is kept from the wet pile."
+	"jei.from-stone-to-stars.info.fired_clay_bricks": "Fired from wet clay bricks in a drying pit. The charcoal cover and kindling are consumed. Stack count is kept from the wet pile. Used to build a basic smelter.",
+	"jei.from-stone-to-stars.info.basic_smelter": "A slow clay blast furnace. Smelts blasting recipes (ores) at half speed. Craft from fired clay bricks and a charcoal block."
 }

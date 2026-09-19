@@ -119,6 +119,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
 		registration.addIngredientInfo(ModBlocks.FIRED_CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.fired_clay_bricks"));
+		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 	}
 
 	@Override

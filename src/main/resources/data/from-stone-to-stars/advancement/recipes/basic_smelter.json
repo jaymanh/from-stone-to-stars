@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "has_fired_clay_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:fired_clay_bricks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:basic_smelter"
+    ]
+  }
+}

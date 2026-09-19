@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "FFF",
+    "F F",
+    "FCF"
+  ],
+  "key": {
+    "F": "from-stone-to-stars:fired_clay_bricks",
+    "C": "from-stone-to-stars:charcoal_block"
+  },
+  "result": {
+    "id": "from-stone-to-stars:basic_smelter",
+    "count": 1
+  }
+}

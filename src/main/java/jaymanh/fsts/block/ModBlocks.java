@@ -65,6 +65,16 @@ public final class ModBlocks {
 			RopeBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.LADDER).strength(0.5f, 1f).noOcclusion().pushReaction(PushReaction.DESTROY).noCollision()
 	);
+	public static final Block BASIC_SMELTER = register(
+			ModBlockItemIds.BASIC_SMELTER,
+			BasicSmelter::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.TERRACOTTA_ORANGE)
+					.sound(SoundType.STONE)
+					.strength(3.5F)
+					.requiresCorrectToolForDrops()
+					.lightLevel(state -> state.getValue(BasicSmelter.LIT) ? 13 : 0)
+	);
 
 	private ModBlocks() {
 	}

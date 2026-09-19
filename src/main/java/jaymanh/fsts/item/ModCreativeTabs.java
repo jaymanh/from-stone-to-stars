@@ -38,6 +38,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.ROPE);
 
 				output.accept(ModBlocks.TANNING_RACK);
+				output.accept(ModBlocks.BASIC_SMELTER);
 				output.accept(ModTools.HAMMERSTONE);
 
 				output.accept(ModTools.FLINT_KNIFE);

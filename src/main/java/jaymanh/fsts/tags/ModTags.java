@@ -29,8 +29,6 @@ public class ModTags {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_CHARCOAL_FLAMMABLE, 5, 5);
 
-        // Entity-type tags are not bound while loot tables load (Stable builtin registry).
-        // Resolve #from-stone-to-stars:drops_bones when drops are generated instead.
         LootTableEvents.MODIFY_DROPS.register((holder, context, drops) -> {
             if (holder.unwrapKey().filter(BONES_INJECT::equals).isPresent()) {
                 return;
