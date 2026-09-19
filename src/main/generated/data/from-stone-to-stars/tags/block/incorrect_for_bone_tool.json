@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:needs_iron_tool",
+      "required": false
+    },
+    {
+      "id": "#minecraft:needs_diamond_tool",
+      "required": false
+    }
+  ]
+}

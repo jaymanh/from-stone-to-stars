@@ -26,13 +26,20 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
-                .addOptionalTag(BlockTags.LOGS);
+                .addOptionalTag(BlockTags.LOGS)
+                .addOptionalTag(BlockTags.COPPER_ORES);
+
+        builder(BlockTags.NEEDS_IRON_TOOL)
+                .addOptionalTag(BlockTags.IRON_ORES);
+
+        builder(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
+                .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         builder(ModTags.FSTS_INCORRECT_FOR_FLINT_TOOL)
                 .addTag(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
-                .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
-                .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
+                .addTag(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL);
 
         builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
@@ -41,5 +48,6 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
+
     }
 }

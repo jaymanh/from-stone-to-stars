@@ -3,6 +3,10 @@
     {
       "id": "#minecraft:logs",
       "required": false
+    },
+    {
+      "id": "#minecraft:copper_ores",
+      "required": false
     }
   ]
 }

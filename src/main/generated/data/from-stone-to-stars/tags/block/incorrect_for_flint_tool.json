@@ -5,13 +5,6 @@
       "id": "#minecraft:needs_stone_tool",
       "required": false
     },
-    {
-      "id": "#minecraft:needs_iron_tool",
-      "required": false
-    },
-    {
-      "id": "#minecraft:needs_diamond_tool",
-      "required": false
-    }
+    "#from-stone-to-stars:incorrect_for_bone_tool"
   ]
 }
