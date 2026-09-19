@@ -86,7 +86,8 @@ public class TanningRackBlockEntity extends BlockEntity {
 	public static void serverTick(Level level, BlockPos pos, BlockState state, TanningRackBlockEntity rack) {
 		boolean changed = false;
 
-		if (level.canSeeSky(pos) && level.isRainingAt(pos)) {
+		boolean rainedOn = level.isRainingAt(pos.above());
+		if (rainedOn) {
 			for (int slot = 0; slot < SLOT_COUNT; slot++) {
 				if (rack.progress[slot] != 0) {
 					rack.progress[slot] = 0;
@@ -102,6 +103,10 @@ public class TanningRackBlockEntity extends BlockEntity {
 					rack.progress[slot] = 0;
 					changed = true;
 				}
+				continue;
+			}
+
+			if (rainedOn) {
 				continue;
 			}
 

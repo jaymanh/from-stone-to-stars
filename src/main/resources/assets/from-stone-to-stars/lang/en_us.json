@@ -63,7 +63,7 @@
 	"jei.from-stone-to-stars.bone_saw": "Bone Sawing",
 	"jei.from-stone-to-stars.world_interaction": "World Interaction",
 	"jei.from-stone-to-stars.duration": "Time: %s",
-	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Take finished leather with an empty hand, or sneak to remove everything.",
+	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Keep it under cover — rain resets drying progress. Take finished leather with an empty hand, or sneak to remove everything.",
 	"jei.from-stone-to-stars.info.kindling": "Lights charcoal piles and brick drying pits. Charcoal: one log with four kindling. Bricks: five kindling (center plus four around it), wet clay bricks above the center, and four charcoal blocks on the outer kindling. Light any kindling with a bow and drill.",
 	"jei.from-stone-to-stars.info.bow_and_drill": "Age 0 fire starter. Lights a charcoal pile or a brick drying pit. Four uses.",
 	"jei.from-stone-to-stars.info.charcoal_block": "Made in a charcoal pile, not a furnace. Crafts back into charcoal. Also used as the cover on a brick drying pit.",
