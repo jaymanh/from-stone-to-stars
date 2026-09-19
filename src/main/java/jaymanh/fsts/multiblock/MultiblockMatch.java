@@ -54,6 +54,15 @@ public final class MultiblockMatch {
 		return positions;
 	}
 
+	public List<BlockPos> allPositions() {
+		List<BlockPos> positions = new ArrayList<>(this.members.size() + 1);
+		positions.add(this.origin);
+		for (Member member : this.members) {
+			positions.add(member.pos());
+		}
+		return positions;
+	}
+
 	public record Member(BlockPos pos, MultiblockRole role) {
 		public Member {
 			pos = pos.immutable();

@@ -20,16 +20,29 @@ public final class MultiblockMatcher {
 	private MultiblockMatcher() {
 	}
 
-	public static Optional<MultiblockMatch> tryMatch(LevelAccessor level, BlockPos origin, MultiblockDefinition definition) {
-		BlockState originState = level.getBlockState(origin);
-		if (!definition.originPredicate().test(originState)) {
-			return Optional.empty();
-		}
+	/**
+	 * Tries to form {@code definition} with {@code clicked} as the structure origin
+	 * or as any pattern cell labeled {@link MultiblockRole#ORIGIN}.
+	 */
+	public static Optional<MultiblockMatch> tryMatch(LevelAccessor level, BlockPos clicked, MultiblockDefinition definition) {
+		BlockState clickedState = level.getBlockState(clicked);
+		List<BlockPos> startOffsets = originStartOffsets(definition);
 
 		for (Rotation rotation : HORIZONTAL) {
-			Optional<MultiblockMatch> match = tryMatchRotation(level, origin, definition, rotation);
-			if (match.isPresent()) {
-				return match;
+			for (BlockPos startOffset : startOffsets) {
+				if (!matchesStartCell(definition, startOffset, clickedState)) {
+					continue;
+				}
+
+				BlockPos trueOrigin = clicked.subtract(rotate(startOffset, rotation));
+				if (!definition.originPredicate().test(level.getBlockState(trueOrigin))) {
+					continue;
+				}
+
+				Optional<MultiblockMatch> match = tryMatchRotation(level, trueOrigin, definition, rotation);
+				if (match.isPresent()) {
+					return match;
+				}
 			}
 		}
 		return Optional.empty();
@@ -37,6 +50,25 @@ public final class MultiblockMatcher {
 
 	public static boolean stillValid(LevelAccessor level, MultiblockMatch match) {
 		return tryMatchRotation(level, match.origin(), match.definition(), match.rotation()).isPresent();
+	}
+
+	private static List<BlockPos> originStartOffsets(MultiblockDefinition definition) {
+		List<BlockPos> offsets = new ArrayList<>();
+		offsets.add(BlockPos.ZERO);
+		for (var entry : definition.pattern().parts().entrySet()) {
+			if (entry.getValue().role() == MultiblockRole.ORIGIN) {
+				offsets.add(entry.getKey());
+			}
+		}
+		return offsets;
+	}
+
+	private static boolean matchesStartCell(MultiblockDefinition definition, BlockPos startOffset, BlockState clickedState) {
+		if (startOffset.equals(BlockPos.ZERO)) {
+			return definition.originPredicate().test(clickedState);
+		}
+		MultiblockPattern.Part part = definition.pattern().parts().get(startOffset);
+		return part != null && part.predicate().test(clickedState);
 	}
 
 	private static Optional<MultiblockMatch> tryMatchRotation(

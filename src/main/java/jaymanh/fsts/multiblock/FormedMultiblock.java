@@ -36,6 +36,10 @@ public final class FormedMultiblock {
 		return this.process instanceof ProgressAware aware ? aware.getProgress() : 0;
 	}
 
+	public int getProcessDuration() {
+		return this.process instanceof DurationAware aware ? aware.getDurationTicks() : 0;
+	}
+
 	public boolean isActive() {
 		return this.active;
 	}
@@ -55,6 +59,15 @@ public final class FormedMultiblock {
 		if (!this.process.tick(level, this)) {
 			this.active = false;
 		}
+	}
+
+	/**
+	 * Marks the process finished without running {@link MultiblockProcess#onCancel}.
+	 * Call this before completion code that removes structure blocks, so those removals
+	 * do not re-enter {@link #cancel} via block-entity side effects.
+	 */
+	public void deactivate() {
+		this.active = false;
 	}
 
 	public void cancel(ServerLevel level) {
@@ -135,5 +148,9 @@ public final class FormedMultiblock {
 		int getProgress();
 
 		void setProgress(int progress);
+	}
+
+	public interface DurationAware {
+		int getDurationTicks();
 	}
 }

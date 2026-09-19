@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import static jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock.LIT;
 
-public final class CharcoalPileProcess implements MultiblockProcess, FormedMultiblock.ProgressAware {
+public final class CharcoalPileProcess implements MultiblockProcess, FormedMultiblock.ProgressAware, FormedMultiblock.DurationAware {
 	public static final int DURATION_TICKS = 20 * 60;
 
 	private int progress;
@@ -33,6 +33,11 @@ public final class CharcoalPileProcess implements MultiblockProcess, FormedMulti
 	@Override
 	public void setProgress(int progress) {
 		this.progress = progress;
+	}
+
+	@Override
+	public int getDurationTicks() {
+		return DURATION_TICKS;
 	}
 
 	@Override
@@ -58,13 +63,23 @@ public final class CharcoalPileProcess implements MultiblockProcess, FormedMulti
 			return true;
 		}
 
+		formed.deactivate();
 		complete(level, formed);
 		return false;
 	}
 
 	@Override
 	public void onCancel(ServerLevel level, FormedMultiblock formed) {
-		// Leave blocks as-is; kindling LIT flag is cleared by the block entity host.
+		BlockPos controller = formed.match().origin();
+		for (BlockPos pos : formed.match().positionsWithRole(MultiblockRole.ORIGIN)) {
+			if (pos.equals(controller)) {
+				continue;
+			}
+			BlockState state = level.getBlockState(pos);
+			if (state.is(ModBlocks.KINDLING) && state.getValue(LIT)) {
+				level.setBlock(pos, state.setValue(LIT, false), Block.UPDATE_ALL);
+			}
+		}
 	}
 
 	private static void complete(ServerLevel level, FormedMultiblock formed) {
@@ -73,11 +88,15 @@ public final class CharcoalPileProcess implements MultiblockProcess, FormedMulti
 		}
 
 		BlockPos origin = formed.match().origin();
-		level.setBlock(origin, Blocks.AIR.defaultBlockState(), 3);
 		level.playSound(null, origin, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.8F, 1.0F);
 
 		for (BlockPos pos : formed.match().positionsWithRole(MultiblockRole.ORIGIN)) {
+			if (pos.equals(origin)) {
+				continue;
+			}
 			level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 		}
+
+		level.setBlock(origin, Blocks.AIR.defaultBlockState(), 3);
 	}
 }

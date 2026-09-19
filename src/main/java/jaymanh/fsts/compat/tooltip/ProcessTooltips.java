@@ -66,10 +66,18 @@ public final class ProcessTooltips {
 			return List.of();
 		}
 
+		List<Component> progressLines = progressLines(data);
+		if (!progressLines.isEmpty()) {
+			return progressLines;
+		}
+		return List.of(Component.translatable("tooltip.from-stone-to-stars.burning"));
+	}
+
+	public static List<Component> progressLines(CompoundTag data) {
 		int progress = data.getIntOr(PROGRESS, 0);
 		int duration = data.getIntOr(DURATION, 0);
 		if (duration <= 0 || progress <= 0) {
-			return List.of(Component.translatable("tooltip.from-stone-to-stars.burning"));
+			return List.of();
 		}
 
 		List<Component> lines = new ArrayList<>();
