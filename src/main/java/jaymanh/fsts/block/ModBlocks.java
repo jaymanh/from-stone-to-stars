@@ -60,6 +60,11 @@ public final class ModBlocks {
 			ClayBricksBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
+	public static final Block ROPE = register(
+			ModBlockItemIds.ROPE,
+			RopeBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.LADDER).strength(0.5f, 1f).noOcclusion().pushReaction(PushReaction.DESTROY).noCollision()
+	);
 
 	private ModBlocks() {
 	}

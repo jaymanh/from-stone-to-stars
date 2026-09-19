@@ -2,6 +2,7 @@ package jaymanh.fsts.client.ModTagGenerators;
 
 import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
+import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -48,6 +49,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
+
+        builder(BlockTags.CLIMBABLE)
+                .add(ModBlockItemIds.ROPE);
 
     }
 }

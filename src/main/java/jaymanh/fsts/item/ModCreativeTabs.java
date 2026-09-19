@@ -35,6 +35,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.CHARCOAL_BLOCK);
 				output.accept(ModBlocks.CLAY_BRICKS);
 				output.accept(ModBlocks.FIRED_CLAY_BRICKS);
+				output.accept(ModBlocks.ROPE);
 
 				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModTools.HAMMERSTONE);
