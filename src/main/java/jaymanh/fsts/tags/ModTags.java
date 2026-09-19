@@ -1,7 +1,9 @@
 package jaymanh.fsts.tags;
 
+import jaymanh.fsts.block.ModBlocks;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -28,6 +30,9 @@ public class ModTags {
     public static void initialize() {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_CHARCOAL_FLAMMABLE, 5, 5);
+        
+        FuelValueEvents.BUILD.register((builder, context) ->
+                builder.add(ModBlocks.CHARCOAL_BLOCK, context.baseSmeltTime() * 8 * 5));
 
         LootTableEvents.MODIFY_DROPS.register((holder, context, drops) -> {
             if (holder.unwrapKey().filter(BONES_INJECT::equals).isPresent()) {
