@@ -85,6 +85,16 @@ public class TanningRackBlockEntity extends BlockEntity {
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, TanningRackBlockEntity rack) {
 		boolean changed = false;
+
+		if (level.canSeeSky(pos) && level.isRainingAt(pos)) {
+			for (int slot = 0; slot < SLOT_COUNT; slot++) {
+				if (rack.progress[slot] != 0) {
+					rack.progress[slot] = 0;
+					changed = true;
+				}
+			}
+		}
+
 		for (int slot = 0; slot < SLOT_COUNT; slot++) {
 			ItemStack stack = rack.items.get(slot);
 			if (!stack.is(ModItems.RAW_LEATHER)) {
