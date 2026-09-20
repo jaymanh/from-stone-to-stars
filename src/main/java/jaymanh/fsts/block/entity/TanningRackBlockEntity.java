@@ -123,8 +123,6 @@ public class TanningRackBlockEntity extends BlockEntity {
 		if (changed) {
 			rack.syncState();
 		} else if (progressAdvanced) {
-			// Progress is not represented by block state, so explicitly dirty the
-			// block entity to preserve an in-progress tan when its chunk unloads.
 			rack.setChanged();
 		}
 	}

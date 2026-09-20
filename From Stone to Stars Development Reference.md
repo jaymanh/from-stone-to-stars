@@ -6,6 +6,8 @@
 
 This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Values, recipes, and exact item counts are intentionally left for balancing passes.
 
+> **Implementation status (2026-09-20):** Age 0 is the only implemented age. The sections after the current Age 0 prototype describe design direction, not shipped gameplay. “Implemented” below means present in the mod; “planned” means it remains a design target.
+
 ## Contents
 
 1. [Core Vision and Design Principles](#core-vision-and-design-principles)
@@ -90,47 +92,65 @@ This is the first playable age and the tutorial for the whole mod: **look at the
 
 Exact recipe counts, timings, and durability numbers are left for a later balance pass.
 
+#### Current playable prototype
+
+The current build is a deliberately narrow Age 0 prototype. It has the gathering, basic-tool, hideworking, manual-processing, and fire-process loops listed below, but it does **not** yet enforce every gate or contain every station described in the wider design.
+
+| System | Current implementation |
+| --- | --- |
+| Surface gathering | Pebbles generate in overworld land and water patches; sticks also generate in the overworld. Grass, ferns, and bushes can yield plant fibre. Gravel has a custom hammerstone drop. |
+| Early materials and tools | Pebbles compact into cobblestone and split back out. Flint knife, flint axe, hammerstone, bow-and-drill, rope, leather skin, and the bone tool set are registered and have recipes. |
+| Hideworking | Mob leather drops are replaced with raw leather. A tanning rack has four slots; raw leather becomes vanilla leather after five minutes when uncovered by rain. Empty-hand use collects finished leather; sneak-use collects all contents. |
+| Wood work | An axe strips a strippable log and drops bark. Using leather on a log consumes one leather and converts that log into a crafting table; this is the current work-stump stand-in. A placed bone saw returns itself and four planks after the player performs four interactions on a supported log. |
+| Manual food processing | The mortar and pestle accepts wheat. Four empty-hand grind interactions consume one wheat and produce flour; flour plus water skin makes dough, which smelts into bread. |
+| Fire and clay | A three-kindling charcoal pile converts its log input to a charcoal block after one minute. A five-kindling/charcoal/clay-brick drying pit converts clay bricks to fired clay bricks after five minutes. Both structures are started with a bow-and-drill, flint and steel, or fire charge. |
+| Smelting | The basic smelter is a primitive blast furnace using blasting recipes at half normal tick rate. |
+| Player feedback | Advancements cover initial materials and recipes. Jade/WTHIT expose pebble waterlogging, tanning progress, active kindling process progress, and manual bone-saw strokes. JEI documents the implemented non-crafting processes. |
+
+Current vanilla gating removes the listed wooden and stone tool recipes and drops, plus selected early recipes including crafting table, furnace, bucket, flint and steel, chest, plank, boat, bed, and bread recipes. It also replaces leather loot. Blocking fist-felling, villager trades, beds, boats, shields, and other proposed gates remains future work unless separately stated in code.
+
 #### Prototype spine already in the mod
 
 Build Age 0 outward from content that already exists. Do not invent a parallel starter kit.
 
-| Existing content | Role in Age 0 |
+| Implemented content | Role in Age 0 |
 | --- | --- |
-| Pebble block (land and water worldgen, cobble compact/split recipes) | First material. Stone construction without a pickaxe. Teaches "the ground is the chest." |
-| Flint knife (wooden harvest tier, sword-like use) | First crafted tool. Cutting, skinning, cordage, plant harvest. Not a pickaxe and not a full tool set. |
-| Bone sword, axe, pickaxe, shovel, hoe (stone harvest tier today) | First *hafted* toolkit. Replaces vanilla stone tools for survival work. Must **not** mine copper or iron; metal ore is Age 1. |
-| Raw leather | Hide drop. Unprocessed. Replaces vanilla leather as a mob drop. |
-| Leather strips | Binding. Required to haft bone tools. Cut from processed hide with the flint knife. |
-| Pebble pickup / cobble advancements | Pattern for the rest of Age 0: finding a material unlocks the next process, not a tech-tree GUI. |
+| Pebble block (land and water worldgen, cobble compact/split recipes) | First material and a lightweight world interaction. |
+| Plant fibre, flint knife, flint axe, hammerstone, bow-and-drill, rope, and leather skin | Implemented early-gathering and survival toolkit. |
+| Bone sword, axe, pickaxe, shovel, hoe, and placed bone saw | Current hafted toolkit and manual plank process. The saw requires four player interactions; it does not run automatically. |
+| Raw leather, tanning rack, vanilla leather, and leather strips | Current hide loop. The rack presently tans raw leather directly into vanilla leather; strips are crafted with a flint knife. |
+| Mortar and pestle, flour, dough, basic smelter | Current manual grain-to-bread loop and early smelting prototype. |
+| Kindling multiblocks, clay bricks, fired clay bricks, charcoal block | Current timed fire-process prototypes. |
+| Pebble, bark, bone, wheat, stick, and charcoal advancements | Current discovery and recipe-unlock scaffolding. |
 
-Repair tags already exist (`flint_repair_item`, `bone_repair_item`). Flint repairs flint. Bone repairs bone.
+Repair tag keys are defined (`flint_repair_item`, `bone_repair_item`), but their data files have not yet been added. Tool repair should be treated as planned until those tags are populated.
 
 #### Player fantasy
 
-You wake with empty hands. Logs will not fall to fists. There is no wooden pickaxe. Pebbles lie on beaches, riverbeds, and fields. Grass holds fibre. Animals hold hide and bone. Clay sits in the bank. Fire is made, not crafted from iron.
+The intended opening is empty hands, visible pebbles, fibre in grass, hides and bone from animals, and clay in the bank. The current build implements the gathering materials and removes the main wooden/stone-tool recipes, but fist-felling and several other intended gates are not yet enforced.
 
 The first hour is stooping, knapping, cutting, and binding. The first night is a fire and a hide. The first week is a camp whose racks, snares, and pots keep working while you sleep. The age ends when that camp is a settlement, and when fire has been aimed at rock hard enough to suggest metal.
 
-#### Vanilla removals
+#### Vanilla gates: current implementation and target
 
-Disable or replace these so the opening cannot be skipped with the vanilla 30-second tool rush.
+The table distinguishes live restrictions from the intended Age 0 rules. Do not treat a target rule as implemented without verifying it against the current code and data pack.
 
-| Vanilla feature | Age 0 treatment |
-| --- | --- |
-| Wooden tool recipes and loot | Removed. Flint is the sharp hand tool. |
-| Stone tool recipes and loot | Removed. Bone-hafted tools cover the jobs. |
-| Punching logs for wood | Logs do not harvest by hand. Leaves, dead bushes, and knife-work give sticks. Logs require a bone axe. |
-| 1 log = 4 planks | Too industrial. Split logs at a work stump with an axe and a pebble wedge. Planks are labour. |
-| Crafting table as first station | Gated. 2x2 in the inventory remains for knapping, cordage, and the knife. 3x3 waits on a **work stump**. |
-| Furnace | Gated behind pottery. Cook on a campfire. Fire clay in a pit kiln. |
-| Cow/horse/llama leather drops | Drop **raw leather** (hides). Finished leather is processed. |
-| Iron bucket | Gated to Age 1. Age 0 water is a waterskin or a clay vessel. Source blocks are not moved. |
-| Flint and steel | Gated. Fire starts with a fire plough or bow-drill (time, hunger, dry tinder). |
-| Wool bed | Gated. Sleep on straw and hides. |
-| Chest | Optional delay. Early storage is baskets, hide bags, and clay pots. |
-| Boat | Replaced by a lashed raft (logs + rope), slower and fragile. |
-| Wooden hoe / instant farmland | Farming waits on the bone hoe and a prepared plot. |
-| Villager stone-tool trades | Strip wooden and stone tools from trades so they cannot refund the skip. |
+| Vanilla feature | Current state | Intended Age 0 treatment |
+| --- | --- | --- |
+| Wooden tool recipes and loot | Implemented: recipes and loot drops are removed. | Flint is the sharp hand tool. |
+| Stone tool recipes and loot | Implemented: recipes and loot drops are removed. | Bone-hafted tools cover the jobs. |
+| Punching logs for wood | Planned; fist-felling is not currently blocked. | Logs require a bone axe. |
+| 1 log = 4 planks | Vanilla plank recipes are removed; the placed bone saw currently makes four planks from a log after four clicks. | Make plank splitting a deliberate labour step. |
+| Crafting table as first station | The recipe is removed; leather-on-log currently creates a crafting table. | Replace this stand-in with a dedicated work stump. |
+| Furnace | The furnace recipe is removed; the basic smelter currently provides early blasting. | Fire clay in a pit kiln before conventional furnace access. |
+| Leather drops | Implemented: all leather loot is replaced with raw leather. | Finished leather is processed from hides. |
+| Iron bucket | Bucket recipe is removed. Leather skin is implemented; clay vessel is planned. | Source blocks are not moved in Age 0. |
+| Flint and steel | Recipe is removed, but the item can still light implemented kindling structures. Bow-and-drill is also accepted. | Make fire a deliberate primitive procedure. |
+| Wool bed | Bed recipes are removed. Hide bed is planned. | Sleep on straw and hides. |
+| Chest | Chest recipe is removed. Baskets, hide bags, and clay pots are planned. | Delay bulk storage. |
+| Boat | Vanilla boat recipes are removed. Raft is planned. | Use a lashed raft. |
+| Wooden hoe / instant farmland | Wooden hoe recipe is removed; prepared plots are planned. | Farming begins with the bone hoe. |
+| Villager stone-tool trades | Planned. | Remove trades that bypass the Age 0 gate. |
 
 Keep vanilla dirt, gravel, clay, bones, sticks-from-leaves, campfires (once fire exists), and the overworld as-is unless a later pass needs otherwise.
 
@@ -546,7 +566,7 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 | --- | --- | --- | --- | --- |
 | Mod Menu | `modmenu` | Config button in the mod list | `modmenu` entrypoint | Live. Button is a no-op unless YACL is also installed. |
 | YetAnotherConfigLib | `yet_another_config_lib_v3` | Config screen | Called from Mod Menu factory | Live. Dev runtime includes YACL so the screen can be tested. |
-| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, bone sawing, and world interactions (bark, work stump). Info pages on the related items. |
+| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, brick drying, manual bone sawing, and world interactions (axe bark, leather-on-log crafting table). Info pages cover the related items. |
 | EMI | `emi` | Recipe viewer (preferred long-term on Fabric) | `emi` entrypoint, not registered yet | **Blocked:** no 26.2 Maven artifact. Placeholder: `FstsEmiPlugin`. |
 | Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. Tanning racks show hide %. Lit kindling shows charcoal-pile burn. Placed bone saws show stroke progress. |
 | WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Same overlay lines as Jade. |
@@ -558,7 +578,7 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 | Key | Default | Notes |
 | --- | --- | --- |
 | `generatePebbles` | `true` | Overworld pebble patches. Requires a game restart. Existing chunks are unchanged. |
-| `debugLogging` | `false` | Extra diagnostic log lines. |
+| `debugLogging` | `false` | Exposed in the config screen and persisted, but not yet consumed by gameplay code. |
 
 **When adding a new system, also update**
 
@@ -587,7 +607,7 @@ Mod Menu 20.0.2, YACL 3.9.6+26.2-fabric, JEI 30.32.0.221, Jade 26.2.11+fabric, W
 
 | Topic | Questions to resolve |
 | --- | --- |
-| Vanilla integration | Age 0 now commits to removing wooden and stone tools, fist-felling, leather drops, the early furnace, iron buckets, and flint-and-steel. Remaining questions: chests, shields, bows, villager restocks, and whether gravel still drops flint vanilla-style. |
+| Vanilla integration | Implemented: wooden/stone tool recipes and drops, selected early recipes, and leather drops are gated. Still to decide or implement: fist-felling, villager trades, beds, boats, shields, bows, and the remaining vanilla bypasses. |
 | Research interface | How are milestones surfaced: journal, tech tree, achievements, lab console, or a combination? |
 | Failure and safety | How punishing should overpressure, radiation, heat, and power overloads be? What warning systems make failure fair? |
 | Multiplayer | Are discoveries shared globally, per player, per team, or configurable? How do large networks perform on servers? |
@@ -605,4 +625,6 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-09-14 — Optional integrations.** Wired Mod Menu + YACL config, JEI plugin stub, Jade/WTHIT pebble overlay, and jar-in-jar Team Reborn Energy as the Fabric FE API. AE2 is detected only. EMI is documented but not registered until a 26.2 artifact exists. All remain `suggests`, not `depends`.
 
 **2026-09-18 — Companion mods catch up.** JEI now shows tanning, charcoal pile, bone sawing, and world interactions (axe bark, leather-on-log crafting table). Jade and WTHIT show tanning %, charcoal-pile burn time, and bone-saw strokes in addition to pebble waterlogging. Mod Menu bumped to 20.0.2. YACL still exposes the two live config keys.
+
+**2026-09-20 — Current prototype audit.** Documented the implemented Age 0 loop separately from the long-term design: pebble and stick worldgen; fibre, hide, bone, and early tools; four-slot rain-sensitive tanning; manual mortar grinding; manual four-stroke bone sawing; charcoal and brick-drying kindling structures; and the basic smelter. The document now calls out current stand-ins and remaining gates rather than presenting them as complete. Repair tag keys and the debug config toggle exist but still need functional follow-through.
 
