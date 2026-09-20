@@ -85,6 +85,7 @@ public class TanningRackBlockEntity extends BlockEntity {
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, TanningRackBlockEntity rack) {
 		boolean changed = false;
+		boolean progressAdvanced = false;
 
 		boolean rainedOn = level.isRainingAt(pos.above());
 		if (rainedOn) {
@@ -111,6 +112,7 @@ public class TanningRackBlockEntity extends BlockEntity {
 			}
 
 			rack.progress[slot]++;
+			progressAdvanced = true;
 			if (rack.progress[slot] >= TANNING_TICKS) {
 				rack.items.set(slot, new ItemStack(Items.LEATHER));
 				rack.progress[slot] = 0;
@@ -120,6 +122,10 @@ public class TanningRackBlockEntity extends BlockEntity {
 
 		if (changed) {
 			rack.syncState();
+		} else if (progressAdvanced) {
+			// Progress is not represented by block state, so explicitly dirty the
+			// block entity to preserve an in-progress tan when its chunk unloads.
+			rack.setChanged();
 		}
 	}
 
