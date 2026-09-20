@@ -1,0 +1,8 @@
+{
+  "type": "from-stone-to-stars:grinding",
+  "ingredient": "minecraft:wheat",
+  "result": {
+    "id": "from-stone-to-stars:flour",
+    "count": 1
+  }
+}

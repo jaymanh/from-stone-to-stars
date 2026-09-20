@@ -68,6 +68,7 @@
 	"jei.from-stone-to-stars.charcoal_pile": "Charcoal Pile",
 	"jei.from-stone-to-stars.brick_drying": "Brick Drying Pit",
 	"jei.from-stone-to-stars.bone_saw": "Bone Sawing",
+	"jei.from-stone-to-stars.grinding": "Grinding",
 	"jei.from-stone-to-stars.world_interaction": "World Interaction",
 	"jei.from-stone-to-stars.duration": "Time: %s",
 	"jei.from-stone-to-stars.info.tanning_rack": "Hang raw leather on the rack. After five minutes each hide becomes leather. Keep it under cover — rain resets drying progress. Take finished leather with an empty hand, or sneak to remove everything.",
@@ -81,5 +82,7 @@
 	"jei.from-stone-to-stars.info.hammerstone": "Crafted from a pebble. Breaks gravel and is used to sharpen bone. It has two uses.",
 	"jei.from-stone-to-stars.info.clay_bricks": "Craft two clay balls into wet bricks. Place them, then use more of the same bricks on the pile to stack up to three. Fire in a drying pit: five kindling, wet clay bricks above the center, four charcoal blocks on the outer kindling. Light with a bow and drill. Takes five minutes.",
 	"jei.from-stone-to-stars.info.fired_clay_bricks": "Fired from wet clay bricks in a drying pit. The charcoal cover and kindling are consumed. Stack count is kept from the wet pile. Used to build a basic smelter.",
-	"jei.from-stone-to-stars.info.basic_smelter": "A slow clay blast furnace. Smelts blasting recipes (ores) at half speed. Craft from fired clay bricks and a charcoal block."
+	"jei.from-stone-to-stars.info.basic_smelter": "A slow clay blast furnace. Smelts blasting recipes (ores) at half speed. Craft from fired clay bricks and a charcoal block.",
+	"jei.from-stone-to-stars.info.mortar_and_pestle": "Place an input, then right-click with an empty hand to grind. Four clicks convert one item. Recipes are datapack grinding recipes, so other grinders can share them. Sneak to take everything out.",
+	"jei.from-stone-to-stars.info.flour": "Grind wheat in a mortar and pestle. Mix with water from a leather skin to make dough."
 }

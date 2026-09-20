@@ -1,0 +1,8 @@
+{
+  "type": "from-stone-to-stars:grinding",
+  "ingredient": "minecraft:bone",
+  "result": {
+    "id": "minecraft:bone_meal",
+    "count": 3
+  }
+}

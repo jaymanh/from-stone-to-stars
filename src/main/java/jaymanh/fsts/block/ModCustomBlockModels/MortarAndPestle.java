@@ -11,7 +11,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -28,7 +27,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class MortarAndPestle extends BaseEntityBlock {
 	public static final MapCodec<MortarAndPestle> CODEC = simpleCodec(MortarAndPestle::new);
 
-	/** Grind clicks completed on the current wheat (0–3). Completes at 4. */
+	/** Grind clicks completed on the current input (0–3). Completes at 4. */
 	public static final IntegerProperty PROGRESS = IntegerProperty.create("progress", 0, MortarAndPestleEntity.GRIND_CLICKS - 1);
 
 	private static final VoxelShape SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 8.0, 14.0);
@@ -77,11 +76,16 @@ public class MortarAndPestle extends BaseEntityBlock {
 			return InteractionResult.PASS;
 		}
 
-		if (stack.is(Items.WHEAT)) {
-			if (level.isClientSide()) {
-				return InteractionResult.SUCCESS;
-			}
-			return mortar.insertWheat(stack, player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
+		if (stack.isEmpty()) {
+			return InteractionResult.TRY_WITH_EMPTY_HAND;
+		}
+
+		if (level.isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+
+		if (mortar.insertInput(stack, player)) {
+			return InteractionResult.SUCCESS;
 		}
 
 		return InteractionResult.TRY_WITH_EMPTY_HAND;
@@ -101,7 +105,7 @@ public class MortarAndPestle extends BaseEntityBlock {
 			return mortar.extractAll(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
 		}
 
-		if (mortar.takeFlour(player)) {
+		if (mortar.takeOutput(player)) {
 			return InteractionResult.SUCCESS;
 		}
 

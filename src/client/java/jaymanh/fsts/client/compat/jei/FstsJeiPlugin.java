@@ -4,7 +4,6 @@ import java.util.List;
 
 import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModBlocks;
-import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.multiblock.process.BrickDryingProcess;
@@ -31,6 +30,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 	public static final IRecipeType<SimpleProcessRecipe> CHARCOAL_PILE = IRecipeType.create(FromStoneToStars.MOD_ID, "charcoal_pile", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BRICK_DRYING = IRecipeType.create(FromStoneToStars.MOD_ID, "brick_drying", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BONE_SAW = IRecipeType.create(FromStoneToStars.MOD_ID, "bone_saw", SimpleProcessRecipe.class);
+	public static final IRecipeType<SimpleProcessRecipe> GRINDING = IRecipeType.create(FromStoneToStars.MOD_ID, "grinding", SimpleProcessRecipe.class);
 	public static final IRecipeType<WorldInteractionRecipe> WORLD_INTERACTION = IRecipeType.create(FromStoneToStars.MOD_ID, "world_interaction", WorldInteractionRecipe.class);
 
 	@Override
@@ -46,6 +46,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, CHARCOAL_PILE, Component.translatable("jei.from-stone-to-stars.charcoal_pile"), ModBlocks.KINDLING),
 				new ProcessRecipeCategory(guiHelper, BRICK_DRYING, Component.translatable("jei.from-stone-to-stars.brick_drying"), ModBlocks.CLAY_BRICKS),
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
+				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
 				new WorldInteractionCategory(guiHelper, WORLD_INTERACTION, Component.translatable("jei.from-stone-to-stars.world_interaction"), ModTools.FLINT_AXE)
 		);
 	}
@@ -85,12 +86,29 @@ public final class FstsJeiPlugin implements IModPlugin {
 				BrickDryingProcess.DURATION_TICKS
 		)));
 
+		registration.addRecipes(GRINDING, List.of(
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("grinding/flour"),
+						List.of(SimpleProcessRecipe.item(Items.WHEAT)),
+						List.of(),
+						SimpleProcessRecipe.item(ModItems.FLOUR),
+						0
+				),
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("grinding/bone_meal"),
+						List.of(SimpleProcessRecipe.item(Items.BONE)),
+						List.of(),
+						SimpleProcessRecipe.stack(new ItemStack(Items.BONE_MEAL, 3)),
+						0
+				)
+		));
+
 		registration.addRecipes(BONE_SAW, List.of(new SimpleProcessRecipe(
 				FromStoneToStars.id("bone_saw/planks"),
 				List.of(SimpleProcessRecipe.tag(ItemTags.LOGS)),
 				List.of(SimpleProcessRecipe.item(ModTools.BONE_SAW)),
 				SimpleProcessRecipe.tag(ItemTags.PLANKS),
-				PlacedBoneSawBlockEntity.STROKE_COUNT * (PlacedBoneSawBlockEntity.COOLDOWN_TICKS + 1)
+				0 // Sawing is player-driven: one interaction per stroke, not a timed process.
 		)));
 
 		registration.addRecipes(WORLD_INTERACTION, List.of(
@@ -120,6 +138,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
 		registration.addIngredientInfo(ModBlocks.FIRED_CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.fired_clay_bricks"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
+		registration.addIngredientInfo(ModBlocks.MORTAR_AND_PESTLE, Component.translatable("jei.from-stone-to-stars.info.mortar_and_pestle"));
+		registration.addIngredientInfo(ModItems.FLOUR, Component.translatable("jei.from-stone-to-stars.info.flour"));
 	}
 
 	@Override
@@ -132,6 +152,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CHARCOAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
+		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);
 	}

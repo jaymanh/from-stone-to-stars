@@ -10,6 +10,7 @@ import jaymanh.fsts.progression.VanillaProgression;
 import jaymanh.fsts.tags.ModTags;
 import jaymanh.fsts.item.UseInteractions;
 import jaymanh.fsts.multiblock.ModMultiblocks;
+import jaymanh.fsts.recipe.ModRecipes;
 import jaymanh.fsts.tools.ModTools;
 import jaymanh.fsts.worldgen.ModWorldgen;
 
@@ -37,6 +38,7 @@ public class FromStoneToStars implements ModInitializer {
 		VanillaProgression.initialize();
 		TeamRebornEnergyCompat.initialize();
 		ModTags.initialize();
+		ModRecipes.initialize();
 		ModMultiblocks.initialize();
 		UseInteractions.initialise();
 	}
