@@ -17,57 +17,44 @@ import net.minecraft.world.level.storage.ValueOutput;
 
 public class PlacedBoneSawBlockEntity extends BlockEntity {
 	public static final int STROKE_COUNT = 4;
-	public static final int COOLDOWN_TICKS = 10; // 0.5 seconds
 
-	private boolean sawing;
 	private int strokes;
-	private int cooldown;
 
 	public PlacedBoneSawBlockEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.PLACED_BONE_SAW, pos, state);
 	}
 
 	public boolean isSawing() {
-		return this.sawing;
+		return this.strokes > 0;
 	}
 
 	public int getStrokes() {
 		return this.strokes;
 	}
 
-	public boolean tryStartSawing() {
-		if (this.sawing || this.level == null || this.level.isClientSide()) {
+	/**
+	 * Performs one manual saw stroke. The player must interact once for every
+	 * stroke; the saw no longer continues automatically after the first click.
+	 */
+	public boolean sawOnce() {
+		if (this.level == null || this.level.isClientSide()) {
 			return false;
 		}
-		this.sawing = true;
-		this.strokes = 0;
-		this.cooldown = 0;
-		this.setChanged();
-		return true;
-	}
 
-	public static void serverTick(Level level, BlockPos pos, BlockState state, PlacedBoneSawBlockEntity saw) {
-		if (!saw.sawing) {
-			return;
-		}
-
-		if (saw.cooldown > 0) {
-			saw.cooldown--;
-			return;
-		}
-
-		saw.strokes++;
+		Level level = this.level;
+		BlockPos pos = this.worldPosition;
+		BlockState state = this.getBlockState();
+		this.strokes++;
 		boolean nextOffset = !state.getValue(PlacedBoneSawBlock.OFFSET);
 		level.setBlock(pos, state.setValue(PlacedBoneSawBlock.OFFSET, nextOffset), Block.UPDATE_ALL);
 		level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 0.8F, 1.0F);
 
-		if (saw.strokes >= STROKE_COUNT) {
-			saw.finishSawing(level, pos);
-			return;
+		if (this.strokes >= STROKE_COUNT) {
+			this.finishSawing(level, pos);
+		} else {
+			this.setChanged();
 		}
-
-		saw.cooldown = COOLDOWN_TICKS;
-		saw.setChanged();
+		return true;
 	}
 
 	private void finishSawing(Level level, BlockPos pos) {
@@ -88,16 +75,12 @@ public class PlacedBoneSawBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(ValueOutput output) {
 		super.saveAdditional(output);
-		output.putBoolean("Sawing", this.sawing);
 		output.putInt("Strokes", this.strokes);
-		output.putInt("Cooldown", this.cooldown);
 	}
 
 	@Override
 	protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
-		this.sawing = input.getBooleanOr("Sawing", false);
-		this.strokes = input.getIntOr("Strokes", 0);
-		this.cooldown = input.getIntOr("Cooldown", 0);
+		this.strokes = Math.clamp(input.getIntOr("Strokes", 0), 0, STROKE_COUNT - 1);
 	}
 }

@@ -1,10 +1,7 @@
 package jaymanh.fsts.block.ModCustomBlockModels;
 
-import org.jspecify.annotations.Nullable;
-
 import com.mojang.serialization.MapCodec;
 
-import jaymanh.fsts.block.entity.ModBlockEntities;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
 
 import net.minecraft.core.BlockPos;
@@ -26,8 +23,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -118,11 +113,6 @@ public class PlacedBoneSawBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		return level.isClientSide() ? null : createTickerHelper(type, ModBlockEntities.PLACED_BONE_SAW, PlacedBoneSawBlockEntity::serverTick);
-	}
-
-	@Override
 	protected InteractionResult useItemOn(
 			ItemStack stack,
 			BlockState state,
@@ -147,6 +137,6 @@ public class PlacedBoneSawBlock extends BaseEntityBlock {
 		if (!(level.getBlockEntity(pos) instanceof PlacedBoneSawBlockEntity saw)) {
 			return InteractionResult.PASS;
 		}
-		return saw.tryStartSawing() ? InteractionResult.SUCCESS : InteractionResult.PASS;
+		return saw.sawOnce() ? InteractionResult.SUCCESS : InteractionResult.PASS;
 	}
 }
