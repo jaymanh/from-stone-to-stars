@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:rabbit_hide",
+    "minecraft:rabbit_hide"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:raw_leather",
+    "count": 1
+  }
+}
