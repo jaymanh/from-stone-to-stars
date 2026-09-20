@@ -41,6 +41,12 @@ public final class ModBlockEntities {
 			ModBlocks.MORTAR_AND_PESTLE
 	);
 
+	public static final BlockEntityType<SnareBlockEntity> SNARE = register(
+			"snare",
+			SnareBlockEntity::new,
+			ModBlocks.SNARE
+	);
+
 	private ModBlockEntities() {
 	}
 

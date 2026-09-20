@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "baited=false": { "model": "from-stone-to-stars:block/snare" },
+    "baited=true": { "model": "from-stone-to-stars:block/snare_baited" }
+  }
+}

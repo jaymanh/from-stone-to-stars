@@ -3,9 +3,11 @@ package jaymanh.fsts.client.compat.jade;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
+import jaymanh.fsts.block.entity.SnareBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 
 import net.minecraft.world.level.block.Block;
@@ -23,6 +25,7 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(JadeKindlingProvider.Data.INSTANCE, KindlingBlockEntity.class);
 		registration.registerBlockDataProvider(JadeBoneSawProvider.Data.INSTANCE, PlacedBoneSawBlockEntity.class);
 		registration.registerBlockDataProvider(JadeMultiblockProvider.Data.INSTANCE, Block.class);
+		registration.registerBlockDataProvider(JadeSnareProvider.Data.INSTANCE, SnareBlockEntity.class);
 	}
 
 	@Override
@@ -32,5 +35,6 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadeKindlingProvider.INSTANCE, KindlingBlock.class);
 		registration.registerBlockComponent(JadeBoneSawProvider.INSTANCE, PlacedBoneSawBlock.class);
 		registration.registerBlockComponent(JadeMultiblockProvider.INSTANCE, Block.class);
+		registration.registerBlockComponent(JadeSnareProvider.INSTANCE, SnareBlock.class);
 	}
 }

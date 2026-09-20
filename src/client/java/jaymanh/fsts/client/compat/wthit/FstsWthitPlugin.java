@@ -4,9 +4,11 @@ import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
+import jaymanh.fsts.block.entity.SnareBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 
 import mcp.mobius.waila.api.IRegistrar;
@@ -20,6 +22,7 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 	public static final Identifier TANNING = FromStoneToStars.id("tanning");
 	public static final Identifier KINDLING = FromStoneToStars.id("kindling");
 	public static final Identifier BONE_SAW = FromStoneToStars.id("bone_saw");
+	public static final Identifier SNARE = FromStoneToStars.id("snare");
 
 	@Override
 	public void register(IRegistrar registrar) {
@@ -27,6 +30,7 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addConfig(TANNING, true);
 		registrar.addConfig(KINDLING, true);
 		registrar.addConfig(BONE_SAW, true);
+		registrar.addConfig(SNARE, true);
 
 		registrar.addComponent(WthitPebbleProvider.INSTANCE, TooltipPosition.BODY, PebbleBlock.class);
 
@@ -38,5 +42,8 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 
 		registrar.addComponent(WthitBoneSawProvider.INSTANCE, TooltipPosition.BODY, PlacedBoneSawBlock.class);
 		registrar.addBlockData(WthitBoneSawProvider.INSTANCE, PlacedBoneSawBlockEntity.class);
+
+		registrar.addComponent(WthitSnareProvider.INSTANCE, TooltipPosition.BODY, SnareBlock.class);
+		registrar.addBlockData(WthitSnareProvider.INSTANCE, SnareBlockEntity.class);
 	}
 }

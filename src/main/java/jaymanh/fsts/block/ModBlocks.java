@@ -80,6 +80,11 @@ public final class ModBlocks {
 			MortarAndPestle::new,
 			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3.5f).noOcclusion()
 	);
+	public static final Block SNARE = register(
+			ModBlockItemIds.SNARE,
+			SnareBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY).ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

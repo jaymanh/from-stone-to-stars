@@ -13,7 +13,8 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:bow_and_drill"
+      "from-stone-to-stars:bow_and_drill",
+      "from-stone-to-stars:snare"
     ]
   }
 }

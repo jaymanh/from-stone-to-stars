@@ -21,7 +21,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
         builder(ModTags.FSTS_WOOD_FLAMMABLE)
                 .add(ModBlockItemIds.STICKS)
                 .add(ModBlockItemIds.TANNING_RACK)
-                .add(ModBlockItemIds.KINDLING);
+                .add(ModBlockItemIds.KINDLING)
+                .add(ModBlockItemIds.SNARE);
 
         builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
@@ -45,7 +46,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
         builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
                 .add(ModBlockItemIds.TANNING_RACK)
-                .add(ModBlockIds.PLACED_BONE_SAW);
+                .add(ModBlockIds.PLACED_BONE_SAW)
+                .add(ModBlockItemIds.SNARE);
 
         builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)

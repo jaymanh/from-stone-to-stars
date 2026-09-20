@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -26,6 +27,11 @@ public class ModTags {
 
     public static final TagKey<EntityType<?>> DROPS_BONES = TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "drops_bones"));
     public static final ResourceKey<LootTable> BONES_INJECT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "inject/bones"));
+
+    public static final TagKey<Item> SNARE_MEAT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_meat_bait"));
+    public static final TagKey<Item> SNARE_PLANT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_plant_bait"));
+    public static final ResourceKey<LootTable> SNARE_MEAT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_meat"));
+    public static final ResourceKey<LootTable> SNARE_PLANT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_plant"));
 
     public static void initialize() {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);

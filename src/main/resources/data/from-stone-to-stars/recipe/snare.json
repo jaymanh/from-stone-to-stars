@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " R ",
+    "S S",
+    " P "
+  ],
+  "key": {
+    "R": "from-stone-to-stars:rope",
+    "S": "minecraft:stick",
+    "P": "from-stone-to-stars:pebble"
+  },
+  "result": {
+    "id": "from-stone-to-stars:snare",
+    "count": 1
+  }
+}
