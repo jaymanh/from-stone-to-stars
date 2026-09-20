@@ -56,12 +56,10 @@ public class LeatherSkinItem extends Item {
 
 	@Override
 	public @Nullable ItemStackTemplate getCraftingRemainder(ItemStack stack) {
-		if (!hasWater(stack)) {
-			return null;
+		ItemStack leftover = stack.copyWithCount(1);
+		if (hasWater(leftover)) {
+			leftover.setDamageValue(Math.min(leftover.getDamageValue() + 1, CAPACITY));
 		}
-
-		ItemStack leftover = stack.copy();
-		leftover.setDamageValue(Math.min(leftover.getDamageValue() + 1, CAPACITY));
 		return ItemStackTemplate.fromNonEmptyStack(leftover);
 	}
 
