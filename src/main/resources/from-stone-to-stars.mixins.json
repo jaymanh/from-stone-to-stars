@@ -4,13 +4,13 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "BlockStateBaseMixin",
+    "CampfireUnlitMixin",
     "CreeperNoDamageMixin",
     "LootItemMixin",
     "RecipeManagerMixin",
     "RepairItemRecipeMixin",
     "ShapelessRecipeMixin"
   ],
-
   "injectors": {
     "defaultRequire": 1
   },
