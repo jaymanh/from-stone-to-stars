@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
@@ -15,10 +16,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 
 import static jaymanh.fsts.item.InventoryHelper.*;
 
 public class UseInteractions {
+    WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
     public static void initialise(){
         //Strip log for bark
         UseBlockCallback.EVENT.register(((player, level, hand, hitResult) -> {
@@ -37,8 +41,9 @@ public class UseInteractions {
             if (StrippableBlockRegistry.getStrippedBlockState(state) == null) {
                 return InteractionResult.PASS;
             }
-
-            Block.popResourceFromFace(level, pos, face, new ItemStack(ModItems.BARK));
+            long worldSeed = state.getSeed(pos);
+            RandomSource randomSource = RandomSource.create(worldSeed);
+            Block.popResourceFromFace(level, pos, face, new ItemStack(ModItems.BARK,randomSource.nextInt(4)+1));
             return InteractionResult.PASS;
         }));
 
