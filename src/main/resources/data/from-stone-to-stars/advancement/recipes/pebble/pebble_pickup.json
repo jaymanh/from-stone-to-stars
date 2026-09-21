@@ -14,7 +14,8 @@
   "rewards": {
     "recipes": [
       "from-stone-to-stars:pebble/pebble_to_cobble",
-      "from-stone-to-stars:hammerstone"
+      "from-stone-to-stars:hammerstone",
+      "from-stone-to-stars:mortar_and_pestle"
     ]
   }
 }

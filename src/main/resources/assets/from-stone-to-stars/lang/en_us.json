@@ -89,5 +89,5 @@
 	"jei.from-stone-to-stars.info.basic_smelter": "A slow clay blast furnace. Smelts blasting recipes (ores) at half speed. Craft from fired clay bricks and a charcoal block.",
 	"jei.from-stone-to-stars.info.mortar_and_pestle": "Place an input, then right-click with an empty hand to grind. Four clicks convert one item. Recipes are datapack grinding recipes, so other grinders can share them. Sneak to take everything out.",
 	"jei.from-stone-to-stars.info.flour": "Grind wheat in a mortar and pestle. Mix with water from a leather skin to make dough.",
-	"jei.from-stone-to-stars.info.snare": "Place bait, then leave. Plant bait (seeds, wheat, fibre) catches small game. Meat bait catches larger game. Up to 16 bait. Empty-hand takes catch; sneak takes catch and leftover bait. Works while you are away — nearby players scare game off."
+	"jei.from-stone-to-stars.info.snare": "Place bait, then leave. Plant bait (seeds, wheat, fibre) catches small game. Meat bait catches larger game. Up to 16 bait. Empty-hand takes catch; sneak takes catch and leftover bait. Works while you are away — nearby players scare game off(24 Blocks)."
 }
