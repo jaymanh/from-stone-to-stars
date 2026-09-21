@@ -47,6 +47,12 @@ public final class ModBlockEntities {
 			ModBlocks.SNARE
 	);
 
+	public static final BlockEntityType<FishTrapEntity> FISH_TRAP = register(
+			"fish_trap",
+			FishTrapEntity::new,
+			ModBlocks.FISH_TRAP
+	);
+
 	private ModBlockEntities() {
 	}
 

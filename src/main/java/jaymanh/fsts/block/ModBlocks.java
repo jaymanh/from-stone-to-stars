@@ -85,6 +85,11 @@ public final class ModBlocks {
 			SnareBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY).ignitedByLava()
 	);
+	public static final Block FISH_TRAP = register(
+			ModBlockItemIds.FISH_TRAP,
+			FishTrapBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5f).noOcclusion().pushReaction(PushReaction.DESTROY)
+	);
 
 	private ModBlocks() {
 	}
