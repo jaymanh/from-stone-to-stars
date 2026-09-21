@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "from-stone-to-stars:plant_fiber",
-    "from-stone-to-stars:plant_fiber",
-    "from-stone-to-stars:plant_fiber"
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:string"
   ],
   "result": {
     "id": "from-stone-to-stars:rope",

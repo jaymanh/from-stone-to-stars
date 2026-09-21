@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "from-stone-to-stars:plant_fiber",
+    "from-stone-to-stars:plant_fiber",
+    "from-stone-to-stars:plant_fiber"
+  ],
+  "result": {
+    "id": "minecraft:string",
+    "count": 1
+  }
+}
