@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " R ",
+    "SSS",
+    " R "
+  ],
+  "key": {
+    "R": "from-stone-to-stars:rope",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "from-stone-to-stars:fish_trap",
+    "count": 1
+  }
+}

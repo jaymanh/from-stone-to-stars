@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "baited=false,waterlogged=false": { "model": "from-stone-to-stars:block/fish_trap" },
+    "baited=true,waterlogged=false": { "model": "from-stone-to-stars:block/fish_trap_baited" },
+    "baited=false,waterlogged=true": { "model": "from-stone-to-stars:block/fish_trap" },
+    "baited=true,waterlogged=true": { "model": "from-stone-to-stars:block/fish_trap_baited" }
+  }
+}

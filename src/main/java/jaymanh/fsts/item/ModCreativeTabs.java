@@ -45,6 +45,7 @@ public final class ModCreativeTabs {
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 				output.accept(ModBlocks.SNARE);
+				output.accept(ModBlocks.FISH_TRAP);
 
 				output.accept(ModTools.FLINT_KNIFE);
 				output.accept(ModTools.FLINT_AXE);

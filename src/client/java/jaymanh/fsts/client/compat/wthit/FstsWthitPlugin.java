@@ -4,6 +4,7 @@ import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.FishTrapBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
@@ -44,6 +45,7 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addBlockData(WthitBoneSawProvider.INSTANCE, PlacedBoneSawBlockEntity.class);
 
 		registrar.addComponent(WthitSnareProvider.INSTANCE, TooltipPosition.BODY, SnareBlock.class);
+		registrar.addComponent(WthitSnareProvider.INSTANCE, TooltipPosition.BODY, FishTrapBlock.class);
 		registrar.addBlockData(WthitSnareProvider.INSTANCE, SnareBlockEntity.class);
 	}
 }

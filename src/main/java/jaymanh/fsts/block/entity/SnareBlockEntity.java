@@ -23,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -51,10 +52,14 @@ public class SnareBlockEntity extends BlockEntity implements WorldlyContainer {
 	private int catchTicks;
 
 	public SnareBlockEntity(BlockPos pos, BlockState state) {
-		super(ModBlockEntities.SNARE, pos, state);
+		this(ModBlockEntities.SNARE, pos, state);
 	}
 
-	public static boolean isBait(ItemStack stack) {
+	protected SnareBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+		super(type, pos, state);
+	}
+
+	public boolean isBait(ItemStack stack) {
 		return isMeatBait(stack) || isPlantBait(stack);
 	}
 
@@ -160,7 +165,7 @@ public class SnareBlockEntity extends BlockEntity implements WorldlyContainer {
 			return;
 		}
 
-		if (this.isPlayerNearby(level)) {
+		if (!this.canCatch(level) || this.isPlayerNearby(level)) {
 			return;
 		}
 
@@ -179,11 +184,21 @@ public class SnareBlockEntity extends BlockEntity implements WorldlyContainer {
 		return !level.getEntitiesOfClass(Player.class, area, player -> !player.isSpectator()).isEmpty();
 	}
 
+	protected boolean canCatch(ServerLevel level) {
+		return true;
+	}
+
+	protected ResourceKey<LootTable> getCatchLootTable(ItemStack bait) {
+		return isMeatBait(bait) ? ModTags.SNARE_MEAT_LOOT : ModTags.SNARE_PLANT_LOOT;
+	}
+
+	protected void playCatchSound(ServerLevel level) {
+		level.playSound(null, this.worldPosition, SoundEvents.RABBIT_HURT, SoundSource.BLOCKS, 0.35F, 1.2F);
+	}
+
 	private void tryCatch(ServerLevel level) {
 		ItemStack bait = this.items.get(BAIT_SLOT);
-		ResourceKey<LootTable> tableKey = isMeatBait(bait)
-				? ModTags.SNARE_MEAT_LOOT
-				: ModTags.SNARE_PLANT_LOOT;
+		ResourceKey<LootTable> tableKey = this.getCatchLootTable(bait);
 
 		LootParams params = new LootParams.Builder(level)
 				.withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(this.worldPosition))
@@ -203,7 +218,7 @@ public class SnareBlockEntity extends BlockEntity implements WorldlyContainer {
 			this.insertInto(this.items, drop.copy());
 		}
 
-		level.playSound(null, this.worldPosition, SoundEvents.RABBIT_HURT, SoundSource.BLOCKS, 0.35F, 1.2F);
+		this.playCatchSound(level);
 		this.syncState();
 	}
 

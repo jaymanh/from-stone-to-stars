@@ -22,9 +22,10 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.STICKS)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockItemIds.KINDLING)
-                .add(ModBlockItemIds.SNARE);
+				.add(ModBlockItemIds.SNARE)
+				.add(ModBlockItemIds.FISH_TRAP);
 
-        builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
+		builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
@@ -47,9 +48,10 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.KINDLING)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockIds.PLACED_BONE_SAW)
-                .add(ModBlockItemIds.SNARE);
+				.add(ModBlockItemIds.SNARE)
+				.add(ModBlockItemIds.FISH_TRAP);
 
-        builder(BlockTags.MINEABLE_WITH_PICKAXE)
+		builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)
                 .add(ModBlockItemIds.BASIC_SMELTER);
 

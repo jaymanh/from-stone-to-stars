@@ -33,6 +33,9 @@ public class ModTags {
     public static final ResourceKey<LootTable> SNARE_MEAT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_meat"));
     public static final ResourceKey<LootTable> SNARE_PLANT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_plant"));
 
+    public static final TagKey<Item> FISHING_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "fishing_bait"));
+    public static final ResourceKey<LootTable> FISH_TRAP_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/fish_trap"));
+
     public static void initialize() {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_CHARCOAL_FLAMMABLE, 5, 5);
