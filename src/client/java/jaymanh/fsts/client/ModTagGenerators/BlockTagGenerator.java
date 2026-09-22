@@ -2,7 +2,6 @@ package jaymanh.fsts.client.ModTagGenerators;
 
 import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
-import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -30,7 +29,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.LOGS)
-                .addOptionalTag(BlockTags.COPPER_ORES);
+                .addOptionalTag(BlockTags.COPPER_ORES)
+                .add(ModBlockItemIds.TIN_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE);
 
         builder(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.IRON_ORES);
@@ -53,7 +54,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
 		builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)
-                .add(ModBlockItemIds.BASIC_SMELTER);
+                .add(ModBlockItemIds.BASIC_SMELTER)
+                .add(ModBlockItemIds.TIN_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE);
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);

@@ -6,6 +6,8 @@
 	"block.from-stone-to-stars.tanning_rack": "Tanning Rack",
 	"block.from-stone-to-stars.kindling": "Kindling",
 	"block.from-stone-to-stars.charcoal_block": "Charcoal Block",
+	"block.from-stone-to-stars.tin_ore": "Tin Ore",
+	"block.from-stone-to-stars.deepslate_tin_ore": "Deepslate Tin Ore",
 	"block.from-stone-to-stars.placed_bone_saw": "Placed Bone Saw",
 	"block.from-stone-to-stars.clay_bricks": "Clay Bricks",
 	"block.from-stone-to-stars.fired_clay_bricks": "Fired Clay Bricks",
@@ -16,6 +18,7 @@
 	"container.from-stone-to-stars.basic_smelter": "Basic Smelter",
 
 	"item.from-stone-to-stars.plant_fiber": "Plant Fiber",
+	"item.from-stone-to-stars.raw_tin": "Raw Tin",
 	"item.from-stone-to-stars.raw_leather": "Raw Leather",
 	"item.from-stone-to-stars.leather_strips": "Leather Strips",
 	"item.from-stone-to-stars.leather_skin": "Leather Skin",

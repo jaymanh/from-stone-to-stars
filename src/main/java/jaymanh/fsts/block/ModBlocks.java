@@ -90,6 +90,16 @@ public final class ModBlocks {
 			FishTrapBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(0.5f).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
+	public static final Block TIN_ORE = register(
+			ModBlockItemIds.TIN_ORE,
+			Block::new,
+			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3.0F, 3.0F).requiresCorrectToolForDrops()
+	);
+	public static final Block DEEPSLATE_TIN_ORE = register(
+			ModBlockItemIds.DEEPSLATE_TIN_ORE,
+			Block::new,
+			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(4.5F, 3.0F).requiresCorrectToolForDrops()
+	);
 
 	private ModBlocks() {
 	}

@@ -18,6 +18,8 @@ public final class ModBlockItemIds {
 	public static final BlockItemId MORTAR_AND_PESTLE = create("mortar_and_pestle");
 	public static final BlockItemId SNARE = create("snare");
 	public static final	BlockItemId FISH_TRAP = create("fish_trap");
+	public static final BlockItemId TIN_ORE = create("tin_ore");
+	public static final BlockItemId DEEPSLATE_TIN_ORE = create("deepslate_tin_ore");
 
 	private ModBlockItemIds() {
 	}

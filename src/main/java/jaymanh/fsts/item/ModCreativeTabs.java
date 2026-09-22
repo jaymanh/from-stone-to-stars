@@ -40,6 +40,10 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.FIRED_CLAY_BRICKS);
 				output.accept(ModBlocks.ROPE);
 
+				output.accept(ModBlocks.TIN_ORE);
+				output.accept(ModBlocks.DEEPSLATE_TIN_ORE);
+				output.accept(ModItems.RAW_TIN);
+
 				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModBlocks.BASIC_SMELTER);
 				output.accept(ModTools.HAMMERSTONE);

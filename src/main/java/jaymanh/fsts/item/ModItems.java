@@ -15,6 +15,7 @@ public final class ModItems {
 	public static final Item SHARPENED_BONE = register(ModItemIds.SHARPENED_BONE, Item::new, new Item.Properties());
 	public static final Item FLOUR = register(ModItemIds.FLOUR, Item::new, new Item.Properties());
 	public static final Item DOUGH = register(ModItemIds.DOUGH, Item::new, new Item.Properties());
+	public static final Item RAW_TIN = register(ModItemIds.RAW_TIN, Item::new, new Item.Properties());
 
 	private ModItems() {
 	}

@@ -24,6 +24,10 @@ public final class ModWorldgen {
 			Registries.PLACED_FEATURE,
 			FromStoneToStars.id("sticks_gen")
 	);
+	public static final ResourceKey<PlacedFeature> TIN_GEN = ResourceKey.create(
+			Registries.PLACED_FEATURE,
+			FromStoneToStars.id("tin_gen")
+	);
 
 	private ModWorldgen() {
 	}
@@ -47,6 +51,12 @@ public final class ModWorldgen {
 				BiomeSelectors.foundInOverworld(),
 				GenerationStep.Decoration.VEGETAL_DECORATION,
 				STICKS_GEN
+		);
+
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				TIN_GEN
 		);
 	}
 }
