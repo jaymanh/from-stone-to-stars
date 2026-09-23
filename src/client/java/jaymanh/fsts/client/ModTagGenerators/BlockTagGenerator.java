@@ -30,10 +30,12 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
-                .addOptionalTag(BlockTags.LOGS)
                 .addOptionalTag(BlockTags.COPPER_ORES)
                 .add(ModBlockItemIds.TIN_ORE)
                 .add(ModBlockItemIds.DEEPSLATE_TIN_ORE);
+
+		builder(ModTags.FSTS_NEEDS_FLINT_TOOL)
+				.addOptionalTag(BlockTags.LOGS);
 
         builder(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.IRON_ORES);

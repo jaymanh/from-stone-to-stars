@@ -1,12 +1,10 @@
 {
   "values": [
     {
-      "id": "#minecraft:logs",
-      "required": false
-    },
-    {
       "id": "#minecraft:copper_ores",
       "required": false
-    }
+    },
+    "from-stone-to-stars:tin_ore",
+    "from-stone-to-stars:deepslate_tin_ore"
   ]
 }

@@ -14,7 +14,10 @@
   "rewards": {
     "recipes": [
       "from-stone-to-stars:bow_and_drill",
-      "from-stone-to-stars:snare"
+      "from-stone-to-stars:snare",
+      "from-stone-to-stars:fish_trap",
+      "from-stone-to-stars:sticks_pile",
+      "from-stone-to-stars:wattle_and_daub"
     ]
   }
 }

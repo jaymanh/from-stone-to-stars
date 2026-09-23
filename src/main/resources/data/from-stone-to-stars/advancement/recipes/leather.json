@@ -13,7 +13,9 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:leather_skin"
+      "from-stone-to-stars:leather_skin",
+      "from-stone-to-stars:leather_strips",
+      "from-stone-to-stars:hide_bed"
     ]
   }
 }

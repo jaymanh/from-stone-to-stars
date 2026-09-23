@@ -14,7 +14,8 @@
   "rewards": {
     "recipes": [
       "from-stone-to-stars:bread",
-      "from-stone-to-stars:dough"
+      "from-stone-to-stars:dough",
+      "from-stone-to-stars:hide_bed"
     ]
   }
 }

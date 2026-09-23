@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import jaymanh.fsts.tags.ModTags;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -17,8 +18,9 @@ public abstract class BlockStateBaseMixin {
 	public abstract Block getBlock();
 
 	@Inject(method = "requiresCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
-	private void fsts$needsBoneTool(CallbackInfoReturnable<Boolean> cir) {
-		if (this.getBlock().builtInRegistryHolder().is(ModTags.FSTS_NEEDS_BONE_TOOL)) {
+	private void fsts$needsModTool(CallbackInfoReturnable<Boolean> cir) {
+		Holder.Reference<Block> holder = this.getBlock().builtInRegistryHolder();
+		if (holder.is(ModTags.FSTS_NEEDS_BONE_TOOL) || holder.is(ModTags.FSTS_NEEDS_FLINT_TOOL)) {
 			cir.setReturnValue(true);
 		}
 	}

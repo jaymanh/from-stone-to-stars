@@ -13,7 +13,8 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:clay_bricks"
+      "from-stone-to-stars:clay_bricks",
+      "from-stone-to-stars:wattle_and_daub"
     ]
   }
 }
