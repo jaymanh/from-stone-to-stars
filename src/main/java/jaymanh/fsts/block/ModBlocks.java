@@ -7,11 +7,14 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BedItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
@@ -100,6 +103,18 @@ public final class ModBlocks {
 			Block::new,
 			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(4.5F, 3.0F).requiresCorrectToolForDrops()
 	);
+	public static final Block HIDE_BED = registerBed(
+			ModBlockItemIds.HIDE_BED,
+			HideBedBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(state -> state.getValue(BedBlock.PART) == BedPart.FOOT ? MapColor.COLOR_BROWN : MapColor.WOOL)
+					.sound(SoundType.WOOD)
+					.strength(0.2F)
+					.bounceRestitution(0.75F)
+					.noOcclusion()
+					.ignitedByLava()
+					.pushReaction(PushReaction.DESTROY)
+	);
 
 	private ModBlocks() {
 	}
@@ -113,6 +128,13 @@ public final class ModBlocks {
 		Block block = register(id.block(), blockFactory, properties);
 		BlockItem blockItem = new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix().setId(id.item()));
 		Registry.register(BuiltInRegistries.ITEM, id.item(), blockItem);
+		return block;
+	}
+
+	public static Block registerBed(BlockItemId id, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties) {
+		Block block = register(id.block(), blockFactory, properties);
+		BedItem bedItem = new BedItem(block, new Item.Properties().useBlockDescriptionPrefix().setId(id.item()));
+		Registry.register(BuiltInRegistries.ITEM, id.item(), bedItem);
 		return block;
 	}
 

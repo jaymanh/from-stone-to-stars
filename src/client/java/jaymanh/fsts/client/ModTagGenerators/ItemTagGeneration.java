@@ -1,7 +1,9 @@
 package jaymanh.fsts.client.ModTagGenerators;
 
+import jaymanh.fsts.block.ModBlockItemIds;
 import jaymanh.fsts.item.ModItemIds;
 import jaymanh.fsts.tags.ModTags;
+import jaymanh.fsts.tools.ToolKeys;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
@@ -42,6 +44,15 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 
 		builder(ItemTags.HOES)
 				.add(ModItemIds.BONE_HOE);
+
+		builder(ItemTags.BEDS)
+				.add(ModBlockItemIds.HIDE_BED.item());
+
+		builder(ToolKeys.ItemKey.FLINT_REPAIR_ITEMS)
+				.add(minecraftItem("flint"));
+
+		builder(ToolKeys.ItemKey.BONE_REPAIR_ITEMS)
+				.add(ModItemIds.SHARPENED_BONE);
 
 		builder(C_LEATHERS)
 				.add(ModItemIds.RAW_LEATHER);

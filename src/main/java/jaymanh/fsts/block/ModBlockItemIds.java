@@ -20,6 +20,7 @@ public final class ModBlockItemIds {
 	public static final	BlockItemId FISH_TRAP = create("fish_trap");
 	public static final BlockItemId TIN_ORE = create("tin_ore");
 	public static final BlockItemId DEEPSLATE_TIN_ORE = create("deepslate_tin_ore");
+	public static final BlockItemId HIDE_BED = create("hide_bed");
 
 	private ModBlockItemIds() {
 	}

@@ -50,6 +50,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 				output.accept(ModBlocks.SNARE);
 				output.accept(ModBlocks.FISH_TRAP);
+				output.accept(ModBlocks.HIDE_BED);
 
 				output.accept(ModTools.FLINT_KNIFE);
 				output.accept(ModTools.FLINT_AXE);

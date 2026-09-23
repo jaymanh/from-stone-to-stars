@@ -15,6 +15,7 @@
 	"block.from-stone-to-stars.mortar_and_pestle": "Mortar and Pestle",
 	"block.from-stone-to-stars.snare": "Snare",
 	"block.from-stone-to-stars.fish_trap": "Fish Trap",
+	"block.from-stone-to-stars.hide_bed": "Hide Bed",
 	"container.from-stone-to-stars.basic_smelter": "Basic Smelter",
 
 	"item.from-stone-to-stars.plant_fiber": "Plant Fiber",
@@ -94,5 +95,6 @@
 	"jei.from-stone-to-stars.info.mortar_and_pestle": "Place an input, then right-click with an empty hand to grind. Four clicks convert one item. Recipes are datapack grinding recipes, so other grinders can share them. Sneak to take everything out.",
 	"jei.from-stone-to-stars.info.flour": "Grind wheat in a mortar and pestle. Mix with water from a leather skin to make dough.",
 	"jei.from-stone-to-stars.info.snare": "Place bait, then leave. Plant bait (seeds, wheat, fibre) catches small game. Meat bait catches larger game. Up to 16 bait. Empty-hand takes catch; sneak takes catch and leftover bait. Works while you are away — nearby players scare game off(24 Blocks).",
-	"jei.from-stone-to-stars.info.fish_trap": "Place in water with fishing bait, then leave. Catches fish over time. Up to 16 bait. Empty-hand takes catch; sneak takes catch and leftover bait. Nearby players scare fish off (24 blocks)."
+	"jei.from-stone-to-stars.info.fish_trap": "Place in water with fishing bait, then leave. Catches fish over time. Up to 16 bait. Empty-hand takes catch; sneak takes catch and leftover bait. Nearby players scare fish off (24 blocks).",
+	"jei.from-stone-to-stars.info.hide_bed": "Age 0 bed. Craft from three leather and three wheat. Sleeps and sets spawn like a vanilla bed. Wool beds are gated."
 }

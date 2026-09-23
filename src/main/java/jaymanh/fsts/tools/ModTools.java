@@ -69,7 +69,7 @@ public class ModTools {
     public static final SawToolItem BONE_SAW = register(
             ModItemIds.BONE_SAW,
             SawToolItem::new,
-            new Item.Properties().axe(ToolMaterials.BONEMATERIAL.getMaterial(), 0.0F, -2.0F)
+            new Item.Properties()
     );
 
     public static void initialize(){

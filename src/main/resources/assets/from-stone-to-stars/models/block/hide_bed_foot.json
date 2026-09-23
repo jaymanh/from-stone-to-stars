@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_bed_foot",
+  "textures": {
+    "east": "from-stone-to-stars:block/hide_bed_foot_east",
+    "south": "from-stone-to-stars:block/hide_bed_foot_south",
+    "up": "from-stone-to-stars:block/hide_bed_foot_up",
+    "west": "from-stone-to-stars:block/hide_bed_foot_west"
+  }
+}

@@ -142,6 +142,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.FLOUR, Component.translatable("jei.from-stone-to-stars.info.flour"));
 		registration.addIngredientInfo(ModBlocks.SNARE, Component.translatable("jei.from-stone-to-stars.info.snare"));
 		registration.addIngredientInfo(ModBlocks.FISH_TRAP, Component.translatable("jei.from-stone-to-stars.info.fish_trap"));
+		registration.addIngredientInfo(ModBlocks.HIDE_BED, Component.translatable("jei.from-stone-to-stars.info.hide_bed"));
 	}
 
 	@Override

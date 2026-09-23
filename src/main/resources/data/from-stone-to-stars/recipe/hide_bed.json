@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "LLL",
+    "WWW"
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "W": "minecraft:wheat"
+  },
+  "result": {
+    "id": "from-stone-to-stars:hide_bed",
+    "count": 1
+  }
+}

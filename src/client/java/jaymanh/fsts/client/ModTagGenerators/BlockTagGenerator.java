@@ -17,12 +17,13 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        builder(ModTags.FSTS_WOOD_FLAMMABLE)
+		builder(ModTags.FSTS_WOOD_FLAMMABLE)
                 .add(ModBlockItemIds.STICKS)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockItemIds.KINDLING)
 				.add(ModBlockItemIds.SNARE)
-				.add(ModBlockItemIds.FISH_TRAP);
+				.add(ModBlockItemIds.FISH_TRAP)
+				.add(ModBlockItemIds.HIDE_BED);
 
 		builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
@@ -50,7 +51,11 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockIds.PLACED_BONE_SAW)
 				.add(ModBlockItemIds.SNARE)
-				.add(ModBlockItemIds.FISH_TRAP);
+				.add(ModBlockItemIds.FISH_TRAP)
+				.add(ModBlockItemIds.HIDE_BED);
+
+		builder(BlockTags.BEDS)
+				.add(ModBlockItemIds.HIDE_BED);
 
 		builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)
