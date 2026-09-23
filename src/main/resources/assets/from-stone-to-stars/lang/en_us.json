@@ -16,6 +16,7 @@
 	"block.from-stone-to-stars.snare": "Snare",
 	"block.from-stone-to-stars.fish_trap": "Fish Trap",
 	"block.from-stone-to-stars.hide_bed": "Hide Bed",
+	"block.from-stone-to-stars.bed.rained_on": "You need a roof to sleep",
 	"block.from-stone-to-stars.thatch": "Thatch",
 	"block.from-stone-to-stars.wattle_and_daub": "Wattle and Daub",
 	"container.from-stone-to-stars.basic_smelter": "Basic Smelter",

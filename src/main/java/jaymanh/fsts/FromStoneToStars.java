@@ -11,6 +11,7 @@ import jaymanh.fsts.tags.ModTags;
 import jaymanh.fsts.item.UseInteractions;
 import jaymanh.fsts.multiblock.ModMultiblocks;
 import jaymanh.fsts.recipe.ModRecipes;
+import jaymanh.fsts.shelter.BedRainSleep;
 import jaymanh.fsts.tools.ModTools;
 import jaymanh.fsts.worldgen.ModWorldgen;
 
@@ -41,6 +42,7 @@ public class FromStoneToStars implements ModInitializer {
 		ModRecipes.initialize();
 		ModMultiblocks.initialize();
 		UseInteractions.initialise();
+		BedRainSleep.initialize();
 	}
 
 	public static Identifier id(String path) {
