@@ -119,10 +119,16 @@ public final class FstsJeiPlugin implements IModPlugin {
 						SimpleProcessRecipe.item(ModItems.BARK)
 				),
 				new WorldInteractionRecipe(
-						FromStoneToStars.id("world/crafting_table"),
-						SimpleProcessRecipe.item(Items.LEATHER),
+						FromStoneToStars.id("world/unfinished_work_stump"),
+						SimpleProcessRecipe.tag(ItemTags.AXES),
 						SimpleProcessRecipe.tag(ItemTags.LOGS),
-						SimpleProcessRecipe.item(Items.CRAFTING_TABLE)
+						SimpleProcessRecipe.item(ModBlocks.UNFINISHED_WORK_STUMP)
+				),
+				new WorldInteractionRecipe(
+						FromStoneToStars.id("world/work_stump"),
+						SimpleProcessRecipe.item(ModItems.LEATHER_STRIPS),
+						SimpleProcessRecipe.item(ModBlocks.UNFINISHED_WORK_STUMP),
+						SimpleProcessRecipe.item(ModBlocks.WORK_STUMP)
 				)
 		));
 
@@ -143,6 +149,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.SNARE, Component.translatable("jei.from-stone-to-stars.info.snare"));
 		registration.addIngredientInfo(ModBlocks.FISH_TRAP, Component.translatable("jei.from-stone-to-stars.info.fish_trap"));
 		registration.addIngredientInfo(ModBlocks.HIDE_BED, Component.translatable("jei.from-stone-to-stars.info.hide_bed"));
+		registration.addIngredientInfo(ModBlocks.UNFINISHED_WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.unfinished_work_stump"));
+		registration.addIngredientInfo(ModBlocks.WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.work_stump"));
 	}
 
 	@Override

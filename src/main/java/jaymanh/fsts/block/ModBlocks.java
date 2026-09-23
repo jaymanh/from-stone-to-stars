@@ -132,6 +132,26 @@ public final class ModBlocks {
 					.sound(SoundType.GRAVEL)
 					.strength(1.0F)
 	);
+	public static final Block WORK_STUMP = register(
+			ModBlockItemIds.WORK_STUMP,
+			WorkStumpBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.0F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
+	public static final Block UNFINISHED_WORK_STUMP = register(
+			ModBlockItemIds.UNFINISHED_WORK_STUMP,
+			UnfinishedWorkStumpBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.0F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

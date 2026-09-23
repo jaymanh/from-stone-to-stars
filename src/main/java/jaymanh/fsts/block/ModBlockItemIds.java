@@ -23,6 +23,8 @@ public final class ModBlockItemIds {
 	public static final BlockItemId HIDE_BED = create("hide_bed");
 	public static final BlockItemId THATCH = create("thatch");
 	public static final BlockItemId WATTLE_AND_DAUB = create("wattle_and_daub");
+	public static final BlockItemId WORK_STUMP = create("work_stump");
+	public static final BlockItemId UNFINISHED_WORK_STUMP = create("unfinished_work_stump");
 
 	private ModBlockItemIds() {
 	}

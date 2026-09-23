@@ -10,6 +10,7 @@
     "LootItemMixin",
     "RecipeManagerMixin",
     "RepairItemRecipeMixin",
+    "ResultSlotMixin",
     "ShapelessRecipeMixin"
   ],
   "injectors": {

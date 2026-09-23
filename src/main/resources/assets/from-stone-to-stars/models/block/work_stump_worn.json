@@ -1,0 +1,9 @@
+{
+  "parent": "from-stone-to-stars:block/work_stump",
+  "textures": {
+    "particle": "from-stone-to-stars:block/work_stump_side_worn",
+    "side": "from-stone-to-stars:block/work_stump_side_worn",
+    "top": "from-stone-to-stars:block/work_stump_top_worn",
+    "bottom": "from-stone-to-stars:block/work_stump_top_worn"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "damage=0": { "model": "from-stone-to-stars:block/work_stump" },
+    "damage=1": { "model": "from-stone-to-stars:block/work_stump_worn" },
+    "damage=2": { "model": "from-stone-to-stars:block/work_stump_cracked" }
+  }
+}

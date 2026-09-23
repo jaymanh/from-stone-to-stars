@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "from-stone-to-stars:block/unfinished_work_stump_side",
+    "side": "from-stone-to-stars:block/unfinished_work_stump_side",
+    "top": "from-stone-to-stars:block/work_stump_top",
+    "bottom": "from-stone-to-stars:block/work_stump_top",
+    "bind": "from-stone-to-stars:block/work_stump_bind"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 10, 15],
+      "faces": {
+        "north": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "east": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "south": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "west": { "uv": [1, 6, 15, 16], "texture": "#side" },
+        "up": { "uv": [1, 1, 15, 15], "texture": "#top" },
+        "down": { "uv": [1, 1, 15, 15], "texture": "#bottom", "cullface": "down" }
+      }
+    },
+    {
+      "from": [0.9, 8, 0.9],
+      "to": [15.1, 10.5, 15.1],
+      "faces": {
+        "north": { "uv": [0, 12, 16, 16], "texture": "#bind" },
+        "east": { "uv": [0, 12, 16, 16], "texture": "#bind" },
+        "south": { "uv": [0, 12, 16, 16], "texture": "#bind" },
+        "west": { "uv": [0, 12, 16, 16], "texture": "#bind" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#bind" },
+        "down": { "uv": [0, 0, 16, 16], "texture": "#bind" }
+      }
+    }
+  ]
+}

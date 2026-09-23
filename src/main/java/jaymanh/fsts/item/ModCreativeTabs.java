@@ -47,6 +47,8 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.RAW_TIN);
 
 				output.accept(ModBlocks.TANNING_RACK);
+				output.accept(ModBlocks.UNFINISHED_WORK_STUMP);
+				output.accept(ModBlocks.WORK_STUMP);
 				output.accept(ModBlocks.BASIC_SMELTER);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);

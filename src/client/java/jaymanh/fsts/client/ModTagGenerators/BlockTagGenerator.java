@@ -24,7 +24,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.SNARE)
 				.add(ModBlockItemIds.FISH_TRAP)
 				.add(ModBlockItemIds.HIDE_BED)
-				.add(ModBlockItemIds.THATCH);
+				.add(ModBlockItemIds.THATCH)
+				.add(ModBlockItemIds.WORK_STUMP)
+				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP);
 
 		builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
@@ -57,7 +59,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.FISH_TRAP)
 				.add(ModBlockItemIds.HIDE_BED)
 				.add(ModBlockItemIds.THATCH)
-				.add(ModBlockItemIds.WATTLE_AND_DAUB);
+				.add(ModBlockItemIds.WATTLE_AND_DAUB)
+				.add(ModBlockItemIds.WORK_STUMP)
+				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);
