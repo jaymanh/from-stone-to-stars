@@ -66,7 +66,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)
                 .add(ModBlockItemIds.BASIC_SMELTER)
                 .add(ModBlockItemIds.TIN_ORE)
-                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE);
+                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE)
+				.add(ModBlockItemIds.MORTAR_AND_PESTLE);
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);
