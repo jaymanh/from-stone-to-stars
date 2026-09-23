@@ -21,6 +21,8 @@ public final class ModBlockItemIds {
 	public static final BlockItemId TIN_ORE = create("tin_ore");
 	public static final BlockItemId DEEPSLATE_TIN_ORE = create("deepslate_tin_ore");
 	public static final BlockItemId HIDE_BED = create("hide_bed");
+	public static final BlockItemId THATCH = create("thatch");
+	public static final BlockItemId WATTLE_AND_DAUB = create("wattle_and_daub");
 
 	private ModBlockItemIds() {
 	}

@@ -115,6 +115,23 @@ public final class ModBlocks {
 					.ignitedByLava()
 					.pushReaction(PushReaction.DESTROY)
 	);
+	public static final Block THATCH = register(
+			ModBlockItemIds.THATCH,
+			Block::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.COLOR_YELLOW)
+					.sound(SoundType.GRASS)
+					.strength(0.5F)
+					.ignitedByLava()
+	);
+	public static final Block WATTLE_AND_DAUB = register(
+			ModBlockItemIds.WATTLE_AND_DAUB,
+			Block::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+					.sound(SoundType.GRAVEL)
+					.strength(1.0F)
+	);
 
 	private ModBlocks() {
 	}

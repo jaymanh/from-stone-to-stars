@@ -39,6 +39,8 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.CLAY_BRICKS);
 				output.accept(ModBlocks.FIRED_CLAY_BRICKS);
 				output.accept(ModBlocks.ROPE);
+				output.accept(ModBlocks.THATCH);
+				output.accept(ModBlocks.WATTLE_AND_DAUB);
 
 				output.accept(ModBlocks.TIN_ORE);
 				output.accept(ModBlocks.DEEPSLATE_TIN_ORE);

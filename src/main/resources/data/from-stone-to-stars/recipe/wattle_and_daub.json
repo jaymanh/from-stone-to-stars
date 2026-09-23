@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SS",
+    "SC"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "C": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "from-stone-to-stars:wattle_and_daub",
+    "count": 4
+  }
+}

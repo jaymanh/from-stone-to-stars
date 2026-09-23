@@ -23,7 +23,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.KINDLING)
 				.add(ModBlockItemIds.SNARE)
 				.add(ModBlockItemIds.FISH_TRAP)
-				.add(ModBlockItemIds.HIDE_BED);
+				.add(ModBlockItemIds.HIDE_BED)
+				.add(ModBlockItemIds.THATCH);
 
 		builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
@@ -52,7 +53,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockIds.PLACED_BONE_SAW)
 				.add(ModBlockItemIds.SNARE)
 				.add(ModBlockItemIds.FISH_TRAP)
-				.add(ModBlockItemIds.HIDE_BED);
+				.add(ModBlockItemIds.HIDE_BED)
+				.add(ModBlockItemIds.THATCH)
+				.add(ModBlockItemIds.WATTLE_AND_DAUB);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);
