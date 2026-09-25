@@ -1,7 +1,7 @@
 // 26.2	-999999999-01-01T00:00:00	From Stone to Stars/Tags for minecraft:item
 72a74154226a0f73a9d6ed001adefd39e10336ad data/c/tags/item/leathers.json
 1e728b9f26d70051e5af015b1fd01b812fd5dc10 data/from-stone-to-stars/tags/item/bone_repair_item.json
-3eff058dd3c5ee33499252059191317dfe6ec6ff data/from-stone-to-stars/tags/item/brass_repair_item.json
+3eff058dd3c5ee33499252059191317dfe6ec6ff data/from-stone-to-stars/tags/item/bronze_repair_item.json
 6c1208c4f482c7b9560dda2452b7cb7ac5a8acbb data/from-stone-to-stars/tags/item/fishing_bait.json
 4333e5b0d3c082c5e91baec1955d1a9d418dc318 data/from-stone-to-stars/tags/item/flint_repair_item.json
 98433258078145b7a809907fa1fdd8a1acbea37a data/from-stone-to-stars/tags/item/snare_meat_bait.json

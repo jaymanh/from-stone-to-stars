@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "pebble": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:pebble"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:pebble"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.root.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.root.description"
+    },
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "announce_to_chat": false,
+    "show_toast": false
+  },
+  "requirements": [
+    [
+      "pebble"
+    ]
+  ]
+}

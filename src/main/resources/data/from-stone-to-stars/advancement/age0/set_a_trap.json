@@ -1,0 +1,42 @@
+{
+  "parent": "from-stone-to-stars:age0/tanned",
+  "criteria": {
+    "snare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:snare"
+          }
+        ]
+      }
+    },
+    "fish_trap": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:fish_trap"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:snare"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.set_a_trap.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.set_a_trap.description"
+    }
+  },
+  "requirements": [
+    [
+      "snare",
+      "fish_trap"
+    ]
+  ]
+}

@@ -78,35 +78,35 @@ public class ModTools {
             new Item.Properties()
     );
 
-    public static final Item BRASS_SWORD = register(
-            ModItemIds.BRASS_SWORD,
+    public static final Item BRONZE_SWORD = register(
+            ModItemIds.BRONZE_SWORD,
             Item::new,
-            new Item.Properties().sword(ToolMaterials.BRASSMATERIAL.getMaterial(), 3.0F, -2.4F)
+            new Item.Properties().sword(ToolMaterials.BRONZEMATERIAL.getMaterial(), 3.0F, -2.4F)
     );
-    public static final Item BRASS_PICKAXE = register(
-            ModItemIds.BRASS_PICKAXE,
+    public static final Item BRONZE_PICKAXE = register(
+            ModItemIds.BRONZE_PICKAXE,
             Item::new,
-            new Item.Properties().pickaxe(ToolMaterials.BRASSMATERIAL.getMaterial(), 1.0F, -2.8F)
+            new Item.Properties().pickaxe(ToolMaterials.BRONZEMATERIAL.getMaterial(), 1.0F, -2.8F)
     );
-    public static final Item BRASS_AXE = register(
-            ModItemIds.BRASS_AXE,
-            settings -> new AxeItem(ToolMaterials.BRASSMATERIAL.getMaterial(),6.0F, -3.2F, settings),
+    public static final Item BRONZE_AXE = register(
+            ModItemIds.BRONZE_AXE,
+            settings -> new AxeItem(ToolMaterials.BRONZEMATERIAL.getMaterial(),6.0F, -3.2F, settings),
             new Item.Properties()
     );
-    public static final Item BRASS_SHOVEL = register(
-            ModItemIds.BRASS_SHOVEL,
-            settings -> new ShovelItem(ToolMaterials.BRASSMATERIAL.getMaterial(),1.5F, -3.0F, settings),
+    public static final Item BRONZE_SHOVEL = register(
+            ModItemIds.BRONZE_SHOVEL,
+            settings -> new ShovelItem(ToolMaterials.BRONZEMATERIAL.getMaterial(),1.5F, -3.0F, settings),
             new Item.Properties()
     );
-    public static final Item BRASS_HOE = register(
-            ModItemIds.BRASS_HOE,
-            settings -> new HoeItem(ToolMaterials.BRASSMATERIAL.getMaterial(),0.0F, -3.0F, settings),
+    public static final Item BRONZE_HOE = register(
+            ModItemIds.BRONZE_HOE,
+            settings -> new HoeItem(ToolMaterials.BRONZEMATERIAL.getMaterial(),0.0F, -3.0F, settings),
             new Item.Properties()
     );
-    public static final Item BRASS_SPEAR = register(
-            ModItemIds.BRASS_SPEAR,
+    public static final Item BRONZE_SPEAR = register(
+            ModItemIds.BRONZE_SPEAR,
             Item::new,
-            new Item.Properties().spear(ToolMaterials.BRASSMATERIAL.getMaterial(), 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)
+            new Item.Properties().spear(ToolMaterials.BRONZEMATERIAL.getMaterial(), 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)
     );
 
 

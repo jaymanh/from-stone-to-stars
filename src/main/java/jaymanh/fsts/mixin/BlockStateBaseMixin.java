@@ -20,7 +20,7 @@ public abstract class BlockStateBaseMixin {
 	@Inject(method = "requiresCorrectToolForDrops", at = @At("HEAD"), cancellable = true)
 	private void fsts$needsModTool(CallbackInfoReturnable<Boolean> cir) {
 		Holder.Reference<Block> holder = this.getBlock().builtInRegistryHolder();
-		if (holder.is(ModTags.FSTS_NEEDS_BONE_TOOL) || holder.is(ModTags.FSTS_NEEDS_FLINT_TOOL) || holder.is(ModTags.FSTS_NEEDS_BRASS_TOOL)) {
+		if (holder.is(ModTags.FSTS_NEEDS_BONE_TOOL) || holder.is(ModTags.FSTS_NEEDS_FLINT_TOOL) || holder.is(ModTags.FSTS_NEEDS_BRONZE_TOOL)) {
 			cir.setReturnValue(true);
 		}
 	}

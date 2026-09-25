@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/tanned",
+  "criteria": {
+    "bone_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bone_axe"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:bone_axe"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.hafted.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.hafted.description"
+    }
+  },
+  "requirements": [
+    [
+      "bone_axe"
+    ]
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/flint_edge",
+  "criteria": {
+    "raw_leather": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:raw_leather"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:raw_leather"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.first_hide.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.first_hide.description"
+    }
+  },
+  "requirements": [
+    [
+      "raw_leather"
+    ]
+  ]
+}

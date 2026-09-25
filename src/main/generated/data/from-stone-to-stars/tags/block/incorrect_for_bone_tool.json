@@ -1,6 +1,6 @@
 {
   "values": [
-    "#from-stone-to-stars:needs_brass_tool",
+    "#from-stone-to-stars:needs_bronze_tool",
     {
       "id": "#minecraft:needs_iron_tool",
       "required": false

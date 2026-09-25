@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/root",
+  "criteria": {
+    "plant_fiber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:plant_fiber"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:plant_fiber"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.plant_fibre.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.plant_fibre.description"
+    }
+  },
+  "requirements": [
+    [
+      "plant_fiber"
+    ]
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "parent": "from-stone-to-stars:age0/tanned",
+  "criteria": {
+    "slept_in_bed": {
+      "trigger": "minecraft:slept_in_bed"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:hide_bed"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.shelter.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.shelter.description"
+    }
+  },
+  "requirements": [
+    [
+      "slept_in_bed"
+    ]
+  ]
+}

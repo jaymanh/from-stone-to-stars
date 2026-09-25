@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/root",
+  "criteria": {
+    "flint_knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:flint_knife"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:flint_knife"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.flint_edge.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.flint_edge.description"
+    }
+  },
+  "requirements": [
+    [
+      "flint_knife"
+    ]
+  ]
+}

@@ -18,10 +18,10 @@ public enum ToolMaterials {
                     BONE_REPAIR_ITEMS
             )
     ),
-    BRASSMATERIAL(
+    BRONZEMATERIAL(
             new ToolMaterial(
-                    ModTags.FSTS_INCORRECT_FOR_BRASS_TOOL, 280, 5.5f, 2f, 15,
-                    BRASS_REPAIR_ITEMS
+                    ModTags.FSTS_INCORRECT_FOR_BRONZE_TOOL, 280, 5.5f, 2f, 15,
+                    BRONZE_REPAIR_ITEMS
             )
     );
 

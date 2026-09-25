@@ -1,0 +1,32 @@
+{
+  "parent": "from-stone-to-stars:age0/hafted",
+  "criteria": {
+    "raw_zinc": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:raw_tin"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:raw_tin"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.zinc_gleam.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.zinc_gleam.description"
+    }
+  },
+  "requirements": [
+    [
+      "raw_zinc"
+    ]
+  ]
+}

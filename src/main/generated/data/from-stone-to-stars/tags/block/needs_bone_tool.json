@@ -4,7 +4,7 @@
       "id": "#minecraft:copper_ores",
       "required": false
     },
-    "from-stone-to-stars:tin_ore",
-    "from-stone-to-stars:deepslate_tin_ore"
+    "from-stone-to-stars:zinc_ore",
+    "from-stone-to-stars:deepslate_zinc_ore"
   ]
 }

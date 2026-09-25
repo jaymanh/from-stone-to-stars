@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/make_fire",
+  "criteria": {
+    "brick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:brick"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:brick"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.fired_clay.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.fired_clay.description"
+    }
+  },
+  "requirements": [
+    [
+      "brick"
+    ]
+  ]
+}

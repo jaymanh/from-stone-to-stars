@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/fired_clay",
+  "criteria": {
+    "basic_smelter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:basic_smelter"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:basic_smelter"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.basic_smelter.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.basic_smelter.description"
+    }
+  },
+  "requirements": [
+    [
+      "basic_smelter"
+    ]
+  ]
+}

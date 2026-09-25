@@ -15,9 +15,9 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> LEATHER_SKIN = create("leather_skin");
 	public static final ResourceKey<Item> FLOUR = create("flour");
 	public static final ResourceKey<Item> DOUGH = create("dough");
-	public static final ResourceKey<Item> RAW_TIN = create("raw_tin");
-	public static final ResourceKey<Item> TIN_INGOT = create("tin_ingot");
-	public static final ResourceKey<Item> BRASS_INGOT = create("brass_ingot");
+	public static final ResourceKey<Item> RAW_ZINC = create("raw_zinc");
+	public static final ResourceKey<Item> ZINC_INGOT = create("zinc_ingot");
+	public static final ResourceKey<Item> BRONZE_INGOT = create("bronze_ingot");
 
 	public static final ResourceKey<Item> HAMMERSTONE = create("hammerstone");
 	public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");
@@ -31,12 +31,12 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BONE_SHOVEL = create("bone_shovel");
 	public static final ResourceKey<Item> BONE_HOE = create("bone_hoe");
 	public static final ResourceKey<Item> BONE_SAW = create("bone_saw");
-	public static final ResourceKey<Item> BRASS_SWORD = create("brass_sword");
-	public static final ResourceKey<Item> BRASS_PICKAXE = create("brass_pickaxe");
-	public static final ResourceKey<Item> BRASS_AXE = create("brass_axe");
-	public static final ResourceKey<Item> BRASS_HOE = create("brass_hoe");
-	public static final ResourceKey<Item> BRASS_SHOVEL = create("brass_shovel");
-	public static final ResourceKey<Item> BRASS_SPEAR = create("brass_spear");
+	public static final ResourceKey<Item> BRONZE_SWORD = create("bronze_sword");
+	public static final ResourceKey<Item> BRONZE_PICKAXE = create("bronze_pickaxe");
+	public static final ResourceKey<Item> BRONZE_AXE = create("bronze_axe");
+	public static final ResourceKey<Item> BRONZE_HOE = create("bronze_hoe");
+	public static final ResourceKey<Item> BRONZE_SHOVEL = create("bronze_shovel");
+	public static final ResourceKey<Item> BRONZE_SPEAR = create("bronze_spear");
 
 
 	private ModItemIds() {

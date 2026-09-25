@@ -37,8 +37,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.COPPER_ORES)
-                .add(ModBlockItemIds.TIN_ORE)
-                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE);
+                .add(ModBlockItemIds.ZINC_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
 
 		builder(ModTags.FSTS_NEEDS_FLINT_TOOL)
 				.addOptionalTag(BlockTags.LOGS);
@@ -53,13 +53,13 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.remove(minecraftBlock("gold_block"))
 				.remove(minecraftBlock("raw_gold_block"));
 
-		builder(ModTags.FSTS_NEEDS_BRASS_TOOL)
+		builder(ModTags.FSTS_NEEDS_BRONZE_TOOL)
 				.addOptionalTag(BlockTags.GOLD_ORES)
 				.add(minecraftBlock("gold_block"))
 				.add(minecraftBlock("raw_gold_block"));
 
         builder(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL)
-                .addTag(ModTags.FSTS_NEEDS_BRASS_TOOL)
+                .addTag(ModTags.FSTS_NEEDS_BRONZE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
@@ -68,8 +68,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
                 .addTag(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL);
 
-		// Brass sits above bone: can mine gold (needs_brass) but not iron/diamond-tier blocks.
-		builder(ModTags.FSTS_INCORRECT_FOR_BRASS_TOOL)
+		// Bronze sits above bone: can mine gold (needs_bronze) but not iron/diamond-tier blocks.
+		builder(ModTags.FSTS_INCORRECT_FOR_BRONZE_TOOL)
 				.addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
 				.addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
@@ -91,8 +91,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 		builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK)
                 .add(ModBlockItemIds.BASIC_SMELTER)
-                .add(ModBlockItemIds.TIN_ORE)
-                .add(ModBlockItemIds.DEEPSLATE_TIN_ORE)
+                .add(ModBlockItemIds.ZINC_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE)
 				.add(ModBlockItemIds.MORTAR_AND_PESTLE)
 				.add(ModBlockItemIds.CLAY_BRICKS)
 				.add(ModBlockIds.FIRED_CLAY_BRICKS);

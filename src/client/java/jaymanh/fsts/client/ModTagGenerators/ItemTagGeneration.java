@@ -31,28 +31,28 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 		builder(ItemTags.SWORDS)
 				.add(ModItemIds.FLINT_KNIFE)
 				.add(ModItemIds.BONE_SWORD)
-				.add(ModItemIds.BRASS_SWORD);
+				.add(ModItemIds.BRONZE_SWORD);
 
 		builder(ItemTags.AXES)
 				.add(ModItemIds.BONE_AXE)
 				.add(ModItemIds.FLINT_AXE)
-				.add(ModItemIds.BRASS_AXE);
+				.add(ModItemIds.BRONZE_AXE);
 
 		builder(ItemTags.PICKAXES)
 				.add(ModItemIds.BONE_PICKAXE)
-				.add(ModItemIds.BRASS_PICKAXE);
+				.add(ModItemIds.BRONZE_PICKAXE);
 
 		builder(ItemTags.SHOVELS)
 				.add(ModItemIds.BONE_SHOVEL)
-				.add(ModItemIds.BRASS_SHOVEL);
+				.add(ModItemIds.BRONZE_SHOVEL);
 
 		builder(ItemTags.HOES)
 				.add(ModItemIds.BONE_HOE)
-				.add(ModItemIds.BRASS_HOE);
+				.add(ModItemIds.BRONZE_HOE);
 
 		builder(ItemTags.SPEARS)
 				.add(ModItemIds.FLINT_SPEAR)
-				.add(ModItemIds.BRASS_SPEAR);
+				.add(ModItemIds.BRONZE_SPEAR);
 
 		builder(ItemTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED.item());
@@ -60,8 +60,8 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 		builder(ToolKeys.ItemKey.FLINT_REPAIR_ITEMS)
 				.add(minecraftItem("flint"));
 
-		builder(ToolKeys.ItemKey.BRASS_REPAIR_ITEMS)
-				.add(ModItemIds.BRASS_INGOT);
+		builder(ToolKeys.ItemKey.BRONZE_REPAIR_ITEMS)
+				.add(ModItemIds.BRONZE_INGOT);
 
 		builder(ToolKeys.ItemKey.BONE_REPAIR_ITEMS)
 				.add(ModItemIds.SHARPENED_BONE);

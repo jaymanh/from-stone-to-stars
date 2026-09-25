@@ -1,0 +1,123 @@
+{
+  "parent": "from-stone-to-stars:age0/hafted",
+  "criteria": {
+    "bone_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bone_axe"
+          }
+        ]
+      }
+    },
+    "leather": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:leather"
+          }
+        ]
+      }
+    },
+    "work_stump": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:work_stump"
+          }
+        ]
+      }
+    },
+    "charcoal_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:charcoal_block"
+          }
+        ]
+      }
+    },
+    "brick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:brick"
+          }
+        ]
+      }
+    },
+    "snare": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:snare"
+          }
+        ]
+      }
+    },
+    "fish_trap": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:fish_trap"
+          }
+        ]
+      }
+    },
+    "hide_bed": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:hide_bed"
+          }
+        ]
+      }
+    },
+    "slept_in_bed": {
+      "trigger": "minecraft:slept_in_bed"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:wattle_and_daub"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.settlement.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.settlement.description"
+    }
+  },
+  "requirements": [
+    [
+      "bone_axe"
+    ],
+    [
+      "leather"
+    ],
+    [
+      "work_stump"
+    ],
+    [
+      "charcoal_block",
+      "brick"
+    ],
+    [
+      "snare",
+      "fish_trap"
+    ],
+    [
+      "hide_bed",
+      "slept_in_bed"
+    ]
+  ]
+}

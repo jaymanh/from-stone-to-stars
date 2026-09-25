@@ -43,11 +43,11 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.THATCH);
 				output.accept(ModBlocks.WATTLE_AND_DAUB);
 
-				output.accept(ModBlocks.TIN_ORE);
-				output.accept(ModBlocks.DEEPSLATE_TIN_ORE);
-				output.accept(ModItems.RAW_TIN);
-				output.accept(ModItems.TIN_INGOT);
-				output.accept(ModItems.BRASS_INGOT);
+				output.accept(ModBlocks.ZINC_ORE);
+				output.accept(ModBlocks.DEEPSLATE_ZINC_ORE);
+				output.accept(ModItems.RAW_ZINC);
+				output.accept(ModItems.ZINC_INGOT);
+				output.accept(ModItems.BRONZE_INGOT);
 
 				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModBlocks.UNFINISHED_WORK_STUMP);
@@ -71,12 +71,12 @@ public final class ModCreativeTabs {
 				output.accept(ModTools.BONE_HOE);
 				output.accept(ModTools.BONE_SAW);
 
-				output.accept(ModTools.BRASS_SWORD);
-				output.accept(ModTools.BRASS_AXE);
-				output.accept(ModTools.BRASS_PICKAXE);
-				output.accept(ModTools.BRASS_HOE);
-				output.accept(ModTools.BRASS_SHOVEL);
-				output.accept(ModTools.BRASS_SPEAR);
+				output.accept(ModTools.BRONZE_SWORD);
+				output.accept(ModTools.BRONZE_AXE);
+				output.accept(ModTools.BRONZE_PICKAXE);
+				output.accept(ModTools.BRONZE_HOE);
+				output.accept(ModTools.BRONZE_SHOVEL);
+				output.accept(ModTools.BRONZE_SPEAR);
 			})
 			.build();
 

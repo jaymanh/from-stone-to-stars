@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "from-stone-to-stars:block/deepslate_zinc_ore"
+  }
+}

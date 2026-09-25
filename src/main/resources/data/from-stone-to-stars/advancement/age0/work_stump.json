@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/hafted",
+  "criteria": {
+    "work_stump": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:work_stump"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:work_stump"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age0.work_stump.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age0.work_stump.description"
+    }
+  },
+  "requirements": [
+    [
+      "work_stump"
+    ]
+  ]
+}
