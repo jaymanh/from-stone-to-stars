@@ -4,6 +4,7 @@ import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.multiblock.process.BrickDryingProcess;
 import jaymanh.fsts.multiblock.process.CharcoalPileProcess;
+import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
@@ -39,7 +40,7 @@ public final class ModMultiblocks {
 						.where(-1,1,0,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
 						.where(0,1,1,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
 						.where(0,1,-1,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
-						.where(0,1,0,BlockPredicates.is(ModBlocks.CLAY_BRICKS),  MultiblockRole.INPUT)
+						.where(0,1,0,BlockPredicates.is(ModTags.UNFIRED_POTTERY),  MultiblockRole.INPUT)
 						.build(),
 				BlockPredicates.is(ModBlocks.KINDLING),
 				BrickDryingProcess::new

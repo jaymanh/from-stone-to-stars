@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "C C",
+    "C C",
+    " C "
+  ],
+  "key": {
+    "C": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "from-stone-to-stars:unfired_clay_jug",
+    "count": 1
+  }
+}

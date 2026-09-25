@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "from-stone-to-stars:item/storage_pot"
+  }
+}

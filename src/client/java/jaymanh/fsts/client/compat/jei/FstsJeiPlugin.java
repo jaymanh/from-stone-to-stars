@@ -75,18 +75,44 @@ public final class FstsJeiPlugin implements IModPlugin {
 				CharcoalPileProcess.DURATION_TICKS
 		)));
 
-		registration.addRecipes(BRICK_DRYING, List.of(new SimpleProcessRecipe(
-				FromStoneToStars.id("brick_drying/clay_bricks"),
-				List.of(
-						SimpleProcessRecipe.item(ModBlocks.CLAY_BRICKS),
-						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
-						SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
-						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+		registration.addRecipes(BRICK_DRYING, List.of(
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("brick_drying/clay_bricks"),
+						List.of(
+								SimpleProcessRecipe.item(ModBlocks.CLAY_BRICKS),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						),
+						List.of(),
+						SimpleProcessRecipe.item(Items.BRICK),
+						BrickDryingProcess.DURATION_TICKS
 				),
-				List.of(),
-				SimpleProcessRecipe.item(Items.BRICK),
-				BrickDryingProcess.DURATION_TICKS
-		)));
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("brick_drying/clay_jug"),
+						List.of(
+								SimpleProcessRecipe.item(ModBlocks.UNFIRED_CLAY_JUG),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						),
+						List.of(),
+						SimpleProcessRecipe.item(ModItems.CLAY_JUG),
+						BrickDryingProcess.DURATION_TICKS
+				),
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("brick_drying/storage_pot"),
+						List.of(
+								SimpleProcessRecipe.item(ModBlocks.UNFIRED_STORAGE_POT),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
+								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						),
+						List.of(),
+						SimpleProcessRecipe.item(ModBlocks.STORAGE_POT),
+						BrickDryingProcess.DURATION_TICKS
+				)
+		));
 
 		registration.addRecipes(GRINDING, List.of(
 				new SimpleProcessRecipe(
@@ -158,6 +184,10 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
+		registration.addIngredientInfo(ModBlocks.UNFIRED_CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.unfired_clay_jug"));
+		registration.addIngredientInfo(ModItems.CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.clay_jug"));
+		registration.addIngredientInfo(ModBlocks.UNFIRED_STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.unfired_storage_pot"));
+		registration.addIngredientInfo(ModBlocks.STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.storage_pot"));
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 		registration.addIngredientInfo(ModItems.CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.crucible"));
@@ -177,6 +207,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(CHARCOAL_PILE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.KINDLING);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CLAY_BRICKS);
+		registration.addCraftingStation(BRICK_DRYING, ModBlocks.UNFIRED_CLAY_JUG);
+		registration.addCraftingStation(BRICK_DRYING, ModBlocks.UNFIRED_STORAGE_POT);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CHARCOAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);

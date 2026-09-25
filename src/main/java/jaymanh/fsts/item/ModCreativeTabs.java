@@ -28,6 +28,7 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.RAW_LEATHER);
 				output.accept(ModItems.LEATHER_STRIPS);
 				output.accept(ModTools.LEATHER_SKIN);
+				output.accept(ClayJugItem.createEmpty());
 				output.accept(ModItems.BARK);
 				output.accept(ModItems.SHARPENED_BONE);
 				output.accept(ModItems.FLOUR);
@@ -39,6 +40,9 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.CHARCOAL_BLOCK);
 				output.accept(ModBlocks.CLAY_BRICKS);
 				output.accept(Items.BRICK);
+				output.accept(ModBlocks.UNFIRED_CLAY_JUG);
+				output.accept(ModBlocks.UNFIRED_STORAGE_POT);
+				output.accept(ModBlocks.STORAGE_POT);
 				output.accept(ModBlocks.ROPE);
 				output.accept(ModBlocks.THATCH);
 				output.accept(ModBlocks.WATTLE_AND_DAUB);

@@ -19,6 +19,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> ZINC_INGOT = create("zinc_ingot");
 	public static final ResourceKey<Item> BRONZE_INGOT = create("bronze_ingot");
 	public static final ResourceKey<Item> CRUCIBLE = create("crucible");
+	public static final ResourceKey<Item> CLAY_JUG = create("clay_jug");
 
 	public static final ResourceKey<Item> HAMMERSTONE = create("hammerstone");
 	public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");

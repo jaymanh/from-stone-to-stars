@@ -24,6 +24,9 @@ public final class ModBlockItemIds {
 	public static final BlockItemId WATTLE_AND_DAUB = create("wattle_and_daub");
 	public static final BlockItemId WORK_STUMP = create("work_stump");
 	public static final BlockItemId UNFINISHED_WORK_STUMP = create("unfinished_work_stump");
+	public static final BlockItemId UNFIRED_CLAY_JUG = create("unfired_clay_jug");
+	public static final BlockItemId UNFIRED_STORAGE_POT = create("unfired_storage_pot");
+	public static final BlockItemId STORAGE_POT = create("storage_pot");
 
 	private ModBlockItemIds() {
 	}

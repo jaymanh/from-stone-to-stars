@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import jaymanh.fsts.item.ClayJugItem;
 import jaymanh.fsts.tools.LeatherSkinItem;
 
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +20,7 @@ public class ShapelessRecipeMixin {
 			at = @At("RETURN"),
 			cancellable = true
 	)
-	private void fsts$rejectEmptyWaterSkin(CraftingInput input, Level level, CallbackInfoReturnable<Boolean> cir) {
+	private void fsts$rejectEmptyWaterVessel(CraftingInput input, Level level, CallbackInfoReturnable<Boolean> cir) {
 		if (!cir.getReturnValueZ()) {
 			return;
 		}
@@ -27,6 +28,10 @@ public class ShapelessRecipeMixin {
 		for (int slot = 0; slot < input.size(); slot++) {
 			ItemStack stack = input.getItem(slot);
 			if (stack.getItem() instanceof LeatherSkinItem && !LeatherSkinItem.hasWater(stack)) {
+				cir.setReturnValue(false);
+				return;
+			}
+			if (stack.getItem() instanceof ClayJugItem && !ClayJugItem.hasWater(stack)) {
 				cir.setReturnValue(false);
 				return;
 			}

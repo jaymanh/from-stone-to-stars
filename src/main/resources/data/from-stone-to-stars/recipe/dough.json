@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     "from-stone-to-stars:flour",
-    "from-stone-to-stars:leather_skin"
+    "#from-stone-to-stars:water_vessels"
   ],
   "result": {
     "id": "from-stone-to-stars:dough",

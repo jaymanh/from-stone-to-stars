@@ -95,7 +95,15 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE)
 				.add(ModBlockItemIds.MORTAR_AND_PESTLE)
 				.add(ModBlockItemIds.CLAY_BRICKS)
-				.add(ModBlockIds.FIRED_CLAY_BRICKS);
+				.add(ModBlockIds.FIRED_CLAY_BRICKS)
+				.add(ModBlockItemIds.UNFIRED_CLAY_JUG)
+				.add(ModBlockItemIds.UNFIRED_STORAGE_POT)
+				.add(ModBlockItemIds.STORAGE_POT);
+
+		builder(ModTags.UNFIRED_POTTERY)
+				.add(ModBlockItemIds.CLAY_BRICKS)
+				.add(ModBlockItemIds.UNFIRED_CLAY_JUG)
+				.add(ModBlockItemIds.UNFIRED_STORAGE_POT);
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);

@@ -23,6 +23,13 @@ public final class ModItems {
 			CrucibleItem::new,
 			new Item.Properties().durability(CrucibleItem.MAX_USES)
 	);
+	public static final Item CLAY_JUG = register(
+			ModItemIds.CLAY_JUG,
+			ClayJugItem::new,
+			new Item.Properties()
+					.durability(ClayJugItem.CAPACITY + 1)
+					.component(net.minecraft.core.component.DataComponents.DAMAGE, ClayJugItem.CAPACITY)
+	);
 
 	private ModItems() {
 	}

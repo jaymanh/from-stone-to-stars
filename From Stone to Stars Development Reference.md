@@ -99,17 +99,17 @@ Registry note: zinc ore / raw zinc / zinc ingot and bronze tools currently use t
 | System | Implementation |
 | --- | --- |
 | Surface gathering | Pebbles and stick piles generate in the overworld. Grass, ferns, and bushes can yield plant fibre. Hammerstone breaks gravel for flint. |
-| Early materials and tools | Pebbles compact into cobblestone and split back out. Flint knife, flint axe, flint spear, hammerstone, bow-and-drill, rope (from string/fibre), leather skin, and the full bone tool set (including placed bone saw) have recipes. |
+| Early materials and tools | Pebbles compact into cobblestone and split back out. Flint knife, flint axe, flint spear, hammerstone, bow-and-drill, rope (from string/fibre), leather skin, clay jug (64 water uses), and the full bone tool set (including placed bone saw) have recipes. |
 | Hideworking | Mob leather drops are replaced with raw leather. Tanning rack (4 slots): raw leather becomes vanilla leather after five minutes; rain resets progress. Empty-hand collects finished leather; sneak collects all. Knife + leather → strips. |
 | Wood work | Logs require a flint-or-better axe for drops. Axe strips logs and drops bark. Strip again to hew an unfinished work stump; lash with a leather strip to finish. Work stump is 3×3 crafting and wears like an anvil. Bone saw placed on a log returns itself and four planks after four interactions. |
-| Manual food processing | Mortar and pestle: four empty-hand grinds convert wheat → flour (also bone → bone meal). Flour + leather skin (water) → dough → bread (smelting). |
-| Fire and clay | Charcoal pile (kindling + log) → charcoal block (~1 min). Brick drying pit (kindling + charcoal blocks + wet clay bricks) → fired bricks (~5 min). Lit with bow-and-drill (also accepts flint and steel / fire charge if present). |
+| Manual food processing | Mortar and pestle: four empty-hand grinds convert wheat → flour (also bone → bone meal). Flour + water vessel (leather skin or clay jug) → dough → bread (smelting). |
+| Fire and clay | Charcoal pile (kindling + log) → charcoal block (~1 min). Brick drying pit (kindling + charcoal blocks + unfired pottery: bricks, jug, or storage pot) → fired result (~5 min). Lit with bow-and-drill (also accepts flint and steel / fire charge if present). |
 | Smelting station | Basic smelter: clay blast furnace using blasting recipes at half tick rate, plus charged-crucible alloying. Crafted from bricks + charcoal block. |
 | Bronze | Clay crucible (5 wet clay bricks, U shape, 8 uses). Pack 4 copper + 1 zinc → charged crucible; fire in basic smelter → 5 bronze. Further alloys are datapack `crucible_alloying` recipes. |
 | Passive food | Snare (plant or meat bait) and fish trap (water + bait). Work while the player is away; nearby players scare game/fish off. |
 | Shelter and building | Hide bed (leather + wheat); wool bed recipes removed. Thatch and wattle-and-daub for camp building. Beds need a roof when raining. |
-| Early storage | Vanilla **shelves** remain available. Chest and barrel recipes are removed. |
-| Water | Bucket recipe removed. Leather skin carries water (no source placement). Clay vessels are the next Age 0 addition. |
+| Early storage | Vanilla **shelves** remain available. Chest and barrel recipes are removed. Fired **storage pot**: 27-slot barrel inventory; silk touch to pick up; needs support or falls and shatters. |
+| Water | Bucket recipe removed. Leather skin (16 uses) and clay jug (64 uses) carry water (no source placement). |
 | Zinc discovery | Zinc ore (overworld + deepslate) generates. Bone pick can mine zinc and copper ore. Raw zinc is the Age 0 → Age 1 discovery beat; bronze ingots open Age 1. |
 | Player feedback | Age 0 advancement tree (`age0/*`) tracks settlement progress and hints next steps. Separate recipe-unlock advancements remain. Jade/WTHIT and JEI cover implemented processes. |
 
@@ -189,7 +189,7 @@ Rain resets drying; roof the rack. Thatch helps.
 
 **Fire.** Bow-and-drill lights kindling structures. Charcoal comes from the charcoal pile, not a furnace recipe. Campfires cook food once lit.
 
-**Clay.** Wet clay bricks → drying pit or basic smelter/blasting → brick items. Pottery vessels are next; bricks already unlock the basic smelter.
+**Clay.** Wet clay bricks, unfired jug, and unfired storage pot craft from clay balls. Fire them in the drying pit (same layout) or by blasting. Bricks unlock the basic smelter; the jug holds 64 water uses; the storage pot is a fragile 27-slot barrel (silk touch to move; needs support).
 
 **Wood.** Sticks from worldgen / leaves. Logs need an axe. Planks via bone saw. Prefer thatch and wattle over plank boxes for early bases.
 
@@ -198,9 +198,9 @@ Rain resets drying; roof the rack. Thatch helps.
 #### Food, water, and farming
 
 - Hunt, gather, snare, and fish trap for food. Campfire roast for meat.
-- Leather skin for water. No moving source blocks until metal buckets (Age 1+).
+- Leather skin (16) or clay jug (64) for water. No moving source blocks until metal buckets (Age 1+).
 - Bone hoe for farmland. Mortar and pestle for flour → dough → bread.
-- Shelves for early item storage.
+- Shelves for early item storage; storage pot for a larger fragile cache.
 
 #### Shelter
 
@@ -245,8 +245,8 @@ Age 0 ends when the camp is obviously a settlement. Surfaced by the `age0` advan
 
 #### Near-term Age 0 follow-ups
 
-- Clay vessels / pottery (storage and better water carry; no source placement)
 - Bronze tool recipes (ingots already come from crucible alloying)
+- Settlement UX polish (more JEI hints, balance tuning)
 
 #### Bronze from crucibles
 

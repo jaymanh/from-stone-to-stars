@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import jaymanh.fsts.item.ClayJugItem;
 import jaymanh.fsts.item.CrucibleItem;
 import jaymanh.fsts.tools.HammerstoneItem;
 import jaymanh.fsts.tools.LeatherSkinItem;
@@ -18,7 +19,10 @@ public class RepairItemRecipeMixin {
 	@Inject(method = "canCombine", at = @At("HEAD"), cancellable = true)
 	private static void fsts$blockSelfRepair(ItemStack first, ItemStack second, CallbackInfoReturnable<Boolean> cir) {
 		Item item = first.getItem();
-		if (item instanceof LeatherSkinItem || item instanceof HammerstoneItem || item instanceof CrucibleItem) {
+		if (item instanceof LeatherSkinItem
+				|| item instanceof ClayJugItem
+				|| item instanceof HammerstoneItem
+				|| item instanceof CrucibleItem) {
 			cir.setReturnValue(false);
 		}
 	}

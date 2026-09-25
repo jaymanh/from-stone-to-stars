@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "key": {
+    "C": "minecraft:clay_ball"
+  },
+  "result": {
+    "id": "from-stone-to-stars:unfired_storage_pot",
+    "count": 1
+  }
+}

@@ -53,6 +53,12 @@ public final class ModBlockEntities {
 			ModBlocks.FISH_TRAP
 	);
 
+	public static final BlockEntityType<StoragePotBlockEntity> STORAGE_POT = register(
+			"storage_pot",
+			StoragePotBlockEntity::new,
+			ModBlocks.STORAGE_POT
+	);
+
 	private ModBlockEntities() {
 	}
 

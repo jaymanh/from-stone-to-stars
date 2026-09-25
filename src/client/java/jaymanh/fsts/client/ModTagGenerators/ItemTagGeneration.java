@@ -94,6 +94,10 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 				.add(minecraftItem("beetroot"))
 				.add(minecraftItem("beetroot_seeds"))
 				.add(ModItemIds.PLANT_FIBER);
+
+		builder(ModTags.WATER_VESSELS)
+				.add(ModItemIds.LEATHER_SKIN)
+				.add(ModItemIds.CLAY_JUG);
 	}
 
 	private static ResourceKey<Item> minecraftItem(String path) {

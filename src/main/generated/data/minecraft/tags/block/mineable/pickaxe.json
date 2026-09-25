@@ -6,6 +6,9 @@
     "from-stone-to-stars:deepslate_zinc_ore",
     "from-stone-to-stars:mortar_and_pestle",
     "from-stone-to-stars:clay_bricks",
-    "from-stone-to-stars:fired_clay_bricks"
+    "from-stone-to-stars:fired_clay_bricks",
+    "from-stone-to-stars:unfired_clay_jug",
+    "from-stone-to-stars:unfired_storage_pot",
+    "from-stone-to-stars:storage_pot"
   ]
 }

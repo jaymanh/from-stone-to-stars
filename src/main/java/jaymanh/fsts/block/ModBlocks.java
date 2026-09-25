@@ -153,6 +153,36 @@ public final class ModBlocks {
 					.noOcclusion()
 					.ignitedByLava()
 	);
+	public static final Block UNFIRED_CLAY_JUG = register(
+			ModBlockItemIds.UNFIRED_CLAY_JUG,
+			UnfiredPotteryBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.CLAY)
+					.sound(SoundType.GRAVEL)
+					.strength(0.5F)
+					.noOcclusion()
+					.pushReaction(PushReaction.DESTROY)
+	);
+	public static final Block UNFIRED_STORAGE_POT = register(
+			ModBlockItemIds.UNFIRED_STORAGE_POT,
+			UnfiredPotteryBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.CLAY)
+					.sound(SoundType.GRAVEL)
+					.strength(0.5F)
+					.noOcclusion()
+					.pushReaction(PushReaction.DESTROY)
+	);
+	public static final Block STORAGE_POT = register(
+			ModBlockItemIds.STORAGE_POT,
+			StoragePotBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.TERRACOTTA_ORANGE)
+					.sound(SoundType.DECORATED_POT)
+					.strength(0.5F)
+					.noOcclusion()
+					.pushReaction(PushReaction.DESTROY)
+	);
 
 	private ModBlocks() {
 	}
