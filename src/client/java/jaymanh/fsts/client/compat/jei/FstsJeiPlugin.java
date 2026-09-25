@@ -31,6 +31,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 	public static final IRecipeType<SimpleProcessRecipe> BRICK_DRYING = IRecipeType.create(FromStoneToStars.MOD_ID, "brick_drying", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BONE_SAW = IRecipeType.create(FromStoneToStars.MOD_ID, "bone_saw", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> GRINDING = IRecipeType.create(FromStoneToStars.MOD_ID, "grinding", SimpleProcessRecipe.class);
+	public static final IRecipeType<SimpleProcessRecipe> CRUCIBLE_ALLOYING = IRecipeType.create(FromStoneToStars.MOD_ID, "crucible_alloying", SimpleProcessRecipe.class);
 	public static final IRecipeType<WorldInteractionRecipe> WORLD_INTERACTION = IRecipeType.create(FromStoneToStars.MOD_ID, "world_interaction", WorldInteractionRecipe.class);
 
 	@Override
@@ -47,6 +48,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, BRICK_DRYING, Component.translatable("jei.from-stone-to-stars.brick_drying"), ModBlocks.CLAY_BRICKS),
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
 				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
+				new ProcessRecipeCategory(guiHelper, CRUCIBLE_ALLOYING, Component.translatable("jei.from-stone-to-stars.crucible_alloying"), ModItems.CRUCIBLE),
 				new WorldInteractionCategory(guiHelper, WORLD_INTERACTION, Component.translatable("jei.from-stone-to-stars.world_interaction"), ModTools.FLINT_AXE)
 		);
 	}
@@ -103,6 +105,20 @@ public final class FstsJeiPlugin implements IModPlugin {
 				)
 		));
 
+		registration.addRecipes(CRUCIBLE_ALLOYING, List.of(
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("alloying/bronze"),
+						List.of(
+								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.stack(new ItemStack(Items.COPPER_INGOT, 4)),
+								SimpleProcessRecipe.item(ModItems.ZINC_INGOT)
+						),
+						List.of(SimpleProcessRecipe.item(ModBlocks.BASIC_SMELTER)),
+						SimpleProcessRecipe.stack(new ItemStack(ModItems.BRONZE_INGOT, 5)),
+						200
+				)
+		));
+
 		registration.addRecipes(BONE_SAW, List.of(new SimpleProcessRecipe(
 				FromStoneToStars.id("bone_saw/planks"),
 				List.of(SimpleProcessRecipe.tag(ItemTags.LOGS)),
@@ -144,6 +160,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
+		registration.addIngredientInfo(ModItems.CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.crucible"));
 		registration.addIngredientInfo(ModBlocks.MORTAR_AND_PESTLE, Component.translatable("jei.from-stone-to-stars.info.mortar_and_pestle"));
 		registration.addIngredientInfo(ModItems.FLOUR, Component.translatable("jei.from-stone-to-stars.info.flour"));
 		registration.addIngredientInfo(ModBlocks.SNARE, Component.translatable("jei.from-stone-to-stars.info.snare"));
@@ -164,6 +181,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
+		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModItems.CRUCIBLE);
+		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.BASIC_SMELTER);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);
 	}

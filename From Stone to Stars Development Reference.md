@@ -104,7 +104,8 @@ Registry note: zinc ore / raw zinc / zinc ingot and bronze tools currently use t
 | Wood work | Logs require a flint-or-better axe for drops. Axe strips logs and drops bark. Strip again to hew an unfinished work stump; lash with a leather strip to finish. Work stump is 3×3 crafting and wears like an anvil. Bone saw placed on a log returns itself and four planks after four interactions. |
 | Manual food processing | Mortar and pestle: four empty-hand grinds convert wheat → flour (also bone → bone meal). Flour + leather skin (water) → dough → bread (smelting). |
 | Fire and clay | Charcoal pile (kindling + log) → charcoal block (~1 min). Brick drying pit (kindling + charcoal blocks + wet clay bricks) → fired bricks (~5 min). Lit with bow-and-drill (also accepts flint and steel / fire charge if present). |
-| Smelting station | Basic smelter: clay blast furnace using blasting recipes at half tick rate. Crafted from bricks + charcoal block. Ore smelting into usable metal is Age 1. |
+| Smelting station | Basic smelter: clay blast furnace using blasting recipes at half tick rate, plus charged-crucible alloying. Crafted from bricks + charcoal block. |
+| Bronze | Clay crucible (5 wet clay bricks, U shape, 8 uses). Pack 4 copper + 1 zinc → charged crucible; fire in basic smelter → 5 bronze. Further alloys are datapack `crucible_alloying` recipes. |
 | Passive food | Snare (plant or meat bait) and fish trap (water + bait). Work while the player is away; nearby players scare game/fish off. |
 | Shelter and building | Hide bed (leather + wheat); wool bed recipes removed. Thatch and wattle-and-daub for camp building. Beds need a roof when raining. |
 | Early storage | Vanilla **shelves** remain available. Chest and barrel recipes are removed. |
@@ -245,7 +246,11 @@ Age 0 ends when the camp is obviously a settlement. Surfaced by the `age0` advan
 #### Near-term Age 0 follow-ups
 
 - Clay vessels / pottery (storage and better water carry; no source placement)
-- Finish zinc/bronze registry rename and Age 1 bronze recipes (zinc + copper → bronze ingot; bronze tools)
+- Bronze tool recipes (ingots already come from crucible alloying)
+
+#### Bronze from crucibles
+
+Pack an empty clay crucible with metals on a work stump, then fire the charged crucible in a basic smelter. Alloys are data-driven (`from-stone-to-stars:crucible_alloying`). First alloy: 4 copper + 1 zinc → 5 bronze. Crucibles have 8 uses.
 
 #### Design rules for this age
 

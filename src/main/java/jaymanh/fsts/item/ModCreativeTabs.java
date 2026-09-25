@@ -48,6 +48,7 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.RAW_ZINC);
 				output.accept(ModItems.ZINC_INGOT);
 				output.accept(ModItems.BRONZE_INGOT);
+				output.accept(ModItems.CRUCIBLE);
 
 				output.accept(ModBlocks.TANNING_RACK);
 				output.accept(ModBlocks.UNFINISHED_WORK_STUMP);

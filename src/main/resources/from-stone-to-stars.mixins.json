@@ -3,6 +3,7 @@
   "package": "jaymanh.fsts.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "AbstractFurnaceMenuMixin",
     "BlockStateBaseMixin",
     "CampfireRainMixin",
     "CampfireUnlitMixin",

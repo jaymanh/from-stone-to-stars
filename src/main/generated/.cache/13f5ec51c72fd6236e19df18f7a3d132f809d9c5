@@ -1,15 +1,15 @@
 // 26.2	-999999999-01-01T00:00:00	From Stone to Stars/Tags for minecraft:item
 72a74154226a0f73a9d6ed001adefd39e10336ad data/c/tags/item/leathers.json
 1e728b9f26d70051e5af015b1fd01b812fd5dc10 data/from-stone-to-stars/tags/item/bone_repair_item.json
-3eff058dd3c5ee33499252059191317dfe6ec6ff data/from-stone-to-stars/tags/item/bronze_repair_item.json
+57aea63b49d90a9eaee98b617155588dd11e76b3 data/from-stone-to-stars/tags/item/bronze_repair_item.json
 6c1208c4f482c7b9560dda2452b7cb7ac5a8acbb data/from-stone-to-stars/tags/item/fishing_bait.json
 4333e5b0d3c082c5e91baec1955d1a9d418dc318 data/from-stone-to-stars/tags/item/flint_repair_item.json
 98433258078145b7a809907fa1fdd8a1acbea37a data/from-stone-to-stars/tags/item/snare_meat_bait.json
 e8a6b9cbad13c93fc609ac8eaf1279abea1b995f data/from-stone-to-stars/tags/item/snare_plant_bait.json
-91d8c273694c56257815adf48b1aa4b0561fc86c data/minecraft/tags/item/axes.json
+74d1be3661c73291ff542ec728833a8d1c1f308f data/minecraft/tags/item/axes.json
 cba049f3fdd01dc2baf6e437c9241863f4ff3eb6 data/minecraft/tags/item/beds.json
-747b62e4c0378efdff010ad9cc67e795638cf573 data/minecraft/tags/item/hoes.json
-fbb0d417938b919c490d2fcef525616ed26e9339 data/minecraft/tags/item/pickaxes.json
-39d71060c145cc109f5b26be52738a2624280da5 data/minecraft/tags/item/shovels.json
-018fa49316b449e4004dacdc592fbd7e7d41316c data/minecraft/tags/item/spears.json
-2baafe65298667c0cbdcf52aca3e06d50c5629ca data/minecraft/tags/item/swords.json
+34ad28c372e0f6134ac79b98f93dbf72b2757f66 data/minecraft/tags/item/hoes.json
+71ba9a293854f922d0f7fed111e145bab9f4d309 data/minecraft/tags/item/pickaxes.json
+a158320ab36dbdd285e029cdb18602b4b03307a2 data/minecraft/tags/item/shovels.json
+d1c3c16d2c60fc9e88a548a917198a17a9e65927 data/minecraft/tags/item/spears.json
+49d283d4de27900e59bcacd98649e508239a9863 data/minecraft/tags/item/swords.json

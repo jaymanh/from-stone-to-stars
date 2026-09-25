@@ -18,6 +18,11 @@ public final class ModItems {
 	public static final Item RAW_ZINC = register(ModItemIds.RAW_ZINC, Item::new, new Item.Properties());
 	public static final Item ZINC_INGOT = register(ModItemIds.ZINC_INGOT, Item::new, new Item.Properties());
 	public static final Item BRONZE_INGOT = register(ModItemIds.BRONZE_INGOT, Item::new, new Item.Properties());
+	public static final Item CRUCIBLE = register(
+			ModItemIds.CRUCIBLE,
+			CrucibleItem::new,
+			new Item.Properties().durability(CrucibleItem.MAX_USES)
+	);
 
 	private ModItems() {
 	}
