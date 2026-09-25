@@ -3,8 +3,7 @@ package jaymanh.fsts.tools;
 import jaymanh.fsts.tags.ModTags;
 import net.minecraft.world.item.ToolMaterial;
 
-import static jaymanh.fsts.tools.ToolKeys.ItemKey.BONE_REPAIR_ITEMS;
-import static jaymanh.fsts.tools.ToolKeys.ItemKey.FLINT_REPAIR_ITEMS;
+import static jaymanh.fsts.tools.ToolKeys.ItemKey.*;
 
 public enum ToolMaterials {
     FLINTMATERIAL(
@@ -17,6 +16,12 @@ public enum ToolMaterials {
             new ToolMaterial(
                     ModTags.FSTS_INCORRECT_FOR_BONE_TOOL, 150, 4.5f, 1f, 10,
                     BONE_REPAIR_ITEMS
+            )
+    ),
+    BRASSMATERIAL(
+            new ToolMaterial(
+                    ModTags.FSTS_INCORRECT_FOR_BRASS_TOOL, 280, 5.5f, 2f, 15,
+                    BRASS_REPAIR_ITEMS
             )
     );
 

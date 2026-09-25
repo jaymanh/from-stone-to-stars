@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/spear_in_hand",
+  "textures": {
+    "layer0": "from-stone-to-stars:item/brass_spear_in_hand"
+  }
+}

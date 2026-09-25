@@ -6,7 +6,11 @@ import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -40,9 +44,20 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.addOptionalTag(BlockTags.LOGS);
 
         builder(BlockTags.NEEDS_IRON_TOOL)
-                .addOptionalTag(BlockTags.IRON_ORES);
+                .addOptionalTag(BlockTags.IRON_ORES)
+
+				.remove(minecraftBlock("gold_ore"))
+				.remove(minecraftBlock("deepslate_gold_ore"))
+				.remove(minecraftBlock("gold_block"))
+				.remove(minecraftBlock("raw_gold_block"));
+
+		builder(ModTags.FSTS_NEEDS_BRASS_TOOL)
+				.addOptionalTag(BlockTags.GOLD_ORES)
+				.add(minecraftBlock("gold_block"))
+				.add(minecraftBlock("raw_gold_block"));
 
         builder(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL)
+                .addTag(ModTags.FSTS_NEEDS_BRASS_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
@@ -50,6 +65,11 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .addTag(ModTags.FSTS_NEEDS_BONE_TOOL)
                 .addOptionalTag(BlockTags.NEEDS_STONE_TOOL)
                 .addTag(ModTags.FSTS_INCORRECT_FOR_BONE_TOOL);
+
+		// Brass sits above bone: can mine gold (needs_brass) but not iron/diamond-tier blocks.
+		builder(ModTags.FSTS_INCORRECT_FOR_BRASS_TOOL)
+				.addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
+				.addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
         builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
@@ -77,4 +97,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.ROPE);
 
     }
+
+	private static ResourceKey<Block> minecraftBlock(String path) {
+		return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("minecraft", path));
+	}
 }

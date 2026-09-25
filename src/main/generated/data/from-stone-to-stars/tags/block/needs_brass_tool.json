@@ -1,0 +1,10 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:gold_ores",
+      "required": false
+    },
+    "minecraft:gold_block",
+    "minecraft:raw_gold_block"
+  ]
+}

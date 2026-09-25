@@ -34,6 +34,8 @@
 	"item.from-stone-to-stars.sharpened_bone": "Sharpened Bone",
 	"item.from-stone-to-stars.flour": "Flour",
 	"item.from-stone-to-stars.dough": "Dough",
+	"item.from-stone-to-stars.tin_ingot": "Tin Ingot",
+	"item.from-stone-to-stars.brass_ingot": "Brass Ingot",
 
 	"item.from-stone-to-stars.hammerstone": "Hammerstone",
 	"item.from-stone-to-stars.flint_knife": "Flint Knife",
@@ -46,6 +48,13 @@
 	"item.from-stone-to-stars.bone_shovel": "Bone Shovel",
 	"item.from-stone-to-stars.bone_hoe": "Bone Hoe",
 	"item.from-stone-to-stars.bone_saw": "Bone Saw",
+
+	"item.from-stone-to-stars.brass_sword": "Brass Sword",
+	"item.from-stone-to-stars.brass_axe": "Brass Axe",
+	"item.from-stone-to-stars.brass_pickaxe": "Brass Pickaxe",
+	"item.from-stone-to-stars.brass_shovel": "Brass Shovel",
+	"item.from-stone-to-stars.brass_hoe": "Brass Hoe",
+	"item.from-stone-to-stars.brass_spear": "Brass Spear",
 
 	"config.from-stone-to-stars.title": "From Stone to Stars",
 	"config.from-stone-to-stars.category.general": "General",

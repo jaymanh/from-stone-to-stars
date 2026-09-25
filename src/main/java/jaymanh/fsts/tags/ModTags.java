@@ -23,8 +23,10 @@ public class ModTags {
 
     public static final TagKey<Block> FSTS_NEEDS_BONE_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "needs_bone_tool"));
     public static final TagKey<Block> FSTS_NEEDS_FLINT_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "needs_flint_tool"));
+    public static final TagKey<Block> FSTS_NEEDS_BRASS_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "needs_brass_tool"));
     public static final TagKey<Block> FSTS_INCORRECT_FOR_FLINT_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "incorrect_for_flint_tool"));
     public static final TagKey<Block> FSTS_INCORRECT_FOR_BONE_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "incorrect_for_bone_tool"));
+    public static final TagKey<Block> FSTS_INCORRECT_FOR_BRASS_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "incorrect_for_brass_tool"));
 
     public static final TagKey<EntityType<?>> DROPS_BONES = TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "drops_bones"));
     public static final ResourceKey<LootTable> BONES_INJECT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "inject/bones"));
@@ -36,6 +38,7 @@ public class ModTags {
 
     public static final TagKey<Item> FISHING_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "fishing_bait"));
     public static final ResourceKey<LootTable> FISH_TRAP_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/fish_trap"));
+
 
     public static void initialize() {
         FlammableBlockRegistry.getDefaultInstance().add(FSTS_WOOD_FLAMMABLE, 25, 10);

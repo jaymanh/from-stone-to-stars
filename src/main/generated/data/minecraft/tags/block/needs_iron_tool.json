@@ -1,4 +1,10 @@
 {
+  "fabric:remove": [
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+    "minecraft:gold_block",
+    "minecraft:raw_gold_block"
+  ],
   "values": [
     {
       "id": "#minecraft:iron_ores",

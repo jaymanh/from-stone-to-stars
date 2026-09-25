@@ -30,26 +30,37 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 	protected void addTags(HolderLookup.Provider registries) {
 		builder(ItemTags.SWORDS)
 				.add(ModItemIds.FLINT_KNIFE)
-				.add(ModItemIds.BONE_SWORD);
+				.add(ModItemIds.BONE_SWORD)
+				.add(ModItemIds.BRASS_SWORD);
 
 		builder(ItemTags.AXES)
 				.add(ModItemIds.BONE_AXE)
-				.add(ModItemIds.FLINT_AXE);
+				.add(ModItemIds.FLINT_AXE)
+				.add(ModItemIds.BRASS_AXE);
 
 		builder(ItemTags.PICKAXES)
-				.add(ModItemIds.BONE_PICKAXE);
+				.add(ModItemIds.BONE_PICKAXE)
+				.add(ModItemIds.BRASS_PICKAXE);
 
 		builder(ItemTags.SHOVELS)
-				.add(ModItemIds.BONE_SHOVEL);
+				.add(ModItemIds.BONE_SHOVEL)
+				.add(ModItemIds.BRASS_SHOVEL);
 
 		builder(ItemTags.HOES)
-				.add(ModItemIds.BONE_HOE);
+				.add(ModItemIds.BONE_HOE)
+				.add(ModItemIds.BRASS_HOE);
+
+		builder(ItemTags.SPEARS)
+				.add(ModItemIds.BRASS_SPEAR);
 
 		builder(ItemTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED.item());
 
 		builder(ToolKeys.ItemKey.FLINT_REPAIR_ITEMS)
 				.add(minecraftItem("flint"));
+
+		builder(ToolKeys.ItemKey.BRASS_REPAIR_ITEMS)
+				.add(ModItemIds.BRASS_INGOT);
 
 		builder(ToolKeys.ItemKey.BONE_REPAIR_ITEMS)
 				.add(ModItemIds.SHARPENED_BONE);
