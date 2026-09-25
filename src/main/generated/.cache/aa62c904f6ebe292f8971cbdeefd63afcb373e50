@@ -1,4 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	From Stone to Stars/Tags for minecraft:block
+994aa01c3bf4d7147e42d193bd399462d0525404 data/from-stone-to-stars/tags/block/coal_blocks.json
 70e744d66c140071c9b730bad06017a5bd6c84d9 data/from-stone-to-stars/tags/block/fsts_charcoal_flammable.json
 bab0e7b0a807f417b59e2034ff0d91be06c4e84d data/from-stone-to-stars/tags/block/fsts_wood_flammable.json
 8dec544dc192356a1a9be43011e4084b7401f316 data/from-stone-to-stars/tags/block/incorrect_for_bone_tool.json
@@ -7,8 +8,9 @@ e2a59112edce555e0e8cea0417842c7b4e70ed56 data/from-stone-to-stars/tags/block/inc
 03a73dc240bd99793f73d35965ef3cf6228c3cf6 data/from-stone-to-stars/tags/block/needs_bone_tool.json
 08e29cfdb72e2969565b68874f1b386bf84ed9ee data/from-stone-to-stars/tags/block/needs_bronze_tool.json
 692596115bdbee171c4d635edaf1da45912fa5e5 data/from-stone-to-stars/tags/block/needs_flint_tool.json
+ec610c5bdfcf785e3915c83a150503e5aabb31ae data/from-stone-to-stars/tags/block/unfired_pottery.json
 cba049f3fdd01dc2baf6e437c9241863f4ff3eb6 data/minecraft/tags/block/beds.json
 eb21bc3bdcd5d297316f9c22180d7cf0dc1f3609 data/minecraft/tags/block/climbable.json
 7d76fdf306327156a3ce6750a969c96415240c0f data/minecraft/tags/block/mineable/axe.json
-d32d776be059066d4cebb24685d55facee7ae679 data/minecraft/tags/block/mineable/pickaxe.json
+8580fa7613879f24bdb11af4582b81aeacb514cf data/minecraft/tags/block/mineable/pickaxe.json
 0fb180e02a304154fb92d04e0940712b709ed904 data/minecraft/tags/block/needs_iron_tool.json

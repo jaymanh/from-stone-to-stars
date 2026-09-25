@@ -105,6 +105,10 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.UNFIRED_CLAY_JUG)
 				.add(ModBlockItemIds.UNFIRED_STORAGE_POT);
 
+		builder(ModTags.COAL_BLOCKS)
+				.add(ModBlockItemIds.CHARCOAL_BLOCK)
+				.add(minecraftBlock("coal_block"));
+
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);
 

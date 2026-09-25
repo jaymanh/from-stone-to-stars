@@ -36,10 +36,10 @@ public final class ModMultiblocks {
 						.where(-1,0,0, BlockPredicates.is(ModBlocks.KINDLING), MultiblockRole.ORIGIN)
 						.where(0,0,1, BlockPredicates.is(ModBlocks.KINDLING), MultiblockRole.ORIGIN)
 						.where(0,0,-1, BlockPredicates.is(ModBlocks.KINDLING), MultiblockRole.ORIGIN)
-						.where(1,1,0,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
-						.where(-1,1,0,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
-						.where(0,1,1,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
-						.where(0,1,-1,BlockPredicates.is(ModBlocks.CHARCOAL_BLOCK),  MultiblockRole.CONSUMED)
+						.where(1,1,0,BlockPredicates.is(ModTags.COAL_BLOCKS),  MultiblockRole.CONSUMED)
+						.where(-1,1,0,BlockPredicates.is(ModTags.COAL_BLOCKS),  MultiblockRole.CONSUMED)
+						.where(0,1,1,BlockPredicates.is(ModTags.COAL_BLOCKS),  MultiblockRole.CONSUMED)
+						.where(0,1,-1,BlockPredicates.is(ModTags.COAL_BLOCKS),  MultiblockRole.CONSUMED)
 						.where(0,1,0,BlockPredicates.is(ModTags.UNFIRED_POTTERY),  MultiblockRole.INPUT)
 						.build(),
 				BlockPredicates.is(ModBlocks.KINDLING),

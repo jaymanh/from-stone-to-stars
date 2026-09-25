@@ -81,7 +81,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 						List.of(
 								SimpleProcessRecipe.item(ModBlocks.CLAY_BRICKS),
 								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
-								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
 								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 						),
 						List.of(),
@@ -93,7 +93,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 						List.of(
 								SimpleProcessRecipe.item(ModBlocks.UNFIRED_CLAY_JUG),
 								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
-								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
 								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 						),
 						List.of(),
@@ -105,7 +105,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 						List.of(
 								SimpleProcessRecipe.item(ModBlocks.UNFIRED_STORAGE_POT),
 								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.KINDLING, 5)),
-								SimpleProcessRecipe.stack(new ItemStack(ModBlocks.CHARCOAL_BLOCK, 4)),
+								SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
 								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 						),
 						List.of(),
@@ -210,6 +210,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.UNFIRED_CLAY_JUG);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.UNFIRED_STORAGE_POT);
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CHARCOAL_BLOCK);
+		registration.addCraftingStation(BRICK_DRYING, Items.COAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);

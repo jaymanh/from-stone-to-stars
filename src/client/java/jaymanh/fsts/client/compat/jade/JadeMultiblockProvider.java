@@ -5,6 +5,7 @@ import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.compat.tooltip.ProcessTooltips;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
+import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
@@ -41,7 +42,8 @@ public enum JadeMultiblockProvider implements IBlockComponentProvider {
 		return state.is(BlockTags.LOGS)
 				|| state.is(ModBlocks.CLAY_BRICKS)
 				|| state.is(ModBlocks.FIRED_CLAY_BRICKS)
-				|| state.is(ModBlocks.CHARCOAL_BLOCK);
+				|| state.is(ModTags.COAL_BLOCKS)
+				|| state.is(ModTags.UNFIRED_POTTERY);
 	}
 
 	public enum Data implements IServerDataProvider<BlockAccessor> {
