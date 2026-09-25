@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public final class ModCreativeTabs {
 	public static final ResourceKey<CreativeModeTab> MAIN_KEY = ResourceKey.create(
@@ -37,7 +38,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.KINDLING);
 				output.accept(ModBlocks.CHARCOAL_BLOCK);
 				output.accept(ModBlocks.CLAY_BRICKS);
-				output.accept(ModBlocks.FIRED_CLAY_BRICKS);
+				output.accept(Items.BRICK);
 				output.accept(ModBlocks.ROPE);
 				output.accept(ModBlocks.THATCH);
 				output.accept(ModBlocks.WATTLE_AND_DAUB);

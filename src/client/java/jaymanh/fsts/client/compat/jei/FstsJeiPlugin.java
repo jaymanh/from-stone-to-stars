@@ -82,7 +82,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 				),
 				List.of(),
-				SimpleProcessRecipe.item(ModBlocks.FIRED_CLAY_BRICKS),
+				SimpleProcessRecipe.item(Items.BRICK),
 				BrickDryingProcess.DURATION_TICKS
 		)));
 
@@ -142,7 +142,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
-		registration.addIngredientInfo(ModBlocks.FIRED_CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.fired_clay_bricks"));
+		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 		registration.addIngredientInfo(ModBlocks.MORTAR_AND_PESTLE, Component.translatable("jei.from-stone-to-stars.info.mortar_and_pestle"));
 		registration.addIngredientInfo(ModItems.FLOUR, Component.translatable("jei.from-stone-to-stars.info.flour"));

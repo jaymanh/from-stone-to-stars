@@ -1,11 +1,11 @@
 {
   "criteria": {
-    "has_fired_clay_bricks": {
+    "has_brick": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "from-stone-to-stars:fired_clay_bricks"
+            "items": "minecraft:brick"
           }
         ]
       }

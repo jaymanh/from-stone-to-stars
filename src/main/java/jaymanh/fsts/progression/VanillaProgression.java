@@ -49,7 +49,8 @@ public final class VanillaProgression {
 				"crafting_table", "furnace", "bucket", "flint_and_steel", "chest",
 				"bamboo_planks", "bamboo_raft", "bamboo_chest_raft",
 				"crimson_planks", "warped_planks", "bread", "bone_meal", "leather", "barrel",
-				"copper_sword", "copper_shovel", "copper_pickaxe", "copper_axe", "copper_hoe", "copper_spear"
+				"copper_sword", "copper_shovel", "copper_pickaxe", "copper_axe", "copper_hoe", "copper_spear",
+				"brick"
 		);
 		for (String wood : WOODS) {
 			add(ids, wood + "_planks", wood + "_boat", wood + "_chest_boat");

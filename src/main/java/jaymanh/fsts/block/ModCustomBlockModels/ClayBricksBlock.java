@@ -8,9 +8,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -52,6 +54,14 @@ public class ClayBricksBlock extends Block {
 	}
 
 	@Override
+	protected ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData) {
+		if (state.is(ModBlocks.FIRED_CLAY_BRICKS)) {
+			return new ItemStack(Items.BRICK);
+		}
+		return super.getCloneItemStack(level, pos, state, includeData);
+	}
+
+	@Override
 	protected InteractionResult useItemOn(
 			ItemStack stack,
 			BlockState state,
@@ -61,10 +71,7 @@ public class ClayBricksBlock extends Block {
 			InteractionHand hand,
 			BlockHitResult hit
 	) {
-		if (!stack.is(ModBlocks.CLAY_BRICKS.asItem()) && !stack.is(ModBlocks.FIRED_CLAY_BRICKS.asItem())) {
-			return InteractionResult.PASS;
-		}
-		if (!stack.is(state.getBlock().asItem())) {
+		if (!matchesStack(state, stack)) {
 			return InteractionResult.PASS;
 		}
 
@@ -78,5 +85,15 @@ public class ClayBricksBlock extends Block {
 		}
 
 		return InteractionResult.SUCCESS;
+	}
+
+	private static boolean matchesStack(BlockState state, ItemStack stack) {
+		if (state.is(ModBlocks.CLAY_BRICKS)) {
+			return stack.is(ModBlocks.CLAY_BRICKS.asItem());
+		}
+		if (state.is(ModBlocks.FIRED_CLAY_BRICKS)) {
+			return stack.is(Items.BRICK);
+		}
+		return false;
 	}
 }

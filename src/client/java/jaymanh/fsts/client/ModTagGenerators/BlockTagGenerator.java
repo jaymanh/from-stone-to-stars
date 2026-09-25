@@ -45,6 +45,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 
         builder(BlockTags.NEEDS_IRON_TOOL)
                 .addOptionalTag(BlockTags.IRON_ORES)
+				.addOptional(minecraftBlock("raw_iron_block"))
+				.addOptional(minecraftBlock("iron_block"))
 
 				.remove(minecraftBlock("gold_ore"))
 				.remove(minecraftBlock("deepslate_gold_ore"))
@@ -91,7 +93,9 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.BASIC_SMELTER)
                 .add(ModBlockItemIds.TIN_ORE)
                 .add(ModBlockItemIds.DEEPSLATE_TIN_ORE)
-				.add(ModBlockItemIds.MORTAR_AND_PESTLE);
+				.add(ModBlockItemIds.MORTAR_AND_PESTLE)
+				.add(ModBlockItemIds.CLAY_BRICKS)
+				.add(ModBlockIds.FIRED_CLAY_BRICKS);
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);

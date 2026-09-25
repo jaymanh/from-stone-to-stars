@@ -16,8 +16,14 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 
@@ -111,5 +117,43 @@ public class UseInteractions {
 
             return InteractionResult.SUCCESS;
         }));
+
+		// Vanilla brick item places the modded fired clay brick pile (full bricks block stays vanilla).
+		UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
+			ItemStack stack = player.getItemInHand(hand);
+			if (!stack.is(Items.BRICK)) {
+				return InteractionResult.PASS;
+			}
+
+			BlockPos clickedPos = hitResult.getBlockPos();
+			BlockState clickedState = level.getBlockState(clickedPos);
+			// Stacking onto an existing pile is handled by ClayBricksBlock.useItemOn.
+			if (clickedState.is(ModBlocks.FIRED_CLAY_BRICKS)) {
+				return InteractionResult.PASS;
+			}
+
+			UseOnContext useOn = new UseOnContext(player, hand, hitResult);
+			BlockPlaceContext placeContext = new BlockPlaceContext(useOn);
+			BlockPos placePos = placeContext.getClickedPos();
+			BlockState toPlace = ModBlocks.FIRED_CLAY_BRICKS.getStateForPlacement(placeContext);
+			if (toPlace == null || !placeContext.canPlace() || !level.isUnobstructed(toPlace, placePos, CollisionContext.placementContext(player))) {
+				return InteractionResult.PASS;
+			}
+
+			if (level.isClientSide()) {
+				return InteractionResult.SUCCESS;
+			}
+
+			level.setBlock(placePos, toPlace, 11);
+			SoundType sound = toPlace.getSoundType();
+			level.playSound(null, placePos, sound.getPlaceSound(), SoundSource.BLOCKS, (sound.getVolume() + 1.0F) / 2.0F, sound.getPitch() * 0.8F);
+			level.gameEvent(GameEvent.BLOCK_PLACE, placePos, GameEvent.Context.of(player, toPlace));
+
+			if (!player.hasInfiniteMaterials()) {
+				stack.shrink(1);
+			}
+
+			return InteractionResult.SUCCESS;
+		});
     }
 }

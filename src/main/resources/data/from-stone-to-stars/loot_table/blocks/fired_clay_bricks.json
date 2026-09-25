@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "from-stone-to-stars:fired_clay_bricks",
+          "name": "minecraft:brick",
           "functions": [
             {
               "function": "minecraft:set_count",

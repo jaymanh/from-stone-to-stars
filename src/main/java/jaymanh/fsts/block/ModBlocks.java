@@ -58,8 +58,9 @@ public final class ModBlocks {
 			ClayBricksBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
+	/** Placed by {@link net.minecraft.world.item.Items#BRICK}; no separate mod item. */
 	public static final Block FIRED_CLAY_BRICKS = register(
-			ModBlockItemIds.FIRED_CLAY_BRICKS,
+			ModBlockIds.FIRED_CLAY_BRICKS,
 			ClayBricksBlock::new,
 			BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(0.5F).noOcclusion().pushReaction(PushReaction.DESTROY)
 	);
