@@ -51,6 +51,7 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 				.add(ModItemIds.BRASS_HOE);
 
 		builder(ItemTags.SPEARS)
+				.add(ModItemIds.FLINT_SPEAR)
 				.add(ModItemIds.BRASS_SPEAR);
 
 		builder(ItemTags.BEDS)

@@ -41,6 +41,12 @@ public class ModTools {
             new Item.Properties()
     );
 
+    public static final Item FLINT_SPEAR = register(
+            ModItemIds.FLINT_SPEAR,
+            Item::new,
+            new Item.Properties().spear(ToolMaterials.FLINTMATERIAL.getMaterial(), 0.75F, 0.82F, 0.7F, 4.5F, 13.0F, 9.0F, 5.1F, 13.75F, 4.6F)
+    );
+
     public static final Item BONE_SWORD = register(
             ModItemIds.BONE_SWORD,
             Item::new,

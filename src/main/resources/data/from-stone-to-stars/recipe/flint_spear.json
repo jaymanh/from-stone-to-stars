@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:stick",
+    "minecraft:stick",
+    "minecraft:flint"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:flint_spear",
+    "count": 1
+  }
+}

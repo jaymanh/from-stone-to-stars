@@ -61,6 +61,7 @@ public final class ModCreativeTabs {
 
 				output.accept(ModTools.FLINT_KNIFE);
 				output.accept(ModTools.FLINT_AXE);
+				output.accept(ModTools.FLINT_SPEAR);
 				output.accept(ModTools.BOW_AND_DRILL);
 
 				output.accept(ModTools.BONE_SWORD);

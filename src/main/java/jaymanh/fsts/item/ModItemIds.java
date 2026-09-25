@@ -22,6 +22,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> HAMMERSTONE = create("hammerstone");
 	public static final ResourceKey<Item> FLINT_KNIFE = create("flint_knife");
 	public static final ResourceKey<Item> FLINT_AXE =  create("flint_axe");
+	public static final ResourceKey<Item> FLINT_SPEAR = create("flint_spear");
 	public static final ResourceKey<Item> BOW_AND_DRILL =  create("bow_and_drill");
 
 	public static final ResourceKey<Item> BONE_SWORD = create("bone_sword");
@@ -36,6 +37,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRASS_HOE = create("brass_hoe");
 	public static final ResourceKey<Item> BRASS_SHOVEL = create("brass_shovel");
 	public static final ResourceKey<Item> BRASS_SPEAR = create("brass_spear");
+
 
 	private ModItemIds() {
 	}
