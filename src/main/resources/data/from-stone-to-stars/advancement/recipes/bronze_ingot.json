@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bronze_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:heated_bronze_ingot",
+      "from-stone-to-stars:bronze_hammer",
+      "from-stone-to-stars:forging_stump",
+      "from-stone-to-stars:forging/bronze_nails",
+      "from-stone-to-stars:forging/bronze_shafts",
+      "from-stone-to-stars:forging/bronze_tool_blades",
+      "from-stone-to-stars:forging/bronze_plates"
+    ]
+  }
+}

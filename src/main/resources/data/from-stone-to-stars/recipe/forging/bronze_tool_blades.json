@@ -1,0 +1,10 @@
+{
+  "type": "from-stone-to-stars:forging",
+  "ingredient": "from-stone-to-stars:heated_bronze_ingot",
+  "ingredient_count": 3,
+  "hits": 4,
+  "result": {
+    "id": "from-stone-to-stars:bronze_tool_blade",
+    "count": 2
+  }
+}

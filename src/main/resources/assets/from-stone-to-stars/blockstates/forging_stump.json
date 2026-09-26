@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "progress=0": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=1": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=2": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=3": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=4": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=5": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=6": { "model": "from-stone-to-stars:block/forging_stump" },
+    "progress=7": { "model": "from-stone-to-stars:block/forging_stump" }
+  }
+}

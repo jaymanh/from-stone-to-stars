@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "from-stone-to-stars:bronze"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "from-stone-to-stars:bronze"
+      }
+    ]
+  }
+}

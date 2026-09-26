@@ -2,6 +2,7 @@ package jaymanh.fsts.block.entity;
 
 import jaymanh.fsts.component.CrucibleCharge;
 import jaymanh.fsts.item.CrucibleItem;
+import jaymanh.fsts.item.HeatedMetalItem;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -55,13 +56,16 @@ public class BasicSmelterEntity extends AbstractFurnaceBlockEntity {
 		ItemStack input = smelter.getItem(SLOT_INPUT);
 		if (CrucibleItem.isCharged(input)) {
 			tickAlloying(serverLevel, pos, state, smelter);
+			HeatedMetalItem.keepHot(smelter, serverLevel.getGameTime());
 			return;
 		}
 
 		if (serverLevel.getGameTime() % COOK_INTERVAL != 0L) {
+			HeatedMetalItem.keepHot(smelter, serverLevel.getGameTime());
 			return;
 		}
 		AbstractFurnaceBlockEntity.serverTick(serverLevel, pos, state, smelter);
+		HeatedMetalItem.keepHot(smelter, serverLevel.getGameTime());
 	}
 
 	private static void tickAlloying(ServerLevel level, BlockPos pos, BlockState state, BasicSmelterEntity smelter) {

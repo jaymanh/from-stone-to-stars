@@ -1,0 +1,7 @@
+{
+  "parent": "from-stone-to-stars:block/work_stump",
+  "textures": {
+    "top": "minecraft:block/copper_block",
+    "bind": "minecraft:block/copper_block"
+  }
+}

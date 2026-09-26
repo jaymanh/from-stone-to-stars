@@ -6,6 +6,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public final class ModItems {
 	public static final Item PLANT_FIBER = register(ModItemIds.PLANT_FIBER, Item::new, new Item.Properties());
@@ -18,6 +19,22 @@ public final class ModItems {
 	public static final Item RAW_ZINC = register(ModItemIds.RAW_ZINC, Item::new, new Item.Properties());
 	public static final Item ZINC_INGOT = register(ModItemIds.ZINC_INGOT, Item::new, new Item.Properties());
 	public static final Item BRONZE_INGOT = register(ModItemIds.BRONZE_INGOT, Item::new, new Item.Properties());
+	public static final Item HEATED_BRONZE_INGOT = register(
+			ModItemIds.HEATED_BRONZE_INGOT,
+			properties -> new HeatedMetalItem(properties, () -> BRONZE_INGOT),
+			new Item.Properties()
+	);
+	public static final Item HEATED_COPPER_INGOT = register(
+			ModItemIds.HEATED_COPPER_INGOT,
+			properties -> new HeatedMetalItem(properties, () -> Items.COPPER_INGOT),
+			new Item.Properties()
+	);
+	public static final Item BRONZE_NAIL = register(ModItemIds.BRONZE_NAIL, Item::new, new Item.Properties());
+	public static final Item COPPER_NAIL = register(ModItemIds.COPPER_NAIL, Item::new, new Item.Properties());
+	public static final Item BRONZE_SHAFT = register(ModItemIds.BRONZE_SHAFT, Item::new, new Item.Properties());
+	public static final Item COPPER_SHAFT = register(ModItemIds.COPPER_SHAFT, Item::new, new Item.Properties());
+	public static final Item BRONZE_TOOL_BLADE = register(ModItemIds.BRONZE_TOOL_BLADE, Item::new, new Item.Properties());
+	public static final Item BRONZE_PLATE = register(ModItemIds.BRONZE_PLATE, Item::new, new Item.Properties());
 	public static final Item CRUCIBLE = register(
 			ModItemIds.CRUCIBLE,
 			CrucibleItem::new,

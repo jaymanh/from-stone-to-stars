@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "PPP",
+    "SNS"
+  ],
+  "key": {
+    "P": "from-stone-to-stars:bronze_plate",
+    "S": "from-stone-to-stars:leather_strips",
+    "N": "#from-stone-to-stars:nails"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bronze_helmet",
+    "count": 1
+  }
+}

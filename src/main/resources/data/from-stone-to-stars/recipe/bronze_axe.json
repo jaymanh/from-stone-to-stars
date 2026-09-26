@@ -2,17 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
-    " FF",
-    " SA",
-    " S "
+    "FA",
+    "FS",
+    " S"
   ],
   "key": {
     "S": "minecraft:stick",
-    "F": "from-stone-to-stars:sharpened_bone",
-    "A": "from-stone-to-stars:leather_strips"
+    "F": "from-stone-to-stars:bronze_tool_blade",
+    "A": "#from-stone-to-stars:nails"
   },
   "result": {
-    "id": "from-stone-to-stars:bone_hoe",
+    "id": "from-stone-to-stars:bronze_axe",
     "count": 1
   }
 }

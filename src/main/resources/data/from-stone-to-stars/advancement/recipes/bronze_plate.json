@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bronze_plate"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:bronze_helmet",
+      "from-stone-to-stars:bronze_chestplate",
+      "from-stone-to-stars:bronze_leggings",
+      "from-stone-to-stars:bronze_boots",
+      "from-stone-to-stars:shield",
+      "from-stone-to-stars:crafting_table"
+    ]
+  }
+}

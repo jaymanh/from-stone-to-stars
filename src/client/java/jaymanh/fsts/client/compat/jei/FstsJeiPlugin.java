@@ -199,6 +199,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.PEBBLE, Component.translatable("jei.from-stone-to-stars.info.pebble"));
 		registration.addIngredientInfo(ModItems.BARK, Component.translatable("jei.from-stone-to-stars.info.bark"));
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
+		registration.addIngredientInfo(ModTools.BRONZE_HAMMER, Component.translatable("jei.from-stone-to-stars.info.bronze_hammer"));
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
 		registration.addIngredientInfo(ModBlocks.UNFIRED_CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.unfired_clay_jug"));
@@ -217,6 +218,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.HIDE_BED, Component.translatable("jei.from-stone-to-stars.info.hide_bed"));
 		registration.addIngredientInfo(ModBlocks.UNFINISHED_WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.unfinished_work_stump"));
 		registration.addIngredientInfo(ModBlocks.WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.work_stump"));
+		registration.addIngredientInfo(ModBlocks.FORGING_STUMP, Component.translatable("jei.from-stone-to-stars.info.forging_stump"));
 	}
 
 	@Override

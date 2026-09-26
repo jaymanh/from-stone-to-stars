@@ -29,6 +29,7 @@ public final class ModBlockItemIds {
 	public static final BlockItemId STORAGE_POT = create("storage_pot");
 	public static final BlockItemId FORGE_HEARTH = create("forge_hearth");
 	public static final BlockItemId BELLOWS = create("bellows");
+	public static final BlockItemId FORGING_STUMP = create("forging_stump");
 
 	private ModBlockItemIds() {
 	}

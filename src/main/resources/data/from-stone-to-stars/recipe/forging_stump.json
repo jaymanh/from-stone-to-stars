@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "BBB",
+    " W "
+  ],
+  "key": {
+    "B": "from-stone-to-stars:bronze_ingot",
+    "W": "from-stone-to-stars:work_stump"
+  },
+  "result": {
+    "id": "from-stone-to-stars:forging_stump",
+    "count": 1
+  }
+}

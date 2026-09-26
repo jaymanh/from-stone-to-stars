@@ -62,6 +62,32 @@ public final class ModRecipes {
 			new RecipeBookCategory()
 	);
 
+	public static final RecipeType<ForgingRecipe> FORGING = Registry.register(
+			BuiltInRegistries.RECIPE_TYPE,
+			FromStoneToStars.id("forging"),
+			new RecipeType<ForgingRecipe>() {
+				@Override
+				public String toString() {
+					return FromStoneToStars.MOD_ID + ":forging";
+				}
+			}
+	);
+
+	public static final RecipeSerializer<ForgingRecipe> FORGING_SERIALIZER = Registry.register(
+			BuiltInRegistries.RECIPE_SERIALIZER,
+			FromStoneToStars.id("forging"),
+			new RecipeSerializer<>(
+					ForgingRecipe.MAP_CODEC,
+					ForgingRecipe.STREAM_CODEC
+			)
+	);
+
+	public static final RecipeBookCategory FORGING_CATEGORY = Registry.register(
+			BuiltInRegistries.RECIPE_BOOK_CATEGORY,
+			FromStoneToStars.id("forging"),
+			new RecipeBookCategory()
+	);
+
 	private ModRecipes() {
 	}
 
@@ -76,6 +102,16 @@ public final class ModRecipes {
 			return Optional.empty();
 		}
 		return recipes.getRecipeFor(GRINDING, new SingleRecipeInput(stack), level);
+	}
+
+	public static Optional<RecipeHolder<ForgingRecipe>> findForging(Level level, ItemStack stack) {
+		if (level == null || stack.isEmpty()) {
+			return Optional.empty();
+		}
+		if (!(level.recipeAccess() instanceof RecipeManager recipes)) {
+			return Optional.empty();
+		}
+		return recipes.getRecipeFor(FORGING, new SingleRecipeInput(stack), level);
 	}
 
 	public static List<CrucibleAlloyingRecipe> listAlloying(Level level) {

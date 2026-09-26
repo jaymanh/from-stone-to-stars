@@ -54,6 +54,15 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 				.add(ModItemIds.FLINT_SPEAR)
 				.add(ModItemIds.BRONZE_SPEAR);
 
+		builder(ItemTags.HEAD_ARMOR)
+				.add(ModItemIds.BRONZE_HELMET);
+		builder(ItemTags.CHEST_ARMOR)
+				.add(ModItemIds.BRONZE_CHESTPLATE);
+		builder(ItemTags.LEG_ARMOR)
+				.add(ModItemIds.BRONZE_LEGGINGS);
+		builder(ItemTags.FOOT_ARMOR)
+				.add(ModItemIds.BRONZE_BOOTS);
+
 		builder(ItemTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED.item());
 
@@ -62,6 +71,10 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 
 		builder(ToolKeys.ItemKey.BRONZE_REPAIR_ITEMS)
 				.add(ModItemIds.BRONZE_INGOT);
+
+		builder(ToolKeys.ItemKey.BRONZE_ARMOR_REPAIR)
+				.add(ModItemIds.BRONZE_PLATE)
+				.add(ModItemIds.LEATHER_STRIPS);
 
 		builder(ToolKeys.ItemKey.BONE_REPAIR_ITEMS)
 				.add(ModItemIds.SHARPENED_BONE);
@@ -98,6 +111,14 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 		builder(ModTags.WATER_VESSELS)
 				.add(ModItemIds.LEATHER_SKIN)
 				.add(ModItemIds.CLAY_JUG);
+
+		builder(ModTags.NAILS)
+				.add(ModItemIds.BRONZE_NAIL)
+				.add(ModItemIds.COPPER_NAIL);
+
+		builder(ModTags.SHAFTS)
+				.add(ModItemIds.BRONZE_SHAFT)
+				.add(ModItemIds.COPPER_SHAFT);
 
 		builder(ModTags.COAL_BLOCK_ITEMS)
 				.add(ModBlockItemIds.CHARCOAL_BLOCK.item())

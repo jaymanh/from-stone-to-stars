@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "B",
+    "S"
+  ],
+  "key": {
+    "B": "from-stone-to-stars:bronze_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bronze_hammer",
+    "count": 1
+  }
+}

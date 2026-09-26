@@ -4,6 +4,7 @@ import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.multiblock.FormedMultiblock;
 import jaymanh.fsts.multiblock.StructureMatch;
 import jaymanh.fsts.multiblock.process.ForgeProcess;
+import jaymanh.fsts.item.HeatedMetalItem;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -161,6 +162,7 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 			hearth.dataAccess.set(DATA_LIT_TIME, Math.max(hearth.dataAccess.get(DATA_LIT_TIME), ASSEMBLY_LIT_BUFFER));
 			hearth.dataAccess.set(DATA_LIT_DURATION, ASSEMBLY_LIT_BUFFER);
 			if (serverLevel.getGameTime() % COOK_INTERVAL != 0L) {
+				HeatedMetalItem.keepHot(hearth, serverLevel.getGameTime());
 				return;
 			}
 			int speed = 1;
@@ -175,6 +177,7 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 					return;
 				}
 			}
+			HeatedMetalItem.keepHot(hearth, serverLevel.getGameTime());
 
 			BlockState after = level.getBlockState(pos);
 			if (hearth.isBurning() && after.hasProperty(AbstractFurnaceBlock.LIT) && !after.getValue(AbstractFurnaceBlock.LIT)) {
@@ -185,9 +188,11 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 				hearth.dataAccess.set(DATA_LIT_TIME, 0);
 			}
 			if (serverLevel.getGameTime() % COOK_INTERVAL != 0L) {
+				HeatedMetalItem.keepHot(hearth, serverLevel.getGameTime());
 				return;
 			}
 			AbstractFurnaceBlockEntity.serverTick(serverLevel, pos, state, hearth);
+			HeatedMetalItem.keepHot(hearth, serverLevel.getGameTime());
 		}
 	}
 

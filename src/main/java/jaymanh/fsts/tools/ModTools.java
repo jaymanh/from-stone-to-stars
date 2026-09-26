@@ -3,6 +3,7 @@ package jaymanh.fsts.tools;
 import jaymanh.fsts.item.ModItemIds;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorType;
 
 import static jaymanh.fsts.item.ModItems.register;
 
@@ -108,8 +109,35 @@ public class ModTools {
             Item::new,
             new Item.Properties().spear(ToolMaterials.BRONZEMATERIAL.getMaterial(), 0.95F, 0.95F, 0.6F, 2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)
     );
+    public static final Item BRONZE_HAMMER = register(
+            ModItemIds.BRONZE_HAMMER,
+            Item::new,
+            new Item.Properties()
+                    .durability(ToolMaterials.BRONZEMATERIAL.getMaterial().durability())
+                    .enchantable(ToolMaterials.BRONZEMATERIAL.getMaterial().enchantmentValue())
+                    .repairable(ToolKeys.ItemKey.BRONZE_REPAIR_ITEMS)
+    );
 
-
+    public static final Item BRONZE_HELMET = register(
+            ModItemIds.BRONZE_HELMET,
+            Item::new,
+            new Item.Properties().humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.HELMET)
+    );
+    public static final Item BRONZE_CHESTPLATE = register(
+            ModItemIds.BRONZE_CHESTPLATE,
+            Item::new,
+            new Item.Properties().humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.CHESTPLATE)
+    );
+    public static final Item BRONZE_LEGGINGS = register(
+            ModItemIds.BRONZE_LEGGINGS,
+            Item::new,
+            new Item.Properties().humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.LEGGINGS)
+    );
+    public static final Item BRONZE_BOOTS = register(
+            ModItemIds.BRONZE_BOOTS,
+            Item::new,
+            new Item.Properties().humanoidArmor(ModArmorMaterials.BRONZE, ArmorType.BOOTS)
+    );
 
     public static void initialize(){
 

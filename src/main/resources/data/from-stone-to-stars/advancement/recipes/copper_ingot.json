@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:heated_copper_ingot",
+      "from-stone-to-stars:forging/copper_nails",
+      "from-stone-to-stars:forging/copper_shafts"
+    ]
+  }
+}

@@ -39,6 +39,11 @@ public class ModTags {
 
     public static final TagKey<Item> WATER_VESSELS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "water_vessels"));
 
+	/** Copper or bronze nails — interchangeable in recipes. */
+	public static final TagKey<Item> NAILS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "nails"));
+	/** Copper or bronze shafts — interchangeable in recipes. */
+	public static final TagKey<Item> SHAFTS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "shafts"));
+
     public static final TagKey<Item> SNARE_MEAT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_meat_bait"));
     public static final TagKey<Item> SNARE_PLANT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_plant_bait"));
     public static final ResourceKey<LootTable> SNARE_MEAT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_meat"));

@@ -203,6 +203,16 @@ public final class ModBlocks {
 					.noOcclusion()
 					.ignitedByLava()
 	);
+	public static final Block FORGING_STUMP = register(
+			ModBlockItemIds.FORGING_STUMP,
+			ForgingStumpBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.5F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

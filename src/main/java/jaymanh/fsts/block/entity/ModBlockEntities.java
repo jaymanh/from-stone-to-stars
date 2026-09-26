@@ -65,6 +65,12 @@ public final class ModBlockEntities {
 			ModBlocks.FORGE_HEARTH
 	);
 
+	public static final BlockEntityType<ForgingStumpEntity> FORGING_STUMP = register(
+			"forging_stump",
+			ForgingStumpEntity::new,
+			ModBlocks.FORGING_STUMP
+	);
+
 	private ModBlockEntities() {
 	}
 
