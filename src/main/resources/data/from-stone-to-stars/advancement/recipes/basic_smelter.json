@@ -13,7 +13,8 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:basic_smelter"
+      "from-stone-to-stars:basic_smelter",
+      "from-stone-to-stars:forge_hearth"
     ]
   }
 }

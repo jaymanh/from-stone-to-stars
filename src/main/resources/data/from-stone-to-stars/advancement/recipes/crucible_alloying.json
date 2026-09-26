@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "has_crucible": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:crucible"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:alloying/bronze"
+    ]
+  }
+}

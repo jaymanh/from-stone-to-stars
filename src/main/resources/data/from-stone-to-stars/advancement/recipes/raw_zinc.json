@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:raw_zinc"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:zinc_ingot"
+    ]
+  }
+}
