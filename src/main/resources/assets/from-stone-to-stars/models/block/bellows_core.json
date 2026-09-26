@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/stripped_oak_log",
+    "wood": "minecraft:block/stripped_oak_log",
+    "leather": "minecraft:block/barrel_top"
+  },
+  "elements": [
+    {
+      "from": [4, 0, 4],
+      "to": [12, 10, 12],
+      "faces": {
+        "north": { "uv": [4, 6, 12, 16], "texture": "#leather" },
+        "east": { "uv": [4, 6, 12, 16], "texture": "#leather" },
+        "south": { "uv": [4, 6, 12, 16], "texture": "#leather" },
+        "west": { "uv": [4, 6, 12, 16], "texture": "#leather" },
+        "up": { "uv": [4, 4, 12, 12], "texture": "#leather" },
+        "down": { "uv": [4, 4, 12, 12], "texture": "#wood" }
+      }
+    },
+    {
+      "from": [6, 3, 1],
+      "to": [10, 7, 4],
+      "faces": {
+        "north": { "uv": [6, 9, 10, 13], "texture": "#wood" },
+        "east": { "uv": [1, 9, 4, 13], "texture": "#wood" },
+        "south": { "uv": [6, 9, 10, 13], "texture": "#wood" },
+        "west": { "uv": [1, 9, 4, 13], "texture": "#wood" },
+        "up": { "uv": [6, 1, 10, 4], "texture": "#wood" },
+        "down": { "uv": [6, 1, 10, 4], "texture": "#wood" }
+      }
+    }
+  ]
+}

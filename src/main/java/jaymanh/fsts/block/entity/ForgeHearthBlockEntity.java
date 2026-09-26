@@ -1,6 +1,5 @@
 package jaymanh.fsts.block.entity;
 
-import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.multiblock.FormedMultiblock;
 import jaymanh.fsts.multiblock.StructureMatch;
@@ -27,10 +26,12 @@ import net.minecraft.world.level.storage.ValueOutput;
 /**
  * Blast-furnace smelting while the fuzzy forge assembly is lit.
  * All hearths in a match share lit state; inventory/smelting live on the master (origin) hearth.
- * Extra hearths speed smelting. Item fuel is unused.
+ * Base cook is slower than a blast furnace; extra hearths speed it back up. Item fuel is unused.
  */
 public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 	private static final int ASSEMBLY_LIT_BUFFER = 200;
+	/** Game ticks between cook steps (higher = slower base speed). Extra hearths add steps per interval. */
+	private static final int COOK_INTERVAL = 5;
 	private static final int[] SLOTS_UP = {SLOT_INPUT};
 	private static final int[] SLOTS_DOWN = {SLOT_RESULT};
 	private static final int[] SLOTS_SIDE = {};
@@ -159,6 +160,9 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 		if (hearth.isBurning()) {
 			hearth.dataAccess.set(DATA_LIT_TIME, Math.max(hearth.dataAccess.get(DATA_LIT_TIME), ASSEMBLY_LIT_BUFFER));
 			hearth.dataAccess.set(DATA_LIT_DURATION, ASSEMBLY_LIT_BUFFER);
+			if (serverLevel.getGameTime() % COOK_INTERVAL != 0L) {
+				return;
+			}
 			int speed = 1;
 			FormedMultiblock formed = hearth.getFormed();
 			if (formed != null && formed.process() instanceof ForgeProcess forge) {
@@ -179,6 +183,9 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 		} else {
 			if (hearth.dataAccess.get(DATA_LIT_TIME) > 0) {
 				hearth.dataAccess.set(DATA_LIT_TIME, 0);
+			}
+			if (serverLevel.getGameTime() % COOK_INTERVAL != 0L) {
+				return;
 			}
 			AbstractFurnaceBlockEntity.serverTick(serverLevel, pos, state, hearth);
 		}

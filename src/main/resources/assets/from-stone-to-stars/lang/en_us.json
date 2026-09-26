@@ -167,7 +167,7 @@
 
 	"multiblock.from-stone-to-stars.forge": "Forge",
 	"multiblock.from-stone-to-stars.forge_ready": "Forge structure complete — light to start",
-	"multiblock.from-stone-to-stars.rule.forge_layout": "3×3–5×5 coal pad on a brick/cobble frame, 1×1–3×3 hearths on the centre coal, framed edges (corners optional) with one bellows bank (rectangle OK) and optional air access gap, plus a framed chimney (≥2 tall, 1×1–3×3, may be offset)",
+	"multiblock.from-stone-to-stars.rule.forge_layout": "1×1–5×5 coal pad on a brick/cobble frame, 1×1–5×5 hearths on the centre coal, framed edges (corners optional) with one bellows bank (rectangle OK) and optional air access gap, plus a framed chimney (≥2 tall, 1×1–3×3, may be offset)",
 	"multiblock.from-stone-to-stars.rule.fuel_pit": "At least 4 coal or charcoal blocks under the hearth (within 2 blocks)",
 	"multiblock.from-stone-to-stars.rule.bellows": "A bellows within 2 blocks facing the hearth",
 	"multiblock.from-stone-to-stars.fail.wrong_controller": "%s needs a forge hearth",
@@ -177,7 +177,7 @@
 	"multiblock.from-stone-to-stars.fail.forge.coal_pad_size": "Coal pad must be a solid %sx%s to %sx%s rectangle under the hearths",
 	"multiblock.from-stone-to-stars.fail.forge.missing_frame_under": "Need brick/cobble under the coal, found %s at %s",
 	"multiblock.from-stone-to-stars.fail.forge.missing_frame_beside_coal": "Need brick/cobble beside the coal pad, found %s at %s",
-	"multiblock.from-stone-to-stars.fail.forge.no_hearth_cluster": "Hearths must form a solid 1×1–3×3 cluster on the coal",
+	"multiblock.from-stone-to-stars.fail.forge.no_hearth_cluster": "Hearths must form a solid 1×1–5×5 cluster on the coal",
 	"multiblock.from-stone-to-stars.fail.forge.hearth_not_centred": "Hearths must sit on the centre of the coal pad",
 	"multiblock.from-stone-to-stars.fail.forge.expected_hearth": "Expected a forge hearth, found %s at %s",
 	"multiblock.from-stone-to-stars.fail.forge.hearth_not_on_coal": "Hearth at %s is not sitting on coal",
@@ -195,6 +195,6 @@
 	"multiblock.from-stone-to-stars.fail.forge.chimney_blocked": "Chimney shaft blocked by %s at %s",
 	"multiblock.from-stone-to-stars.fail.forge.chimney_missing_frame": "Chimney needs brick/cobble around the air shaft, found %s at %s",
 	"multiblock.from-stone-to-stars.fail.forge.chimney_too_short": "Chimney must be at least %s blocks tall (found %s)",
-	"jei.from-stone-to-stars.info.forge_hearth": "Build a brick/cobble-framed forge: 3×3 to 5×5 coal on a framed base, 1–9 hearths on the centre coal (more hearths smelt faster and share one inventory), one side of bellows in a straight line, optional air gap for access, and a framed air chimney at least 2 blocks tall. Light any hearth. Burn time scales with coal (10 minutes for a 3×3 pad). Pump bellows to refill toward that max.",
-	"jei.from-stone-to-stars.info.bellows": "Fill exactly one side of the hearth cluster, facing inward. Extra bellows may extend that bank into a rectangle (wider/deeper or stacked). Click while the forge is lit to pump."
+	"jei.from-stone-to-stars.info.forge_hearth": "Build a brick/cobble-framed forge: 1×1–5×5 coal on a framed base, 1×1–5×5 hearths on the centre coal (shared inventory; smelting starts slower than a blast furnace, and each extra hearth speeds it up), one bellows bank facing inward (rectangle OK), optional air access gap, and a framed air chimney at least 2 tall (1×1–3×3, may be offset). Light any hearth. Burn scales with coal (5 minutes for the minimum pad). Pump bellows to refill toward that max.",
+	"jei.from-stone-to-stars.info.bellows": "Fill exactly one side of the hearth cluster, facing the way you look (toward the hearth). Same-facing bellows connect like fences into a bank (wider, deeper, or stacked). Empty-hand click while the forge is lit to pump and extend burn time."
 }

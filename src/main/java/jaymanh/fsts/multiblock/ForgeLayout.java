@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
  *
  * <pre>
  *   chimney air 1x1–3x3 (≥2 tall), framed
- *   hearth layer: 1x1–3x3 hearths on coal centre; sides framed;
- *                 exactly one side is a straight bellows line; optional 1 air access gap
- *   coal pad 3x3–5x5 with frame under and around sides
+ *   hearth layer: 1x1–5x5 hearths on coal centre; sides framed;
+ *                 exactly one side is a bellows bank (rectangle OK); optional 1 air access gap
+ *   coal pad 1x1–5x5 with frame under and around sides
  * </pre>
  */
 public final class ForgeLayout {

@@ -1,8 +1,3 @@
 {
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "top": "minecraft:block/stripped_oak_log",
-    "front": "minecraft:block/barrel_top",
-    "side": "minecraft:block/stripped_oak_log"
-  }
+  "parent": "from-stone-to-stars:block/bellows_core"
 }

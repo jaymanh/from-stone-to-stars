@@ -19,14 +19,14 @@ import net.minecraft.world.level.block.state.BlockState;
 
 /**
  * Forge heat that powers blasting smelting on the hearth cluster.
- * Burn time scales with coal (10 minutes for a minimum 3×3 pad).
+ * Burn time scales with coal (5 minutes for the minimum pad).
  * Hearth count speeds smelting; bellows pumps refill toward the coal max.
  */
 public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.ProgressAware, FormedMultiblock.DurationAware {
-	/** Minimum coal blocks (3×3 pad). */
+	/** Minimum coal blocks for burn scaling. */
 	public static final int MIN_COAL_BLOCKS = ForgeLayout.MIN_COAL * ForgeLayout.MIN_COAL;
-	/** Total burn for {@link #MIN_COAL_BLOCKS}: 10 minutes. */
-	public static final int BURN_TICKS_FOR_MIN_COAL = 20 * 60 * 10;
+	/** Total burn for {@link #MIN_COAL_BLOCKS}: 5 minutes. */
+	public static final int BURN_TICKS_FOR_MIN_COAL = 20 * 60 * 5;
 	/** Burn time granted per coal/charcoal block when the forge is lit. */
 	public static final int TICKS_PER_COAL = BURN_TICKS_FOR_MIN_COAL / MIN_COAL_BLOCKS;
 	/** Extra burn time per bellows when the player pumps (capped by coal max). */
