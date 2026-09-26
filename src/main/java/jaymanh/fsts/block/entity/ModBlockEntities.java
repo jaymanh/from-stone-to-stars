@@ -59,6 +59,12 @@ public final class ModBlockEntities {
 			ModBlocks.STORAGE_POT
 	);
 
+	public static final BlockEntityType<ForgeHearthBlockEntity> FORGE_HEARTH = register(
+			"forge_hearth",
+			ForgeHearthBlockEntity::new,
+			ModBlocks.FORGE_HEARTH
+	);
+
 	private ModBlockEntities() {
 	}
 

@@ -33,6 +33,9 @@ public class ModTags {
 
     public static final TagKey<Block> UNFIRED_POTTERY = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "unfired_pottery"));
     public static final TagKey<Block> COAL_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "coal_blocks"));
+    public static final TagKey<Item> COAL_BLOCK_ITEMS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "coal_blocks"));
+	/** Bricks / cobble / etc. used as forge shell and chimney. */
+	public static final TagKey<Block> FORGE_FRAME = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "forge_frame"));
 
     public static final TagKey<Item> WATER_VESSELS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "water_vessels"));
 

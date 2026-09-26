@@ -1,0 +1,137 @@
+package jaymanh.fsts.multiblock.process;
+
+import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
+import jaymanh.fsts.multiblock.FormedMultiblock;
+import jaymanh.fsts.multiblock.ForgeLayout;
+import jaymanh.fsts.multiblock.MultiblockProcess;
+import jaymanh.fsts.multiblock.MultiblockRole;
+import jaymanh.fsts.multiblock.StructureMatch;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+
+/**
+ * Forge heat that powers blasting smelting on the hearth cluster.
+ * Burn time scales with coal (10 minutes for a minimum 3×3 pad).
+ * Hearth count speeds smelting; bellows pumps refill toward the coal max.
+ */
+public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.ProgressAware, FormedMultiblock.DurationAware {
+	/** Minimum coal blocks (3×3 pad). */
+	public static final int MIN_COAL_BLOCKS = ForgeLayout.MIN_COAL * ForgeLayout.MIN_COAL;
+	/** Total burn for {@link #MIN_COAL_BLOCKS}: 10 minutes. */
+	public static final int BURN_TICKS_FOR_MIN_COAL = 20 * 60 * 10;
+	/** Burn time granted per coal/charcoal block when the forge is lit. */
+	public static final int TICKS_PER_COAL = BURN_TICKS_FOR_MIN_COAL / MIN_COAL_BLOCKS;
+	/** Extra burn time per bellows when the player pumps (capped by coal max). */
+	public static final int TICKS_PER_BELLOWS_PUMP = 20 * 8;
+
+	private final int maxBurnTicks;
+	private final int hearthCount;
+	private int burnTicksRemaining;
+	private int burnTicksTotal;
+
+	public ForgeProcess(StructureMatch match) {
+		int coal = Math.max(MIN_COAL_BLOCKS, match.positionsWithRole(MultiblockRole.CONSUMED).size());
+		this.maxBurnTicks = coal * TICKS_PER_COAL;
+		this.burnTicksTotal = this.maxBurnTicks;
+		this.burnTicksRemaining = this.burnTicksTotal;
+		this.hearthCount = Math.max(1, match.positionsWithRole(MultiblockRole.CONTROLLER).size());
+	}
+
+	public int hearthCount() {
+		return this.hearthCount;
+	}
+
+	public int bellowsCount(StructureMatch match) {
+		return match.positionsWithRole(MultiblockRole.INPUT).size();
+	}
+
+	public void restoreBurn(int totalTicks, int elapsedProgress) {
+		this.burnTicksTotal = Mth.clamp(totalTicks, TICKS_PER_COAL, this.maxBurnTicks);
+		this.burnTicksRemaining = Mth.clamp(this.burnTicksTotal - elapsedProgress, 0, this.maxBurnTicks);
+	}
+
+	/**
+	 * @return ticks actually added
+	 */
+	public int pumpBellows(StructureMatch match) {
+		int bellows = Math.max(1, bellowsCount(match));
+		int add = bellows * TICKS_PER_BELLOWS_PUMP;
+		int before = this.burnTicksRemaining;
+		this.burnTicksRemaining = Mth.clamp(this.burnTicksRemaining + add, 0, this.maxBurnTicks);
+		this.burnTicksTotal = this.maxBurnTicks;
+		return this.burnTicksRemaining - before;
+	}
+
+	@Override
+	public int getProgress() {
+		return Math.max(0, this.maxBurnTicks - this.burnTicksRemaining);
+	}
+
+	@Override
+	public void setProgress(int progress) {
+		this.burnTicksRemaining = Mth.clamp(this.maxBurnTicks - progress, 0, this.maxBurnTicks);
+		this.burnTicksTotal = this.maxBurnTicks;
+	}
+
+	@Override
+	public int getDurationTicks() {
+		return this.maxBurnTicks;
+	}
+
+	public int getBurnTicksRemaining() {
+		return this.burnTicksRemaining;
+	}
+
+	@Override
+	public void onFormed(ServerLevel level, FormedMultiblock formed) {
+		setAllHearthsLit(level, formed, true);
+	}
+
+	@Override
+	public boolean tick(ServerLevel level, FormedMultiblock formed) {
+		this.burnTicksRemaining--;
+		if (this.burnTicksRemaining % 20 == 0) {
+			BlockPos origin = formed.match().origin();
+			level.sendParticles(ParticleTypes.FLAME, origin.getX() + 0.5, origin.getY() + 0.6, origin.getZ() + 0.5, 2, 0.2, 0.1, 0.2, 0.01);
+			level.sendParticles(ParticleTypes.LARGE_SMOKE, origin.getX() + 0.5, origin.getY() + 1.0, origin.getZ() + 0.5, 2, 0.25, 0.15, 0.25, 0.0);
+			for (BlockPos fuel : formed.match().positionsWithRole(MultiblockRole.CONSUMED)) {
+				if (level.getRandom().nextInt(3) == 0) {
+					level.sendParticles(ParticleTypes.SMOKE, fuel.getX() + 0.5, fuel.getY() + 1.0, fuel.getZ() + 0.5, 1, 0.1, 0.05, 0.1, 0.0);
+				}
+			}
+		}
+		if (this.burnTicksRemaining > 0) {
+			return true;
+		}
+		formed.deactivate();
+		complete(level, formed);
+		return false;
+	}
+
+	@Override
+	public void onCancel(ServerLevel level, FormedMultiblock formed) {
+		setAllHearthsLit(level, formed, false);
+	}
+
+	private static void complete(ServerLevel level, FormedMultiblock formed) {
+		setAllHearthsLit(level, formed, false);
+		level.playSound(null, formed.match().origin(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.7F, 1.0F);
+	}
+
+	public static void setAllHearthsLit(ServerLevel level, FormedMultiblock formed, boolean lit) {
+		for (BlockPos pos : formed.match().positionsWithRole(MultiblockRole.CONTROLLER)) {
+			BlockState state = level.getBlockState(pos);
+			if (state.is(ModBlocks.FORGE_HEARTH) && state.hasProperty(ForgeHearthBlock.LIT) && state.getValue(ForgeHearthBlock.LIT) != lit) {
+				level.setBlock(pos, state.setValue(ForgeHearthBlock.LIT, lit), Block.UPDATE_ALL);
+			}
+		}
+	}
+}

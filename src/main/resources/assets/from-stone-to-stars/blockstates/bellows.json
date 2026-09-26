@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "from-stone-to-stars:block/bellows" },
+    "facing=south": { "model": "from-stone-to-stars:block/bellows", "y": 180 },
+    "facing=west": { "model": "from-stone-to-stars:block/bellows", "y": 270 },
+    "facing=east": { "model": "from-stone-to-stars:block/bellows", "y": 90 }
+  }
+}

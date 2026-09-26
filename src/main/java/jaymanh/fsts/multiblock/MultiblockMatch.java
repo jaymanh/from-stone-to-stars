@@ -5,9 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Rotation;
 
-public final class MultiblockMatch {
+public final class MultiblockMatch implements StructureMatch {
 	private final MultiblockDefinition definition;
 	private final BlockPos origin;
 	private final Rotation rotation;
@@ -29,18 +31,36 @@ public final class MultiblockMatch {
 		return this.definition;
 	}
 
-	public BlockPos origin() {
-		return this.origin;
-	}
-
 	public Rotation rotation() {
 		return this.rotation;
 	}
 
+	@Override
+	public Identifier id() {
+		return this.definition.id();
+	}
+
+	@Override
+	public BlockPos origin() {
+		return this.origin;
+	}
+
+	@Override
 	public List<Member> members() {
 		return this.members;
 	}
 
+	@Override
+	public MultiblockProcess.Factory processFactory() {
+		return this.definition.processFactory();
+	}
+
+	@Override
+	public boolean stillValid(LevelAccessor level) {
+		return MultiblockMatcher.stillValid(level, this);
+	}
+
+	@Override
 	public List<BlockPos> positionsWithRole(MultiblockRole role) {
 		List<BlockPos> positions = new ArrayList<>();
 		if (role == MultiblockRole.ORIGIN) {
@@ -50,15 +70,6 @@ public final class MultiblockMatch {
 			if (member.role() == role) {
 				positions.add(member.pos());
 			}
-		}
-		return positions;
-	}
-
-	public List<BlockPos> allPositions() {
-		List<BlockPos> positions = new ArrayList<>(this.members.size() + 1);
-		positions.add(this.origin);
-		for (Member member : this.members) {
-			positions.add(member.pos());
 		}
 		return positions;
 	}

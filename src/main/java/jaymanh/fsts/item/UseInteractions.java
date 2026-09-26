@@ -2,6 +2,8 @@ package jaymanh.fsts.item;
 
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
+import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
+import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.tools.SawToolItem;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -154,6 +156,39 @@ public class UseInteractions {
 			}
 
 			return InteractionResult.SUCCESS;
+		});
+		// Forge access air gap: right-clicking through the opening opens the shared hearth UI.
+		UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
+			if (!player.getItemInHand(hand).isEmpty()) {
+				return InteractionResult.PASS;
+			}
+			var eye = player.getEyePosition(1.0F);
+			var end = hitResult.getLocation();
+			var delta = end.subtract(eye);
+			double length = delta.length();
+			if (length < 1.0E-4) {
+				return InteractionResult.PASS;
+			}
+			var step = delta.normalize().scale(0.25);
+			var cursor = eye;
+			double travelled = 0.0;
+			while (travelled <= length + 0.25) {
+				BlockPos pos = BlockPos.containing(cursor);
+				var formed = ActiveMultiblocks.get(level, pos);
+				if (formed.isPresent() && level.getBlockState(pos).isAir()) {
+					BlockPos origin = formed.get().match().origin();
+					if (level.getBlockEntity(origin) instanceof ForgeHearthBlockEntity master) {
+						if (level.isClientSide()) {
+							return InteractionResult.SUCCESS;
+						}
+						player.openMenu(master);
+						return InteractionResult.SUCCESS;
+					}
+				}
+				cursor = cursor.add(step);
+				travelled += 0.25;
+			}
+			return InteractionResult.PASS;
 		});
     }
 }

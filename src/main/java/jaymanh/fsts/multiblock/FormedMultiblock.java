@@ -15,16 +15,19 @@ import net.minecraft.world.level.storage.ValueOutput;
  * Live instance of a matched structure plus its running process.
  */
 public final class FormedMultiblock {
-	private final MultiblockMatch match;
+	private static final String KIND_PATTERN = "pattern";
+	private static final String KIND_ASSEMBLY = "assembly";
+
+	private final StructureMatch match;
 	private final MultiblockProcess process;
 	private boolean active = true;
 
-	public FormedMultiblock(MultiblockMatch match, MultiblockProcess process) {
+	public FormedMultiblock(StructureMatch match, MultiblockProcess process) {
 		this.match = match;
 		this.process = process;
 	}
 
-	public MultiblockMatch match() {
+	public StructureMatch match() {
 		return this.match;
 	}
 
@@ -52,7 +55,7 @@ public final class FormedMultiblock {
 		if (!this.active) {
 			return;
 		}
-		if (!MultiblockMatcher.stillValid(level, this.match)) {
+		if (!this.match.stillValid(level)) {
 			this.cancel(level);
 			return;
 		}
@@ -79,14 +82,28 @@ public final class FormedMultiblock {
 	}
 
 	public void saveAdditional(ValueOutput output) {
-		output.putString("Definition", this.match.definition().id().toString());
-		output.putString("Rotation", this.match.rotation().name());
+		if (this.match instanceof MultiblockMatch pattern) {
+			output.putString("Kind", KIND_PATTERN);
+			output.putString("Definition", pattern.definition().id().toString());
+			output.putString("Rotation", pattern.rotation().name());
+		} else if (this.match instanceof AssemblyMatch assembly) {
+			output.putString("Kind", KIND_ASSEMBLY);
+			output.putString("Definition", assembly.definition().id().toString());
+			output.putString("Rotation", Rotation.NONE.name());
+		} else {
+			output.putString("Kind", KIND_PATTERN);
+			output.putString("Definition", this.match.id().toString());
+			output.putString("Rotation", Rotation.NONE.name());
+		}
+
 		output.putInt("OriginX", this.match.origin().getX());
 		output.putInt("OriginY", this.match.origin().getY());
 		output.putInt("OriginZ", this.match.origin().getZ());
 
 		int progress = this.process instanceof ProgressAware aware ? aware.getProgress() : 0;
 		output.putInt("ProcessProgress", progress);
+		int duration = this.process instanceof DurationAware durationAware ? durationAware.getDurationTicks() : 0;
+		output.putInt("ProcessDuration", duration);
 
 		int size = this.match.members().size();
 		int[] xs = new int[size];
@@ -111,12 +128,9 @@ public final class FormedMultiblock {
 		if (definitionId.isEmpty()) {
 			return Optional.empty();
 		}
-		Optional<MultiblockDefinition> definition = MultiblockRegistry.get(Identifier.parse(definitionId.get()));
-		if (definition.isEmpty()) {
-			return Optional.empty();
-		}
 
-		Rotation rotation = Rotation.valueOf(input.getString("Rotation").orElse(Rotation.NONE.name()));
+		String kind = input.getString("Kind").orElse(KIND_PATTERN);
+		Identifier id = Identifier.parse(definitionId.get());
 		BlockPos origin = new BlockPos(
 				input.getIntOr("OriginX", 0),
 				input.getIntOr("OriginY", 0),
@@ -136,9 +150,33 @@ public final class FormedMultiblock {
 			members.add(new MultiblockMatch.Member(new BlockPos(xs[i], ys[i], zs[i]), role));
 		}
 
-		MultiblockMatch match = new MultiblockMatch(definition.get(), origin, rotation, members);
-		MultiblockProcess process = definition.get().processFactory().create(match);
-		if (process instanceof ProgressAware progressAware) {
+		StructureMatch match;
+		if (KIND_ASSEMBLY.equals(kind)) {
+			Optional<AssemblyDefinition> definition = AssemblyRegistry.get(id);
+			if (definition.isEmpty()) {
+				return Optional.empty();
+			}
+			List<ComponentRule.ResolvedComponent> resolved = new ArrayList<>();
+			for (MultiblockMatch.Member member : members) {
+				resolved.add(new ComponentRule.ResolvedComponent(List.of(member.pos()), member.role(), member.role().getSerializedName()));
+			}
+			match = new AssemblyMatch(definition.get(), origin, resolved);
+		} else {
+			Optional<MultiblockDefinition> definition = MultiblockRegistry.get(id);
+			if (definition.isEmpty()) {
+				return Optional.empty();
+			}
+			Rotation rotation = Rotation.valueOf(input.getString("Rotation").orElse(Rotation.NONE.name()));
+			match = new MultiblockMatch(definition.get(), origin, rotation, members);
+		}
+
+		MultiblockProcess process = match.processFactory().create(match);
+		if (process instanceof jaymanh.fsts.multiblock.process.ForgeProcess forge) {
+			forge.restoreBurn(
+					input.getIntOr("ProcessDuration", forge.getDurationTicks()),
+					input.getIntOr("ProcessProgress", 0)
+			);
+		} else if (process instanceof ProgressAware progressAware) {
 			progressAware.setProgress(input.getIntOr("ProcessProgress", 0));
 		}
 		return Optional.of(new FormedMultiblock(match, process));

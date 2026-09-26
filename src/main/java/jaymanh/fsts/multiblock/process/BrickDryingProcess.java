@@ -1,14 +1,11 @@
 package jaymanh.fsts.multiblock.process;
 
-import jaymanh.fsts.block.ModBlockItemIds;
 import jaymanh.fsts.block.ModBlocks;
-import jaymanh.fsts.block.ModCustomBlockModels.UnfiredPotteryBlock;
 import jaymanh.fsts.item.ClayJugItem;
-import jaymanh.fsts.item.ModItemIds;
 import jaymanh.fsts.multiblock.FormedMultiblock;
-import jaymanh.fsts.multiblock.MultiblockMatch;
 import jaymanh.fsts.multiblock.MultiblockProcess;
 import jaymanh.fsts.multiblock.MultiblockRole;
+import jaymanh.fsts.multiblock.StructureMatch;
 import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.core.BlockPos;
@@ -29,7 +26,7 @@ public class BrickDryingProcess implements MultiblockProcess, FormedMultiblock.P
 	public static final int DURATION_TICKS = 20 * 60 * 5;
 	private int progress;
 
-	public BrickDryingProcess(MultiblockMatch multiblockMatch) {
+	public BrickDryingProcess(StructureMatch match) {
 	}
 
 	@Override

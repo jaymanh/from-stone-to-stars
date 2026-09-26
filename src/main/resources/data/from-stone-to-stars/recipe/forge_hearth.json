@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "B": "minecraft:brick",
+    "C": "#from-stone-to-stars:coal_blocks"
+  },
+  "result": {
+    "id": "from-stone-to-stars:forge_hearth",
+    "count": 1
+  }
+}

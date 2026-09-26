@@ -98,6 +98,10 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 		builder(ModTags.WATER_VESSELS)
 				.add(ModItemIds.LEATHER_SKIN)
 				.add(ModItemIds.CLAY_JUG);
+
+		builder(ModTags.COAL_BLOCK_ITEMS)
+				.add(ModBlockItemIds.CHARCOAL_BLOCK.item())
+				.add(minecraftItem("coal_block"));
 	}
 
 	private static ResourceKey<Item> minecraftItem(String path) {

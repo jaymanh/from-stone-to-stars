@@ -58,6 +58,8 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.UNFINISHED_WORK_STUMP);
 				output.accept(ModBlocks.WORK_STUMP);
 				output.accept(ModBlocks.BASIC_SMELTER);
+				output.accept(ModBlocks.FORGE_HEARTH);
+				output.accept(ModBlocks.BELLOWS);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 				output.accept(ModBlocks.SNARE);

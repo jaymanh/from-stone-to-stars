@@ -3,8 +3,8 @@ package jaymanh.fsts.block.entity;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.multiblock.FormedMultiblock;
-import jaymanh.fsts.multiblock.MultiblockMatch;
 import jaymanh.fsts.multiblock.MultiblockRole;
+import jaymanh.fsts.multiblock.StructureMatch;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -36,11 +36,11 @@ public class KindlingBlockEntity extends BlockEntity {
 		return this.formed != null ? this.formed.getProcessDuration() : 0;
 	}
 
-	public boolean start(MultiblockMatch match) {
+	public boolean start(StructureMatch match) {
 		if (!(this.level instanceof ServerLevel serverLevel) || this.isBurning()) {
 			return false;
 		}
-		FormedMultiblock formed = new FormedMultiblock(match, match.definition().processFactory().create(match));
+		FormedMultiblock formed = new FormedMultiblock(match, match.processFactory().create(match));
 		linkParticipants(serverLevel, formed);
 		ActiveMultiblocks.register(serverLevel, formed);
 		this.participantsLinked = true;

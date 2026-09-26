@@ -183,6 +183,26 @@ public final class ModBlocks {
 					.noOcclusion()
 					.pushReaction(PushReaction.DESTROY)
 	);
+	public static final Block FORGE_HEARTH = register(
+			ModBlockItemIds.FORGE_HEARTH,
+			ForgeHearthBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.STONE)
+					.sound(SoundType.STONE)
+					.strength(2.0F, 6.0F)
+					.lightLevel(state -> state.getValue(ForgeHearthBlock.LIT) ? 10 : 0)
+					.noOcclusion()
+	);
+	public static final Block BELLOWS = register(
+			ModBlockItemIds.BELLOWS,
+			BellowsBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.5F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

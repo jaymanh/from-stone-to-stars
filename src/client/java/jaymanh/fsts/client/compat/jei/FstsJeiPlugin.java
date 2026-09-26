@@ -8,6 +8,7 @@ import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.multiblock.process.BrickDryingProcess;
 import jaymanh.fsts.multiblock.process.CharcoalPileProcess;
+import jaymanh.fsts.multiblock.process.ForgeProcess;
 import jaymanh.fsts.tools.ModTools;
 
 import mezz.jei.api.IModPlugin;
@@ -29,6 +30,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 	public static final IRecipeType<SimpleProcessRecipe> TANNING = IRecipeType.create(FromStoneToStars.MOD_ID, "tanning", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> CHARCOAL_PILE = IRecipeType.create(FromStoneToStars.MOD_ID, "charcoal_pile", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BRICK_DRYING = IRecipeType.create(FromStoneToStars.MOD_ID, "brick_drying", SimpleProcessRecipe.class);
+	public static final IRecipeType<SimpleProcessRecipe> FORGE = IRecipeType.create(FromStoneToStars.MOD_ID, "forge", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BONE_SAW = IRecipeType.create(FromStoneToStars.MOD_ID, "bone_saw", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> GRINDING = IRecipeType.create(FromStoneToStars.MOD_ID, "grinding", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> CRUCIBLE_ALLOYING = IRecipeType.create(FromStoneToStars.MOD_ID, "crucible_alloying", SimpleProcessRecipe.class);
@@ -46,6 +48,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, TANNING, Component.translatable("jei.from-stone-to-stars.tanning"), ModBlocks.TANNING_RACK),
 				new ProcessRecipeCategory(guiHelper, CHARCOAL_PILE, Component.translatable("jei.from-stone-to-stars.charcoal_pile"), ModBlocks.KINDLING),
 				new ProcessRecipeCategory(guiHelper, BRICK_DRYING, Component.translatable("jei.from-stone-to-stars.brick_drying"), ModBlocks.CLAY_BRICKS),
+				new ProcessRecipeCategory(guiHelper, FORGE, Component.translatable("jei.from-stone-to-stars.forge"), ModBlocks.FORGE_HEARTH),
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
 				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
 				new ProcessRecipeCategory(guiHelper, CRUCIBLE_ALLOYING, Component.translatable("jei.from-stone-to-stars.crucible_alloying"), ModItems.CRUCIBLE),
@@ -113,6 +116,20 @@ public final class FstsJeiPlugin implements IModPlugin {
 						BrickDryingProcess.DURATION_TICKS
 				)
 		));
+
+		registration.addRecipes(FORGE, List.of(new SimpleProcessRecipe(
+				FromStoneToStars.id("forge/heat"),
+				List.of(
+						SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
+						SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
+						SimpleProcessRecipe.any(Items.BRICKS, Items.COBBLESTONE),
+						SimpleProcessRecipe.item(ModBlocks.BELLOWS),
+						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+				),
+				List.of(),
+				SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
+				ForgeProcess.BURN_TICKS_FOR_MIN_COAL
+		)));
 
 		registration.addRecipes(GRINDING, List.of(
 				new SimpleProcessRecipe(
@@ -188,6 +205,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.clay_jug"));
 		registration.addIngredientInfo(ModBlocks.UNFIRED_STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.unfired_storage_pot"));
 		registration.addIngredientInfo(ModBlocks.STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.storage_pot"));
+		registration.addIngredientInfo(ModBlocks.FORGE_HEARTH, Component.translatable("jei.from-stone-to-stars.info.forge_hearth"));
+		registration.addIngredientInfo(ModBlocks.BELLOWS, Component.translatable("jei.from-stone-to-stars.info.bellows"));
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 		registration.addIngredientInfo(ModItems.CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.crucible"));
@@ -212,6 +231,9 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BRICK_DRYING, ModBlocks.CHARCOAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, Items.COAL_BLOCK);
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
+		registration.addCraftingStation(FORGE, ModBlocks.FORGE_HEARTH);
+		registration.addCraftingStation(FORGE, ModBlocks.BELLOWS);
+		registration.addCraftingStation(FORGE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModItems.CRUCIBLE);

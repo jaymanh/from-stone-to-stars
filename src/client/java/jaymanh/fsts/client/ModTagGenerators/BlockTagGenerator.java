@@ -73,7 +73,7 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
 				.addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
-        builder(BlockTags.MINEABLE_WITH_AXE)
+		builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
                 .add(ModBlockItemIds.TANNING_RACK)
                 .add(ModBlockIds.PLACED_BONE_SAW)
@@ -83,7 +83,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.THATCH)
 				.add(ModBlockItemIds.WATTLE_AND_DAUB)
 				.add(ModBlockItemIds.WORK_STUMP)
-				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP);
+				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP)
+				.add(ModBlockItemIds.BELLOWS);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);
@@ -98,7 +99,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockIds.FIRED_CLAY_BRICKS)
 				.add(ModBlockItemIds.UNFIRED_CLAY_JUG)
 				.add(ModBlockItemIds.UNFIRED_STORAGE_POT)
-				.add(ModBlockItemIds.STORAGE_POT);
+				.add(ModBlockItemIds.STORAGE_POT)
+				.add(ModBlockItemIds.FORGE_HEARTH);
 
 		builder(ModTags.UNFIRED_POTTERY)
 				.add(ModBlockItemIds.CLAY_BRICKS)
@@ -108,6 +110,10 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 		builder(ModTags.COAL_BLOCKS)
 				.add(ModBlockItemIds.CHARCOAL_BLOCK)
 				.add(minecraftBlock("coal_block"));
+
+		builder(ModTags.FORGE_FRAME)
+				.add(minecraftBlock("bricks"))
+				.add(minecraftBlock("cobblestone"));
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);

@@ -1,11 +1,13 @@
 package jaymanh.fsts.client.compat.jade;
 
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.FishTrapBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
+import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
 import jaymanh.fsts.block.entity.SnareBlockEntity;
@@ -24,6 +26,7 @@ public final class FstsJadePlugin implements IWailaPlugin {
 	public void register(IWailaCommonRegistration registration) {
 		registration.registerBlockDataProvider(JadeTanningProvider.Data.INSTANCE, TanningRackBlockEntity.class);
 		registration.registerBlockDataProvider(JadeKindlingProvider.Data.INSTANCE, KindlingBlockEntity.class);
+		registration.registerBlockDataProvider(JadeForgeProvider.Data.INSTANCE, ForgeHearthBlockEntity.class);
 		registration.registerBlockDataProvider(JadeBoneSawProvider.Data.INSTANCE, PlacedBoneSawBlockEntity.class);
 		registration.registerBlockDataProvider(JadeMultiblockProvider.Data.INSTANCE, Block.class);
 		registration.registerBlockDataProvider(JadeSnareProvider.Data.INSTANCE, SnareBlockEntity.class);
@@ -34,6 +37,7 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadePebbleProvider.INSTANCE, PebbleBlock.class);
 		registration.registerBlockComponent(JadeTanningProvider.INSTANCE, TanningRackBlock.class);
 		registration.registerBlockComponent(JadeKindlingProvider.INSTANCE, KindlingBlock.class);
+		registration.registerBlockComponent(JadeForgeProvider.INSTANCE, ForgeHearthBlock.class);
 		registration.registerBlockComponent(JadeBoneSawProvider.INSTANCE, PlacedBoneSawBlock.class);
 		registration.registerBlockComponent(JadeMultiblockProvider.INSTANCE, Block.class);
 		registration.registerBlockComponent(JadeSnareProvider.INSTANCE, SnareBlock.class);

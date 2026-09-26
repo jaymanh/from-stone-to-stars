@@ -20,6 +20,6 @@ public interface MultiblockProcess {
 
 	@FunctionalInterface
 	interface Factory {
-		MultiblockProcess create(MultiblockMatch match);
+		MultiblockProcess create(StructureMatch match);
 	}
 }

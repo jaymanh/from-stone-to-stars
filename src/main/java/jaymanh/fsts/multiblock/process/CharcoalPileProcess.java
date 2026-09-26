@@ -2,9 +2,9 @@ package jaymanh.fsts.multiblock.process;
 
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.multiblock.FormedMultiblock;
-import jaymanh.fsts.multiblock.MultiblockMatch;
 import jaymanh.fsts.multiblock.MultiblockProcess;
 import jaymanh.fsts.multiblock.MultiblockRole;
+import jaymanh.fsts.multiblock.StructureMatch;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -22,7 +22,7 @@ public final class CharcoalPileProcess implements MultiblockProcess, FormedMulti
 
 	private int progress;
 
-	public CharcoalPileProcess(MultiblockMatch match) {
+	public CharcoalPileProcess(StructureMatch match) {
 	}
 
 	@Override

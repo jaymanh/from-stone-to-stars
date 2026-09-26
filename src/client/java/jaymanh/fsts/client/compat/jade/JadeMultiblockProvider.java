@@ -2,6 +2,7 @@ package jaymanh.fsts.client.compat.jade;
 
 import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.compat.tooltip.ProcessTooltips;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
@@ -19,15 +20,17 @@ import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 
 /**
- * Progress overlay for non-kindling multiblock members (logs, charcoal, clay, …).
- * Kindling uses {@link JadeKindlingProvider}.
+ * Progress overlay for non-controller multiblock members (logs, charcoal, clay, …).
+ * Kindling and forge hearth have dedicated providers.
  */
 public enum JadeMultiblockProvider implements IBlockComponentProvider {
 	INSTANCE;
 
 	@Override
 	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
-		if (!config.get(this) || accessor.getBlock() instanceof KindlingBlock) {
+		if (!config.get(this)
+				|| accessor.getBlock() instanceof KindlingBlock
+				|| accessor.getBlock() instanceof ForgeHearthBlock) {
 			return;
 		}
 		ProcessTooltips.progressLines(accessor.getServerData()).forEach(tooltip::add);
@@ -51,7 +54,7 @@ public enum JadeMultiblockProvider implements IBlockComponentProvider {
 
 		@Override
 		public void appendServerData(CompoundTag tag, BlockAccessor accessor) {
-			if (accessor.getBlock() instanceof KindlingBlock) {
+			if (accessor.getBlock() instanceof KindlingBlock || accessor.getBlock() instanceof ForgeHearthBlock) {
 				return;
 			}
 			ActiveMultiblocks.get(accessor.getLevel(), accessor.getPosition()).ifPresent(formed ->
@@ -61,7 +64,9 @@ public enum JadeMultiblockProvider implements IBlockComponentProvider {
 
 		@Override
 		public boolean shouldRequestData(BlockAccessor accessor) {
-			return !(accessor.getBlock() instanceof KindlingBlock) && isLikelyMember(accessor.getBlockState());
+			return !(accessor.getBlock() instanceof KindlingBlock)
+					&& !(accessor.getBlock() instanceof ForgeHearthBlock)
+					&& isLikelyMember(accessor.getBlockState());
 		}
 
 		@Override

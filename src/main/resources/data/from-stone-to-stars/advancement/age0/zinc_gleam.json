@@ -6,7 +6,7 @@
       "conditions": {
         "items": [
           {
-            "items": "from-stone-to-stars:raw_tin"
+            "items": "from-stone-to-stars:raw_zinc"
           }
         ]
       }
@@ -14,7 +14,7 @@
   },
   "display": {
     "icon": {
-      "id": "from-stone-to-stars:raw_tin"
+      "id": "from-stone-to-stars:raw_zinc"
     },
     "frame": "goal",
     "title": {
