@@ -30,7 +30,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Hammer heated metal on a forging stump.
- * Input stack count must exactly equal {@link #ingredientCount()}.
+ * {@link #ingredientCount()} is the cost of this recipe. The player picks the recipe;
+ * several recipes for the same metal can match one stack.
  */
 public class ForgingRecipe implements Recipe<SingleRecipeInput> {
 	public static final MapCodec<ForgingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> {
@@ -99,12 +100,15 @@ public class ForgingRecipe implements Recipe<SingleRecipeInput> {
 		return this.result.create();
 	}
 
+	/** Heated metal this recipe is made from, ignoring how many are in the stack. */
+	public boolean matchesMetal(ItemStack stack) {
+		return !stack.isEmpty() && this.ingredient.test(stack);
+	}
+
 	@Override
 	public boolean matches(SingleRecipeInput input, Level level) {
 		ItemStack stack = input.item();
-		return !stack.isEmpty()
-				&& this.ingredient.test(stack)
-				&& stack.getCount() == this.ingredientCount;
+		return this.matchesMetal(stack) && stack.getCount() >= this.ingredientCount;
 	}
 
 	@Override

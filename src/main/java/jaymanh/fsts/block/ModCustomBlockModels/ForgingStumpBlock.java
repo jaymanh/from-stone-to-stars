@@ -6,13 +6,16 @@ import org.jspecify.annotations.Nullable;
 
 import jaymanh.fsts.block.entity.ForgingStumpEntity;
 import jaymanh.fsts.block.entity.ModBlockEntities;
+import jaymanh.fsts.inventory.ForgingStumpMenu;
 import jaymanh.fsts.tools.ModTools;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -40,6 +43,7 @@ public class ForgingStumpBlock extends BaseEntityBlock {
 	public static final IntegerProperty PROGRESS = IntegerProperty.create("progress", 0, MAX_PROGRESS);
 
 	private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 10.0, 15.0);
+	private static final Component TITLE = Component.translatable("container.from-stone-to-stars.forging_stump");
 
 	public ForgingStumpBlock(Properties properties) {
 		super(properties);
@@ -97,23 +101,19 @@ public class ForgingStumpBlock extends BaseEntityBlock {
 			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
-		if (level.isClientSide()) {
-			return InteractionResult.SUCCESS;
-		}
-
 		if (stack.is(ModTools.BRONZE_HAMMER)) {
+			if (level.isClientSide()) {
+				return InteractionResult.SUCCESS;
+			}
 			if (stump.hammer(player, stack)) {
 				level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.4F, 1.2F);
 				return InteractionResult.SUCCESS;
 			}
-			return InteractionResult.PASS;
+			// A swing that does nothing must not fall through into opening the menu.
+			return InteractionResult.FAIL;
 		}
 
-		if (stump.insertInput(stack, player)) {
-			return InteractionResult.SUCCESS;
-		}
-
-		return InteractionResult.TRY_WITH_EMPTY_HAND;
+		return openMenu(level, player, stump);
 	}
 
 	@Override
@@ -121,15 +121,17 @@ public class ForgingStumpBlock extends BaseEntityBlock {
 		if (!(level.getBlockEntity(pos) instanceof ForgingStumpEntity stump)) {
 			return InteractionResult.PASS;
 		}
+		return openMenu(level, player, stump);
+	}
 
+	private static InteractionResult openMenu(Level level, Player player, ForgingStumpEntity stump) {
 		if (level.isClientSide()) {
 			return InteractionResult.SUCCESS;
 		}
-
-		if (player.isShiftKeyDown()) {
-			return stump.extractAll(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
-		}
-
-		return stump.takeOutput(player) ? InteractionResult.SUCCESS : InteractionResult.PASS;
+		player.openMenu(new SimpleMenuProvider(
+				(containerId, inventory, opener) -> new ForgingStumpMenu(containerId, inventory, stump),
+				TITLE
+		));
+		return InteractionResult.SUCCESS;
 	}
 }

@@ -1,6 +1,7 @@
 package jaymanh.fsts.recipe;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,9 @@ import jaymanh.fsts.item.CrucibleItem;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -104,14 +108,58 @@ public final class ModRecipes {
 		return recipes.getRecipeFor(GRINDING, new SingleRecipeInput(stack), level);
 	}
 
-	public static Optional<RecipeHolder<ForgingRecipe>> findForging(Level level, ItemStack stack) {
-		if (level == null || stack.isEmpty()) {
+	/**
+	 * Every forging recipe for this metal, sorted by recipe id.
+	 * Count is not a filter: the stump shows recipes the stack cannot afford yet.
+	 * The server menu sends this order to the client. The client recipe list does not include forging.
+	 */
+	public static List<RecipeHolder<ForgingRecipe>> listForgingForMetal(Level level, ItemStack stack) {
+		List<RecipeHolder<ForgingRecipe>> list = new ArrayList<>();
+		if (level == null || stack.isEmpty() || !(level.recipeAccess() instanceof RecipeManager recipes)) {
+			return list;
+		}
+		for (RecipeHolder<?> holder : recipes.getRecipes()) {
+			if (holder.value() instanceof ForgingRecipe forging && forging.matchesMetal(stack)) {
+				list.add(new RecipeHolder<>(holder.id(), forging));
+			}
+		}
+		list.sort(Comparator.comparing(holder -> holder.id().identifier().toString()));
+		return list;
+	}
+
+	public static boolean isForgingMetal(Level level, ItemStack stack) {
+		if (level == null || stack.isEmpty() || !(level.recipeAccess() instanceof RecipeManager recipes)) {
+			return false;
+		}
+		for (RecipeHolder<?> holder : recipes.getRecipes()) {
+			if (holder.value() instanceof ForgingRecipe forging && forging.matchesMetal(stack)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean hasAnyForgingRecipe(Level level) {
+		if (level == null || !(level.recipeAccess() instanceof RecipeManager recipes)) {
+			return false;
+		}
+		for (RecipeHolder<?> holder : recipes.getRecipes()) {
+			if (holder.value() instanceof ForgingRecipe) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static Optional<RecipeHolder<ForgingRecipe>> getForging(Level level, Identifier id) {
+		if (level == null || id == null || !(level.recipeAccess() instanceof RecipeManager recipes)) {
 			return Optional.empty();
 		}
-		if (!(level.recipeAccess() instanceof RecipeManager recipes)) {
-			return Optional.empty();
+		Optional<RecipeHolder<?>> found = recipes.byKey(ResourceKey.create(Registries.RECIPE, id));
+		if (found.isPresent() && found.get().value() instanceof ForgingRecipe forging) {
+			return Optional.of(new RecipeHolder<>(found.get().id(), forging));
 		}
-		return recipes.getRecipeFor(FORGING, new SingleRecipeInput(stack), level);
+		return Optional.empty();
 	}
 
 	public static List<CrucibleAlloyingRecipe> listAlloying(Level level) {

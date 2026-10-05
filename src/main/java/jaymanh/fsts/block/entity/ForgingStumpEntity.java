@@ -1,5 +1,6 @@
 package jaymanh.fsts.block.entity;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import jaymanh.fsts.block.ModCustomBlockModels.ForgingStumpBlock;
@@ -11,6 +12,7 @@ import jaymanh.fsts.tools.ModTools;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -20,6 +22,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -31,8 +34,9 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Forging stump: place heated metal, hammer with a bronze hammer into parts.
- * Heat continues to cool here; if the metal cools mid-work, progress resets.
+ * Forging stump: heated metal in, one chosen forging recipe, then bronze-hammer hits.
+ * Heat keeps cooling here. Progress resets if the metal cools, the recipe changes,
+ * or the stack can no longer pay the selected recipe's ingot cost.
  */
 public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer {
 	public static final int INPUT_SLOT = 0;
@@ -43,6 +47,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(SLOT_COUNT, ItemStack.EMPTY);
 	private int progress;
+	private @Nullable Identifier selectedRecipe;
 
 	public ForgingStumpEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.FORGING_STUMP, pos, state);
@@ -52,87 +57,78 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 		return this.progress;
 	}
 
+	public @Nullable Identifier getSelectedRecipeId() {
+		return this.selectedRecipe;
+	}
+
+	/** Changing the recipe starts the hammer count over. The same id leaves progress alone. */
+	public void setSelectedRecipe(@Nullable Identifier id) {
+		if (Objects.equals(this.selectedRecipe, id)) {
+			return;
+		}
+		this.selectedRecipe = id;
+		this.progress = 0;
+		this.syncState();
+	}
+
+	/**
+	 * Drops the selection when it no longer matches the input.
+	 * Skips the check until forging recipes are actually loaded, so a chunk load cannot wipe a saved recipe.
+	 */
+	public void ensureSelectionValid() {
+		if (this.selectedRecipe == null || this.level == null) {
+			return;
+		}
+		if (!(this.level.recipeAccess() instanceof RecipeManager) || !ModRecipes.hasAnyForgingRecipe(this.level)) {
+			return;
+		}
+		Optional<RecipeHolder<ForgingRecipe>> holder = ModRecipes.getForging(this.level, this.selectedRecipe);
+		ItemStack input = this.items.get(INPUT_SLOT);
+		if (holder.isEmpty() || !holder.get().value().matches(new SingleRecipeInput(input), this.level)) {
+			this.selectedRecipe = null;
+			this.progress = 0;
+			this.syncState();
+		}
+	}
+
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ForgingStumpEntity stump) {
 		if (!(level instanceof ServerLevel serverLevel)) {
 			return;
 		}
 		ItemStack input = stump.items.get(INPUT_SLOT);
-		if (!HeatedMetalItem.isHeated(input)) {
-			return;
+		if (HeatedMetalItem.isHeated(input)) {
+			ItemStack cooled = HeatedMetalItem.coolIfExpired(input, serverLevel.getGameTime());
+			if (cooled != input) {
+				stump.setItem(INPUT_SLOT, cooled);
+			}
 		}
-		ItemStack after = HeatedMetalItem.coolIfExpired(input, serverLevel.getGameTime());
-		if (after != input && !ItemStack.isSameItemSameComponents(after, input)) {
-			stump.items.set(INPUT_SLOT, after);
-			stump.progress = 0;
-			stump.syncState();
-		}
+		stump.ensureSelectionValid();
 	}
 
 	public boolean acceptsInput(ItemStack stack) {
-		if (!HeatedMetalItem.isHeated(stack)) {
+		if (!HeatedMetalItem.isHeated(stack) || !ModRecipes.isForgingMetal(this.level, stack)) {
 			return false;
 		}
 		ItemStack input = this.items.get(INPUT_SLOT);
-		if (input.isEmpty()) {
-			return this.findAnyForgingIngredient(stack);
-		}
-		return HeatedMetalItem.isSameHeatedMetal(input, stack);
-	}
-
-	private boolean findAnyForgingIngredient(ItemStack stack) {
-		if (this.level == null || !(this.level.recipeAccess() instanceof net.minecraft.world.item.crafting.RecipeManager recipes)) {
-			return false;
-		}
-		for (RecipeHolder<?> holder : recipes.getRecipes()) {
-			if (holder.value() instanceof ForgingRecipe forging && forging.ingredient().test(stack)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean insertInput(ItemStack stack, Player player) {
-		if (!this.acceptsInput(stack)) {
-			return false;
-		}
-
-		ItemStack input = this.items.get(INPUT_SLOT);
-		if (input.isEmpty()) {
-			this.items.set(INPUT_SLOT, stack.copyWithCount(1));
-			this.progress = 0;
-			if (!player.hasInfiniteMaterials()) {
-				stack.shrink(1);
-			}
-			this.syncState();
-			return true;
-		}
-
-		if (input.getCount() >= input.getMaxStackSize()) {
-			return false;
-		}
-
-		HeatedMetalItem.keepEarlierHeat(input, stack);
-		input.grow(1);
-		this.progress = 0;
-		if (!player.hasInfiniteMaterials()) {
-			stack.shrink(1);
-		}
-		this.syncState();
-		return true;
+		return input.isEmpty() || HeatedMetalItem.isSameHeatedMetal(input, stack);
 	}
 
 	public boolean hammer(Player player, ItemStack hammer) {
-		if (!hammer.is(ModTools.BRONZE_HAMMER)) {
+		if (!hammer.is(ModTools.BRONZE_HAMMER) || this.level == null || this.selectedRecipe == null) {
 			return false;
 		}
 
-		ItemStack input = this.items.get(INPUT_SLOT);
-		Optional<RecipeHolder<ForgingRecipe>> recipe = ModRecipes.findForging(this.level, input);
+		Optional<RecipeHolder<ForgingRecipe>> recipe = ModRecipes.getForging(this.level, this.selectedRecipe);
 		if (recipe.isEmpty()) {
 			return false;
 		}
 
 		ForgingRecipe forging = recipe.get().value();
+		ItemStack input = this.items.get(INPUT_SLOT);
+		if (!forging.matches(new SingleRecipeInput(input), this.level)) {
+			return false;
+		}
+
 		ItemStack result = forging.resultStack();
 		if (result.isEmpty()) {
 			return false;
@@ -163,6 +159,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			}
 		}
 
+		this.ensureSelectionValid();
 		this.syncState();
 		return true;
 	}
@@ -175,38 +172,6 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			return false;
 		}
 		return output.getCount() + result.getCount() <= output.getMaxStackSize();
-	}
-
-	public boolean takeOutput(Player player) {
-		ItemStack output = this.items.get(OUTPUT_SLOT);
-		if (output.isEmpty()) {
-			return false;
-		}
-		this.items.set(OUTPUT_SLOT, ItemStack.EMPTY);
-		player.getInventory().placeItemBackInInventory(output);
-		this.syncState();
-		return true;
-	}
-
-	public boolean extractAll(Player player) {
-		boolean removed = false;
-		ItemStack output = this.items.get(OUTPUT_SLOT);
-		if (!output.isEmpty()) {
-			this.items.set(OUTPUT_SLOT, ItemStack.EMPTY);
-			player.getInventory().placeItemBackInInventory(output);
-			removed = true;
-		}
-		ItemStack input = this.items.get(INPUT_SLOT);
-		if (!input.isEmpty()) {
-			this.items.set(INPUT_SLOT, ItemStack.EMPTY);
-			this.progress = 0;
-			player.getInventory().placeItemBackInInventory(input);
-			removed = true;
-		}
-		if (removed) {
-			this.syncState();
-		}
-		return removed;
 	}
 
 	private void syncState() {
@@ -237,6 +202,9 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			list.add(stack);
 		}
 		output.putInt("Progress", this.progress);
+		if (this.selectedRecipe != null) {
+			output.putString("Recipe", this.selectedRecipe.toString());
+		}
 	}
 
 	@Override
@@ -250,6 +218,12 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			}
 		}
 		this.progress = Math.max(0, input.getIntOr("Progress", 0));
+		this.selectedRecipe = null;
+		input.getString("Recipe").ifPresent(value -> this.selectedRecipe = Identifier.parse(value));
+		// Saves from before recipe selection have hammer progress and no recipe. That progress belongs to no craft.
+		if (this.selectedRecipe == null) {
+			this.progress = 0;
+		}
 	}
 
 	@Override
@@ -277,7 +251,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 		ItemStack removed = ContainerHelper.removeItem(this.items, slot, amount);
 		if (!removed.isEmpty()) {
 			if (slot == INPUT_SLOT) {
-				this.progress = 0;
+				this.ensureSelectionValid();
 			}
 			this.syncState();
 		}
@@ -291,9 +265,12 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 
 	@Override
 	public void setItem(int slot, ItemStack stack) {
+		ItemStack previous = this.items.get(slot);
 		this.items.set(slot, stack);
 		stack.limitSize(this.getMaxStackSize(stack));
-		if (slot == INPUT_SLOT) {
+		// More of the same heated metal keeps the hammer count. A different item starts over.
+		if (slot == INPUT_SLOT && !ItemStack.isSameItem(previous, stack)) {
+			this.selectedRecipe = null;
 			this.progress = 0;
 		}
 		this.syncState();
@@ -312,6 +289,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	@Override
 	public void clearContent() {
 		this.items.clear();
+		this.selectedRecipe = null;
 		this.progress = 0;
 	}
 
