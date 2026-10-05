@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "SPS",
+    " S "
+  ],
+  "key": {
+    "P": "minecraft:oak_planks",
+    "S": "#from-stone-to-stars:shafts"
+  },
+  "result": {
+    "id": "from-stone-to-stars:rotation_gear",
+    "count": 1
+  }
+}

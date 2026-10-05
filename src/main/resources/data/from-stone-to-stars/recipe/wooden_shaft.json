@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "L",
+    "L"
+  ],
+  "key": {
+    "L": "minecraft:oak_log"
+  },
+  "result": {
+    "id": "from-stone-to-stars:wooden_shaft",
+    "count": 4
+  }
+}

@@ -71,6 +71,10 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.BELLOWS);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
+				output.accept(ModBlocks.WATER_WHEEL);
+				output.accept(ModBlocks.WOODEN_SHAFT);
+				output.accept(ModBlocks.ROTATION_GEAR);
+				output.accept(ModBlocks.POWERED_QUERN);
 				output.accept(ModBlocks.SNARE);
 				output.accept(ModBlocks.FISH_TRAP);
 				output.accept(ModBlocks.HIDE_BED);

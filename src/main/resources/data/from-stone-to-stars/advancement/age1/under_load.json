@@ -1,0 +1,25 @@
+{
+  "parent": "from-stone-to-stars:age1/wheel_and_water",
+  "criteria": {
+    "powered_grind": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:powered_quern"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.under_load.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.under_load.description"
+    },
+    "frame": "task"
+  },
+  "requirements": [
+    [
+      "powered_grind"
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "MQM",
+    " P "
+  ],
+  "key": {
+    "M": "from-stone-to-stars:mortar_and_pestle",
+    "Q": "from-stone-to-stars:bronze_ingot",
+    "S": "#from-stone-to-stars:shafts",
+    "P": "minecraft:oak_planks"
+  },
+  "result": {
+    "id": "from-stone-to-stars:powered_quern",
+    "count": 1
+  }
+}

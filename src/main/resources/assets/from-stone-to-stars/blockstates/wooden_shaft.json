@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "axis=y,powered=false": {
+      "model": "from-stone-to-stars:block/wooden_shaft"
+    },
+    "axis=y,powered=true": {
+      "model": "from-stone-to-stars:block/wooden_shaft_powered"
+    },
+    "axis=z,powered=false": {
+      "model": "from-stone-to-stars:block/wooden_shaft",
+      "x": 90
+    },
+    "axis=z,powered=true": {
+      "model": "from-stone-to-stars:block/wooden_shaft_powered",
+      "x": 90
+    },
+    "axis=x,powered=false": {
+      "model": "from-stone-to-stars:block/wooden_shaft",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,powered=true": {
+      "model": "from-stone-to-stars:block/wooden_shaft_powered",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

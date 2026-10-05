@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "from-stone-to-stars:block/rotation_gear" },
+    "powered=true": { "model": "from-stone-to-stars:block/rotation_gear_spinning" }
+  }
+}

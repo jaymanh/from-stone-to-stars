@@ -1,0 +1,15 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "from-stone-to-stars:block/mortar_and_pestle_0"
+      },
+      {
+        "type": "minecraft:model",
+        "model": "from-stone-to-stars:block/powered_quern_drive"
+      }
+    ]
+  }
+}

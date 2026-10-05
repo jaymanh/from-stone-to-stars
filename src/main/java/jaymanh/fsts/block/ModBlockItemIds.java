@@ -30,6 +30,10 @@ public final class ModBlockItemIds {
 	public static final BlockItemId FORGE_HEARTH = create("forge_hearth");
 	public static final BlockItemId BELLOWS = create("bellows");
 	public static final BlockItemId FORGING_STUMP = create("forging_stump");
+	public static final BlockItemId WATER_WHEEL = create("water_wheel");
+	public static final BlockItemId WOODEN_SHAFT = create("wooden_shaft");
+	public static final BlockItemId ROTATION_GEAR = create("rotation_gear");
+	public static final BlockItemId POWERED_QUERN = create("powered_quern");
 
 	private ModBlockItemIds() {
 	}

@@ -213,6 +213,44 @@ public final class ModBlocks {
 					.noOcclusion()
 					.ignitedByLava()
 	);
+	public static final Block WATER_WHEEL = register(
+			ModBlockItemIds.WATER_WHEEL,
+			WaterWheelBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.0F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
+	public static final Block WOODEN_SHAFT = register(
+			ModBlockItemIds.WOODEN_SHAFT,
+			WoodenShaftBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.0F, 2.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
+	public static final Block ROTATION_GEAR = register(
+			ModBlockItemIds.ROTATION_GEAR,
+			RotationGearBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.5F, 2.5F)
+					.noOcclusion()
+	);
+	public static final Block POWERED_QUERN = register(
+			ModBlockItemIds.POWERED_QUERN,
+			PoweredQuernBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.STONE)
+					.sound(SoundType.STONE)
+					.strength(3.5F)
+					.noOcclusion()
+	);
 
 	private ModBlocks() {
 	}

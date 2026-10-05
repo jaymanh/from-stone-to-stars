@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "water_wheel": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "from-stone-to-stars:water_wheel"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:water_wheel"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.wheel_and_water.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.wheel_and_water.description"
+    },
+    "frame": "task",
+    "background": "minecraft:gui/advancements/backgrounds/stone"
+  },
+  "requirements": [
+    [
+      "water_wheel"
+    ]
+  ]
+}

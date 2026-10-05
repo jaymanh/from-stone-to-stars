@@ -1,0 +1,195 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "progress": "0",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_0"
+      }
+    },
+    {
+      "when": {
+        "progress": "0",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_0",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "progress": "0",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_0",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "progress": "0",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_0",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "progress": "1",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_1"
+      }
+    },
+    {
+      "when": {
+        "progress": "1",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "progress": "1",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "progress": "1",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "progress": "2",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_2"
+      }
+    },
+    {
+      "when": {
+        "progress": "2",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "progress": "2",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "progress": "2",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "progress": "3",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_3"
+      }
+    },
+    {
+      "when": {
+        "progress": "3",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "progress": "3",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "progress": "3",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/mortar_and_pestle_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "facing": "south"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/powered_quern_drive"
+      }
+    },
+    {
+      "when": {
+        "facing": "west"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/powered_quern_drive",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "north"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/powered_quern_drive",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "east"
+      },
+      "apply": {
+        "model": "from-stone-to-stars:block/powered_quern_drive",
+        "y": 270
+      }
+    }
+  ]
+}

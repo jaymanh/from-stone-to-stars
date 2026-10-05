@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PSP",
+    "S S",
+    "PSP"
+  ],
+  "key": {
+    "P": "minecraft:oak_planks",
+    "S": "#from-stone-to-stars:shafts"
+  },
+  "result": {
+    "id": "from-stone-to-stars:water_wheel",
+    "count": 1
+  }
+}

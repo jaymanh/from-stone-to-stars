@@ -71,6 +71,30 @@ public final class ModBlockEntities {
 			ModBlocks.FORGING_STUMP
 	);
 
+	public static final BlockEntityType<WaterWheelBlockEntity> WATER_WHEEL = register(
+			"water_wheel",
+			WaterWheelBlockEntity::new,
+			ModBlocks.WATER_WHEEL
+	);
+
+	public static final BlockEntityType<WoodenShaftBlockEntity> WOODEN_SHAFT = register(
+			"wooden_shaft",
+			WoodenShaftBlockEntity::new,
+			ModBlocks.WOODEN_SHAFT
+	);
+
+	public static final BlockEntityType<RotationGearBlockEntity> ROTATION_GEAR = register(
+			"rotation_gear",
+			RotationGearBlockEntity::new,
+			ModBlocks.ROTATION_GEAR
+	);
+
+	public static final BlockEntityType<PoweredQuernBlockEntity> POWERED_QUERN = register(
+			"powered_quern",
+			PoweredQuernBlockEntity::new,
+			ModBlocks.POWERED_QUERN
+	);
+
 	private ModBlockEntities() {
 	}
 

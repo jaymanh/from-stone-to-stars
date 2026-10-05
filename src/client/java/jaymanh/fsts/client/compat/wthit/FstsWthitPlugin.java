@@ -7,7 +7,15 @@ import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.FishTrapBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.PoweredQuernBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.RotationGearBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.WaterWheelBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.WoodenShaftBlock;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
+import jaymanh.fsts.block.entity.PoweredQuernBlockEntity;
+import jaymanh.fsts.block.entity.RotationGearBlockEntity;
+import jaymanh.fsts.block.entity.WaterWheelBlockEntity;
+import jaymanh.fsts.block.entity.WoodenShaftBlockEntity;
 import jaymanh.fsts.block.entity.PlacedBoneSawBlockEntity;
 import jaymanh.fsts.block.entity.SnareBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
@@ -24,6 +32,7 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 	public static final Identifier KINDLING = FromStoneToStars.id("kindling");
 	public static final Identifier BONE_SAW = FromStoneToStars.id("bone_saw");
 	public static final Identifier SNARE = FromStoneToStars.id("snare");
+	public static final Identifier ROTATION = FromStoneToStars.id("rotation");
 
 	@Override
 	public void register(IRegistrar registrar) {
@@ -32,6 +41,7 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addConfig(KINDLING, true);
 		registrar.addConfig(BONE_SAW, true);
 		registrar.addConfig(SNARE, true);
+		registrar.addConfig(ROTATION, true);
 
 		registrar.addComponent(WthitPebbleProvider.INSTANCE, TooltipPosition.BODY, PebbleBlock.class);
 
@@ -47,5 +57,14 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addComponent(WthitSnareProvider.INSTANCE, TooltipPosition.BODY, SnareBlock.class);
 		registrar.addComponent(WthitSnareProvider.INSTANCE, TooltipPosition.BODY, FishTrapBlock.class);
 		registrar.addBlockData(WthitSnareProvider.INSTANCE, SnareBlockEntity.class);
+
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, WaterWheelBlock.class);
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, WoodenShaftBlock.class);
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, RotationGearBlock.class);
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, PoweredQuernBlock.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, WaterWheelBlockEntity.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, WoodenShaftBlockEntity.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, RotationGearBlockEntity.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, PoweredQuernBlockEntity.class);
 	}
 }
