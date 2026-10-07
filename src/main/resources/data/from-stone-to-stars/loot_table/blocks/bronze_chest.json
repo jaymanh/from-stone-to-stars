@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [{ "condition": "minecraft:survives_explosion" }],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "from-stone-to-stars:bronze_chest",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": ["minecraft:custom_name"],
+              "source": "block_entity"
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

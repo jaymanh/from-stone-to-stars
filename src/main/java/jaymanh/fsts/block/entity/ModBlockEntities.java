@@ -59,6 +59,12 @@ public final class ModBlockEntities {
 			ModBlocks.STORAGE_POT
 	);
 
+	public static final BlockEntityType<BronzeChestBlockEntity> BRONZE_CHEST = register(
+			"bronze_chest",
+			BronzeChestBlockEntity::new,
+			ModBlocks.BRONZE_CHEST
+	);
+
 	public static final BlockEntityType<ForgeHearthBlockEntity> FORGE_HEARTH = register(
 			"forge_hearth",
 			ForgeHearthBlockEntity::new,

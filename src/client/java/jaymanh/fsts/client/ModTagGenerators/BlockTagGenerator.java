@@ -84,7 +84,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.WATTLE_AND_DAUB)
 				.add(ModBlockItemIds.WORK_STUMP)
 				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP)
-				.add(ModBlockItemIds.BELLOWS);
+				.add(ModBlockItemIds.BELLOWS)
+				.add(ModBlockItemIds.BRONZE_CHEST);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);

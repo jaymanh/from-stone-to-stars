@@ -183,6 +183,16 @@ public final class ModBlocks {
 					.noOcclusion()
 					.pushReaction(PushReaction.DESTROY)
 	);
+	public static final Block BRONZE_CHEST = register(
+			ModBlockItemIds.BRONZE_CHEST,
+			BronzeChestBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.5F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 	public static final Block FORGE_HEARTH = register(
 			ModBlockItemIds.FORGE_HEARTH,
 			ForgeHearthBlock::new,

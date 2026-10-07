@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=north,type=single,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=north,type=single,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=single,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=single,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=single,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=single,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=single,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=single,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=north,type=left,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=north,type=left,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=left,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=left,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=left,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=left,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=left,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=left,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=north,type=right,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=north,type=right,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=right,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=east,type=right,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=right,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=south,type=right,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=right,waterlogged=false": { "model": "from-stone-to-stars:block/bronze_chest_particle" },
+    "facing=west,type=right,waterlogged=true": { "model": "from-stone-to-stars:block/bronze_chest_particle" }
+  }
+}

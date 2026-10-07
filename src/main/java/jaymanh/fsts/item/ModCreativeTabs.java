@@ -43,6 +43,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.UNFIRED_CLAY_JUG);
 				output.accept(ModBlocks.UNFIRED_STORAGE_POT);
 				output.accept(ModBlocks.STORAGE_POT);
+				output.accept(ModBlocks.BRONZE_CHEST);
 				output.accept(ModBlocks.ROPE);
 				output.accept(ModBlocks.THATCH);
 				output.accept(ModBlocks.WATTLE_AND_DAUB);

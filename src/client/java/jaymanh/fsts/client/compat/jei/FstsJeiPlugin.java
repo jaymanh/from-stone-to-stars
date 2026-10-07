@@ -206,6 +206,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.clay_jug"));
 		registration.addIngredientInfo(ModBlocks.UNFIRED_STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.unfired_storage_pot"));
 		registration.addIngredientInfo(ModBlocks.STORAGE_POT, Component.translatable("jei.from-stone-to-stars.info.storage_pot"));
+		registration.addIngredientInfo(ModBlocks.BRONZE_CHEST, Component.translatable("jei.from-stone-to-stars.info.bronze_chest"));
 		registration.addIngredientInfo(ModBlocks.FORGE_HEARTH, Component.translatable("jei.from-stone-to-stars.info.forge_hearth"));
 		registration.addIngredientInfo(ModBlocks.BELLOWS, Component.translatable("jei.from-stone-to-stars.info.bellows"));
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));

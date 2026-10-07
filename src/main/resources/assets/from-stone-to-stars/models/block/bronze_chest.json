@@ -1,0 +1,45 @@
+{
+  "format_version": "1.21.11",
+  "textures": {
+    "front": "from-stone-to-stars:block/bronze_chest_front",
+    "side": "from-stone-to-stars:block/bronze_chest_side",
+    "top": "from-stone-to-stars:block/bronze_chest_top",
+    "bottom": "from-stone-to-stars:block/bronze_chest_bottom",
+    "particle": "from-stone-to-stars:block/bronze_chest_side"
+  },
+  "elements": [
+    {
+      "from": [1, 0, 1],
+      "to": [15, 10, 15],
+      "faces": {
+        "north": {"uv": [0, 6, 16, 16], "texture": "#front"},
+        "south": {"uv": [0, 6, 16, 16], "texture": "#side"},
+        "east": {"uv": [0, 6, 16, 16], "texture": "#side"},
+        "west": {"uv": [0, 6, 16, 16], "texture": "#side"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#bottom"}
+      }
+    },
+    {
+      "from": [1, 10, 1],
+      "to": [15, 14, 15],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 6], "texture": "#front"},
+        "south": {"uv": [0, 0, 16, 6], "texture": "#side"},
+        "east": {"uv": [0, 0, 16, 6], "texture": "#side"},
+        "west": {"uv": [0, 0, 16, 6], "texture": "#side"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#top"}
+      }
+    },
+    {
+      "from": [7, 6, 0],
+      "to": [9, 11, 1],
+      "faces": {
+        "north": {"uv": [6, 6, 10, 12], "texture": "#front"},
+        "east": {"uv": [6, 6, 8, 12], "texture": "#front"},
+        "west": {"uv": [8, 6, 10, 12], "texture": "#front"},
+        "up": {"uv": [6, 6, 10, 8], "texture": "#front"},
+        "down": {"uv": [6, 10, 10, 12], "texture": "#front"}
+      }
+    }
+  ]
+}
