@@ -2,12 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    " S ",
-    "SPS",
-    " S "
+    " P ",
+    "PSP",
+    " P "
   ],
   "key": {
-    "P": "minecraft:oak_planks",
+    "P": "minecraft:stick",
     "S": "#from-stone-to-stars:shafts"
   },
   "result": {
