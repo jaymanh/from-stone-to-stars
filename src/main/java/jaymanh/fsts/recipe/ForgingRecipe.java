@@ -100,7 +100,7 @@ public class ForgingRecipe implements Recipe<SingleRecipeInput> {
 		return this.result.create();
 	}
 
-	/** Heated metal this recipe is made from, ignoring how many are in the stack. */
+	/** Item this recipe is made from, ignoring how many are in the stack. */
 	public boolean matchesMetal(ItemStack stack) {
 		return !stack.isEmpty() && this.ingredient.test(stack);
 	}

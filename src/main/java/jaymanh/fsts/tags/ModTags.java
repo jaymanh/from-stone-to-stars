@@ -44,6 +44,12 @@ public class ModTags {
 	/** Copper or bronze shafts — interchangeable in recipes. */
 	public static final TagKey<Item> SHAFTS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "shafts"));
 
+	/**
+	 * Items the forging stump slot accepts on the client. The client does not receive forging recipes,
+	 * so this tag mirrors the recipe ingredients. The server still checks the recipes themselves.
+	 */
+	public static final TagKey<Item> FORGING_INGREDIENTS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "forging_ingredients"));
+
     public static final TagKey<Item> SNARE_MEAT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_meat_bait"));
     public static final TagKey<Item> SNARE_PLANT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_plant_bait"));
     public static final ResourceKey<LootTable> SNARE_MEAT_LOOT = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(MOD_ID, "gameplay/snare_meat"));

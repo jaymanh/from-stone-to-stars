@@ -156,8 +156,18 @@ public final class FstsJeiPlugin implements IModPlugin {
 								SimpleProcessRecipe.stack(new ItemStack(Items.COPPER_INGOT, 4)),
 								SimpleProcessRecipe.item(ModItems.ZINC_INGOT)
 						),
-						List.of(SimpleProcessRecipe.item(ModBlocks.BASIC_SMELTER)),
+						List.of(SimpleProcessRecipe.any(ModBlocks.BASIC_SMELTER, Items.BLAST_FURNACE, ModBlocks.FORGE_HEARTH)),
 						SimpleProcessRecipe.stack(new ItemStack(ModItems.BRONZE_INGOT, 5)),
+						200
+				),
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("alloying/iron_from_specks"),
+						List.of(
+								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.stack(new ItemStack(ModItems.IRON_SPECKS, 6))
+						),
+						List.of(SimpleProcessRecipe.any(ModBlocks.BASIC_SMELTER, Items.BLAST_FURNACE, ModBlocks.FORGE_HEARTH)),
+						SimpleProcessRecipe.stack(new ItemStack(Items.IRON_INGOT, 2)),
 						200
 				)
 		));
@@ -241,6 +251,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModItems.CRUCIBLE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.BASIC_SMELTER);
+		registration.addCraftingStation(CRUCIBLE_ALLOYING, Items.BLAST_FURNACE);
+		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.FORGE_HEARTH);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);
 	}

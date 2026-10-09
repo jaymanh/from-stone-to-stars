@@ -1,0 +1,15 @@
+{
+  "type": "from-stone-to-stars:crucible_alloying",
+  "ingredients": [
+    {
+      "ingredient": "from-stone-to-stars:iron_specks",
+      "count": 6
+    }
+  ],
+  "result": {
+    "id": "minecraft:iron_ingot",
+    "count": 2
+  },
+  "experience": 0.7,
+  "cookingtime": 200
+}

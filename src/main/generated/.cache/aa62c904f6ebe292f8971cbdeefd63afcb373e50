@@ -14,4 +14,5 @@ cba049f3fdd01dc2baf6e437c9241863f4ff3eb6 data/minecraft/tags/block/beds.json
 eb21bc3bdcd5d297316f9c22180d7cf0dc1f3609 data/minecraft/tags/block/climbable.json
 e1284423fb142701ca5125cb107deef7dd120297 data/minecraft/tags/block/mineable/axe.json
 825e69eec89550d5f5ed0ae3abdfd4b007b09edb data/minecraft/tags/block/mineable/pickaxe.json
+95b828478af8ca7a64abdc4344a56cfd8e137700 data/minecraft/tags/block/mineable/shovel.json
 0fb180e02a304154fb92d04e0940712b709ed904 data/minecraft/tags/block/needs_iron_tool.json

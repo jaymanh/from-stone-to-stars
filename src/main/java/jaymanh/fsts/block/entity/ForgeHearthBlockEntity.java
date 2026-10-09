@@ -25,7 +25,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 /**
- * Blast-furnace smelting while the fuzzy forge assembly is lit.
+ * Blast-furnace smelting, including charged crucibles, while the fuzzy forge assembly is lit.
  * All hearths in a match share lit state; inventory/smelting live on the master (origin) hearth.
  * Base cook is slower than a blast furnace; extra hearths speed it back up. Item fuel is unused.
  */

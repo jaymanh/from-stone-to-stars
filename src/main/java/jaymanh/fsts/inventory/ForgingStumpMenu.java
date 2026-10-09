@@ -9,6 +9,7 @@ import jaymanh.fsts.block.entity.ForgingStumpEntity;
 import jaymanh.fsts.item.HeatedMetalItem;
 import jaymanh.fsts.recipe.ForgingRecipe;
 import jaymanh.fsts.recipe.ModRecipes;
+import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.Container;
@@ -234,7 +235,7 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 				return ItemStack.EMPTY;
 			}
 		} else if (this.inputSlot.mayPlace(stack)) {
-			if (!this.moveHeatedIntoInput(stack)) {
+			if (!this.moveIntoInput(stack)) {
 				return ItemStack.EMPTY;
 			}
 		} else if (index >= INV_START && index < INV_END) {
@@ -261,7 +262,7 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 		return original;
 	}
 
-	private boolean moveHeatedIntoInput(ItemStack stack) {
+	private boolean moveIntoInput(ItemStack stack) {
 		ItemStack current = this.inputSlot.getItem();
 		if (current.isEmpty()) {
 			int move = Math.min(stack.getCount(), this.inputSlot.getMaxStackSize(stack));
@@ -271,7 +272,10 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 			this.inputSlot.setByPlayer(stack.split(move));
 			return true;
 		}
-		if (!HeatedMetalItem.isSameHeatedMetal(current, stack)) {
+		if (!ItemStack.isSameItem(current, stack)) {
+			return false;
+		}
+		if (HeatedMetalItem.isHeated(current) && !HeatedMetalItem.isSameHeatedMetal(current, stack)) {
 			return false;
 		}
 		int room = this.inputSlot.getMaxStackSize(current) - current.getCount();
@@ -279,7 +283,9 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 			return false;
 		}
 		int move = Math.min(room, stack.getCount());
-		HeatedMetalItem.keepEarlierHeat(current, stack);
+		if (HeatedMetalItem.isHeated(current)) {
+			HeatedMetalItem.keepEarlierHeat(current, stack);
+		}
 		stack.shrink(move);
 		current.grow(move);
 		this.inputSlot.setByPlayer(current);
@@ -366,18 +372,15 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 		@Override
 		public boolean mayPlace(ItemStack stack) {
 			ItemStack current = this.getItem();
-			if (!current.isEmpty() && !HeatedMetalItem.isSameHeatedMetal(current, stack)) {
+			if (!current.isEmpty() && !ItemStack.isSameItem(current, stack)) {
 				return false;
 			}
-			if (!HeatedMetalItem.isHeated(stack)) {
-				return false;
-			}
-			// The client has no forging recipe list, so it cannot know which heated metals are ingredients.
+			// The client has no forging recipe list. The tag lists the same ingredients the recipes use.
 			// The server still refuses anything that has no forging recipe.
 			if (ForgingStumpMenu.this.stump != null) {
 				return ModRecipes.isForgingMetal(ForgingStumpMenu.this.level, stack);
 			}
-			return true;
+			return HeatedMetalItem.isHeated(stack) || stack.is(ModTags.FORGING_INGREDIENTS);
 		}
 
 		/**
@@ -397,8 +400,10 @@ public class ForgingStumpMenu extends AbstractContainerMenu {
 			}
 			if (current.isEmpty()) {
 				this.setByPlayer(stack.split(move));
-			} else if (HeatedMetalItem.isSameHeatedMetal(current, stack)) {
-				HeatedMetalItem.keepEarlierHeat(current, stack);
+			} else if (ItemStack.isSameItem(current, stack)) {
+				if (HeatedMetalItem.isHeated(current)) {
+					HeatedMetalItem.keepEarlierHeat(current, stack);
+				}
 				stack.shrink(move);
 				current.grow(move);
 				this.setByPlayer(current);

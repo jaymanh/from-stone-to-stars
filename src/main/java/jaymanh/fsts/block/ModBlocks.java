@@ -261,6 +261,16 @@ public final class ModBlocks {
 					.strength(3.5F)
 					.noOcclusion()
 	);
+	public static final Block RUSTY_MUD = register(
+			ModBlockItemIds.RUSTY_MUD,
+			Block::new,
+			BlockBehaviour.Properties.of().strength(0.6f).sound(SoundType.GRAVEL)
+			);
+	public static final Block DRIED_RUSTY_MUD = register(
+			ModBlockItemIds.DRIED_RUSTY_MUD,
+			Block::new,
+			BlockBehaviour.Properties.of().strength(0.6f).sound(SoundType.STONE)
+	);
 
 	private ModBlocks() {
 	}

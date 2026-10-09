@@ -1,0 +1,10 @@
+{
+  "type": "from-stone-to-stars:forging",
+  "ingredient": "from-stone-to-stars:dried_rusty_mud",
+  "ingredient_count": 1,
+  "hits": 8,
+  "result": {
+    "id": "from-stone-to-stars:iron_specks",
+    "count": 2
+  }
+}

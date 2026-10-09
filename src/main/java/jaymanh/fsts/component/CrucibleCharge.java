@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 
 /**
- * Metals packed into a crucible, ready to fire in a basic smelter.
+ * Metals packed into a crucible, ready to fire in a basic smelter, blast furnace, or lit forge.
  */
 public record CrucibleCharge(ItemStackTemplate result, int cookingTime, float experience) {
 	public static final Codec<CrucibleCharge> CODEC = RecordCodecBuilder.create(instance -> instance.group(

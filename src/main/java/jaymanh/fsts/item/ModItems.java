@@ -47,6 +47,7 @@ public final class ModItems {
 					.durability(ClayJugItem.CAPACITY + 1)
 					.component(net.minecraft.core.component.DataComponents.DAMAGE, ClayJugItem.CAPACITY)
 	);
+	public static final Item IRON_SPECKS = register(ModItemIds.IRON_SPECKS, Item::new, new Item.Properties());
 
 	private ModItems() {
 	}

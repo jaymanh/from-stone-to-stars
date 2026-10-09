@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.3,
+  "ingredient": "from-stone-to-stars:rusty_mud",
+  "result": {
+    "id": "from-stone-to-stars:dried_rusty_mud"
+  }
+}

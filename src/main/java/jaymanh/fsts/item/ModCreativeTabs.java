@@ -47,6 +47,9 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.ROPE);
 				output.accept(ModBlocks.THATCH);
 				output.accept(ModBlocks.WATTLE_AND_DAUB);
+				output.accept(ModBlocks.RUSTY_MUD);
+				output.accept(ModBlocks.DRIED_RUSTY_MUD);
+				output.accept((ModItems.IRON_SPECKS));
 
 				output.accept(ModBlocks.ZINC_ORE);
 				output.accept(ModBlocks.DEEPSLATE_ZINC_ORE);

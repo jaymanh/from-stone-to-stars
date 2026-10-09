@@ -13,7 +13,8 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:alloying/bronze"
+      "from-stone-to-stars:alloying/bronze",
+      "from-stone-to-stars:alloying/iron_from_specks"
     ]
   }
 }

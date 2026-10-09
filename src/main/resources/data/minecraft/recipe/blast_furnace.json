@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:smooth_stone",
+    "I": "minecraft:iron_ingot",
+    "X": "from-stone-to-stars:basic_smelter"
+  },
+  "pattern": [
+    "III",
+    "IXI",
+    "###"
+  ],
+  "result": {
+    "id": "minecraft:blast_furnace",
+    "count": 1
+  }
+}

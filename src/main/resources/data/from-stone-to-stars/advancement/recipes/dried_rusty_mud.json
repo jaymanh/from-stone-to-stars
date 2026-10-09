@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:dried_rusty_mud"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:forging/iron_specks"
+    ]
+  }
+}

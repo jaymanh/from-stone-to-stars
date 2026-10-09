@@ -2,6 +2,7 @@ package jaymanh.fsts.client.ModTagGenerators;
 
 import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
+import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -73,6 +74,19 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.addOptionalTag(BlockTags.NEEDS_IRON_TOOL)
 				.addOptionalTag(BlockTags.NEEDS_DIAMOND_TOOL);
 
+		// Vanilla incorrect-tags must include every tier below them. Otherwise wood, gold,
+		// stone, and copper picks can still mine gold, and WTHIT cannot order the tiers.
+		builder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BONE_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BRONZE_TOOL);
+		builder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BONE_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BRONZE_TOOL);
+		builder(BlockTags.INCORRECT_FOR_STONE_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BRONZE_TOOL);
+		builder(BlockTags.INCORRECT_FOR_COPPER_TOOL)
+				.addTag(ModTags.FSTS_NEEDS_BRONZE_TOOL);
+
 		builder(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlockItemIds.KINDLING)
                 .add(ModBlockItemIds.TANNING_RACK)
@@ -101,7 +115,11 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.UNFIRED_CLAY_JUG)
 				.add(ModBlockItemIds.UNFIRED_STORAGE_POT)
 				.add(ModBlockItemIds.STORAGE_POT)
-				.add(ModBlockItemIds.FORGE_HEARTH);
+				.add(ModBlockItemIds.FORGE_HEARTH)
+				.add(ModBlockItemIds.DRIED_RUSTY_MUD);
+
+		builder(BlockTags.MINEABLE_WITH_SHOVEL)
+				.add(ModBlockItemIds.RUSTY_MUD);
 
 		builder(ModTags.UNFIRED_POTTERY)
 				.add(ModBlockItemIds.CLAY_BRICKS)

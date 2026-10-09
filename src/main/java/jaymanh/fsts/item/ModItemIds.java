@@ -52,6 +52,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRONZE_CHESTPLATE = create("bronze_chestplate");
 	public static final ResourceKey<Item> BRONZE_LEGGINGS = create("bronze_leggings");
 	public static final ResourceKey<Item> BRONZE_BOOTS = create("bronze_boots");
+	public static final ResourceKey<Item> IRON_SPECKS = create("iron_specks");
 
 
 	private ModItemIds() {

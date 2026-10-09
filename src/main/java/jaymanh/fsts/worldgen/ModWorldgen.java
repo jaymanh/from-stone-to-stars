@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
@@ -27,6 +28,16 @@ public final class ModWorldgen {
 	public static final ResourceKey<PlacedFeature> ZINC_GEN = ResourceKey.create(
 			Registries.PLACED_FEATURE,
 			FromStoneToStars.id("zinc_gen")
+	);
+	/** Underwater dirt disks, same placement as vanilla clay disks. */
+	public static final ResourceKey<PlacedFeature> RUSTY_MUD_DISK = ResourceKey.create(
+			Registries.PLACED_FEATURE,
+			FromStoneToStars.id("rusty_mud_disk")
+	);
+	/** Lush-cave stone veins, same placement as vanilla clay ore. */
+	public static final ResourceKey<PlacedFeature> RUSTY_MUD_ORE = ResourceKey.create(
+			Registries.PLACED_FEATURE,
+			FromStoneToStars.id("rusty_mud_ore")
 	);
 
 	private ModWorldgen() {
@@ -57,6 +68,17 @@ public final class ModWorldgen {
 				BiomeSelectors.foundInOverworld(),
 				GenerationStep.Decoration.UNDERGROUND_ORES,
 				ZINC_GEN
+		);
+
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				RUSTY_MUD_DISK
+		);
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(Biomes.LUSH_CAVES),
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				RUSTY_MUD_ORE
 		);
 	}
 }

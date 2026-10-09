@@ -106,11 +106,17 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	}
 
 	public boolean acceptsInput(ItemStack stack) {
-		if (!HeatedMetalItem.isHeated(stack) || !ModRecipes.isForgingMetal(this.level, stack)) {
+		if (!ModRecipes.isForgingMetal(this.level, stack)) {
 			return false;
 		}
 		ItemStack input = this.items.get(INPUT_SLOT);
-		return input.isEmpty() || HeatedMetalItem.isSameHeatedMetal(input, stack);
+		if (input.isEmpty()) {
+			return true;
+		}
+		if (HeatedMetalItem.isHeated(input) || HeatedMetalItem.isHeated(stack)) {
+			return HeatedMetalItem.isSameHeatedMetal(input, stack);
+		}
+		return ItemStack.isSameItem(input, stack);
 	}
 
 	public boolean hammer(Player player, ItemStack hammer) {
