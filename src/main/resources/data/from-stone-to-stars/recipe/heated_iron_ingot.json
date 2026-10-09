@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": "minecraft:iron_ingot",
+  "result": {
+    "id": "from-stone-to-stars:heated_iron_ingot"
+  }
+}

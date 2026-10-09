@@ -210,6 +210,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.BARK, Component.translatable("jei.from-stone-to-stars.info.bark"));
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
 		registration.addIngredientInfo(ModTools.BRONZE_HAMMER, Component.translatable("jei.from-stone-to-stars.info.bronze_hammer"));
+		registration.addIngredientInfo(ModTools.IRON_HAMMER, Component.translatable("jei.from-stone-to-stars.info.iron_hammer"));
+		registration.addIngredientInfo(ModTools.IRON_KNIFE, Component.translatable("jei.from-stone-to-stars.info.iron_knife"));
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
 		registration.addIngredientInfo(ModBlocks.CLAY_BRICKS, Component.translatable("jei.from-stone-to-stars.info.clay_bricks"));
 		registration.addIngredientInfo(ModBlocks.UNFIRED_CLAY_JUG, Component.translatable("jei.from-stone-to-stars.info.unfired_clay_jug"));

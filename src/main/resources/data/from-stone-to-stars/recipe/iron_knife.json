@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "F",
+    "A",
+    "S"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "from-stone-to-stars:iron_tool_head",
+    "A": "#from-stone-to-stars:nails"
+  },
+  "result": {
+    "id": "from-stone-to-stars:iron_knife",
+    "count": 1
+  }
+}

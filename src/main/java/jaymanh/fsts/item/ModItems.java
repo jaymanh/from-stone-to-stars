@@ -29,12 +29,19 @@ public final class ModItems {
 			properties -> new HeatedMetalItem(properties, () -> Items.COPPER_INGOT),
 			new Item.Properties()
 	);
+	public static final Item HEATED_IRON_INGOT = register(
+			ModItemIds.HEATED_IRON_INGOT,
+			properties -> new HeatedMetalItem(properties, () -> Items.IRON_INGOT),
+			new Item.Properties()
+	);
 	public static final Item BRONZE_NAIL = register(ModItemIds.BRONZE_NAIL, Item::new, new Item.Properties());
 	public static final Item COPPER_NAIL = register(ModItemIds.COPPER_NAIL, Item::new, new Item.Properties());
 	public static final Item BRONZE_SHAFT = register(ModItemIds.BRONZE_SHAFT, Item::new, new Item.Properties());
 	public static final Item COPPER_SHAFT = register(ModItemIds.COPPER_SHAFT, Item::new, new Item.Properties());
 	public static final Item BRONZE_TOOL_BLADE = register(ModItemIds.BRONZE_TOOL_BLADE, Item::new, new Item.Properties());
 	public static final Item BRONZE_PLATE = register(ModItemIds.BRONZE_PLATE, Item::new, new Item.Properties());
+	public static final Item IRON_TOOL_HEAD = register(ModItemIds.IRON_TOOL_HEAD, Item::new, new Item.Properties());
+	public static final Item IRON_PLATE = register(ModItemIds.IRON_PLATE, Item::new, new Item.Properties());
 	public static final Item CRUCIBLE = register(
 			ModItemIds.CRUCIBLE,
 			CrucibleItem::new,

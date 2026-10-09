@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " F ",
+    " F ",
+    "ASA"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "from-stone-to-stars:iron_tool_head",
+    "A": "#from-stone-to-stars:nails"
+  },
+  "result": {
+    "id": "minecraft:iron_sword",
+    "count": 1
+  }
+}

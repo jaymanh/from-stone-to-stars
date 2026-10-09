@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "PNP",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "P": "from-stone-to-stars:iron_plate",
+    "S": "from-stone-to-stars:leather_strips",
+    "N": "#from-stone-to-stars:nails"
+  },
+  "result": {
+    "id": "minecraft:iron_leggings",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:heated_iron_ingot",
+      "from-stone-to-stars:forging/iron_tool_heads",
+      "from-stone-to-stars:forging/iron_plates"
+    ]
+  }
+}

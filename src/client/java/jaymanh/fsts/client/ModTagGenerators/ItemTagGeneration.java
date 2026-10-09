@@ -30,8 +30,13 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 	protected void addTags(HolderLookup.Provider registries) {
 		builder(ItemTags.SWORDS)
 				.add(ModItemIds.FLINT_KNIFE)
+				.add(ModItemIds.IRON_KNIFE)
 				.add(ModItemIds.BONE_SWORD)
 				.add(ModItemIds.BRONZE_SWORD);
+
+		builder(ModTags.KNIVES)
+				.add(ModItemIds.FLINT_KNIFE)
+				.add(ModItemIds.IRON_KNIFE);
 
 		builder(ItemTags.AXES)
 				.add(ModItemIds.BONE_AXE)

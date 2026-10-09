@@ -41,6 +41,10 @@ public class ModTags {
 
 	/** Copper or bronze nails — interchangeable in recipes. */
 	public static final TagKey<Item> NAILS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "nails"));
+	/** Hammers that strike a forging stump. */
+	public static final TagKey<Item> FORGING_HAMMERS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "forging_hammers"));
+	/** Knives that return damaged from a craft, such as cutting leather strips. */
+	public static final TagKey<Item> KNIVES = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "knives"));
 	/** Copper or bronze shafts — interchangeable in recipes. */
 	public static final TagKey<Item> SHAFTS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "shafts"));
 

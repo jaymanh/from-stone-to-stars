@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     "#c:leathers",
-    "from-stone-to-stars:flint_knife"
+    "#from-stone-to-stars:knives"
   ],
   "result": {
     "id": "from-stone-to-stars:leather_strips",

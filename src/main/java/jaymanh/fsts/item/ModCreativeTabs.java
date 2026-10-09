@@ -58,12 +58,15 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.BRONZE_INGOT);
 				output.accept(ModItems.HEATED_BRONZE_INGOT);
 				output.accept(ModItems.HEATED_COPPER_INGOT);
+				output.accept(ModItems.HEATED_IRON_INGOT);
 				output.accept(ModItems.BRONZE_NAIL);
 				output.accept(ModItems.COPPER_NAIL);
 				output.accept(ModItems.BRONZE_SHAFT);
 				output.accept(ModItems.COPPER_SHAFT);
 				output.accept(ModItems.BRONZE_TOOL_BLADE);
 				output.accept(ModItems.BRONZE_PLATE);
+				output.accept(ModItems.IRON_TOOL_HEAD);
+				output.accept(ModItems.IRON_PLATE);
 				output.accept(ModItems.CRUCIBLE);
 
 				output.accept(ModBlocks.TANNING_RACK);
@@ -84,6 +87,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.HIDE_BED);
 
 				output.accept(ModTools.FLINT_KNIFE);
+				output.accept(ModTools.IRON_KNIFE);
 				output.accept(ModTools.FLINT_AXE);
 				output.accept(ModTools.FLINT_SPEAR);
 				output.accept(ModTools.BOW_AND_DRILL);
@@ -102,6 +106,7 @@ public final class ModCreativeTabs {
 				output.accept(ModTools.BRONZE_SHOVEL);
 				output.accept(ModTools.BRONZE_SPEAR);
 				output.accept(ModTools.BRONZE_HAMMER);
+				output.accept(ModTools.IRON_HAMMER);
 				output.accept(ModTools.BRONZE_HELMET);
 				output.accept(ModTools.BRONZE_CHESTPLATE);
 				output.accept(ModTools.BRONZE_LEGGINGS);

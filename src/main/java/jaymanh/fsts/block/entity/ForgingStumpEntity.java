@@ -7,7 +7,7 @@ import jaymanh.fsts.block.ModCustomBlockModels.ForgingStumpBlock;
 import jaymanh.fsts.item.HeatedMetalItem;
 import jaymanh.fsts.recipe.ForgingRecipe;
 import jaymanh.fsts.recipe.ModRecipes;
-import jaymanh.fsts.tools.ModTools;
+import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,7 +34,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Forging stump: heated metal in, one chosen forging recipe, then bronze-hammer hits.
+ * Forging stump: heated metal in, one chosen forging recipe, then hammer hits.
  * Heat keeps cooling here. Progress resets if the metal cools, the recipe changes,
  * or the stack can no longer pay the selected recipe's ingot cost.
  */
@@ -120,7 +120,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	}
 
 	public boolean hammer(Player player, ItemStack hammer) {
-		if (!hammer.is(ModTools.BRONZE_HAMMER) || this.level == null || this.selectedRecipe == null) {
+		if (!hammer.is(ModTags.FORGING_HAMMERS) || this.level == null || this.selectedRecipe == null) {
 			return false;
 		}
 

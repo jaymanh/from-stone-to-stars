@@ -2,6 +2,7 @@ package jaymanh.fsts.tools;
 
 import jaymanh.fsts.item.ModItemIds;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 
@@ -116,6 +117,19 @@ public class ModTools {
                     .durability(ToolMaterials.BRONZEMATERIAL.getMaterial().durability())
                     .enchantable(ToolMaterials.BRONZEMATERIAL.getMaterial().enchantmentValue())
                     .repairable(ToolKeys.ItemKey.BRONZE_REPAIR_ITEMS)
+    );
+    public static final Item IRON_KNIFE = register(
+            ModItemIds.IRON_KNIFE,
+            FlintKnifeItem::new,
+            new Item.Properties().sword(ToolMaterial.IRON, 2.0F, -2.0F)
+    );
+    public static final Item IRON_HAMMER = register(
+            ModItemIds.IRON_HAMMER,
+            Item::new,
+            new Item.Properties()
+                    .durability(ToolMaterial.IRON.durability() * 2)
+                    .enchantable(ToolMaterial.IRON.enchantmentValue())
+                    .repairable(ItemTags.IRON_TOOL_MATERIALS)
     );
 
     public static final Item BRONZE_HELMET = register(

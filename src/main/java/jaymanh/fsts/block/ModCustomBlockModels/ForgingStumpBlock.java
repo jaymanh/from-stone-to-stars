@@ -7,7 +7,7 @@ import org.jspecify.annotations.Nullable;
 import jaymanh.fsts.block.entity.ForgingStumpEntity;
 import jaymanh.fsts.block.entity.ModBlockEntities;
 import jaymanh.fsts.inventory.ForgingStumpMenu;
-import jaymanh.fsts.tools.ModTools;
+import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -101,7 +101,7 @@ public class ForgingStumpBlock extends BaseEntityBlock {
 			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
-		if (stack.is(ModTools.BRONZE_HAMMER)) {
+		if (stack.is(ModTags.FORGING_HAMMERS)) {
 			if (level.isClientSide()) {
 				return InteractionResult.SUCCESS;
 			}

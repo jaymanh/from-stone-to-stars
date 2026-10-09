@@ -20,12 +20,15 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRONZE_INGOT = create("bronze_ingot");
 	public static final ResourceKey<Item> HEATED_BRONZE_INGOT = create("heated_bronze_ingot");
 	public static final ResourceKey<Item> HEATED_COPPER_INGOT = create("heated_copper_ingot");
+	public static final ResourceKey<Item> HEATED_IRON_INGOT = create("heated_iron_ingot");
 	public static final ResourceKey<Item> BRONZE_NAIL = create("bronze_nail");
 	public static final ResourceKey<Item> COPPER_NAIL = create("copper_nail");
 	public static final ResourceKey<Item> BRONZE_SHAFT = create("bronze_shaft");
 	public static final ResourceKey<Item> COPPER_SHAFT = create("copper_shaft");
 	public static final ResourceKey<Item> BRONZE_TOOL_BLADE = create("bronze_tool_blade");
 	public static final ResourceKey<Item> BRONZE_PLATE = create("bronze_plate");
+	public static final ResourceKey<Item> IRON_TOOL_HEAD = create("iron_tool_head");
+	public static final ResourceKey<Item> IRON_PLATE = create("iron_plate");
 	public static final ResourceKey<Item> CRUCIBLE = create("crucible");
 	public static final ResourceKey<Item> CLAY_JUG = create("clay_jug");
 
@@ -48,6 +51,8 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRONZE_SHOVEL = create("bronze_shovel");
 	public static final ResourceKey<Item> BRONZE_SPEAR = create("bronze_spear");
 	public static final ResourceKey<Item> BRONZE_HAMMER = create("bronze_hammer");
+	public static final ResourceKey<Item> IRON_HAMMER = create("iron_hammer");
+	public static final ResourceKey<Item> IRON_KNIFE = create("iron_knife");
 	public static final ResourceKey<Item> BRONZE_HELMET = create("bronze_helmet");
 	public static final ResourceKey<Item> BRONZE_CHESTPLATE = create("bronze_chestplate");
 	public static final ResourceKey<Item> BRONZE_LEGGINGS = create("bronze_leggings");
