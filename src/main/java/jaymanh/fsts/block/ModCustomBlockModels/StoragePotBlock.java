@@ -106,7 +106,11 @@ public class StoragePotBlock extends Block implements EntityBlock, Fallable {
 		}
 
 		if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
-			FallingBlockEntity.fall(level, pos, state);
+			// Vanilla drops a falling block as an item when it cannot be placed (torch, bottom slab)
+			// or when the fall times out. That item skips silk touch, so never let the pot drop.
+			FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
+			entity.dropItem = false;
+			entity.disableDrop();
 			return;
 		}
 
@@ -123,12 +127,17 @@ public class StoragePotBlock extends Block implements EntityBlock, Fallable {
 	@Override
 	public void onBrokenAfterFall(Level level, BlockPos pos, FallingBlockEntity fallingBlock) {
 		if (!level.isClientSide()) {
-			level.playSound(null, pos, SoundEvents.DECORATED_POT_BREAK, SoundSource.BLOCKS, 1.0F, 0.9F);
+			// The pot was never placed here. Do not remove the torch, slab, or other block it landed on.
+			playShatterEffects(level, pos, fallingBlock.getBlockState());
 		}
 	}
 
 	public static void shatter(Level level, BlockPos pos, BlockState state) {
 		level.removeBlock(pos, false);
+		playShatterEffects(level, pos, state);
+	}
+
+	private static void playShatterEffects(Level level, BlockPos pos, BlockState state) {
 		level.playSound(null, pos, SoundEvents.DECORATED_POT_BREAK, SoundSource.BLOCKS, 1.0F, 0.9F);
 		if (level instanceof ServerLevel serverLevel) {
 			serverLevel.sendParticles(

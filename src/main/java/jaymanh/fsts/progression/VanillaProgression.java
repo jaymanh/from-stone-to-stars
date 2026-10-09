@@ -6,8 +6,11 @@ import java.util.Set;
 
 import jaymanh.fsts.FromStoneToStars;
 
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 public final class VanillaProgression {
@@ -21,6 +24,16 @@ public final class VanillaProgression {
 	);
 
 	public static final Set<Identifier> REMOVED_RECIPES = buildRemovedRecipes();
+	/**
+	 * Iron metal, plus gear that smelts into iron nuggets. Found without mining, these skip the rusty-mud path.
+	 */
+	public static final Set<Item> FREE_IRON = Set.of(
+			Items.IRON_INGOT, Items.IRON_NUGGET, Items.IRON_BLOCK, Items.RAW_IRON, Items.RAW_IRON_BLOCK,
+			Items.IRON_SWORD, Items.IRON_SPEAR, Items.IRON_PICKAXE, Items.IRON_AXE, Items.IRON_SHOVEL, Items.IRON_HOE,
+			Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS,
+			Items.IRON_HORSE_ARMOR, Items.IRON_NAUTILUS_ARMOR,
+			Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS
+	);
 	public static final Set<Item> REMOVED_TOOL_DROPS = Set.of(
 			Items.WOODEN_SWORD, Items.WOODEN_SHOVEL, Items.WOODEN_PICKAXE, Items.WOODEN_AXE, Items.WOODEN_HOE, Items.WOODEN_SPEAR,
 			Items.STONE_SWORD, Items.STONE_SHOVEL, Items.STONE_PICKAXE, Items.STONE_AXE, Items.STONE_HOE, Items.STONE_SPEAR
@@ -30,7 +43,30 @@ public final class VanillaProgression {
 	}
 
 	public static void initialize() {
+		LootTableEvents.MODIFY_DROPS.register((holder, context, drops) -> {
+			holder.unwrapKey().map(key -> key.identifier()).ifPresent(id -> {
+				if (keepsIronLoot(id)) {
+					return;
+				}
+				drops.removeIf(VanillaProgression::isFreeIron);
+			});
+		});
 		FromStoneToStars.LOGGER.info("Vanilla gate: {} recipes removed", REMOVED_RECIPES.size());
+	}
+
+	/**
+	 * Mined blocks still drop. End-city chests are past the early game and stay as they are.
+	 */
+	public static boolean keepsIronLoot(Identifier id) {
+		if (!id.getNamespace().equals(Identifier.DEFAULT_NAMESPACE)) {
+			return true;
+		}
+		String path = id.getPath();
+		return path.startsWith("blocks/") || path.equals("chests/end_city_treasure");
+	}
+
+	public static boolean isFreeIron(ItemStack stack) {
+		return !stack.isEmpty() && FREE_IRON.contains(stack.getItem());
 	}
 
 	public static boolean isRemovedRecipe(Identifier id) {

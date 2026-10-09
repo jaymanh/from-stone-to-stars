@@ -6,6 +6,7 @@ import jaymanh.fsts.compat.energy.TeamRebornEnergyCompat;
 import jaymanh.fsts.component.ModDataComponents;
 import jaymanh.fsts.config.FstsConfig;
 import jaymanh.fsts.inventory.ModMenus;
+import jaymanh.fsts.item.HeatedMetalItem;
 import jaymanh.fsts.item.ModCreativeTabs;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.progression.VanillaProgression;
@@ -47,6 +48,7 @@ public class FromStoneToStars implements ModInitializer {
 		ModMultiblocks.initialize();
 		UseInteractions.initialise();
 		BedRainSleep.initialize();
+		HeatedMetalItem.initialize();
 	}
 
 	public static Identifier id(String path) {

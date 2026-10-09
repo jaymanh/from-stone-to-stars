@@ -9,6 +9,9 @@ import org.jspecify.annotations.Nullable;
 
 import jaymanh.fsts.component.ModDataComponents;
 
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -28,7 +31,10 @@ import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 public class HeatedMetalItem extends Item {
 	public static final int COOL_TICKS = 20 * 60;
 
-	/** Per-player last game tick we synced heat timers (avoids re-scanning every heated stack). */
+	/**
+	 * Per-player last game tick we synced heat timers (avoids re-scanning every heated stack).
+	 * Entries are removed when that player leaves or respawns, and when the server stops.
+	 */
 	private static final Map<Integer, Long> LAST_HEAT_SYNC_TICK = new HashMap<>();
 
 	private final Supplier<Item> cooledItem;
@@ -40,6 +46,17 @@ public class HeatedMetalItem extends Item {
 
 	public Item cooledItem() {
 		return this.cooledItem.get();
+	}
+
+	/** Drops heat-sync timestamps so a logged-out or respawned player's entity id does not stay in the map. */
+	public static void initialize() {
+		ServerPlayerEvents.LEAVE.register(HeatedMetalItem::forgetHeatSync);
+		ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> forgetHeatSync(oldPlayer));
+		ServerLifecycleEvents.SERVER_STOPPED.register(server -> LAST_HEAT_SYNC_TICK.clear());
+	}
+
+	private static void forgetHeatSync(Player player) {
+		LAST_HEAT_SYNC_TICK.remove(player.getId());
 	}
 
 	public static boolean isHeated(ItemStack stack) {
@@ -116,6 +133,10 @@ public class HeatedMetalItem extends Item {
 	 */
 	public static void syncHeatInInventory(Player player, long gameTime) {
 		int playerId = player.getId();
+		if (player.isRemoved()) {
+			LAST_HEAT_SYNC_TICK.remove(playerId);
+			return;
+		}
 		Long last = LAST_HEAT_SYNC_TICK.put(playerId, gameTime);
 		if (last != null && last == gameTime) {
 			return;
@@ -136,6 +157,7 @@ public class HeatedMetalItem extends Item {
 			earliest.merge(stack.getItem(), until, Math::min);
 		}
 		if (earliest.isEmpty()) {
+			LAST_HEAT_SYNC_TICK.remove(playerId);
 			return;
 		}
 		for (int i = 0; i < inventory.getContainerSize(); i++) {

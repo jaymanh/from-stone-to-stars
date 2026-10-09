@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "AbstractFurnaceBlockEntityMixin",
+    "AbstractVillagerMixin",
     "AbstractFurnaceMenuMixin",
     "BlockStateBaseMixin",
     "CampfireRainMixin",
@@ -13,10 +14,12 @@
     "ItemEntityMixin",
     "ItemStackMixin",
     "LootItemMixin",
+    "MobEquipmentDropMixin",
     "RecipeManagerMixin",
     "RepairItemRecipeMixin",
     "ResultSlotMixin",
-    "ShapelessRecipeMixin"
+    "ShapelessRecipeMixin",
+    "VillagerTradeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

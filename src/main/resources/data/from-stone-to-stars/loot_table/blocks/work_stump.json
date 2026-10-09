@@ -11,7 +11,16 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "from-stone-to-stars:work_stump"
+          "name": "from-stone-to-stars:work_stump",
+          "functions": [
+            {
+              "function": "minecraft:copy_state",
+              "block": "from-stone-to-stars:work_stump",
+              "properties": [
+                "damage"
+              ]
+            }
+          ]
         }
       ],
       "rolls": 1

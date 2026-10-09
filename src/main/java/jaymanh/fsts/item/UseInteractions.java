@@ -11,11 +11,14 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -47,6 +50,10 @@ public class UseInteractions {
             BlockState state = level.getBlockState(pos);
 
             if (StrippableBlockRegistry.getStrippedBlockState(state) == null) {
+                return InteractionResult.PASS;
+            }
+            // AxeItem skips this strip when the off-hand blocks attacks and the player is not sneaking.
+            if (vanillaCancelsAxeStrip(player, hand)) {
                 return InteractionResult.PASS;
             }
             long worldSeed = state.getSeed(pos);
@@ -190,5 +197,15 @@ public class UseInteractions {
 			}
 			return InteractionResult.PASS;
 		});
+    }
+
+    /**
+     * Same decision as vanilla {@code AxeItem}: main hand, off-hand item has {@code blocks_attacks},
+     * and the player is not sneaking.
+     */
+    private static boolean vanillaCancelsAxeStrip(Player player, InteractionHand hand) {
+        return hand == InteractionHand.MAIN_HAND
+                && player.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)
+                && !player.isSecondaryUseActive();
     }
 }
