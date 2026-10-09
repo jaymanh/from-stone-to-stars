@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "P"
+  ],
+  "key": {
+    "P": "from-stone-to-stars:bronze_chest"
+  },
+  "result": {
+    "id": "minecraft:chest",
+    "count": 1
+  }
+}
