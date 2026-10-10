@@ -40,7 +40,7 @@ public final class RotationNetwork {
 			BlockState state = level.getBlockState(pos);
 			if (state.is(ModBlocks.WATER_WHEEL)) {
 				wheels.add(pos);
-			} else if (state.is(ModBlocks.POWERED_QUERN)) {
+			} else if (isMachine(state)) {
 				machines.add(pos);
 			}
 		}
@@ -120,7 +120,7 @@ public final class RotationNetwork {
 			return RotationStatus.SPINNING;
 		}
 
-		if (state.is(ModBlocks.POWERED_QUERN)) {
+		if (isMachine(state)) {
 			if (!anyFlow) {
 				return RotationStatus.NO_FLOW;
 			}
@@ -143,6 +143,10 @@ public final class RotationNetwork {
 			return RotationStatus.SPINNING;
 		}
 		return RotationStatus.IDLE;
+	}
+
+	private static boolean isMachine(BlockState state) {
+		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER);
 	}
 
 	private static Set<BlockPos> collectComponent(Level level, BlockPos origin) {

@@ -101,6 +101,12 @@ public final class ModBlockEntities {
 			ModBlocks.POWERED_QUERN
 	);
 
+	public static final BlockEntityType<TripHammerBlockEntity> TRIP_HAMMER = register(
+			"trip_hammer",
+			TripHammerBlockEntity::new,
+			ModBlocks.TRIP_HAMMER
+	);
+
 	private ModBlockEntities() {
 	}
 

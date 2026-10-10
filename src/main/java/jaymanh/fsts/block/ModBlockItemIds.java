@@ -35,6 +35,7 @@ public final class ModBlockItemIds {
 	public static final BlockItemId WOODEN_SHAFT = create("wooden_shaft");
 	public static final BlockItemId ROTATION_GEAR = create("rotation_gear");
 	public static final BlockItemId POWERED_QUERN = create("powered_quern");
+	public static final BlockItemId TRIP_HAMMER = create("trip_hammer");
 	public static final BlockItemId RUSTY_MUD = create("rusty_mud");
 	public static final BlockItemId DRIED_RUSTY_MUD = create("dried_rusty_mud");
 

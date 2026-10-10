@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=south,lifted=false,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer"
+    },
+    "facing=south,lifted=false,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer"
+    },
+    "facing=south,lifted=true,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted"
+    },
+    "facing=south,lifted=true,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted"
+    },
+    "facing=west,lifted=false,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 90
+    },
+    "facing=west,lifted=false,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 90
+    },
+    "facing=west,lifted=true,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 90
+    },
+    "facing=west,lifted=true,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 90
+    },
+    "facing=north,lifted=false,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 180
+    },
+    "facing=north,lifted=false,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 180
+    },
+    "facing=north,lifted=true,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 180
+    },
+    "facing=north,lifted=true,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 180
+    },
+    "facing=east,lifted=false,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 270
+    },
+    "facing=east,lifted=false,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer",
+      "y": 270
+    },
+    "facing=east,lifted=true,powered=false": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 270
+    },
+    "facing=east,lifted=true,powered=true": {
+      "model": "from-stone-to-stars:block/trip_hammer_lifted",
+      "y": 270
+    }
+  }
+}

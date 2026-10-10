@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "BQB"
+  ],
+  "key": {
+    "B": "from-stone-to-stars:bronze_ingot",
+    "Q": "from-stone-to-stars:rotation_gear",
+    "S": "#from-stone-to-stars:shafts"
+  },
+  "result": {
+    "id": "from-stone-to-stars:trip_hammer",
+    "count": 1
+  }
+}

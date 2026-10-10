@@ -99,7 +99,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.WORK_STUMP)
 				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP)
 				.add(ModBlockItemIds.BELLOWS)
-				.add(ModBlockItemIds.BRONZE_CHEST);
+				.add(ModBlockItemIds.BRONZE_CHEST)
+				.add(ModBlockItemIds.TRIP_HAMMER);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);

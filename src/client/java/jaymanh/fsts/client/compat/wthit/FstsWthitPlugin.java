@@ -8,11 +8,13 @@ import jaymanh.fsts.block.ModCustomBlockModels.FishTrapBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.SnareBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TanningRackBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PoweredQuernBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TripHammerBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.RotationGearBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WaterWheelBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WoodenShaftBlock;
 import jaymanh.fsts.block.entity.KindlingBlockEntity;
 import jaymanh.fsts.block.entity.PoweredQuernBlockEntity;
+import jaymanh.fsts.block.entity.TripHammerBlockEntity;
 import jaymanh.fsts.block.entity.RotationGearBlockEntity;
 import jaymanh.fsts.block.entity.WaterWheelBlockEntity;
 import jaymanh.fsts.block.entity.WoodenShaftBlockEntity;
@@ -62,9 +64,11 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, WoodenShaftBlock.class);
 		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, RotationGearBlock.class);
 		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, PoweredQuernBlock.class);
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, TripHammerBlock.class);
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, WaterWheelBlockEntity.class);
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, WoodenShaftBlockEntity.class);
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, RotationGearBlockEntity.class);
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, PoweredQuernBlockEntity.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, TripHammerBlockEntity.class);
 	}
 }

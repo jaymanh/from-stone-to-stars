@@ -15,7 +15,8 @@ public final class RotationConnector {
 		return state.is(ModBlocks.WATER_WHEEL)
 				|| state.is(ModBlocks.WOODEN_SHAFT)
 				|| state.is(ModBlocks.ROTATION_GEAR)
-				|| state.is(ModBlocks.POWERED_QUERN);
+				|| state.is(ModBlocks.POWERED_QUERN)
+				|| state.is(ModBlocks.TRIP_HAMMER);
 	}
 
 	public static boolean canConnect(Level level, BlockPos from, BlockPos to, Direction direction) {
@@ -36,11 +37,11 @@ public final class RotationConnector {
 			return waterWheelConnects(toState, direction.getOpposite());
 		}
 
-		if (fromState.is(ModBlocks.POWERED_QUERN)) {
-			return poweredQuernConnects(fromState, direction);
+		if (fromState.is(ModBlocks.POWERED_QUERN) || fromState.is(ModBlocks.TRIP_HAMMER)) {
+			return driveConnects(fromState, direction);
 		}
-		if (toState.is(ModBlocks.POWERED_QUERN)) {
-			return poweredQuernConnects(toState, direction.getOpposite());
+		if (toState.is(ModBlocks.POWERED_QUERN) || toState.is(ModBlocks.TRIP_HAMMER)) {
+			return driveConnects(toState, direction.getOpposite());
 		}
 
 		if (fromState.is(ModBlocks.WOODEN_SHAFT) && toState.is(ModBlocks.WOODEN_SHAFT)) {
@@ -63,7 +64,8 @@ public final class RotationConnector {
 		return direction.getAxis() == axle;
 	}
 
-	private static boolean poweredQuernConnects(BlockState state, Direction direction) {
+	/** Shaft enters the back of a facing machine, opposite the side the player looks at. */
+	private static boolean driveConnects(BlockState state, Direction direction) {
 		return direction == state.getValue(BlockStateProperties.HORIZONTAL_FACING).getOpposite();
 	}
 

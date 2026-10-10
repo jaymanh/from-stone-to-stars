@@ -261,6 +261,16 @@ public final class ModBlocks {
 					.strength(3.5F)
 					.noOcclusion()
 	);
+	public static final Block TRIP_HAMMER = register(
+			ModBlockItemIds.TRIP_HAMMER,
+			TripHammerBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.0F, 3.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 	public static final Block RUSTY_MUD = register(
 			ModBlockItemIds.RUSTY_MUD,
 			Block::new,

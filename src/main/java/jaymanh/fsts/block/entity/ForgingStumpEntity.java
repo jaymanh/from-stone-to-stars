@@ -48,6 +48,7 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(SLOT_COUNT, ItemStack.EMPTY);
 	private int progress;
 	private @Nullable Identifier selectedRecipe;
+	private boolean finishedRecipe;
 
 	public ForgingStumpEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.FORGING_STUMP, pos, state);
@@ -120,7 +121,22 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	}
 
 	public boolean hammer(Player player, ItemStack hammer) {
-		if (!hammer.is(ModTags.FORGING_HAMMERS) || this.level == null || this.selectedRecipe == null) {
+		if (!hammer.is(ModTags.FORGING_HAMMERS) || !this.strike()) {
+			return false;
+		}
+		if (!player.hasInfiniteMaterials()) {
+			hammer.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+		}
+		return true;
+	}
+
+	/**
+	 * One hit of the selected forging recipe. A held hammer and the trip hammer both use this.
+	 * True when the hit lands. {@link #finishedRecipe()} is true when that hit completed the craft.
+	 */
+	public boolean strike() {
+		this.finishedRecipe = false;
+		if (this.level == null || this.selectedRecipe == null) {
 			return false;
 		}
 
@@ -147,10 +163,6 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 		}
 
 		this.progress++;
-		if (!player.hasInfiniteMaterials()) {
-			hammer.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-		}
-
 		if (this.progress >= forging.hits()) {
 			this.progress = 0;
 			input.shrink(forging.ingredientCount());
@@ -163,11 +175,16 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			} else {
 				output.grow(result.getCount());
 			}
+			this.finishedRecipe = true;
 		}
 
 		this.ensureSelectionValid();
 		this.syncState();
 		return true;
+	}
+
+	public boolean finishedRecipe() {
+		return this.finishedRecipe;
 	}
 
 	private boolean canAcceptResult(ItemStack output, ItemStack result) {

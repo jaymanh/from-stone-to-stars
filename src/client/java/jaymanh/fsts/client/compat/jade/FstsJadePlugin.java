@@ -2,10 +2,12 @@ package jaymanh.fsts.client.compat.jade;
 
 import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PoweredQuernBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TripHammerBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.RotationGearBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WaterWheelBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WoodenShaftBlock;
 import jaymanh.fsts.block.entity.PoweredQuernBlockEntity;
+import jaymanh.fsts.block.entity.TripHammerBlockEntity;
 import jaymanh.fsts.block.entity.RotationGearBlockEntity;
 import jaymanh.fsts.block.entity.WaterWheelBlockEntity;
 import jaymanh.fsts.block.entity.WoodenShaftBlockEntity;
@@ -42,6 +44,7 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, WoodenShaftBlockEntity.class);
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, RotationGearBlockEntity.class);
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, PoweredQuernBlockEntity.class);
+		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, TripHammerBlockEntity.class);
 	}
 
 	@Override
@@ -58,5 +61,6 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, WoodenShaftBlock.class);
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, RotationGearBlock.class);
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, PoweredQuernBlock.class);
+		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, TripHammerBlock.class);
 	}
 }

@@ -232,6 +232,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.UNFINISHED_WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.unfinished_work_stump"));
 		registration.addIngredientInfo(ModBlocks.WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.work_stump"));
 		registration.addIngredientInfo(ModBlocks.FORGING_STUMP, Component.translatable("jei.from-stone-to-stars.info.forging_stump"));
+		registration.addIngredientInfo(ModBlocks.TRIP_HAMMER, Component.translatable("jei.from-stone-to-stars.info.trip_hammer"));
 	}
 
 	@Override
