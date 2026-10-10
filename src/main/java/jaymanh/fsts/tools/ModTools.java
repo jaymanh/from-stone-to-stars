@@ -121,7 +121,7 @@ public class ModTools {
     public static final Item IRON_KNIFE = register(
             ModItemIds.IRON_KNIFE,
             FlintKnifeItem::new,
-            new Item.Properties().sword(ToolMaterial.IRON, 2.0F, -2.0F)
+            new Item.Properties().sword(ToolMaterial.IRON, 1.2F, -2.0F)
     );
     public static final Item IRON_HAMMER = register(
             ModItemIds.IRON_HAMMER,

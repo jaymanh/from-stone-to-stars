@@ -17,7 +17,7 @@ public class FlintKnifeItem extends Item {
 			return null;
 		}
 
-		ItemStack leftover = stack.copy();
+		ItemStack leftover = stack.copyWithCount(1);
 		leftover.setDamageValue(leftover.getDamageValue() + 1);
 		return ItemStackTemplate.fromNonEmptyStack(leftover);
 	}
