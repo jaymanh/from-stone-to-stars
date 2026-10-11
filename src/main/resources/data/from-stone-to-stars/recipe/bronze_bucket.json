@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "B B",
+    " B "
+  ],
+  "key": {
+    "B": "from-stone-to-stars:bronze_ingot"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bronze_bucket",
+    "count": 1
+  }
+}

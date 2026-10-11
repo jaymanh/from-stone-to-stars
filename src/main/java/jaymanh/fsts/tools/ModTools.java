@@ -112,7 +112,7 @@ public class ModTools {
     );
     public static final Item BRONZE_HAMMER = register(
             ModItemIds.BRONZE_HAMMER,
-            Item::new,
+            ForgingHammerItem::new,
             new Item.Properties()
                     .durability(ToolMaterials.BRONZEMATERIAL.getMaterial().durability())
                     .enchantable(ToolMaterials.BRONZEMATERIAL.getMaterial().enchantmentValue())
@@ -125,7 +125,7 @@ public class ModTools {
     );
     public static final Item IRON_HAMMER = register(
             ModItemIds.IRON_HAMMER,
-            Item::new,
+            ForgingHammerItem::new,
             new Item.Properties()
                     .durability(ToolMaterial.IRON.durability() * 2)
                     .enchantable(ToolMaterial.IRON.enchantmentValue())

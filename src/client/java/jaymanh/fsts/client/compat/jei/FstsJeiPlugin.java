@@ -34,6 +34,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 	public static final IRecipeType<SimpleProcessRecipe> BONE_SAW = IRecipeType.create(FromStoneToStars.MOD_ID, "bone_saw", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> GRINDING = IRecipeType.create(FromStoneToStars.MOD_ID, "grinding", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> CRUCIBLE_ALLOYING = IRecipeType.create(FromStoneToStars.MOD_ID, "crucible_alloying", SimpleProcessRecipe.class);
+	public static final IRecipeType<ForgingJeiRecipe> FORGING = IRecipeType.create(FromStoneToStars.MOD_ID, "forging", ForgingJeiRecipe.class);
 	public static final IRecipeType<WorldInteractionRecipe> WORLD_INTERACTION = IRecipeType.create(FromStoneToStars.MOD_ID, "world_interaction", WorldInteractionRecipe.class);
 
 	@Override
@@ -52,6 +53,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
 				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
 				new ProcessRecipeCategory(guiHelper, CRUCIBLE_ALLOYING, Component.translatable("jei.from-stone-to-stars.crucible_alloying"), ModItems.CRUCIBLE),
+				new ForgingRecipeCategory(guiHelper, FORGING, Component.translatable("jei.from-stone-to-stars.forging"), ModBlocks.FORGING_STUMP),
 				new WorldInteractionCategory(guiHelper, WORLD_INTERACTION, Component.translatable("jei.from-stone-to-stars.world_interaction"), ModTools.FLINT_AXE)
 		);
 	}
@@ -169,7 +171,34 @@ public final class FstsJeiPlugin implements IModPlugin {
 						List.of(SimpleProcessRecipe.any(ModBlocks.BASIC_SMELTER, Items.BLAST_FURNACE, ModBlocks.FORGE_HEARTH)),
 						SimpleProcessRecipe.stack(new ItemStack(Items.IRON_INGOT, 2)),
 						200
+				),
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("alloying/steel"),
+						List.of(
+								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.stack(new ItemStack(Items.IRON_INGOT, 6)),
+								SimpleProcessRecipe.tag(ItemTags.COALS)
+						),
+						List.of(SimpleProcessRecipe.any(ModBlocks.BASIC_SMELTER, Items.BLAST_FURNACE, ModBlocks.FORGE_HEARTH)),
+						SimpleProcessRecipe.stack(new ItemStack(ModItems.STEEL_INGOT, 2)),
+						200
 				)
+		));
+
+		registration.addRecipes(FORGING, List.of(
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/crushed_iron"), Items.RAW_IRON, 1, ModItems.CRUSHED_IRON, 2, 16),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/crushed_copper"), Items.RAW_COPPER, 1, ModItems.CRUSHED_COPPER, 2, 16),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/crushed_gold"), Items.RAW_GOLD, 1, ModItems.CRUSHED_GOLD, 2, 16),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/crushed_zinc"), ModItems.RAW_ZINC, 1, ModItems.CRUSHED_ZINC, 2, 16),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/bronze_nails"), ModItems.HEATED_BRONZE_INGOT, 1, ModItems.BRONZE_NAIL, 4, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/bronze_shafts"), ModItems.HEATED_BRONZE_INGOT, 2, ModItems.BRONZE_SHAFT, 4, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/bronze_tool_blades"), ModItems.HEATED_BRONZE_INGOT, 3, ModItems.BRONZE_TOOL_BLADE, 2, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/bronze_plates"), ModItems.HEATED_BRONZE_INGOT, 4, ModItems.BRONZE_PLATE, 2, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/copper_nails"), ModItems.HEATED_COPPER_INGOT, 1, ModItems.COPPER_NAIL, 4, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/copper_shafts"), ModItems.HEATED_COPPER_INGOT, 2, ModItems.COPPER_SHAFT, 4, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_tool_heads"), ModItems.HEATED_IRON_INGOT, 3, ModItems.IRON_TOOL_HEAD, 2, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_plates"), ModItems.HEATED_IRON_INGOT, 4, ModItems.IRON_PLATE, 2, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_specks"), ModBlocks.DRIED_RUSTY_MUD, 1, ModItems.IRON_SPECKS, 1, 8)
 		));
 
 		registration.addRecipes(BONE_SAW, List.of(new SimpleProcessRecipe(
@@ -210,6 +239,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.BARK, Component.translatable("jei.from-stone-to-stars.info.bark"));
 		registration.addIngredientInfo(ModTools.HAMMERSTONE, Component.translatable("jei.from-stone-to-stars.info.hammerstone"));
 		registration.addIngredientInfo(ModTools.BRONZE_HAMMER, Component.translatable("jei.from-stone-to-stars.info.bronze_hammer"));
+		registration.addIngredientInfo(ModItems.BRONZE_BUCKET, Component.translatable("jei.from-stone-to-stars.info.bronze_bucket"));
 		registration.addIngredientInfo(ModTools.IRON_HAMMER, Component.translatable("jei.from-stone-to-stars.info.iron_hammer"));
 		registration.addIngredientInfo(ModTools.IRON_KNIFE, Component.translatable("jei.from-stone-to-stars.info.iron_knife"));
 		registration.addIngredientInfo(ModTools.BOW_AND_DRILL, Component.translatable("jei.from-stone-to-stars.info.bow_and_drill"));
@@ -232,6 +262,10 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.UNFINISHED_WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.unfinished_work_stump"));
 		registration.addIngredientInfo(ModBlocks.WORK_STUMP, Component.translatable("jei.from-stone-to-stars.info.work_stump"));
 		registration.addIngredientInfo(ModBlocks.FORGING_STUMP, Component.translatable("jei.from-stone-to-stars.info.forging_stump"));
+		registration.addIngredientInfo(ModItems.CRUSHED_IRON, Component.translatable("jei.from-stone-to-stars.info.crushed_iron"));
+		registration.addIngredientInfo(ModItems.CRUSHED_COPPER, Component.translatable("jei.from-stone-to-stars.info.crushed_copper"));
+		registration.addIngredientInfo(ModItems.CRUSHED_GOLD, Component.translatable("jei.from-stone-to-stars.info.crushed_gold"));
+		registration.addIngredientInfo(ModItems.CRUSHED_ZINC, Component.translatable("jei.from-stone-to-stars.info.crushed_zinc"));
 		registration.addIngredientInfo(ModBlocks.TRIP_HAMMER, Component.translatable("jei.from-stone-to-stars.info.trip_hammer"));
 	}
 
@@ -256,6 +290,10 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.BASIC_SMELTER);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, Items.BLAST_FURNACE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.FORGE_HEARTH);
+		registration.addCraftingStation(FORGING, ModBlocks.FORGING_STUMP);
+		registration.addCraftingStation(FORGING, ModBlocks.TRIP_HAMMER);
+		registration.addCraftingStation(FORGING, ModTools.BRONZE_HAMMER);
+		registration.addCraftingStation(FORGING, ModTools.IRON_HAMMER);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);
 	}

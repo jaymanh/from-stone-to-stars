@@ -16,6 +16,10 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> FLOUR = create("flour");
 	public static final ResourceKey<Item> DOUGH = create("dough");
 	public static final ResourceKey<Item> RAW_ZINC = create("raw_zinc");
+	public static final ResourceKey<Item> CRUSHED_IRON = create("crushed_iron");
+	public static final ResourceKey<Item> CRUSHED_COPPER = create("crushed_copper");
+	public static final ResourceKey<Item> CRUSHED_GOLD = create("crushed_gold");
+	public static final ResourceKey<Item> CRUSHED_ZINC = create("crushed_zinc");
 	public static final ResourceKey<Item> ZINC_INGOT = create("zinc_ingot");
 	public static final ResourceKey<Item> BRONZE_INGOT = create("bronze_ingot");
 	public static final ResourceKey<Item> HEATED_BRONZE_INGOT = create("heated_bronze_ingot");
@@ -27,6 +31,18 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> COPPER_SHAFT = create("copper_shaft");
 	public static final ResourceKey<Item> BRONZE_TOOL_BLADE = create("bronze_tool_blade");
 	public static final ResourceKey<Item> BRONZE_PLATE = create("bronze_plate");
+	public static final ResourceKey<Item> BRONZE_BUCKET = create("bronze_bucket");
+	public static final ResourceKey<Item> BRONZE_WATER_BUCKET = create("bronze_water_bucket");
+	public static final ResourceKey<Item> BRONZE_LAVA_BUCKET = create("bronze_lava_bucket");
+	public static final ResourceKey<Item> BRONZE_MILK_BUCKET = create("bronze_milk_bucket");
+	public static final ResourceKey<Item> BRONZE_POWDER_SNOW_BUCKET = create("bronze_powder_snow_bucket");
+	public static final ResourceKey<Item> BRONZE_COD_BUCKET = create("bronze_cod_bucket");
+	public static final ResourceKey<Item> BRONZE_SALMON_BUCKET = create("bronze_salmon_bucket");
+	public static final ResourceKey<Item> BRONZE_TROPICAL_FISH_BUCKET = create("bronze_tropical_fish_bucket");
+	public static final ResourceKey<Item> BRONZE_PUFFERFISH_BUCKET = create("bronze_pufferfish_bucket");
+	public static final ResourceKey<Item> BRONZE_TADPOLE_BUCKET = create("bronze_tadpole_bucket");
+	public static final ResourceKey<Item> BRONZE_AXOLOTL_BUCKET = create("bronze_axolotl_bucket");
+	public static final ResourceKey<Item> BRONZE_SULFUR_CUBE_BUCKET = create("bronze_sulfur_cube_bucket");
 	public static final ResourceKey<Item> IRON_TOOL_HEAD = create("iron_tool_head");
 	public static final ResourceKey<Item> IRON_PLATE = create("iron_plate");
 	public static final ResourceKey<Item> CRUCIBLE = create("crucible");
@@ -58,6 +74,7 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRONZE_LEGGINGS = create("bronze_leggings");
 	public static final ResourceKey<Item> BRONZE_BOOTS = create("bronze_boots");
 	public static final ResourceKey<Item> IRON_SPECKS = create("iron_specks");
+	public static final ResourceKey<Item> STEEL_INGOT = create("steel_ingot");
 
 
 	private ModItemIds() {

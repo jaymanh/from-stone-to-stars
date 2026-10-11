@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "#from-stone-to-stars:milk_buckets",
+    "B": "minecraft:sugar",
+    "C": "minecraft:wheat",
+    "E": "#minecraft:eggs"
+  },
+  "pattern": [
+    "AAA",
+    "BEB",
+    "CCC"
+  ],
+  "result": {
+    "id": "minecraft:cake"
+  }
+}

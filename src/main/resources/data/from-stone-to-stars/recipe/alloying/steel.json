@@ -1,0 +1,19 @@
+{
+  "type": "from-stone-to-stars:crucible_alloying",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:iron_ingot",
+      "count": 6
+    },
+    {
+      "ingredient": "#minecraft:coals",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "from-stone-to-stars:steel_ingot",
+    "count": 2
+  },
+  "experience": 0.7,
+  "cookingtime": 200
+}

@@ -7,7 +7,7 @@
     " P "
   ],
   "key": {
-    "P": "minecraft:oak_planks",
+    "P": "#minecraft:planks",
     "S": "#from-stone-to-stars:shafts"
   },
   "result": {

@@ -6,7 +6,7 @@
     "L"
   ],
   "key": {
-    "L": "minecraft:oak_log"
+    "L": "#minecraft:logs"
   },
   "result": {
     "id": "from-stone-to-stars:wooden_shaft",

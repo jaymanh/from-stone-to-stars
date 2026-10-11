@@ -6,6 +6,7 @@ c9d25549d25582e19af5349da048adb9368da9ed data/from-stone-to-stars/tags/item/bron
 994aa01c3bf4d7147e42d193bd399462d0525404 data/from-stone-to-stars/tags/item/coal_blocks.json
 6c1208c4f482c7b9560dda2452b7cb7ac5a8acbb data/from-stone-to-stars/tags/item/fishing_bait.json
 4333e5b0d3c082c5e91baec1955d1a9d418dc318 data/from-stone-to-stars/tags/item/flint_repair_item.json
+37df38dbae6f991e23b40cf7b6110098ad502d68 data/from-stone-to-stars/tags/item/knives.json
 ee5dc2bdac599a4e1518e67323cf9c7f2dfbfb5a data/from-stone-to-stars/tags/item/nails.json
 f61e91d6477ff918e1b6d0a25b12708a2f05d4d6 data/from-stone-to-stars/tags/item/shafts.json
 98433258078145b7a809907fa1fdd8a1acbea37a data/from-stone-to-stars/tags/item/snare_meat_bait.json
@@ -21,4 +22,4 @@ e089a4ded5ef56a965860e72aee2a3a5bb515cde data/minecraft/tags/item/leg_armor.json
 71ba9a293854f922d0f7fed111e145bab9f4d309 data/minecraft/tags/item/pickaxes.json
 a158320ab36dbdd285e029cdb18602b4b03307a2 data/minecraft/tags/item/shovels.json
 d1c3c16d2c60fc9e88a548a917198a17a9e65927 data/minecraft/tags/item/spears.json
-49d283d4de27900e59bcacd98649e508239a9863 data/minecraft/tags/item/swords.json
+d934fdc7f07f4c137f265b366ee9d7a929dd789f data/minecraft/tags/item/swords.json

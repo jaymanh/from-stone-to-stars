@@ -50,10 +50,15 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.RUSTY_MUD);
 				output.accept(ModBlocks.DRIED_RUSTY_MUD);
 				output.accept((ModItems.IRON_SPECKS));
+				output.accept(ModItems.STEEL_INGOT);
 
 				output.accept(ModBlocks.ZINC_ORE);
 				output.accept(ModBlocks.DEEPSLATE_ZINC_ORE);
 				output.accept(ModItems.RAW_ZINC);
+				output.accept(ModItems.CRUSHED_IRON);
+				output.accept(ModItems.CRUSHED_COPPER);
+				output.accept(ModItems.CRUSHED_GOLD);
+				output.accept(ModItems.CRUSHED_ZINC);
 				output.accept(ModItems.ZINC_INGOT);
 				output.accept(ModItems.BRONZE_INGOT);
 				output.accept(ModItems.HEATED_BRONZE_INGOT);
@@ -65,6 +70,18 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.COPPER_SHAFT);
 				output.accept(ModItems.BRONZE_TOOL_BLADE);
 				output.accept(ModItems.BRONZE_PLATE);
+				output.accept(ModItems.BRONZE_BUCKET);
+				output.accept(ModItems.BRONZE_WATER_BUCKET);
+				output.accept(ModItems.BRONZE_LAVA_BUCKET);
+				output.accept(ModItems.BRONZE_MILK_BUCKET);
+				output.accept(ModItems.BRONZE_POWDER_SNOW_BUCKET);
+				output.accept(ModItems.BRONZE_COD_BUCKET);
+				output.accept(ModItems.BRONZE_SALMON_BUCKET);
+				output.accept(ModItems.BRONZE_TROPICAL_FISH_BUCKET);
+				output.accept(ModItems.BRONZE_PUFFERFISH_BUCKET);
+				output.accept(ModItems.BRONZE_TADPOLE_BUCKET);
+				output.accept(ModItems.BRONZE_AXOLOTL_BUCKET);
+				output.accept(ModItems.BRONZE_SULFUR_CUBE_BUCKET);
 				output.accept(ModItems.IRON_TOOL_HEAD);
 				output.accept(ModItems.IRON_PLATE);
 				output.accept(ModItems.CRUCIBLE);

@@ -16,13 +16,17 @@ import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
 import jaymanh.fsts.component.CrucibleCharge;
 import jaymanh.fsts.item.CrucibleItem;
 import jaymanh.fsts.item.HeatedMetalItem;
+import jaymanh.fsts.item.ModItems;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
@@ -223,5 +227,33 @@ public abstract class AbstractFurnaceBlockEntityMixin {
 
 	private static boolean fsts$isFuel(FuelValues fuelValues, ItemStack fuel) {
 		return !fuel.isEmpty() && fuelValues.isFuel(fuel);
+	}
+
+	/** A wet sponge fills a bronze bucket with water, the same way it fills an iron bucket. */
+	@Inject(method = "burn", at = @At("HEAD"))
+	private static void fsts$bronzeSponge(NonNullList<ItemStack> items, ItemStack input, ItemStack result, CallbackInfo ci) {
+		if (input.is(Items.WET_SPONGE) && items.get(SLOT_FUEL).is(ModItems.BRONZE_BUCKET)) {
+			items.set(SLOT_FUEL, new ItemStack(ModItems.BRONZE_WATER_BUCKET));
+		}
+	}
+
+	/** The fuel slot accepts one empty bronze bucket, including in place of other fuel. */
+	@Inject(method = "canPlaceItem", at = @At("HEAD"), cancellable = true)
+	private void fsts$placeBronzeBucket(int slot, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+		if (slot != SLOT_FUEL || !stack.is(ModItems.BRONZE_BUCKET)) {
+			return;
+		}
+		ItemStack fuelSlot = ((AbstractFurnaceBlockEntity) (Object) this).getItem(SLOT_FUEL);
+		cir.setReturnValue(!fuelSlot.is(ModItems.BRONZE_BUCKET));
+	}
+
+	/** Hoppers under a furnace can pull the empty bronze bucket and the water one a sponge leaves. */
+	@Inject(method = "canTakeItemThroughFace", at = @At("HEAD"), cancellable = true)
+	private void fsts$takeBronzeBucket(int slot, ItemStack stack, Direction direction, CallbackInfoReturnable<Boolean> cir) {
+		if (direction == Direction.DOWN
+				&& slot == SLOT_FUEL
+				&& (stack.is(ModItems.BRONZE_BUCKET) || stack.is(ModItems.BRONZE_WATER_BUCKET))) {
+			cir.setReturnValue(true);
+		}
 	}
 }

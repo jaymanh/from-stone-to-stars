@@ -1,0 +1,10 @@
+{
+  "type": "from-stone-to-stars:forging",
+  "ingredient": "minecraft:raw_iron",
+  "ingredient_count": 1,
+  "hits": 16,
+  "result": {
+    "id": "from-stone-to-stars:crushed_iron",
+    "count": 2
+  }
+}

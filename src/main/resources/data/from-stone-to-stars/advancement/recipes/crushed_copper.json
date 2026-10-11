@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:crushed_copper"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:crushed_copper_from_smelting",
+      "from-stone-to-stars:crushed_copper_from_blasting"
+    ]
+  }
+}

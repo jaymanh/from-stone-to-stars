@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:raw_gold"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:forging/crushed_gold"
+    ]
+  }
+}
