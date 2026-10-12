@@ -1,0 +1,24 @@
+{
+  "parent": "from-stone-to-stars:age1/first_bronze",
+  "criteria": {
+    "pumped": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:bellows"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.hotter_fire.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.hotter_fire.description"
+    }
+  },
+  "requirements": [
+    [
+      "pumped"
+    ]
+  ]
+}

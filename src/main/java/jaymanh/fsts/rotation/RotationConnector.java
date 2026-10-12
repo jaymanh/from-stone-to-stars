@@ -16,7 +16,8 @@ public final class RotationConnector {
 				|| state.is(ModBlocks.WOODEN_SHAFT)
 				|| state.is(ModBlocks.ROTATION_GEAR)
 				|| state.is(ModBlocks.POWERED_QUERN)
-				|| state.is(ModBlocks.TRIP_HAMMER);
+				|| state.is(ModBlocks.TRIP_HAMMER)
+				|| state.is(ModBlocks.BRONZE_HOPPER);
 	}
 
 	public static boolean canConnect(Level level, BlockPos from, BlockPos to, Direction direction) {
@@ -28,6 +29,13 @@ public final class RotationConnector {
 
 		if (fromState.is(ModBlocks.ROTATION_GEAR) || toState.is(ModBlocks.ROTATION_GEAR)) {
 			return true;
+		}
+
+		if (fromState.is(ModBlocks.BRONZE_HOPPER) && !hopperAccepts(fromState, direction)) {
+			return false;
+		}
+		if (toState.is(ModBlocks.BRONZE_HOPPER) && !hopperAccepts(toState, direction.getOpposite())) {
+			return false;
 		}
 
 		if (fromState.is(ModBlocks.WATER_WHEEL)) {
@@ -62,6 +70,12 @@ public final class RotationConnector {
 		Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
 		Direction.Axis axle = facing.getClockWise().getAxis();
 		return direction.getAxis() == axle;
+	}
+
+	/** Any face except the top intake and the spout. A gear still connects on those faces. */
+	private static boolean hopperAccepts(BlockState hopper, Direction direction) {
+		Direction facing = hopper.getValue(BlockStateProperties.FACING_HOPPER);
+		return direction != Direction.UP && direction != facing;
 	}
 
 	/** Shaft enters the back of a facing machine, opposite the side the player looks at. */

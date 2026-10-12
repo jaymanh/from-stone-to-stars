@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age0/zinc_gleam",
+  "criteria": {
+    "bronze_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bronze_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:bronze_ingot"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.first_bronze.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.first_bronze.description"
+    }
+  },
+  "requirements": [
+    [
+      "bronze_ingot"
+    ]
+  ]
+}

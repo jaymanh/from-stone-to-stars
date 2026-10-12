@@ -9,12 +9,12 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.entity.AbstractRotationBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -89,6 +89,10 @@ public final class RotationNetwork {
 			if (blockEntity instanceof AbstractRotationBlockEntity rotation) {
 				rotation.applyNetworkState(spinning, status, networkCanTurn && !overloaded);
 			}
+
+			if (spinning && state.is(ModBlocks.WATER_WHEEL) && level instanceof ServerLevel serverLevel) {
+				AgeAdvancements.grantNearby(serverLevel, pos, "age1/wheel_and_water", "spinning");
+			}
 		}
 	}
 
@@ -146,7 +150,7 @@ public final class RotationNetwork {
 	}
 
 	private static boolean isMachine(BlockState state) {
-		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER);
+		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER) || state.is(ModBlocks.BRONZE_HOPPER);
 	}
 
 	private static Set<BlockPos> collectComponent(Level level, BlockPos origin) {
@@ -218,13 +222,7 @@ public final class RotationNetwork {
 	}
 
 	public static void grantUnderLoadAdvancement(ServerLevel level, BlockPos pos) {
-		for (ServerPlayer player : level.getServer().getPlayerList().getPlayers()) {
-			if (player.blockPosition().distSqr(pos) <= 16 * 16) {
-				var holder = level.getServer().getAdvancements().get(jaymanh.fsts.FromStoneToStars.id("age1/under_load"));
-				if (holder != null) {
-					player.getAdvancements().award(holder, "powered_grind");
-				}
-			}
-		}
+		AgeAdvancements.grantNearby(level, pos, "age1/under_load", "powered_grind");
+		AgeAdvancements.grantNearby(level, pos, "age1/bronze_yard", "powered_process");
 	}
 }

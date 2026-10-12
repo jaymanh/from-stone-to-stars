@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "B B",
+    "BCB",
+    " B "
+  ],
+  "key": {
+    "B": "from-stone-to-stars:bronze_ingot",
+    "C": "from-stone-to-stars:bronze_chest"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bronze_hopper",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "from-stone-to-stars:block/bronze_hopper"
+    },
+    "facing=east": {
+      "model": "from-stone-to-stars:block/bronze_hopper_side",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "from-stone-to-stars:block/bronze_hopper_side"
+    },
+    "facing=south": {
+      "model": "from-stone-to-stars:block/bronze_hopper_side",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "from-stone-to-stars:block/bronze_hopper_side",
+      "y": 270
+    }
+  }
+}

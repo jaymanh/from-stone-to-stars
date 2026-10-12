@@ -117,7 +117,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.UNFIRED_STORAGE_POT)
 				.add(ModBlockItemIds.STORAGE_POT)
 				.add(ModBlockItemIds.FORGE_HEARTH)
-				.add(ModBlockItemIds.DRIED_RUSTY_MUD);
+				.add(ModBlockItemIds.DRIED_RUSTY_MUD)
+				.add(ModBlockItemIds.BRONZE_HOPPER);
 
 		builder(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(ModBlockItemIds.RUSTY_MUD);

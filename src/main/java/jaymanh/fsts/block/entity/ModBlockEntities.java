@@ -107,6 +107,12 @@ public final class ModBlockEntities {
 			ModBlocks.TRIP_HAMMER
 	);
 
+	public static final BlockEntityType<BronzeHopperBlockEntity> BRONZE_HOPPER = register(
+			"bronze_hopper",
+			BronzeHopperBlockEntity::new,
+			ModBlocks.BRONZE_HOPPER
+	);
+
 	private ModBlockEntities() {
 	}
 

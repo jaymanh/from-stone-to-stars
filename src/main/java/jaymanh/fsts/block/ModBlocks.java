@@ -200,7 +200,7 @@ public final class ModBlocks {
 					.mapColor(MapColor.STONE)
 					.sound(SoundType.STONE)
 					.strength(2.0F, 6.0F)
-					.lightLevel(state -> state.getValue(ForgeHearthBlock.LIT) ? 10 : 0)
+					.lightLevel(state -> state.getValue(ForgeHearthBlock.LIT) ? 14 : 0)
 					.noOcclusion()
 	);
 	public static final Block BELLOWS = register(
@@ -270,6 +270,16 @@ public final class ModBlocks {
 					.strength(2.0F, 3.0F)
 					.noOcclusion()
 					.ignitedByLava()
+	);
+	public static final Block BRONZE_HOPPER = register(
+			ModBlockItemIds.BRONZE_HOPPER,
+			BronzeHopperBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.TERRACOTTA_ORANGE)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
 	);
 	public static final Block RUSTY_MUD = register(
 			ModBlockItemIds.RUSTY_MUD,

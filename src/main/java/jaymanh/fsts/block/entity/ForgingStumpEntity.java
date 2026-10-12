@@ -44,6 +44,8 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	public static final int SLOT_COUNT = 2;
 
 	private static final int[] NO_SLOTS = new int[0];
+	private static final int[] INPUT_SLOTS = {INPUT_SLOT};
+	private static final int[] OUTPUT_SLOTS = {OUTPUT_SLOT};
 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(SLOT_COUNT, ItemStack.EMPTY);
 	private int progress;
@@ -316,18 +318,25 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 		this.progress = 0;
 	}
 
+	/** Sides feed the input. The bottom is the output. The top stays closed for the trip hammer. */
 	@Override
 	public int[] getSlotsForFace(Direction side) {
-		return NO_SLOTS;
+		if (side == Direction.UP) {
+			return NO_SLOTS;
+		}
+		return side == Direction.DOWN ? OUTPUT_SLOTS : INPUT_SLOTS;
 	}
 
 	@Override
 	public boolean canPlaceItemThroughFace(int slot, ItemStack stack, @Nullable Direction direction) {
-		return false;
+		return direction != null
+				&& direction.getAxis().isHorizontal()
+				&& slot == INPUT_SLOT
+				&& this.canPlaceItem(slot, stack);
 	}
 
 	@Override
 	public boolean canTakeItemThroughFace(int slot, ItemStack stack, Direction direction) {
-		return false;
+		return direction == Direction.DOWN && slot == OUTPUT_SLOT;
 	}
 }

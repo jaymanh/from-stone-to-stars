@@ -1,0 +1,44 @@
+{
+  "parent": "from-stone-to-stars:age1/first_bronze",
+  "criteria": {
+    "bronze_tool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#from-stone-to-stars:bronze_tools"
+          }
+        ]
+      }
+    },
+    "powered_process": {
+      "trigger": "minecraft:impossible"
+    },
+    "bellows": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:rotation_gear"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.bronze_yard.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.bronze_yard.description"
+    }
+  },
+  "requirements": [
+    [
+      "bronze_tool"
+    ],
+    [
+      "powered_process"
+    ],
+    [
+      "bellows"
+    ]
+  ]
+}

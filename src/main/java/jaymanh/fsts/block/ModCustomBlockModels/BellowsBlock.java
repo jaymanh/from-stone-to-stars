@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import com.mojang.serialization.MapCodec;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
 import jaymanh.fsts.multiblock.FacingNeighborRule;
 import jaymanh.fsts.multiblock.FormedMultiblock;
@@ -224,6 +225,8 @@ public class BellowsBlock extends Block {
 
 		ForgeHearthBlockEntity master = hearth.getMaster();
 		int added = forge.pumpBellows(formed.match());
+		AgeAdvancements.grantNearby(serverLevel, pos, "age1/hotter_fire", "pumped");
+		AgeAdvancements.grantNearby(serverLevel, pos, "age1/bronze_yard", "bellows");
 		if (added <= 0) {
 			return InteractionResult.SUCCESS;
 		}

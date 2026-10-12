@@ -268,6 +268,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModItems.CRUSHED_GOLD, Component.translatable("jei.from-stone-to-stars.info.crushed_gold"));
 		registration.addIngredientInfo(ModItems.CRUSHED_ZINC, Component.translatable("jei.from-stone-to-stars.info.crushed_zinc"));
 		registration.addIngredientInfo(ModBlocks.TRIP_HAMMER, Component.translatable("jei.from-stone-to-stars.info.trip_hammer"));
+		registration.addIngredientInfo(ModBlocks.POWERED_QUERN, Component.translatable("jei.from-stone-to-stars.info.powered_quern"));
+		registration.addIngredientInfo(ModBlocks.BRONZE_HOPPER, Component.translatable("jei.from-stone-to-stars.info.bronze_hopper"));
 	}
 
 	@Override

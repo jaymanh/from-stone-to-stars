@@ -1,15 +1,8 @@
 {
+  "parent": "from-stone-to-stars:age1/first_bronze",
   "criteria": {
-    "water_wheel": {
-      "trigger": "minecraft:placed_block",
-      "conditions": {
-        "location": [
-          {
-            "condition": "minecraft:block_state_property",
-            "block": "from-stone-to-stars:water_wheel"
-          }
-        ]
-      }
+    "spinning": {
+      "trigger": "minecraft:impossible"
     }
   },
   "display": {
@@ -21,13 +14,11 @@
     },
     "description": {
       "translate": "advancements.from-stone-to-stars.age1.wheel_and_water.description"
-    },
-    "frame": "task",
-    "background": "minecraft:gui/advancements/backgrounds/stone"
+    }
   },
   "requirements": [
     [
-      "water_wheel"
+      "spinning"
     ]
   ]
 }

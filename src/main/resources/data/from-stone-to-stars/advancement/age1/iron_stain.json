@@ -1,0 +1,87 @@
+{
+  "parent": "from-stone-to-stars:age1/first_bronze",
+  "criteria": {
+    "rusty_mud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:rusty_mud"
+          }
+        ]
+      }
+    },
+    "dried_rusty_mud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:dried_rusty_mud"
+          }
+        ]
+      }
+    },
+    "iron_specks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:iron_specks"
+          }
+        ]
+      }
+    },
+    "raw_iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:raw_iron"
+          }
+        ]
+      }
+    },
+    "iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ore"
+          }
+        ]
+      }
+    },
+    "deepslate_iron_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:deepslate_iron_ore"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:rusty_mud"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age1.iron_stain.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age1.iron_stain.description"
+    }
+  },
+  "requirements": [
+    [
+      "rusty_mud",
+      "dried_rusty_mud",
+      "iron_specks",
+      "raw_iron",
+      "iron_ore",
+      "deepslate_iron_ore"
+    ]
+  ]
+}
