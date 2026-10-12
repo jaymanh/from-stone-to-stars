@@ -101,12 +101,11 @@ public class ForgingStumpScreen extends AbstractContainerScreen<ForgingStumpMenu
 			int buttonX = x + visible % RECIPES_COLUMNS * RECIPE_WIDTH;
 			int buttonY = y + visible / RECIPES_COLUMNS * RECIPE_HEIGHT + 2;
 			boolean affordable = this.menu.canCraft(index);
+			boolean selected = index == this.menu.getSelectedRecipeIndex();
 			Identifier sprite;
-			if (!affordable) {
-				sprite = RECIPE_SPRITE;
-			} else if (index == this.menu.getSelectedRecipeIndex()) {
+			if (selected) {
 				sprite = RECIPE_SELECTED_SPRITE;
-			} else if (mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + RECIPE_WIDTH && mouseY < buttonY + RECIPE_HEIGHT) {
+			} else if (affordable && mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + RECIPE_WIDTH && mouseY < buttonY + RECIPE_HEIGHT) {
 				sprite = RECIPE_HIGHLIGHTED_SPRITE;
 			} else {
 				sprite = RECIPE_SPRITE;
@@ -135,7 +134,7 @@ public class ForgingStumpScreen extends AbstractContainerScreen<ForgingStumpMenu
 
 	private void extractProgress(GuiGraphicsExtractor graphics) {
 		int selected = this.menu.getSelectedRecipeIndex();
-		if (!this.menu.canCraft(selected)) {
+		if (selected < 0 || selected >= this.menu.getNumberOfVisibleRecipes()) {
 			return;
 		}
 		Component text = Component.translatable(

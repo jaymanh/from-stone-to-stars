@@ -4,9 +4,9 @@
 
 *Build | Automate | Discover | Advance | Reach the stars*
 
-This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Values, recipes, and exact item counts are intentionally left for balancing passes.
+This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Ages 0 and 1 cite the numbers that ship in 0.8.0. Later ages leave recipe counts for a balancing pass.
 
-> **Implementation status (2026-09-26):** Age 0 is playable as a settlement chapter (including pottery). Age 1 begins with bronze ingots (zinc + copper); zinc ore and bronze tool *items* exist in code, but Age 1 systems (tool recipes, rotational power, bronze workshop) are design direction only. Sections after Age 0 describe intended gameplay, not shipped content.
+> **Implementation status (2026-10-12):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, and a steel alloy already exist as the door. The planned factory is steel parts, an ironworks that crushes and smelts, and a drill that bores eight blocks. That factory is not built. Ages after Age 2 describe intended gameplay.
 
 ## Contents
 
@@ -15,6 +15,7 @@ This living reference defines the intended player fantasy, progression structure
 3. [Age Progression](#age-progression)
     - [Age 0 Primitive and Stone](#age-0-primitive-and-stone)
     - [Age 1 Zinc and Bronze](#age-1-zinc-and-bronze)
+    - [Age 2 Iron and Steel](#age-2-iron-and-steel)
 4. [Technology Disciplines and Research](#technology-disciplines-and-research)
 5. [Automation Progression](#automation-progression)
 6. [Factories Logistics and Infrastructure](#factories-logistics-and-infrastructure)
@@ -69,8 +70,8 @@ The proposed structure uses twelve substantial ages. Names may evolve, but every
 | No. | Age | Theme | Example technologies | New automation | Primary goal |
 | --- | --- | --- | --- | --- | --- |
 | 0 | Primitive and Stone | Survival and settlement | Pebbles, flint tools, hideworking, bone-hafted tools, fire, charcoal, clay bricks, thatch, snares | Tanning rack, snares, fish traps, charcoal pile, brick drying pit | Establish a permanent settlement |
-| 1 | Zinc and Bronze | Soft metal and first motion | Bronze tools, bellows, bronze anvil / forge work, metal bucket, water wheel, wooden shafts, gears, trip hammer, powered quern | Water wheel → short shaft → one or two hand-fed machines | Turn river power into dependable metalwork |
-| 2 | Iron and Steel | Mechanical engineering | Iron, steel, blast furnace, pistons, springs, bearings, chains, pumps, drills, saws | Mechanised mining and ore processing | Operate the first automated factory |
+| 1 | Zinc and Bronze | Soft metal and first motion | Bronze tools, forge and bellows, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, bronze hopper | Water wheel → shaft (max 8) → a yard machine, fed by a slow turning hopper | Turn river power into dependable metalwork |
+| 2 | Iron and Steel | Mechanical engineering | Iron tools, steel plates and rods, ironworks, marked-face drill | A strong wheel turns a drill and an ironworks; a weak wheel turns one of them | Run one riverside line that feeds itself |
 | 3 | Steam | Industrial Revolution | Boilers, engines, turbines, pipes, pumps, pressure tanks, locomotives, cranes | Steam network feeding multiple machines | Generate and distribute controlled steam power |
 | 4 | Electricity | Second Industrial Revolution | Generators, wire, batteries, motors, transformers, electromagnets, lighting, rail | Electrical grid and powered machinery | Generate, store, and use electricity |
 | 5 | Electronics | Information and control | Transistors, boards, logic gates, sensors, timers, computers, controllers, storage | Condition-based factory control | Build a responsive automated process |
@@ -89,15 +90,19 @@ The opening should feel grounded. The player learns that environment, tools, fir
 
 #### Zinc and Bronze
 
-Soft metal and the first connected workshop. Bronze tools and a river mill teach conversion and rotation without handing the player a factory. The full Age 1 spec is below.
+Soft metal and the first connected workshop. Bronze tools and a river mill teach conversion and rotation. The full Age 1 spec is below.
+
+#### Iron and Steel
+
+Iron, steel, and the first line that feeds itself. The material path is already in the mod. The ironworks and the drill are planned below and are not built.
 
 ### Age 0 Primitive and Stone
 
 This is the first playable age and the tutorial for the whole mod: **look at the world, gather what it already dropped, bind it into tools, then make a camp that works while you are elsewhere.** Wood and stone are materials, not starter tool tiers. Vanilla wooden and stone tools are removed.
 
-Exact recipe counts, timings, and durability numbers are left for a later balance pass.
+Live counts are cited below. Change them in a balance pass, then update this document.
 
-Registry note: zinc ore / raw zinc / zinc ingot and bronze tools currently use temporary `tin_*` and `brass_*` IDs in code. Player-facing text and this document use **zinc** and **bronze**. Rename the registries when convenient. Crucible alloying and zinc discovery are Age 0; bronze *tool recipes* and the rest of Age 1 are not shipped yet.
+Zinc ore, raw zinc, zinc ingots, and bronze tools use those names in code. Crucible alloying and zinc discovery close Age 0. Bronze tools, the forge, and the mill are Age 1, and they ship.
 
 #### What Age 0 does today
 
@@ -110,7 +115,7 @@ Registry note: zinc ore / raw zinc / zinc ingot and bronze tools currently use t
 | Manual food processing | Mortar and pestle: four empty-hand grinds convert wheat → flour (also bone → bone meal). Flour + water vessel (leather skin or clay jug) → dough → bread (smelting). |
 | Fire and clay | Charcoal pile (kindling + log) → charcoal block (~1 min). Brick drying pit (kindling + charcoal blocks + unfired pottery: bricks, jug, or storage pot) → fired result (~5 min). Lit with bow-and-drill (also accepts flint and steel / fire charge if present). |
 | Smelting station | Basic smelter: clay blast furnace using blasting recipes at half tick rate, plus charged-crucible alloying. Crafted from bricks + charcoal block. |
-| Bronze | Clay crucible (5 wet clay bricks, U shape, 8 uses). Pack 4 copper + 1 zinc → charged crucible; fire in basic smelter → 5 bronze. Further alloys are datapack `crucible_alloying` recipes. |
+| Bronze | Clay crucible (5 wet clay bricks, U shape, 8 uses). Pack 4 copper + 1 zinc → charged crucible; fire in the basic smelter → 5 bronze. Further alloys are datapack `crucible_alloying` recipes. A bronze-reinforced crucible (32 uses) is the Age 1 vessel for the same recipes. |
 | Passive food | Snare (plant or meat bait) and fish trap (water + bait). Work while the player is away; nearby players scare game/fish off. |
 | Shelter and building | Hide bed (leather + wheat); wool bed recipes removed. Thatch and wattle-and-daub for camp building. Beds need a roof when raining. |
 | Early storage | Vanilla **shelves** remain available. Chest and barrel recipes are removed. Fired **storage pot**: 27-slot barrel inventory; silk touch to pick up; needs support or falls and shatters. |
@@ -124,8 +129,11 @@ Registry note: zinc ore / raw zinc / zinc ingot and bronze tools currently use t
 | --- | --- |
 | Wooden / stone / copper tool recipes and wooden/stone tool loot | Removed. |
 | Plank recipes (overworld woods, bamboo, crimson, warped) | Removed; bone saw supplies planks. |
-| Crafting table recipe | Removed; work stump replaces it. |
-| Furnace, bucket, flint and steel, chest, barrel | Recipes removed. |
+| Crafting table recipe | Vanilla recipe removed. The work stump is the Age 0 table. A later craft returns a vanilla table: bronze plate, nails, leather strips, and an unfinished work stump. |
+| Furnace, flint and steel, barrel, shield | Recipes removed. |
+| Bucket | Vanilla recipe removed. The Age 1 bronze bucket picks up and places water, lava, and powder snow. |
+| Chest | Vanilla recipe removed. One bronze chest crafts into one vanilla chest. |
+| Found iron | Ingots, nuggets, blocks, raw iron, iron tools and armor, and chainmail are stripped from loot. Block drops and end-city chests stay. |
 | Wool beds, boats / chest boats, bamboo rafts | Recipes removed. |
 | Bread, bone meal, leather craft recipes | Removed or replaced by mod processes. |
 | Vanilla brick craft recipe | Removed; bricks come from firing clay bricks. |
@@ -154,7 +162,7 @@ Keep vanilla dirt, gravel, clay, bones, sticks-from-leaves, campfires (once fire
 | Bone axe | Main woodcutting; stump hewing | Instant plank factory |
 | Bone shovel | Clay, gravel, sand, dirt | |
 | Bone hoe | Farmland | |
-| Bone pick | Soft stone, zinc ore, copper ore | Iron and harder (gated) |
+| Bone pick | Soft stone, zinc ore, copper ore | Gold, iron, and harder (gated) |
 | Bone sword | Camp defence / hunting | |
 | Bone saw | Manual plank splitting (4 clicks) | |
 
@@ -162,7 +170,7 @@ Keep vanilla dirt, gravel, clay, bones, sticks-from-leaves, campfires (once fire
 
 **Wood is lumber, not a tool tier. Stone is masonry, not a tool tier.**
 
-Repair tags are populated (`flint_repair_item`, `bone_repair_item`, `brass_repair_item` → rename with bronze).
+Repair tags are populated (`flint_repair_item`, `bone_repair_item`, `bronze_repair_item`).
 
 #### Opening loop
 
@@ -203,7 +211,7 @@ Rain resets drying; roof the rack. Thatch helps.
 #### Food, water, and farming
 
 - Hunt, gather, snare, and fish trap for food. Campfire roast for meat.
-- Leather skin (16) or clay jug (64) for water. No moving source blocks until metal buckets (Age 1+).
+- Leather skin (16) or clay jug (64) for water. The bronze bucket, in Age 1, is what places a source.
 - Bone hoe for farmland. Mortar and pestle for flour → dough → bread.
 - Shelves for early item storage; storage pot for a larger fragile cache.
 
@@ -250,12 +258,11 @@ Age 0 ends when the camp is obviously a settlement. Surfaced by the `age0` advan
 
 #### Near-term Age 0 follow-ups
 
-- Settlement UX polish (more JEI hints, balance tuning)
-- Hand off to Age 1: bronze tool recipes and first rotational machines
+- Settlement UX polish (JEI hints, balance tuning)
 
 #### Bronze from crucibles
 
-Pack an empty clay crucible with metals on a work stump, then fire the charged crucible in a basic smelter. Alloys are data-driven (`from-stone-to-stars:crucible_alloying`). First alloy: 4 copper + 1 zinc → 5 bronze. Crucibles have 8 uses. Making bronze is the Age 0 → Age 1 door; *using* bronze at scale is Age 1.
+Pack an empty clay crucible with metals on a work stump, then fire the charged crucible in a basic smelter, a blast furnace, or a lit forge. Alloys are data-driven (`from-stone-to-stars:crucible_alloying`). First alloy: 4 copper + 1 zinc → 5 bronze, 200 ticks, 0.7 experience. A clay crucible lasts 8 firings. A bronze-reinforced crucible lasts 32 and comes back one use more worn. Making bronze is the Age 0 → Age 1 door. Using it is Age 1.
 
 #### Design rules for this age
 
@@ -269,13 +276,7 @@ Pack an empty clay crucible with metals on a work stump, then fire the charged c
 
 ### Age 1 Zinc and Bronze
 
-Age 1 is the first **soft-metal** chapter and the first time the camp grows a **workshop that turns**. It should still feel primitive: wood, bronze, clay, rope, and a river — not a factory floor. The player leaves hand-only settlement life, but does not yet run an unattended production line. That leap belongs to Age 2 (iron and steel).
-
-Exact recipe counts, torque numbers, and machine speeds are left for balancing. This section is design direction.
-
-#### Fantasy
-
-You have bronze. Tools bite deeper. You can reheat a crucible more often, smith on a bronze anvil, and carry water in a metal bucket. Beside a stream you raise a water wheel. A short wooden shaft drives a trip hammer or a quern. You still load the hopper by hand, still bank the fire, still decide what to forge next — but the river does the heavy striking and grinding while you dig, haul, and craft.
+Age 1 is playable in 0.8.0. It is the first **soft-metal** chapter, and the camp grows a **workshop that turns**. The materials are still wood, bronze, clay, rope, and a river. A slow bronze hopper can pass items into a machine. The yard still stops when the chest runs out, the wheel runs dry, or the forge burns down. A line that keeps feeding itself is Age 2.
 
 > **Age motto:** Soft metal in the hand; one turning shaft in the yard.
 
@@ -283,140 +284,324 @@ You have bronze. Tools bite deeper. You can reheat a crucible more often, smith 
 
 | Gate | Requirement |
 | --- | --- |
-| **Enter Age 1** | Craft (or otherwise obtain) a **bronze ingot** via crucible alloying. Age 0 already teaches zinc mining and the crucible; the first bronze ingot is the door. |
-| **Prove Bronze** | Advancement tree (`age1/*`): forge at least one bronze tool; run a water wheel under load; complete a powered process (hammer or quern); keep a bellows-fed fire. |
-| **Exit toward Age 2** | Find and process **iron**. Bronze must never mine iron-tier blocks; iron ore discovery is the Age 1 → Age 2 beat (parallel to zinc for Age 0 → 1). |
+| **Enter Age 1** | Obtain a **bronze ingot**. Age 0 teaches zinc mining and the crucible. Alloying 4 copper and 1 zinc into 5 bronze is the door. |
+| **Prove Bronze** | The `age1` advancements: haft a bronze tool, spin a water wheel, finish a powered grind or forging, and pump a lit forge. **Bronze Yard** asks for the tool, the finished process, and the bellows together. |
+| **Exit toward Age 2** | **Iron Stain.** Dig rusty mud. That path yields iron before any iron ore can be mined. Bronze tools are blocked from iron-tier and diamond-tier blocks. |
 
-#### What Age 1 should unlock
+#### What ships today
 
-| System | Design intent |
+| System | Live behaviour |
 | --- | --- |
-| Bronze tools | Full tool set recipes (sword, axe, pick, shovel, hoe, spear) using bronze + sticks / leather binding as appropriate. Faster and more durable than bone; pick mines **gold-tier** blocks, not iron. |
-| Metalworking station | **Bronze anvil** or forge block: repair/rename lightly, and/or plate/ingot working that the work stump cannot do. Still a single station the player operates — not an automated smith. |
-| Hotter fire | **Bellows** attachment or upgrade for the basic smelter (or a dedicated forge hearth): faster smelt / alloy ticks while pumped or while a shaft turns a blower. Charcoal remains the fuel story; vanilla furnace stays gated. |
-| Crucible economy | More durable crucibles, or bronze-reinforced crucibles; optional extra alloy recipes. Still pack-by-hand, fire-in-smelter — no auto-alloying hopper line yet. |
-| Water | **Bronze bucket** (or copper/bronze alloy bucket): restore limited source placement / pickup. Clay jug and leather skin remain useful (stack uses, no spill risk, no source grief). |
-| Storage | Still no vanilla chest/barrel spam. Optional **bronze-bound crate** or reinforced pot: larger or safer than the fragile storage pot, still scarce. Shelves stay the free early option. |
-| Rotational power | **Water wheel** on flowing water → **wooden axle / shaft** (short runs) → **gearbox / gear** for turns and 1:1 branching. Site choice matters; no free portable motor. |
-| Light machines | **Trip hammer** (ore crush / plate) and **powered quern** (flour / bone meal). Hand-fed input, hand-taken output. One wheel should comfortably drive one machine; two only with a good site and gearing. |
-| Logistics | Almost none. Maybe a **wooden chute** or single-block drop between two adjacent inventories. Hoppers remain late or heavily gated — Age 1 must not become Create-lite. |
-| Settlement | Bronze tools speed building; optional bronze fittings (hinges, saw blade better than bone). Thatch and wattle still look right; do not force plank mansions. |
+| Bronze tools | Sword, pickaxe, axe, shovel, hoe, spear, and hammer. Durability 280, mining speed 5.5, attack bonus 2, enchantability 15. The pick mines gold-tier blocks (`needs_bronze_tool`: gold ore, gold block, raw gold block). It is incorrect for `#minecraft:needs_iron_tool` and `#minecraft:needs_diamond_tool`. Repair tag: `bronze_repair_item`. Helmet, chestplate, leggings, and boots exist and sit outside the `bronze_tools` tag. |
+| Hammers and gravel | Hammerstone, bronze hammer, and iron hammer break gravel into flint and spend 1 durability. Tag: `gravel_hammers`. |
+| Forge | A formed multiblock. Framed coal pad, 1×1 to 5×5. Hearths on the centre coal, sharing one inventory. One inward bellows bank. A framed chimney at least 2 tall. Hearths run blasting recipes and fire charged crucibles. A larger hearth cluster runs hotter. Pump the bellows on a lit forge to stretch the burn. A fresh forge is already at full burn, so the first pump can add 0 ticks and still counts for **Hotter Fire**. |
+| Forging stump | Crafted from four bronze and a work stump. Choose a forging recipe, then strike with a bronze or iron hammer. An empty input keeps that recipe, so the next matching stack starts it again. Heated metal keeps cooling on the stump. The trip hammer sits on top and strikes the selected recipe. |
+| Heated metal | Blast bronze, copper, or iron into a heated ingot. In the smelter or forge it stays hot. Off the fire it cools in 60 seconds (`COOL_TICKS` = 20×60) back into the plain ingot. |
+| Bronze parts | Forging, 4 hits each. 3 heated bronze → 2 tool blades. 4 heated bronze → 2 plates. 2 heated bronze → 4 shafts. 1 heated bronze → 4 nails. Heated copper: 1 → 4 nails, 2 → 4 shafts, also 4 hits. |
+| Crucibles | Clay lasts 8 firings. Bronze-reinforced lasts 32 and is returned one use more worn. Same pack-and-fire alloys, still packed by hand. |
+| Water | Bronze bucket, from 3 bronze ingots. Picks up and places water, lava, and powder snow, fills from cauldrons, milks, and scoops mobs the way a vanilla bucket does. Clay jug and leather skin stay the early vessels. |
+| Storage | Bronze chest: 27 slots. Two of them join, and they stay separate from vanilla chests. One bronze chest crafts into one vanilla chest. Shelves and the storage pot remain. |
+| Crafting table | The vanilla recipe stays removed. A bronze-fitted table returns from a bronze plate, nails, leather strips, and an unfinished work stump. |
+| Crushed ore | On the forging stump: 1 raw iron, copper, gold, or zinc, and 16 hits, become 2 crushed pieces. Smelting or blasting each piece into one ingot is their only use. The hit count is why the trip hammer is worth building. |
+| Rotational power | Water wheel, wooden shaft, rotation gear, trip hammer, powered quern, bronze hopper. Numbers below. |
 
-#### Rotational power (signature automation)
+#### Rotational power
 
-This is the age’s new verb: **connect**.
+The age’s verb is **connect**.
 
 ```text
 Flowing water -> water wheel -> shaft (-> gear) -> machine
 ```
 
-| Piece | Role | Constraint |
+| Piece | Live behaviour |
+| --- | --- |
+| Water wheel | Reads flowing water every second, on itself and its six neighbours. No flow leaves it idle. Any flow is weak, capacity 1. Two or more flowing sides, or a combined fluid amount of 12 or more, is strong, capacity 2. A lone wheel with flow is already spinning. |
+| Wooden shaft | Carries rotation along its axis. A machine farther than 8 blocks from the wheel is out of range. Shafts stay in place. |
+| Gear | Turns the shaft onto another face. Gears pass the full turn. |
+| Machine | Powered quern, trip hammer, and bronze hopper. Each costs 1. A weak wheel runs one machine. A strong wheel runs two. A third overloads the network and the yard stops. |
+| Drive face | Quern and trip hammer take the shaft on the back, opposite the way the block faces. The hopper takes a shaft on any face except the top and the spout. A gear can still meet the hopper on any face. |
+
+Jade and WTHIT show the rotation status: idle, spinning, no water flow, overloaded, too far from the wheel, or disconnected.
+
+The yard is a mill beside a river. Belts, item pipes, multi-chunk shafts, and an ore vein that becomes ingots on its own wait for a later age.
+
+#### Machines and the hopper
+
+| Machine | What it does | Hopper faces |
 | --- | --- | --- |
-| Water wheel | Converts flow into rotation | Must sit on / beside flowing water; wrong biome or still pool = no power |
-| Wooden shaft | Carries rotation a short distance | Length-limited; breaks or loses torque if overextended; visible “plumbing” |
-| Gear / gearbox | Corner and simple split | Primitive: few outputs, lossy, not a smart router |
-| Machine | Consumes rotation to do work | Needs continuous power while processing; stops if the wheel is dry or the shaft breaks |
+| Trip hammer | One hit every 15 ticks on the forging stump under it, about four hits in three seconds. Finishing a recipe grants **Under Load**. | The stump takes input from the sides and output from the bottom. The top stays closed for the hammer. |
+| Powered quern | One grind every 8 ticks while the shaft turns. Same grind recipes as the mortar. | Input from the top or a side. Output from the bottom. |
+| Bronze hopper | Five bronze ingots and a bronze chest. Moves one item every 16 ticks, half a vanilla hopper, and only while it is spinning. Costs 1 capacity. | The spout faces down or sideways. Every slot is open on every face. |
 
-**What this is not:** belts, item pipes, multi-chunk shaft networks, stress systems with hundreds of consumers, or unattended ore → ingot lines. Age 1 shafts should feel like a **yard mill**, not a factory spine.
+A vanilla hopper can use the quern and stump faces above. The vanilla hopper recipe stays in the game. The bronze hopper is the one that has to be turned.
 
-#### Light machines
+A loaded chest can empty into the quern or the stump while the wheel turns. The yard still needs the player to fill that chest, and it still cannot turn a vein into ingots. That leap is Age 2.
 
-| Machine | Replaces / assists | Player still does |
-| --- | --- | --- |
-| Trip hammer | Hand crushing with hammerstone; early plate work | Feed ore / billets; collect output; maintain bronze head |
-| Powered quern | Mortar-and-pestle click grinding | Load grain / bone; take flour / meal |
-| Optional blower | Hand bellows pumping | Light and fuel the fire; start the shaft |
-
-Machines should be **satisfying to watch** and **worth the build cost**, but idle without the player’s supply chain. If the player can walk away for ten minutes and return to a full chest of bronze, Age 1 has gone too far.
-
-#### Metallurgy loop (Age 1 scale)
+#### Metallurgy loop
 
 ```text
-Mine copper + zinc (bronze pick helps)
-  -> crucible pack on work stump
-  -> bellows-fed basic smelter / forge
+Mine copper + zinc (a bronze pick reaches both, and gold)
+  -> pack a crucible on the work stump
+  -> fire it in the basic smelter or the lit forge
   -> bronze ingots
-  -> tools, anvil, bucket, machine parts, reinforced storage
+  -> heat, forge, and haft, or cast the bucket, chest, hopper, and machine parts
 ```
 
-Zinc and copper remain meaningful. Bronze is soft enough that **repair and recast** matter more than diamond-style permanence. Scrap and broken bronze tools should feed back into crucibles when possible.
+```text
+Raw ore -> 16 hits on the stump or under the trip hammer -> 2 crushed ore -> smelt each into an ingot
+```
+
+Broken bronze does not yet recast in a crucible. Repair is the live loop. Recast is still open.
 
 #### Food, water, and camp
 
-- Powered quern makes bread less of a click chore; farms still manual.
-- Bucket returns for irrigation / cauldrons / moving water — carefully, so clay jug is not obsolete (capacity, safety, early game).
-- Snares and fish traps stay relevant; Age 1 does not add animal industry.
-- Shelter: same materials, better tools. No iron doors / industrial aesthetic.
+- The powered quern takes the click-grind off bread. Farms stay manual.
+- The bronze bucket moves source water. The clay jug remains the high-capacity early vessel, and it still cannot place a source.
+- Snares and fish traps stay the food machines. Age 1 adds no animal industry.
+- Thatch and wattle are still the camp. Bronze speeds the work. There is no hinge block, and no saw beyond the bone saw.
 
-#### Automation ladder (local)
+#### Automation ladder
 
-| Age 0 (ships) | Age 1 (this age) | Age 2 (next) |
+| Age 0 | Age 1 (ships) | Age 2 (next) |
 | --- | --- | --- |
-| Passive wait: rack, trap, pit | Active turn: wheel + shaft + one machine | Mechanised line: mine → crush → smelt → store |
-| Isolated stations | Connected yard (short shaft) | Workshop / factory footprint |
-| Human and weather power | Water power | Iron machines and stronger drives |
+| Passive wait: rack, trap, pit | A wheel, a shaft of at most 8, and a machine the player supplies | A step that refills itself |
+| Isolated stations | A yard of one or two machines | A line: dig, crush, smelt, store |
+| Human and weather power | Water power, plus a bellows on the forge | Iron machines on that same rotation lesson |
 
 #### Proof of Bronze
 
-Suggested `age1` advancement spine:
+Live `age1` tree. Every node parents to **First Bronze** except **Under Load**, which parents to **Wheel and Water**. First Bronze parents to Age 0 **Zinc Gleam**. The forge and the mill are parallel, because the bellows and the wheel can both be built before the first bronze ingot.
 
-1. **First Bronze** — obtain a bronze ingot
-2. **Hafted Metal** — craft a bronze tool
-3. **Wheel and Water** — place a water wheel that spins
-4. **Under Load** — drive a trip hammer or quern to complete a recipe
-5. **Hotter Fire** — use bellows (or shaft blower) on a smelt / alloy
-6. **Bronze Yard** — goal: tool + powered process + bellows-fed fire
-7. **Iron Stain** — find iron ore (Age 2 door; cannot mine it with bronze)
+```text
+age0/zinc_gleam
+  age1/first_bronze                 inventory: bronze ingot
+    age1/hafted_metal               inventory: #from-stone-to-stars:bronze_tools
+    age1/wheel_and_water            granted when a water wheel's status is SPINNING
+      age1/under_load               granted when a quern finishes a grind or a trip hammer finishes a forging
+    age1/hotter_fire                granted when the player pumps a lit, formed forge
+    age1/bronze_yard                goal: bronze tool + finished powered process + bellows pump
+    age1/iron_stain                 goal: rusty mud, dried rusty mud, iron specks, raw iron, iron ore, or deepslate iron ore
+```
+
+`inventory_changed` starts listening when the parent completes. A bronze tool or a lump of rusty mud already in inventory counts the next time that stack changes. A wheel that is already spinning is granted on the next network update, which happens while it turns. Grants use `AgeAdvancements.grantNearby`: same dimension, within 16 blocks.
 
 #### Discipline mapping for Age 1
 
 | Discipline | Age 1 expression |
 | --- | --- |
-| Engineering | Shafts, gears, trip hammer, quern drive |
-| Energy | Water wheel; charcoal + bellows |
-| Chemistry | Alloy volume, crucible durability, forge heat |
+| Engineering | Shafts, gears, trip hammer, quern, bronze hopper |
+| Energy | Water wheel; charcoal and the bellows |
+| Chemistry | Crucible alloys, forge heat, crushed ore |
 | Biology | Quern → bread at settlement scale |
-| Civil engineering | Siting the mill on a river; bronze fittings |
-| Science | Watching torque / flow (Jade: spinning / stalled) |
+| Civil engineering | Siting the mill on a river; the bronze chest |
+| Science | Rotation status on Jade / WTHIT |
 | Computing / aerospace | Absent |
 
 #### Design rules for this age
 
 - If bronze mines iron, Age 2 is optional. It must not.
-- If shafts span a base like Create, Age 2 has nothing new to teach. Keep runs short and lossy.
-- If machines auto-pull from chests and push to barrels, Age 1 is already a factory. Hand-feed and hand-take.
-- If the water wheel works in a 1×1 puddle, siting is fake. Demand real flow.
-- If bellows make the drying pit obsolete overnight, keep pit recipes distinct or keep some clay work pit-only.
-- Age 0 stations (tanning, snares, pits) must remain useful — bronze should not erase settlement loops.
+- If a shaft can cross a whole base, Age 2 has nothing new to teach about reach. The cap is 8 blocks. Past that the machine is out of range. Too many machines overload the wheel. Shafts stay put, and gears pass the full turn.
+- A hopper may load the quern or the stump. A vein that becomes ingots while the player is away is Age 2.
+- If the water wheel spins in a still pool, siting is fake. It reads real flowing water.
+- The drying pit keeps its clay, charcoal, and pottery jobs. The forge is for metal and blasting recipes.
+- Tanning, snares, and pits stay worth building.
 - Age 1 automation **turns**. Age 2 automation **feeds itself**.
-
-#### Near-term Age 1 implementation order
-
-1. Rename `tin_*` / `brass_*` registries to zinc / bronze; ship bronze tool recipes and gates.
-2. Bronze bucket + any storage step (bound crate / safer pot).
-3. Water wheel + shaft + one consumer (prefer trip hammer *or* quern first).
-4. Bellows / smelter heat upgrade.
-5. Bronze anvil / forge station.
-6. `age1` advancements + JEI/Jade for rotation.
-7. Only then consider a second machine or a single chute.
 
 #### Zinc and Bronze (summary)
 
-Metallurgy introduces conversion: ore becomes a controllable material. **Bronze ingots** open the age; **rotational power** is the first connected system. Keep it a primitive mill yard — the factory arrives with iron.
+**Bronze ingots** open the age. **Rotational power** is the first connected system. The yard is a mill beside a river. The factory arrives with iron.
 
-#### Iron and Steel
+### Age 2 Iron and Steel
 
-This is the first major factory leap. Mining, crushing, smelting, and storage can become a visible line, making the mod feel fundamentally different from vanilla. Age 1’s hand-fed hammer and quern are the tutorial for that leap.
+Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a line that feeds itself. The door below ships in 0.8.0. The ironworks, the drill, the steel parts, and the `age2` advancements are the plan. They are not in the mod yet.
 
-#### Steam
+> **Age motto:** The yard learned to turn. The ironworks has to keep feeding itself.
+
+Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, and a machine farther than 8 blocks from the wheel is out of range. Age 2 does not raise those numbers. A weak stream runs the ironworks **or** the drill. A strong stream runs both, when the drill drops straight into the ironworks. That pair is the factory. A third spinning machine stalls it.
+
+#### Entry and exit
+
+| Gate | Requirement |
+| --- | --- |
+| **Enter Age 2** | **Iron Stain**, already an Age 1 goal. Dig rusty mud with a shovel. Dried rusty mud, iron specks, raw iron, iron ore, and deepslate iron ore count for the same advancement. |
+| **First iron** | The live path below. Playable now. It is the door. |
+| **Prove Iron** | Planned `age2` tree: an iron ingot, an iron pick, iron ore actually mined, a steel ingot, a spinning ironworks that finishes a smelt, and a spinning drill that breaks a block. |
+| **Exit toward steam** | That proof. Steam owns boilers, pressure, pipes, and pumps. The first steel ingot belongs here, and it is spent on the machines. |
+
+#### What already exists
+
+This is the iron a player can make in 0.8.0. It is a hand workshop that uses the Age 1 machines.
+
+| Step | Live behaviour |
+| --- | --- |
+| Rusty mud | Generates as surface disks and as ore. A shovel digs it. This is the iron the player can reach before an iron pick exists. |
+| Dry it | Blast rusty mud for 100 ticks into dried rusty mud. Dried mud is mined with a pick. |
+| Specks | Forging stump: 1 dried rusty mud, 8 hits → 1 iron specks. |
+| Iron ingots | Crucible: 6 iron specks → 2 iron ingots (200 ticks, 0.7 experience). |
+| Found iron | Loot that would hand out ingots, nuggets, blocks, raw iron, iron tools, iron armor, or chainmail is removed. Block drops and end-city chests stay, so a chest cannot skip the stain. |
+| Heat and forge | Blast an iron ingot into heated iron. It cools in 60 seconds off the fire. Forging: 3 heated iron, 4 hits → 2 tool heads. 4 heated iron, 4 hits → 2 plates. |
+| Iron tools | Vanilla sword, pick, axe, shovel, hoe, and spear craft from an iron tool head, a nail, and a stick. The iron pick mines `#minecraft:needs_iron_tool`, including iron ore. |
+| Iron armor | Vanilla helmet, chestplate, leggings, and boots craft from iron plates, leather strips, and nails. |
+| Iron hammer and knife | Mod tools, from a tool head, a nail, and a stick. The hammer strikes the forging stump and flints gravel. The knife is a short blade. |
+| Crushed iron | Once raw iron exists: 1 raw iron, 16 hits → 2 crushed iron, each smelted into an ingot. Copper, gold, and zinc follow the same pattern. |
+| Vanilla blast furnace | Crafted from iron ingots around a basic smelter, on smooth stone. It is a hotter furnace the player can build. It is not the ironworks named in the age table. |
+| Steel | Crucible: 6 iron ingots + 1 item from `#minecraft:coals` → 2 steel ingots (200 ticks, 0.7 experience). No recipe consumes the ingot yet. |
+
+There is no `age2` advancement tree yet. The tree in **Proof of Iron** is the one to write.
+
+#### Steel
+
+Steel is the machine metal. It is not a new mining tier. Iron stays the tool that mines iron ore. A steel pick that opens diamond would skip the rest of the age table, so this age forges no steel tools and no steel armor.
+
+The crucible recipe stays: 6 iron ingots + 1 `#minecraft:coals` → 2 steel ingots. Heat a steel ingot the way bronze, copper, and iron already heat (blasting recipe, 60 seconds of cool-down off the fire). Forge it on the stump into **steel plates** and **steel rods**. Counts wait for a balance pass. Those two parts are what the ironworks and the drill are made of. Until they exist, the ingot has nowhere to go, which is the hole in 0.8.0.
+
+The ironworks can also run that same alloy when it is fed iron ingots and coal, so a finished line can make the parts for the next machine. The crucible recipe remains the hand way.
+
+#### Wheel budget
+
+Nothing in this age changes `RotationConstants`. Wooden shafts still stop at 8 blocks. Gears still pass the full turn. A machine still costs 1. A weak wheel still runs one machine, a strong wheel two.
+
+| Machine | Cost | Role in the line |
+| --- | --- | --- |
+| Powered quern, trip hammer, bronze hopper | 1 each | Age 1. Still the yard. |
+| Ironworks | 1 for the whole line | Crush, then smelt. |
+| Drill | 1 | Bore a face and drop the pieces. |
+| Vanilla hopper | 0 | Moves items and does not ask the wheel. |
+| Steel saw (later, optional) | 1 | Competes for a slot. Not part of the proof. |
+
+The intended strong-wheel line is a gear, then two backs: the drill, and the ironworks under it. The drill's output is the block below it, which is the ironworks input. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall. A vanilla hopper under the ironworks takes the ingots away for free.
+
+A weak wheel runs the ironworks alone. The player fills it, or a vanilla hopper does. The drill waits for a stronger stream or a second wheel.
+
+#### Ironworks
+
+This is the age's blast furnace. The vanilla blast furnace stays the hand station: iron ingots around a basic smelter, on smooth stone, loaded by the player. The forge and the bellows stay the hand smithy. The ironworks is the one that keeps going.
+
+Shape, when it is built: three blocks in a row, formed in the world the way the forge is formed, and smaller on purpose.
+
+```text
+shaft -> [drive][crusher][hearth]
+                items drop in from above the crusher
+                ingots leave under the hearth
+```
+
+| Face | Rule |
+| --- | --- |
+| Back of the drive | Shaft enters here, opposite the way the line faces. Same rule as the trip hammer. |
+| Top and sides of the crusher | Input. Raw ore, crushed ore, or iron ingots plus coal for steel. A player, a vanilla hopper, or the drill above. |
+| Bottom of the hearth | Output. Ingot or steel. A vanilla hopper can pull. |
+| Anywhere else | Closed. |
+
+While the shaft spins and the hearth has charcoal or coal, the crusher runs the same forging recipes the stump uses, including 1 raw ore → 2 crushed pieces at 16 hits. The hearth then smelts those crushed pieces into ingots. The player does not move the pile between the two. An empty input keeps the last recipe, same rule as the forging stump, so the next stack restarts it.
+
+The line carries its own draft. The player does not pump it. Hand bellows remain how the forge stays hot.
+
+It stops when the shaft stops, the fuel is gone, or the output slot is full. It does not pull from chests on its own. Something has to put ore on the crusher: the player, a hopper, or the drill.
+
+Fuel amounts and the crush-then-smelt timing wait for a balance pass. The first pass should be slower than standing at a trip hammer and a blast furnace yourself, so the machine wins by being left alone, not by being faster than hands.
+
+#### Drill
+
+One block. Steel rod, steel plate, and an iron pick head, counts in the balance pass. The shaft enters the back. It bites the block it faces.
+
+| Rule | Plan |
+| --- | --- |
+| What it breaks | Blocks an iron pick can break. It stops on diamond-tier blocks, air, and fluids. |
+| How far | Up to 8 blocks forward, then it stops until the player moves it. The 8 matches the shaft cap. It is a bore, not a quarry. |
+| How fast | Slower than a player swinging an iron pick. The pick stays the better tool in the hand. |
+| Where the drops go | Into the inventory under the drill. That block should be the ironworks crusher. If it is not an inventory, the drops fall on the ground. |
+| When it is idle | Shaft stopped, the 8 blocks are used up, or the next block is too hard. |
+
+Rusty mud stays the first iron, dug with a shovel before any pick exists. The drill does not gather muddy disks. It is for the vein the iron pick has already proved the player can take.
+
+#### What the old machine list means
+
+An earlier pass of this age named pistons, springs, bearings, chains, pumps, and saws beside the drill. They are parts and later problems, not a second mod's worth of blocks.
+
+| Name | In this plan |
+| --- | --- |
+| Steel | Plates and rods. The machines are made of them. |
+| Blast furnace | The ironworks hearth. The vanilla blast furnace stays. |
+| Piston, spring | Crafting pieces inside the drill head. Not a rotation piston, and not a replacement for the vanilla piston. |
+| Bearing | The drill's mount on the shaft. Gears still turn corners. |
+| Chain | No longer shaft. Wooden shafts stay capped at 8. |
+| Pump | Steam. The ironworks carries its own draft. |
+| Drill | The 8-block bore above. |
+| Saw | Optional, after the line is worth using. A steel saw as one machine, logs into planks, faster than the bone saw, costing a wheel slot. Not part of Proof of Iron. The bone saw stays the early plank tool. |
+
+#### The line
+
+```text
+flowing water -> wheel -> shaft (max 8) -> gear
+    -> drill, dropping down
+    -> ironworks, crushing then smelting
+    -> vanilla hopper -> chest
+```
+
+A chest the player filled, a hopper, and a trip hammer is Age 1. This line still mines after that chest is empty, for as long as the face holds and the wheel turns. When the bore ends, the player moves the drill. That walk is the rest of the labour.
+
+#### Proof of Iron
+
+Planned tree. Not written into `data/` yet. Nodes under **First Iron** are parallel, except the goal, which wants all three proofs. The pick and the mill are not one forced order: steel can be alloyed before the first drill exists.
+
+```text
+age1/iron_stain
+  age2/first_iron            inventory: iron ingot
+    age2/hafted_iron         inventory: minecraft:iron_pickaxe
+    age2/the_vein            granted when the player mines iron ore or deepslate iron ore
+    age2/steel               inventory: steel ingot
+    age2/ironworks           granted when a spinning ironworks finishes a smelt
+    age2/bore                granted when a spinning drill breaks a block
+    age2/proof_of_iron       goal: steel + ironworks finished + drill has bored
+```
+
+`inventory_changed` starts listening when the parent completes, same as Age 1. A stack already in inventory counts the next time it changes. Grants for the ironworks and the drill use `AgeAdvancements.grantNearby`: same dimension, within 16 blocks.
+
+#### Implementation order
+
+1. Heated steel, then steel plate and steel rod on the forging stump. Steel has a craft. No new block yet.
+2. Ironworks: the three-block line, one machine cost, hopper faces, crush then smelt, its own draft.
+3. Drill: 8-block bore, drops into the block below, iron-pick rules.
+4. The `age2` advancements above.
+5. A steel saw only after the line is worth leaving running.
+
+#### Design rules for this age
+
+- If a village chest can hand the player an iron pick, rusty mud is optional. Keep found iron stripped.
+- If steel is a second ingot with nothing to craft, it is not an age. Plates and rods are the job. The machines are built out of them.
+- If the "factory" is one hopper into the Age 1 quern, Age 1 already shipped. Age 2 removes the carry from crusher to furnace, and then the swing at the vein.
+- The vanilla blast furnace and the forge stay. The ironworks earns its place by crushing and smelting in one spinning line.
+- Shafts stay capped at 8. Wheel capacity stays 1 or 2. A part that raises either number has stolen Age 2's constraint.
+- If the drill eats a chunk and walks itself to the next one, the player is a spectator. Eight blocks, then a walk.
+- If steel mines diamond, later ages lose their door. Iron tier is the ceiling here.
+- Pumps, pipes, pressure, and belts wait. This age is a riverside line.
+- Rusty mud, the hand forge, the bellows, and the trip hammer stay worth using. A single ore and a repair are still hand work.
+
+#### Discipline mapping for Age 2
+
+| Discipline | Age 2 expression |
+| --- | --- |
+| Engineering | Steel plates and rods, the drill head, the three-block ironworks |
+| Energy | The same water wheel, now asked to run two machines when the stream is strong |
+| Chemistry | Specks to iron, iron and coal to steel, crushed ore to ingots inside the line |
+| Biology | Unchanged from Age 1 |
+| Civil engineering | Fitting the drill on top of the ironworks inside eight blocks of the wheel |
+| Science | Seeing which of the two machines stalled, and why the bore stopped |
+| Computing / aerospace | Absent |
+
+#### Iron and Steel (summary)
+
+The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. The plan spends steel on an ironworks and a drill. A strong wheel turns both. A weak wheel turns one. The player still walks the drill forward when the eight blocks are gone.
+
+### Steam
 
 Steam makes engineering visible: boilers, pressure, pipes, fuel, and safety all matter. Failure should be consequential enough to demand attention without being punishingly destructive.
 
-#### Electricity and Electronics
+### Electricity and Electronics
 
 Electricity retains steam as useful upstream infrastructure. Electronics adds decisions rather than merely faster machines: sensing, thresholds, timers, and programmable control.
 
-#### Automation through Stellar
+### Automation through Stellar
 
 Later ages expand scope. The player coordinates factories, power sources, mining systems, launches, and off-world industry until the final project represents a civilisation rather than a crafted item.
 
@@ -442,9 +627,9 @@ Research should reward demonstrated competence. A breakthrough is unlocked when 
 | Target breakthrough | Example proof requirements |
 | --- | --- |
 | Settlement (Age 0) | Start fire; fire clay bricks; finish a tanning-rack process; set a snare or fish trap; sleep in a hide bed; haft a bone axe; build a work stump. |
-| Bronze (Age 1) | Smelt a bronze ingot; craft a bronze tool; spin a water wheel under load; finish a powered hammer or quern recipe; use bellows on the smelter / forge. |
-| Iron / mechanical line (Age 2) | Process iron; build a multi-machine line that feeds itself at least one step without the player in the loop. |
-| Steam | Produce steel; build a steam engine; generate mechanical power; automate iron processing; demonstrate a functioning multi-machine line. |
+| Bronze (Age 1) | Alloy a bronze ingot; haft a bronze tool; spin a water wheel in flowing water; finish a powered quern grind or a trip-hammer forging; pump the bellows on a lit forge. |
+| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; run a spinning ironworks through a smelt; bore a block with a spinning drill. The ingot and the pick are playable. Steel has no part to craft yet. The ironworks, the drill, and the `age2` tree are planned, not built. |
+| Steam | Build a steam engine; turn steam into mechanical power; run a multi-machine line on that power. The first steel ingot belongs to Age 2. |
 | Electricity | Produce copper wire; build a generator; store a threshold of mechanical energy; create an electromagnetic device; deliver electrical power to a machine. |
 | Electronics | Manufacture a circuit board; install a sensor; automate a condition-based response; retain operational data or a timing program. |
 | Nuclear | Produce processed uranium; enrich fuel; demonstrate containment and cooling; run a stable reactor cycle; store or process waste. |
@@ -493,8 +678,8 @@ Factory layout should matter. Machines are part of a connected environment and s
 
 | Era | Logistics method | New design question |
 | --- | --- | --- |
-| Early (Age 0–1) | Shelves, pots, crates; optional one-block chute | Where do I keep materials close to work? |
-| Mechanical (Age 2) | Conveyor belts and mechanical transfer | How do I place machines in a physical line? |
+| Early (Age 0–1) | Shelves, storage pots, bronze chests; a rotation-powered bronze hopper | Where do I keep materials, and how do I pass one stack into the mill? |
+| Mechanical (Age 2) | Drill drops into the ironworks; a vanilla hopper takes the ingots. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
 | Industrial | Item pipes and pumps | How do I route materials through a larger footprint? |
 | Electronic | Addressed logistics network | How does demand choose the destination? |
 | Advanced | Drones and mobile routing | How do I serve flexible or remote sites? |
@@ -523,16 +708,13 @@ These examples illustrate the intended texture of the game. They are not recipe 
 ### Mechanical Iron Line
 
 ```text
-Mine -> Mechanical drill -> Conveyor -> Crusher -> Furnace -> Storage
+flowing water -> wheel -> shaft (max 8) -> gear
+    -> drill, dropping down
+    -> ironworks (crush, then smelt)
+    -> vanilla hopper -> chest
 ```
 
-Turns a hand-mined resource into a visible, expandable processing line.
-
-```text
-Water wheel -> Shaft -> Gearbox -> Mechanical hammer
-```
-
-Introduces connected rotational power and the concept of a driven workstation.
+This is the Age 2 plan, not a recipe. A weak wheel runs the drill or the ironworks. A strong wheel runs both when the drill sits on the ironworks. The Age 1 yard is the wheel, the shaft, and the trip hammer, and that part ships. Belts are a later age.
 
 ### Steam to Electricity Conversion
 
@@ -617,10 +799,10 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 | --- | --- | --- | --- | --- |
 | Mod Menu | `modmenu` | Config button in the mod list | `modmenu` entrypoint | Live. Button is a no-op unless YACL is also installed. |
 | YetAnotherConfigLib | `yet_another_config_lib_v3` | Config screen | Called from Mod Menu factory | Live. Dev runtime includes YACL so the screen can be tested. |
-| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, brick drying, manual bone sawing, grinding, and world interactions (axe bark, work-stump hewing). Info pages cover the related items. |
+| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, brick drying, forge assembly, manual bone sawing, grinding, crucible alloying, forging, and world interactions (axe bark, work-stump hewing). Info pages cover the related blocks, including the quern, trip hammer, forging stump, and bronze hopper. |
 | EMI | `emi` | Recipe viewer (preferred long-term on Fabric) | `emi` entrypoint, not registered yet | **Blocked:** no 26.2 Maven artifact. Placeholder: `FstsEmiPlugin`. |
-| Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. Tanning racks show hide %. Lit kindling shows charcoal-pile burn. Placed bone saws show stroke progress. |
-| WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Same overlay lines as Jade. |
+| Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. Tanning racks show hide %. Lit kindling shows charcoal-pile burn. Placed bone saws show stroke progress. Snares and fish traps show bait. Forge and other multiblocks show assembly. Rotation blocks show spinning, stalled, or overloaded. |
+| WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Pebbles, tanning, charcoal piles, bone saws, snares, and rotation match Jade. Forge assembly is Jade only. |
 | Team Reborn Energy | `team_reborn_energy` | Fabric energy API (FE analogue) | Included in this mod's jar | Live API. Register `EnergyStorage.SIDED` when the first electrical block entity exists. |
 | Applied Energistics 2 | `ae2` | Energy consumer / later storage network | Detected via `CompatMods.AE2`; no compile dependency | Optional. Uses TR Energy acceptors. No AE2-specific code until we have machines. |
 
@@ -658,12 +840,12 @@ Mod Menu 20.0.2, YACL 3.9.6+26.2-fabric, JEI 30.32.0.221, Jade 26.2.11+fabric, W
 
 | Topic | Questions to resolve |
 | --- | --- |
-| Vanilla integration | Implemented: wooden/stone/copper tool recipes, plank/boat/bed/chest/barrel/furnace/bucket/flint-and-steel gates, leather loot replacement, log drops need an axe, hide bed, shelves as early storage. Remaining bypass watchlist: shields, bows, village beds, other container crafts. |
+| Vanilla integration | Implemented: wooden/stone/copper tool recipes, plank/boat/bed/chest/barrel/furnace/bucket/flint-and-steel/shield gates, leather loot replacement, log drops need an axe, hide bed, shelves as early storage. A bronze-fitted crafting table and a chest made from a bronze chest come back in Age 1. Found iron loot is stripped except block drops and end-city chests. Remaining bypass watchlist: bows, village beds, other container crafts. |
 | Research interface | How are milestones surfaced: journal, tech tree, achievements, lab console, or a combination? |
 | Failure and safety | How punishing should overpressure, radiation, heat, and power overloads be? What warning systems make failure fair? |
 | Multiplayer | Are discoveries shared globally, per player, per team, or configurable? How do large networks perform on servers? |
 | Scale and pacing | How long should each age last? Which ages may merge or split after prototype testing? |
-| Compatibility | Optional integrations committed: Mod Menu, YACL, JEI, Jade, WTHIT, TR Energy (jar-in-jar API), AE2 detect-only. EMI waits on a 26.2 port. Remaining: Create-like rotation, other space mods, worldgen partners. |
+| Compatibility | Optional integrations committed: Mod Menu, YACL, JEI, Jade, WTHIT, TR Energy (jar-in-jar API), AE2 detect-only. EMI waits on a 26.2 port. Shaft rotation is first-party. Remaining: other space mods, worldgen partners. |
 | Accessibility | How can the UI explain complex networks without hiding the satisfaction of learning them? |
 | Performance | What simulation limits, chunk-loading expectations, and visualisation tools are necessary for large factories? |
 
@@ -679,7 +861,11 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 
 **2026-09-20 — Prototype audit.** Documented gathering, hide, fire, mortar, bone saw, and basic smelter loops separately from long-term wishlist.
 
-**2026-09-25 — Age 0 settlement pass.** Doc aligned to live content: work stump, hide bed, snares, fish trap, thatch, wattle, flint spear, shelves as early storage, Age 0 advancement tree, zinc/bronze naming (code still `tin`/`brass`). Clay vessels next. Bronze ingots are the Age 1 door. Removed obsolete planned systems (knapping surface, scraper, quern, raft, native copper, fire-setting, animal hitch) from the Age 0 spec.
+**2026-09-25 — Age 0 settlement pass.** Doc aligned to live content: work stump, hide bed, snares, fish trap, thatch, wattle, flint spear, shelves as early storage, Age 0 advancement tree, zinc/bronze naming (registries were still `tin`/`brass` on this date). Clay vessels next. Bronze ingots are the Age 1 door. Removed obsolete planned systems (knapping surface, scraper, quern, raft, native copper, fire-setting, animal hitch) from the Age 0 spec.
 
 **2026-09-26 — Age 1 bronze design.** Full Age 1 section: soft metal + light automation (water wheel, short shafts, hand-fed trip hammer / quern, bellows). Explicitly not a factory age — Age 2 owns self-feeding lines. Proof milestones and power/logistics tables updated to match.
+
+**2026-10-12 — Age 1 ships; Age 2 is iron and steel.** Doc aligned to 0.8.0. Age 1 is the bronze yard: forge, bellows, crucibles (8 and 32 uses), bronze tools, bucket, and chest, water wheel (capacity 1 or 2), shafts to 8 blocks, gears that pass the full turn, trip hammer (15 ticks a hit), powered quern (8 ticks a grind), bronze hopper (16 ticks a move, one machine cost). Crushed ore doubles a raw ore at 16 hits. The `age1` advancements parent off First Bronze, with the mill and the forge in parallel. Age 2's door ships: rusty mud to specks to iron, heated-iron tool heads and plates, vanilla iron tools and armor, iron knife and hammer, and a steel alloy nothing crafts with yet. Shafts stay put. Overload and the 8-block cap are the limits. Found iron loot stays stripped so the stain remains the door.
+
+**2026-10-12 — Age 2 plan.** Steel is machine metal: heat it, forge plates and rods, build an ironworks and a drill. No steel tools, no diamond mining. The ironworks is a three-block line (drive, crusher, hearth), one machine cost, crush-then-smelt, its own draft, input top and sides, output bottom. The drill bores 8 blocks, iron-pick rules, and drops into the block below. A strong wheel runs both when the drill sits on the ironworks. A bronze hopper between them would stall the wheel. Vanilla hoppers do not cost rotation. Pumps, pipes, belts, longer shafts, and a higher wheel capacity wait. Proof of Iron is planned and not in the datapack. Saw is optional and later.
 

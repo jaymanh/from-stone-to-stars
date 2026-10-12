@@ -35,8 +35,9 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Forging stump: heated metal in, one chosen forging recipe, then hammer hits.
- * Heat keeps cooling here. Progress resets if the metal cools, the recipe changes,
- * or the stack can no longer pay the selected recipe's ingot cost.
+ * Heat keeps cooling here. An empty input keeps the last recipe and clears the hammer
+ * count, so the next stack of that metal starts the same craft again. Progress also
+ * resets when the metal cools, the recipe changes, or the stack can no longer pay the cost.
  */
 public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer {
 	public static final int INPUT_SLOT = 0;
@@ -75,7 +76,8 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 	}
 
 	/**
-	 * Drops the selection when it no longer matches the input.
+	 * Drops the selection when the input is a different metal, or the saved id is gone.
+	 * An empty input keeps the recipe. A short stack keeps it too, and the hammer count goes back to zero.
 	 * Skips the check until forging recipes are actually loaded, so a chunk load cannot wipe a saved recipe.
 	 */
 	public void ensureSelectionValid() {
@@ -86,12 +88,55 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 			return;
 		}
 		Optional<RecipeHolder<ForgingRecipe>> holder = ModRecipes.getForging(this.level, this.selectedRecipe);
-		ItemStack input = this.items.get(INPUT_SLOT);
-		if (holder.isEmpty() || !holder.get().value().matches(new SingleRecipeInput(input), this.level)) {
-			this.selectedRecipe = null;
-			this.progress = 0;
-			this.syncState();
+		if (holder.isEmpty()) {
+			this.clearSelection();
+			return;
 		}
+		ItemStack input = this.items.get(INPUT_SLOT);
+		if (input.isEmpty()) {
+			this.resetProgress();
+			return;
+		}
+		ForgingRecipe forging = holder.get().value();
+		if (!forging.matchesMetal(input)) {
+			this.clearSelection();
+			return;
+		}
+		if (input.getCount() < forging.ingredientCount()) {
+			this.resetProgress();
+		}
+	}
+
+	/** Empty input, and a stack of the selected recipe's metal, keep the saved recipe. */
+	private boolean remembersRecipeFor(ItemStack stack) {
+		if (this.selectedRecipe == null) {
+			return false;
+		}
+		if (stack.isEmpty()) {
+			return true;
+		}
+		if (this.level == null || !(this.level.recipeAccess() instanceof RecipeManager) || !ModRecipes.hasAnyForgingRecipe(this.level)) {
+			return true;
+		}
+		Optional<RecipeHolder<ForgingRecipe>> holder = ModRecipes.getForging(this.level, this.selectedRecipe);
+		return holder.isPresent() && holder.get().value().matchesMetal(stack);
+	}
+
+	private void resetProgress() {
+		if (this.progress == 0) {
+			return;
+		}
+		this.progress = 0;
+		this.syncState();
+	}
+
+	private void clearSelection() {
+		if (this.selectedRecipe == null && this.progress == 0) {
+			return;
+		}
+		this.selectedRecipe = null;
+		this.progress = 0;
+		this.syncState();
 	}
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ForgingStumpEntity stump) {
@@ -293,10 +338,16 @@ public class ForgingStumpEntity extends BlockEntity implements WorldlyContainer 
 		ItemStack previous = this.items.get(slot);
 		this.items.set(slot, stack);
 		stack.limitSize(this.getMaxStackSize(stack));
-		// More of the same heated metal keeps the hammer count. A different item starts over.
+		// More of the same item keeps the hammer count.
+		// An empty slot, or a new stack of the selected metal, keeps the recipe and starts the count over.
+		// A different metal forgets the recipe.
 		if (slot == INPUT_SLOT && !ItemStack.isSameItem(previous, stack)) {
-			this.selectedRecipe = null;
-			this.progress = 0;
+			if (this.remembersRecipeFor(stack)) {
+				this.progress = 0;
+			} else {
+				this.selectedRecipe = null;
+				this.progress = 0;
+			}
 		}
 		this.syncState();
 	}
