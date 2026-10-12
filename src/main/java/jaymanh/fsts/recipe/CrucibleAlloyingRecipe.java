@@ -132,7 +132,7 @@ public class CrucibleAlloyingRecipe implements CraftingRecipe {
 			if (stack.isEmpty()) {
 				continue;
 			}
-			if (stack.is(ModItems.CRUCIBLE)) {
+			if (CrucibleItem.isCrucible(stack)) {
 				if (!CrucibleItem.isEmpty(stack) || !crucible.isEmpty()) {
 					return false;
 				}
@@ -185,7 +185,7 @@ public class CrucibleAlloyingRecipe implements CraftingRecipe {
 	public PlacementInfo placementInfo() {
 		if (this.placementInfo == null) {
 			List<net.minecraft.world.item.crafting.Ingredient> list = new ArrayList<>();
-			list.add(net.minecraft.world.item.crafting.Ingredient.of(ModItems.CRUCIBLE));
+			list.add(net.minecraft.world.item.crafting.Ingredient.of(ModItems.CRUCIBLE, ModItems.BRONZE_REINFORCED_CRUCIBLE));
 			for (CountedIngredient counted : this.ingredients) {
 				for (int i = 0; i < counted.count(); i++) {
 					list.add(counted.ingredient());
@@ -204,7 +204,10 @@ public class CrucibleAlloyingRecipe implements CraftingRecipe {
 	@Override
 	public List<RecipeDisplay> display() {
 		List<SlotDisplay> inputs = new ArrayList<>();
-		inputs.add(new SlotDisplay.ItemSlotDisplay(ModItems.CRUCIBLE));
+		inputs.add(new SlotDisplay.Composite(List.of(
+				new SlotDisplay.ItemSlotDisplay(ModItems.CRUCIBLE),
+				new SlotDisplay.ItemSlotDisplay(ModItems.BRONZE_REINFORCED_CRUCIBLE)
+		)));
 		for (CountedIngredient counted : this.ingredients) {
 			for (int i = 0; i < counted.count(); i++) {
 				inputs.add(counted.ingredient().display());

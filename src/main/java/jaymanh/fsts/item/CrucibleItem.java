@@ -20,12 +20,16 @@ public class CrucibleItem extends Item {
 		super(properties);
 	}
 
+	public static boolean isCrucible(ItemStack stack) {
+		return stack.getItem() instanceof CrucibleItem;
+	}
+
 	public static boolean isEmpty(ItemStack stack) {
-		return stack.is(ModItems.CRUCIBLE) && !stack.has(ModDataComponents.CRUCIBLE_CHARGE);
+		return isCrucible(stack) && !stack.has(ModDataComponents.CRUCIBLE_CHARGE);
 	}
 
 	public static boolean isCharged(ItemStack stack) {
-		return stack.is(ModItems.CRUCIBLE) && stack.has(ModDataComponents.CRUCIBLE_CHARGE);
+		return isCrucible(stack) && stack.has(ModDataComponents.CRUCIBLE_CHARGE);
 	}
 
 	public static @Nullable CrucibleCharge getCharge(ItemStack stack) {

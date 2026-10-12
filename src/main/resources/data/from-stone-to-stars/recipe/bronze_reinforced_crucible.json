@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CSC",
+    "CSC",
+    "SCS"
+  ],
+  "key": {
+    "C": "minecraft:brick",
+    "S": "from-stone-to-stars:bronze_plate"
+  },
+  "result": {
+    "id": "from-stone-to-stars:bronze_reinforced_crucible",
+    "count": 1
+  }
+}

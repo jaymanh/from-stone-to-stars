@@ -51,6 +51,7 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.DRIED_RUSTY_MUD);
 				output.accept((ModItems.IRON_SPECKS));
 				output.accept(ModItems.STEEL_INGOT);
+				output.accept(ModItems.BRONZE_REINFORCED_CRUCIBLE);
 
 				output.accept(ModBlocks.ZINC_ORE);
 				output.accept(ModBlocks.DEEPSLATE_ZINC_ORE);

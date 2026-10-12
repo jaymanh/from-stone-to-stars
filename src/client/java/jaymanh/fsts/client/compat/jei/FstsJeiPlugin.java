@@ -154,7 +154,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new SimpleProcessRecipe(
 						FromStoneToStars.id("alloying/bronze"),
 						List.of(
-								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.any(ModItems.CRUCIBLE, ModItems.BRONZE_REINFORCED_CRUCIBLE),
 								SimpleProcessRecipe.stack(new ItemStack(Items.COPPER_INGOT, 4)),
 								SimpleProcessRecipe.item(ModItems.ZINC_INGOT)
 						),
@@ -165,7 +165,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new SimpleProcessRecipe(
 						FromStoneToStars.id("alloying/iron_from_specks"),
 						List.of(
-								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.any(ModItems.CRUCIBLE, ModItems.BRONZE_REINFORCED_CRUCIBLE),
 								SimpleProcessRecipe.stack(new ItemStack(ModItems.IRON_SPECKS, 6))
 						),
 						List.of(SimpleProcessRecipe.any(ModBlocks.BASIC_SMELTER, Items.BLAST_FURNACE, ModBlocks.FORGE_HEARTH)),
@@ -175,7 +175,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new SimpleProcessRecipe(
 						FromStoneToStars.id("alloying/steel"),
 						List.of(
-								SimpleProcessRecipe.item(ModItems.CRUCIBLE),
+								SimpleProcessRecipe.any(ModItems.CRUCIBLE, ModItems.BRONZE_REINFORCED_CRUCIBLE),
 								SimpleProcessRecipe.stack(new ItemStack(Items.IRON_INGOT, 6)),
 								SimpleProcessRecipe.tag(ItemTags.COALS)
 						),
@@ -254,6 +254,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 		registration.addIngredientInfo(ModItems.CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.crucible"));
+		registration.addIngredientInfo(ModItems.BRONZE_REINFORCED_CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.bronze_reinforced_crucible"));
 		registration.addIngredientInfo(ModBlocks.MORTAR_AND_PESTLE, Component.translatable("jei.from-stone-to-stars.info.mortar_and_pestle"));
 		registration.addIngredientInfo(ModItems.FLOUR, Component.translatable("jei.from-stone-to-stars.info.flour"));
 		registration.addIngredientInfo(ModBlocks.SNARE, Component.translatable("jei.from-stone-to-stars.info.snare"));
@@ -287,6 +288,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModItems.CRUCIBLE);
+		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModItems.BRONZE_REINFORCED_CRUCIBLE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.BASIC_SMELTER);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, Items.BLAST_FURNACE);
 		registration.addCraftingStation(CRUCIBLE_ALLOYING, ModBlocks.FORGE_HEARTH);

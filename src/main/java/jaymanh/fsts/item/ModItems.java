@@ -112,6 +112,11 @@ public final class ModItems {
 			CrucibleItem::new,
 			new Item.Properties().durability(CrucibleItem.MAX_USES)
 	);
+	public static final Item BRONZE_REINFORCED_CRUCIBLE = register(
+			ModItemIds.BRONZE_REINFORCED_CRUCIBLE,
+			CrucibleItem::new,
+			new Item.Properties().durability((CrucibleItem.MAX_USES * 4))
+	);
 	public static final Item CLAY_JUG = register(
 			ModItemIds.CLAY_JUG,
 			ClayJugItem::new,

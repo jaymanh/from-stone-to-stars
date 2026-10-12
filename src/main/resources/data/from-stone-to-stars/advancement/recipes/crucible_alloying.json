@@ -9,8 +9,24 @@
           }
         ]
       }
+    },
+    "has_bronze_reinforced_crucible": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bronze_reinforced_crucible"
+          }
+        ]
+      }
     }
   },
+  "requirements": [
+    [
+      "has_crucible",
+      "has_bronze_reinforced_crucible"
+    ]
+  ],
   "rewards": {
     "recipes": [
       "from-stone-to-stars:alloying/bronze",
