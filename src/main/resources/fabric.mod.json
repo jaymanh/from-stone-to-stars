@@ -36,11 +36,7 @@
 		]
 	},
 	"mixins": [
-		"from-stone-to-stars.mixins.json",
-		{
-			"config": "from-stone-to-stars.client.mixins.json",
-			"environment": "client"
-		}
+		"from-stone-to-stars.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.19.5",
