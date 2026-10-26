@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Development Reference
+    url: https://github.com/jaymanh/from-stone-to-stars/blob/master/From%20Stone%20to%20Stars%20Development%20Reference.md
+    about: Read this before proposing a large feature. It is the design source of truth.

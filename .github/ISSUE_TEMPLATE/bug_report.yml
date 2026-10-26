@@ -1,0 +1,55 @@
+name: Bug report
+description: Something broke while playing or loading From Stone to Stars
+title: ""
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Saves can break between versions. Say whether this was a new world or an existing one. The mod targets Minecraft 26.2 with Fabric Loader 0.19.5 or newer.
+  - type: input
+    id: version
+    attributes:
+      label: Mod version
+      description: The version on the mods screen, or the jar name.
+      placeholder: "0.8.0"
+    validations:
+      required: true
+  - type: input
+    id: loader
+    attributes:
+      label: Minecraft, loader, and Java
+      placeholder: "Minecraft 26.2, Fabric Loader 0.19.5, Java 25"
+    validations:
+      required: true
+  - type: dropdown
+    id: world
+    attributes:
+      label: Where it happened
+      options:
+        - New world
+        - Existing world
+        - Startup, before a world loads
+        - Building from source
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what the game did instead.
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods
+      description: JEI, Jade, WTHIT, Mod Menu, and anything else that was installed. Write "none" if it was only this mod and Fabric API.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: Paste the relevant lines from logs/latest.log, or attach the crash report. Leave out the rest of the log.
+      render: text

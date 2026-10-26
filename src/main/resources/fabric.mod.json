@@ -8,8 +8,9 @@
 		"Jaymanh"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/jaymanh/from-stone-to-stars",
+		"sources": "https://github.com/jaymanh/from-stone-to-stars",
+		"issues": "https://github.com/jaymanh/from-stone-to-stars/issues"
 	},
 	"license": "LGPL-3.0-only",
 	"icon": "assets/from-stone-to-stars/icon.png",

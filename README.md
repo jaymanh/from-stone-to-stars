@@ -23,6 +23,16 @@
 
 The mod is in active development. Balance, recipes, and save data may change between versions.
 
+## Installing
+
+You need Minecraft 26.2, Java 25, [Fabric Loader](https://fabricmc.net/use/) 0.19.5 or newer, and Fabric API.
+
+1. Install Fabric Loader for Minecraft 26.2.
+2. Put Fabric API and `from-stone-to-stars-0.8.0.jar` in your `mods` folder.
+3. Optional mods are listed under [Optional integrations](#optional-integrations). The game runs without them.
+
+Download the jar from the [releases page](https://github.com/jaymanh/from-stone-to-stars/releases). Back up any world you care about before updating. Bug reports and test notes go in [issues](https://github.com/jaymanh/from-stone-to-stars/issues).
+
 ## What's in the mod
 
 ### Age 0: Primitive and Stone
@@ -132,7 +142,7 @@ You need JDK 25. The dev runs already load the optional integrations through `lo
 
 ## Contributing
 
-The [Development Reference](From%20Stone%20to%20Stars%20Development%20Reference.md) is the design source of truth. Before adding a feature, check it against the feature checklist there:
+Pull requests are licensed under LGPL-3.0-only, the same license as the project. The [Development Reference](From%20Stone%20to%20Stars%20Development%20Reference.md) is the design source of truth. Before adding a feature, check it against the feature checklist there:
 
 - What manual activity does it reduce, replace, or make more interesting?
 - Does it create a new engineering decision, or just a bigger number?
