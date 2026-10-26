@@ -13,9 +13,15 @@ public abstract class AbstractRotationBlockEntity extends BlockEntity {
 	private RotationStatus status = RotationStatus.DISCONNECTED;
 	private boolean spinning;
 	private boolean networkActive;
+	private long lastNetworkUpdate = Long.MIN_VALUE;
 
 	protected AbstractRotationBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
+	}
+
+	/** True when a network update already reached this block during the given tick. */
+	public boolean wasUpdatedAt(long gameTime) {
+		return this.lastNetworkUpdate == gameTime;
 	}
 
 	public RotationStatus getRotationStatus() {
@@ -30,10 +36,11 @@ public abstract class AbstractRotationBlockEntity extends BlockEntity {
 		return this.networkActive;
 	}
 
-	public void applyNetworkState(boolean spinning, RotationStatus status, boolean networkActive) {
+	public void applyNetworkState(boolean spinning, RotationStatus status, boolean networkActive, long gameTime) {
 		this.spinning = spinning;
 		this.status = status;
 		this.networkActive = networkActive;
+		this.lastNetworkUpdate = gameTime;
 		this.setChanged();
 	}
 

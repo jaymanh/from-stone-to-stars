@@ -2,6 +2,7 @@ package jaymanh.fsts.multiblock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import net.minecraft.core.BlockPos;
@@ -130,7 +131,10 @@ public final class FormedMultiblock {
 		}
 
 		String kind = input.getString("Kind").orElse(KIND_PATTERN);
-		Identifier id = Identifier.parse(definitionId.get());
+		Identifier id = Identifier.tryParse(definitionId.get());
+		if (id == null) {
+			return Optional.empty();
+		}
 		BlockPos origin = new BlockPos(
 				input.getIntOr("OriginX", 0),
 				input.getIntOr("OriginY", 0),
@@ -146,8 +150,11 @@ public final class FormedMultiblock {
 		List<MultiblockMatch.Member> members = new ArrayList<>();
 		int count = Math.min(xs.length, Math.min(ys.length, Math.min(zs.length, roleNames.length)));
 		for (int i = 0; i < count; i++) {
-			MultiblockRole role = MultiblockRole.valueOf(roleNames[i].toUpperCase());
-			members.add(new MultiblockMatch.Member(new BlockPos(xs[i], ys[i], zs[i]), role));
+			Optional<MultiblockRole> role = parseEnum(MultiblockRole.class, roleNames[i]);
+			if (role.isEmpty()) {
+				return Optional.empty();
+			}
+			members.add(new MultiblockMatch.Member(new BlockPos(xs[i], ys[i], zs[i]), role.get()));
 		}
 
 		StructureMatch match;
@@ -166,8 +173,11 @@ public final class FormedMultiblock {
 			if (definition.isEmpty()) {
 				return Optional.empty();
 			}
-			Rotation rotation = Rotation.valueOf(input.getString("Rotation").orElse(Rotation.NONE.name()));
-			match = new MultiblockMatch(definition.get(), origin, rotation, members);
+			Optional<Rotation> rotation = parseEnum(Rotation.class, input.getString("Rotation").orElse(Rotation.NONE.name()));
+			if (rotation.isEmpty()) {
+				return Optional.empty();
+			}
+			match = new MultiblockMatch(definition.get(), origin, rotation.get(), members);
 		}
 
 		MultiblockProcess process = match.processFactory().create(match);
@@ -180,6 +190,14 @@ public final class FormedMultiblock {
 			progressAware.setProgress(input.getIntOr("ProcessProgress", 0));
 		}
 		return Optional.of(new FormedMultiblock(match, process));
+	}
+
+	private static <E extends Enum<E>> Optional<E> parseEnum(Class<E> type, String name) {
+		try {
+			return Optional.of(Enum.valueOf(type, name.toUpperCase(Locale.ROOT)));
+		} catch (IllegalArgumentException exception) {
+			return Optional.empty();
+		}
 	}
 
 	public interface ProgressAware {

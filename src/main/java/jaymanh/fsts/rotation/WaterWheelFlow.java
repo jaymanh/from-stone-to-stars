@@ -1,7 +1,6 @@
 package jaymanh.fsts.rotation;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;

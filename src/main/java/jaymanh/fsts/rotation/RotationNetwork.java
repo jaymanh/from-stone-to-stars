@@ -65,20 +65,12 @@ public final class RotationNetwork {
 		}
 
 		boolean overloaded = inRangeMachineCost > totalCapacity;
-		boolean networkCanTurn = anyFlow && !overloaded && (inRangeMachineCost > 0 || !machines.isEmpty() || component.size() > 1);
+		boolean networkCanTurn = anyFlow && !overloaded && component.size() > 1;
+		long gameTime = level.getGameTime();
 
 		for (BlockPos pos : component) {
 			BlockState state = level.getBlockState(pos);
-			RotationStatus status = resolveStatus(
-					state,
-					pos,
-					distanceToWheel,
-					anyFlow,
-					overloaded,
-					inRangeMachineCost,
-					totalCapacity,
-					component.size()
-			);
+			RotationStatus status = resolveStatus(pos, distanceToWheel, anyFlow, overloaded);
 			boolean spinning = status == RotationStatus.SPINNING;
 
 			if (state.hasProperty(BlockStateProperties.POWERED) && state.getValue(BlockStateProperties.POWERED) != spinning) {
@@ -87,7 +79,7 @@ public final class RotationNetwork {
 
 			BlockEntity blockEntity = level.getBlockEntity(pos);
 			if (blockEntity instanceof AbstractRotationBlockEntity rotation) {
-				rotation.applyNetworkState(spinning, status, networkCanTurn && !overloaded);
+				rotation.applyNetworkState(spinning, status, networkCanTurn, gameTime);
 			}
 
 			if (spinning && state.is(ModBlocks.WATER_WHEEL) && level instanceof ServerLevel serverLevel) {
@@ -96,57 +88,18 @@ public final class RotationNetwork {
 		}
 	}
 
-	private static RotationStatus resolveStatus(
-			BlockState state,
-			BlockPos pos,
-			Map<BlockPos, Integer> distanceToWheel,
-			boolean anyFlow,
-			boolean overloaded,
-			int inRangeMachineCost,
-			int totalCapacity,
-			int componentSize
-	) {
+	private static RotationStatus resolveStatus(BlockPos pos, Map<BlockPos, Integer> distanceToWheel, boolean anyFlow, boolean overloaded) {
 		int distance = distanceToWheel.getOrDefault(pos, Integer.MAX_VALUE);
 		if (distance > RotationConstants.MAX_SHAFT_LENGTH) {
 			return RotationStatus.OUT_OF_RANGE;
 		}
-
-		if (state.is(ModBlocks.WATER_WHEEL)) {
-			if (!anyFlow) {
-				return RotationStatus.NO_FLOW;
-			}
-			if (overloaded) {
-				return RotationStatus.OVERLOADED;
-			}
-			if (componentSize <= 1) {
-				return RotationStatus.SPINNING;
-			}
-			return RotationStatus.SPINNING;
-		}
-
-		if (isMachine(state)) {
-			if (!anyFlow) {
-				return RotationStatus.NO_FLOW;
-			}
-			if (overloaded) {
-				return RotationStatus.OVERLOADED;
-			}
-			return RotationStatus.SPINNING;
-		}
-
 		if (!anyFlow) {
 			return RotationStatus.NO_FLOW;
 		}
 		if (overloaded) {
 			return RotationStatus.OVERLOADED;
 		}
-		if (inRangeMachineCost == 0 && totalCapacity > 0) {
-			return RotationStatus.SPINNING;
-		}
-		if (totalCapacity >= inRangeMachineCost && inRangeMachineCost > 0) {
-			return RotationStatus.SPINNING;
-		}
-		return RotationStatus.IDLE;
+		return RotationStatus.SPINNING;
 	}
 
 	private static boolean isMachine(BlockState state) {

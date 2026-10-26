@@ -12,7 +12,8 @@ public class WaterWheelBlockEntity extends AbstractRotationBlockEntity {
 	}
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, WaterWheelBlockEntity entity) {
-		if (level.getGameTime() % 20L == 0L) {
+		long gameTime = level.getGameTime();
+		if (gameTime % 20L == 0L && !entity.wasUpdatedAt(gameTime)) {
 			RotationNetwork.update(level, pos);
 		}
 	}

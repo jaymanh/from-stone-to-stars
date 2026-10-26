@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
@@ -16,6 +18,11 @@ public final class ActiveMultiblocks {
 	private static final Map<ServerLevel, Map<BlockPos, FormedMultiblock>> BY_LEVEL = new HashMap<>();
 
 	private ActiveMultiblocks() {
+	}
+
+	/** Levels from a stopped server must not stay reachable after returning to the title screen. */
+	public static void initialize() {
+		ServerLifecycleEvents.SERVER_STOPPED.register(server -> BY_LEVEL.clear());
 	}
 
 	public static void register(ServerLevel level, FormedMultiblock formed) {

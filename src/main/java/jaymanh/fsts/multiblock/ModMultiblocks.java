@@ -23,6 +23,7 @@ public final class ModMultiblocks {
 	}
 
 	public static void initialize() {
+		ActiveMultiblocks.initialize();
 		MultiblockRegistry.register(new MultiblockDefinition(
 				CHARCOAL_PILE_ID,
 				MultiblockPattern.builder()

@@ -15,6 +15,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -118,9 +119,9 @@ public final class ModRecipes {
 		if (level == null || stack.isEmpty() || !(level.recipeAccess() instanceof RecipeManager recipes)) {
 			return list;
 		}
-		for (RecipeHolder<?> holder : recipes.getRecipes()) {
-			if (holder.value() instanceof ForgingRecipe forging && forging.matchesMetal(stack)) {
-				list.add(new RecipeHolder<>(holder.id(), forging));
+		for (RecipeHolder<ForgingRecipe> holder : recipes.getAllOfType(FORGING)) {
+			if (holder.value().matchesMetal(stack)) {
+				list.add(holder);
 			}
 		}
 		list.sort(Comparator.comparing(holder -> holder.id().identifier().toString()));
@@ -131,8 +132,8 @@ public final class ModRecipes {
 		if (level == null || stack.isEmpty() || !(level.recipeAccess() instanceof RecipeManager recipes)) {
 			return false;
 		}
-		for (RecipeHolder<?> holder : recipes.getRecipes()) {
-			if (holder.value() instanceof ForgingRecipe forging && forging.matchesMetal(stack)) {
+		for (RecipeHolder<ForgingRecipe> holder : recipes.getAllOfType(FORGING)) {
+			if (holder.value().matchesMetal(stack)) {
 				return true;
 			}
 		}
@@ -143,12 +144,7 @@ public final class ModRecipes {
 		if (level == null || !(level.recipeAccess() instanceof RecipeManager recipes)) {
 			return false;
 		}
-		for (RecipeHolder<?> holder : recipes.getRecipes()) {
-			if (holder.value() instanceof ForgingRecipe) {
-				return true;
-			}
-		}
-		return false;
+		return !recipes.getAllOfType(FORGING).isEmpty();
 	}
 
 	public static Optional<RecipeHolder<ForgingRecipe>> getForging(Level level, Identifier id) {
@@ -167,7 +163,7 @@ public final class ModRecipes {
 		if (level == null || !(level.recipeAccess() instanceof RecipeManager recipes)) {
 			return list;
 		}
-		for (RecipeHolder<?> holder : recipes.getRecipes()) {
+		for (RecipeHolder<CraftingRecipe> holder : recipes.getAllOfType(RecipeType.CRAFTING)) {
 			if (holder.value() instanceof CrucibleAlloyingRecipe alloying) {
 				list.add(alloying);
 			}
