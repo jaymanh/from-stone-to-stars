@@ -143,4 +143,4 @@ When you add a system, also update the JEI categories, the Jade/WTHIT providers,
 
 ## License
 
-Released under [CC0 1.0](LICENSE).
+From Stone to Stars is released under the [GNU Lesser General Public License v3.0 only](LICENSE). The LGPL incorporates the [GNU General Public License v3.0](GPL-3.0.txt), which is included with the project.
