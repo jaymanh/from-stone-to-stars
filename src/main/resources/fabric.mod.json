@@ -3,9 +3,14 @@
 	"id": "from-stone-to-stars",
 	"version": "${version}",
 	"name": "From Stone to Stars",
-	"description": "This mod is about progressing through the Stone Age to the \"Star Age\"",
+	"description": "A civilisation and technology overhaul. Start with pebbles, flint, and bone, and build the machines that replace that work on the way to a spacefaring industry.",
 	"authors": [
-		"Jaymanh"
+		{
+			"name": "Jaymanh",
+			"contact": {
+				"homepage": "https://github.com/jaymanh"
+			}
+		}
 	],
 	"contact": {
 		"homepage": "https://github.com/jaymanh/from-stone-to-stars",
@@ -55,6 +60,9 @@
 	},
 	"custom": {
 		"modmenu": {
+			"links": {
+				"modmenu.github_releases": "https://github.com/jaymanh/from-stone-to-stars/releases"
+			},
 			"update_checker": true
 		}
 	}
