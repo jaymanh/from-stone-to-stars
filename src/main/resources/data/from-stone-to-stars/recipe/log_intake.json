@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "P P",
+    "PRP",
+    "PPP"
+  ],
+  "key": {
+    "P": "#minecraft:planks",
+    "R": "from-stone-to-stars:wooden_rollers"
+  },
+  "result": {
+    "id": "from-stone-to-stars:log_intake",
+    "count": 1
+  }
+}

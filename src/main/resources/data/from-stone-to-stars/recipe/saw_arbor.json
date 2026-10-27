@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PIP",
+    "SGS",
+    "PPP"
+  ],
+  "key": {
+    "P": "#minecraft:planks",
+    "I": "from-stone-to-stars:steel_ingot",
+    "S": "from-stone-to-stars:wooden_shaft",
+    "G": "from-stone-to-stars:rotation_gear"
+  },
+  "result": {
+    "id": "from-stone-to-stars:saw_arbor",
+    "count": 1
+  }
+}

@@ -101,6 +101,9 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.WATER_WHEEL);
 				output.accept(ModBlocks.WOODEN_SHAFT);
 				output.accept(ModBlocks.WOODEN_ROLLERS);
+				output.accept(ModBlocks.LOG_INTAKE);
+				output.accept(ModBlocks.PLANK_OUTFEED);
+				output.accept(ModBlocks.SAW_ARBOR);
 				output.accept(ModBlocks.ROTATION_GEAR);
 				output.accept(ModBlocks.POWERED_QUERN);
 				output.accept(ModBlocks.TRIP_HAMMER);

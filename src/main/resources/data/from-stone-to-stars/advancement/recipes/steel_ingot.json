@@ -14,7 +14,8 @@
   "rewards": {
     "recipes": [
       "from-stone-to-stars:heated_steel_ingot",
-      "from-stone-to-stars:forging/steel_sheets"
+      "from-stone-to-stars:forging/steel_sheets",
+      "from-stone-to-stars:saw_arbor"
     ]
   }
 }

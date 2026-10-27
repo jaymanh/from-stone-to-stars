@@ -17,7 +17,8 @@ public final class RotationConnector {
 				|| state.is(ModBlocks.ROTATION_GEAR)
 				|| state.is(ModBlocks.POWERED_QUERN)
 				|| state.is(ModBlocks.TRIP_HAMMER)
-				|| state.is(ModBlocks.BRONZE_HOPPER);
+				|| state.is(ModBlocks.BRONZE_HOPPER)
+				|| state.is(ModBlocks.SAW_ARBOR);
 	}
 
 	public static boolean canConnect(Level level, BlockPos from, BlockPos to, Direction direction) {
@@ -45,10 +46,10 @@ public final class RotationConnector {
 			return waterWheelConnects(toState, direction.getOpposite());
 		}
 
-		if (fromState.is(ModBlocks.POWERED_QUERN) || fromState.is(ModBlocks.TRIP_HAMMER)) {
+		if (isRearDriven(fromState)) {
 			return driveConnects(fromState, direction);
 		}
-		if (toState.is(ModBlocks.POWERED_QUERN) || toState.is(ModBlocks.TRIP_HAMMER)) {
+		if (isRearDriven(toState)) {
 			return driveConnects(toState, direction.getOpposite());
 		}
 
@@ -76,6 +77,10 @@ public final class RotationConnector {
 	private static boolean hopperAccepts(BlockState hopper, Direction direction) {
 		Direction facing = hopper.getValue(BlockStateProperties.FACING_HOPPER);
 		return direction != Direction.UP && direction != facing;
+	}
+
+	private static boolean isRearDriven(BlockState state) {
+		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER) || state.is(ModBlocks.SAW_ARBOR);
 	}
 
 	/** Shaft enters the back of a facing machine, opposite the side the player looks at. */

@@ -7,6 +7,7 @@ import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.multiblock.process.BrickDryingProcess;
 import jaymanh.fsts.multiblock.process.CharcoalPileProcess;
 import jaymanh.fsts.multiblock.process.ForgeProcess;
+import jaymanh.fsts.multiblock.process.SawmillProcess;
 import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ public final class ModMultiblocks {
 	public static final Identifier CHARCOAL_PILE_ID = FromStoneToStars.id("charcoal_pile");
 	public static final Identifier BRICK_DRYING_PIT = FromStoneToStars.id("brick_drying_pit");
 	public static final Identifier FORGE_ID = FromStoneToStars.id("forge");
+	public static final Identifier SAWMILL_ID = FromStoneToStars.id("sawmill");
 
 	private ModMultiblocks() {
 	}
@@ -60,6 +62,15 @@ public final class ModMultiblocks {
 				List.of(ForgeLayout.Rule.INSTANCE),
 				ForgeProcess::new,
 				Component.translatable("multiblock.from-stone-to-stars.forge")
+		));
+
+		AssemblyRegistry.register(new AssemblyDefinition(
+				SAWMILL_ID,
+				BlockPredicates.is(ModBlocks.SAW_ARBOR),
+				new AABB(-6.0, -3.0, -6.0, 7.0, 4.0, 7.0),
+				List.of(SawmillLayout.Rule.INSTANCE),
+				SawmillProcess::new,
+				Component.translatable("multiblock.from-stone-to-stars.sawmill")
 		));
 	}
 }

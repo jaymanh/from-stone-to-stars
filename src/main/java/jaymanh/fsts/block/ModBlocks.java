@@ -309,6 +309,32 @@ public final class ModBlocks {
 					.noOcclusion()
 					.ignitedByLava()
 	);
+	public static final Block SAW_ARBOR = register(
+			ModBlockItemIds.SAW_ARBOR,
+			SawArborBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(2.0F, 3.0F)
+	);
+	public static final Block LOG_INTAKE = register(
+			ModBlockItemIds.LOG_INTAKE,
+			SawmillPortBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.5F, 2.0F)
+					.ignitedByLava()
+	);
+	public static final Block PLANK_OUTFEED = register(
+			ModBlockItemIds.PLANK_OUTFEED,
+			SawmillPortBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.5F, 2.0F)
+					.ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

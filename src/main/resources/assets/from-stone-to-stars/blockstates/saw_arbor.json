@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "from-stone-to-stars:block/saw_arbor" },
+    "facing=east,powered=false": { "model": "from-stone-to-stars:block/saw_arbor", "y": 90 },
+    "facing=south,powered=false": { "model": "from-stone-to-stars:block/saw_arbor", "y": 180 },
+    "facing=west,powered=false": { "model": "from-stone-to-stars:block/saw_arbor", "y": 270 },
+    "facing=north,powered=true": { "model": "from-stone-to-stars:block/saw_arbor_powered" },
+    "facing=east,powered=true": { "model": "from-stone-to-stars:block/saw_arbor_powered", "y": 90 },
+    "facing=south,powered=true": { "model": "from-stone-to-stars:block/saw_arbor_powered", "y": 180 },
+    "facing=west,powered=true": { "model": "from-stone-to-stars:block/saw_arbor_powered", "y": 270 }
+  }
+}

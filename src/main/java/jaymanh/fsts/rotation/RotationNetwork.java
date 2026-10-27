@@ -12,6 +12,7 @@ import java.util.Set;
 import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.entity.AbstractRotationBlockEntity;
+import jaymanh.fsts.block.entity.SawArborBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -60,7 +61,7 @@ public final class RotationNetwork {
 		for (BlockPos machine : machines) {
 			int distance = distanceToWheel.getOrDefault(machine, Integer.MAX_VALUE);
 			if (distance <= RotationConstants.MAX_SHAFT_LENGTH) {
-				inRangeMachineCost += RotationConstants.MACHINE_COST;
+				inRangeMachineCost += machineCost(level, machine);
 			}
 		}
 
@@ -103,7 +104,17 @@ public final class RotationNetwork {
 	}
 
 	private static boolean isMachine(BlockState state) {
-		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER) || state.is(ModBlocks.BRONZE_HOPPER);
+		return state.is(ModBlocks.POWERED_QUERN)
+				|| state.is(ModBlocks.TRIP_HAMMER)
+				|| state.is(ModBlocks.BRONZE_HOPPER)
+				|| state.is(ModBlocks.SAW_ARBOR);
+	}
+
+	private static int machineCost(Level level, BlockPos pos) {
+		if (level.getBlockEntity(pos) instanceof SawArborBlockEntity arbor) {
+			return arbor.powerCost();
+		}
+		return RotationConstants.MACHINE_COST;
 	}
 
 	private static Set<BlockPos> collectComponent(Level level, BlockPos origin) {

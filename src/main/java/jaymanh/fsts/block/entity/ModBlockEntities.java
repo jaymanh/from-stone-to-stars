@@ -113,6 +113,22 @@ public final class ModBlockEntities {
 			ModBlocks.BRONZE_HOPPER
 	);
 
+	public static final BlockEntityType<SawArborBlockEntity> SAW_ARBOR = register(
+			"saw_arbor",
+			SawArborBlockEntity::new,
+			ModBlocks.SAW_ARBOR
+	);
+
+	public static final BlockEntityType<SawmillPortBlockEntity> SAWMILL_PORT = Registry.register(
+			BuiltInRegistries.BLOCK_ENTITY_TYPE,
+			FromStoneToStars.id("sawmill_port"),
+			FabricBlockEntityTypeBuilder.<SawmillPortBlockEntity>create(
+					SawmillPortBlockEntity::new,
+					ModBlocks.LOG_INTAKE,
+					ModBlocks.PLANK_OUTFEED
+			).build()
+	);
+
 	private ModBlockEntities() {
 	}
 

@@ -18,7 +18,9 @@ public enum MultiblockRole implements StringRepresentable {
 	/** Structural blocks required to form but not transformed. */
 	FRAME,
 	/** Dedicated machine brain for larger factories. */
-	CONTROLLER;
+	CONTROLLER,
+	/** Where finished products leave the structure (e.g. sawmill outfeed). */
+	OUTPUT;
 
 	@Override
 	public String getSerializedName() {

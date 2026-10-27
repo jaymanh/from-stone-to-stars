@@ -101,7 +101,10 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.BELLOWS)
 				.add(ModBlockItemIds.BRONZE_CHEST)
 				.add(ModBlockItemIds.TRIP_HAMMER)
-				.add(ModBlockItemIds.WOODEN_ROLLERS);
+				.add(ModBlockItemIds.WOODEN_ROLLERS)
+				.add(ModBlockItemIds.SAW_ARBOR)
+				.add(ModBlockItemIds.LOG_INTAKE)
+				.add(ModBlockItemIds.PLANK_OUTFEED);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);
@@ -137,6 +140,12 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 		builder(ModTags.FORGE_FRAME)
 				.add(minecraftBlock("bricks"))
 				.add(minecraftBlock("cobblestone"));
+
+		builder(ModTags.SAWMILL_FRAME)
+				.addOptionalTag(BlockTags.LOGS)
+				.addOptionalTag(BlockTags.PLANKS)
+				.add(minecraftBlock("cobblestone"))
+				.add(minecraftBlock("stone_bricks"));
 
         builder(BlockTags.CLIMBABLE)
                 .add(ModBlockItemIds.ROPE);

@@ -41,6 +41,9 @@ public final class ModBlockItemIds {
 	public static final BlockItemId DRIED_RUSTY_MUD = create("dried_rusty_mud");
 	public static final BlockItemId STEEL_SAW_BLADES = create("steel_saw_blades");
 	public static final BlockItemId WOODEN_ROLLERS = create("wooden_rollers");
+	public static final BlockItemId SAW_ARBOR = create("saw_arbor");
+	public static final BlockItemId LOG_INTAKE = create("log_intake");
+	public static final BlockItemId PLANK_OUTFEED = create("plank_outfeed");
 
 	private ModBlockItemIds() {
 	}
