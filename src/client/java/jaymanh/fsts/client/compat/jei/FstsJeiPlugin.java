@@ -1,15 +1,21 @@
 package jaymanh.fsts.client.compat.jei;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import jaymanh.fsts.FromStoneToStars;
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.entity.SawArborBlockEntity;
 import jaymanh.fsts.block.entity.TanningRackBlockEntity;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.multiblock.process.BrickDryingProcess;
 import jaymanh.fsts.multiblock.process.CharcoalPileProcess;
 import jaymanh.fsts.multiblock.process.ForgeProcess;
+import jaymanh.fsts.multiblock.process.SawmillProcess;
 import jaymanh.fsts.tools.ModTools;
+import jaymanh.fsts.util.LogPlanks;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -19,9 +25,12 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -32,6 +41,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 	public static final IRecipeType<SimpleProcessRecipe> BRICK_DRYING = IRecipeType.create(FromStoneToStars.MOD_ID, "brick_drying", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> FORGE = IRecipeType.create(FromStoneToStars.MOD_ID, "forge", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> BONE_SAW = IRecipeType.create(FromStoneToStars.MOD_ID, "bone_saw", SimpleProcessRecipe.class);
+	public static final IRecipeType<SimpleProcessRecipe> SAWMILL = IRecipeType.create(FromStoneToStars.MOD_ID, "sawmill", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> GRINDING = IRecipeType.create(FromStoneToStars.MOD_ID, "grinding", SimpleProcessRecipe.class);
 	public static final IRecipeType<SimpleProcessRecipe> CRUCIBLE_ALLOYING = IRecipeType.create(FromStoneToStars.MOD_ID, "crucible_alloying", SimpleProcessRecipe.class);
 	public static final IRecipeType<ForgingJeiRecipe> FORGING = IRecipeType.create(FromStoneToStars.MOD_ID, "forging", ForgingJeiRecipe.class);
@@ -51,6 +61,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, BRICK_DRYING, Component.translatable("jei.from-stone-to-stars.brick_drying"), ModBlocks.CLAY_BRICKS),
 				new ProcessRecipeCategory(guiHelper, FORGE, Component.translatable("jei.from-stone-to-stars.forge"), ModBlocks.FORGE_HEARTH),
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
+				new ProcessRecipeCategory(guiHelper, SAWMILL, Component.translatable("jei.from-stone-to-stars.sawmill"), ModBlocks.SAW_ARBOR),
 				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
 				new ProcessRecipeCategory(guiHelper, CRUCIBLE_ALLOYING, Component.translatable("jei.from-stone-to-stars.crucible_alloying"), ModItems.CRUCIBLE),
 				new ForgingRecipeCategory(guiHelper, FORGING, Component.translatable("jei.from-stone-to-stars.forging"), ModBlocks.FORGING_STUMP),
@@ -210,6 +221,8 @@ public final class FstsJeiPlugin implements IModPlugin {
 				0 // Sawing is player-driven: one interaction per stroke, not a timed process.
 		)));
 
+		registration.addRecipes(SAWMILL, sawmillRecipes());
+
 		registration.addRecipes(WORLD_INTERACTION, List.of(
 				new WorldInteractionRecipe(
 						FromStoneToStars.id("world/bark"),
@@ -252,6 +265,11 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.BRONZE_CHEST, Component.translatable("jei.from-stone-to-stars.info.bronze_chest"));
 		registration.addIngredientInfo(ModBlocks.FORGE_HEARTH, Component.translatable("jei.from-stone-to-stars.info.forge_hearth"));
 		registration.addIngredientInfo(ModBlocks.BELLOWS, Component.translatable("jei.from-stone-to-stars.info.bellows"));
+		registration.addIngredientInfo(ModBlocks.SAW_ARBOR, Component.translatable("jei.from-stone-to-stars.info.saw_arbor"));
+		registration.addIngredientInfo(ModBlocks.STEEL_SAW_BLADES, Component.translatable("jei.from-stone-to-stars.info.steel_saw_blades"));
+		registration.addIngredientInfo(ModBlocks.WOODEN_ROLLERS, Component.translatable("jei.from-stone-to-stars.info.wooden_rollers"));
+		registration.addIngredientInfo(ModBlocks.LOG_INTAKE, Component.translatable("jei.from-stone-to-stars.info.log_intake"));
+		registration.addIngredientInfo(ModBlocks.PLANK_OUTFEED, Component.translatable("jei.from-stone-to-stars.info.plank_outfeed"));
 		registration.addIngredientInfo(Items.BRICK, Component.translatable("jei.from-stone-to-stars.info.brick"));
 		registration.addIngredientInfo(ModBlocks.BASIC_SMELTER, Component.translatable("jei.from-stone-to-stars.info.basic_smelter"));
 		registration.addIngredientInfo(ModItems.CRUCIBLE, Component.translatable("jei.from-stone-to-stars.info.crucible"));
@@ -273,8 +291,34 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.BRONZE_HOPPER, Component.translatable("jei.from-stone-to-stars.info.bronze_hopper"));
 	}
 
+	/** One recipe per plank type, listing every log, wood, and stripped variant the mill accepts for it. */
+	private static List<SimpleProcessRecipe> sawmillRecipes() {
+		Map<Item, List<Item>> logsByPlanks = new LinkedHashMap<>();
+		for (Item item : BuiltInRegistries.ITEM) {
+			if (item instanceof BlockItem blockItem) {
+				Item planks = LogPlanks.planksItemForLog(blockItem.getBlock());
+				if (planks != Items.AIR) {
+					logsByPlanks.computeIfAbsent(planks, key -> new ArrayList<>()).add(item);
+				}
+			}
+		}
+		List<SimpleProcessRecipe> recipes = new ArrayList<>();
+		logsByPlanks.forEach((planks, logs) -> recipes.add(new SimpleProcessRecipe(
+				FromStoneToStars.id("sawmill/" + BuiltInRegistries.ITEM.getKey(planks).getPath()),
+				List.of(SimpleProcessRecipe.any(logs.toArray(Item[]::new))),
+				List.of(SimpleProcessRecipe.item(ModBlocks.SAW_ARBOR), SimpleProcessRecipe.item(ModBlocks.STEEL_SAW_BLADES)),
+				SimpleProcessRecipe.stack(new ItemStack(planks, SawArborBlockEntity.PLANKS_PER_LOG)),
+				SawmillProcess.BASE_CUT_TICKS
+		)));
+		return recipes;
+	}
+
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+		registration.addCraftingStation(SAWMILL, ModBlocks.SAW_ARBOR);
+		registration.addCraftingStation(SAWMILL, ModBlocks.STEEL_SAW_BLADES);
+		registration.addCraftingStation(SAWMILL, ModBlocks.LOG_INTAKE);
+		registration.addCraftingStation(SAWMILL, ModBlocks.PLANK_OUTFEED);
 		registration.addCraftingStation(TANNING, ModBlocks.TANNING_RACK);
 		registration.addCraftingStation(CHARCOAL_PILE, ModBlocks.KINDLING);
 		registration.addCraftingStation(CHARCOAL_PILE, ModTools.BOW_AND_DRILL);
