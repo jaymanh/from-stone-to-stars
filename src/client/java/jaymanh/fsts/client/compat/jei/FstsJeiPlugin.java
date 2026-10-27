@@ -198,6 +198,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/copper_shafts"), ModItems.HEATED_COPPER_INGOT, 2, ModItems.COPPER_SHAFT, 4, 4),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_tool_heads"), ModItems.HEATED_IRON_INGOT, 3, ModItems.IRON_TOOL_HEAD, 2, 4),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_plates"), ModItems.HEATED_IRON_INGOT, 4, ModItems.IRON_PLATE, 2, 4),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/steel_sheets"), ModItems.HEATED_STEEL_INGOT, 2, ModItems.STEEL_SHEET, 4, 8),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_specks"), ModBlocks.DRIED_RUSTY_MUD, 1, ModItems.IRON_SPECKS, 1, 8)
 		));
 

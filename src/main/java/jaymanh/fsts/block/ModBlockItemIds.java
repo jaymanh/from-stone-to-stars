@@ -39,6 +39,8 @@ public final class ModBlockItemIds {
 	public static final BlockItemId BRONZE_HOPPER = create("bronze_hopper");
 	public static final BlockItemId RUSTY_MUD = create("rusty_mud");
 	public static final BlockItemId DRIED_RUSTY_MUD = create("dried_rusty_mud");
+	public static final BlockItemId STEEL_SAW_BLADES = create("steel_saw_blades");
+	public static final BlockItemId WOODEN_ROLLERS = create("wooden_rollers");
 
 	private ModBlockItemIds() {
 	}

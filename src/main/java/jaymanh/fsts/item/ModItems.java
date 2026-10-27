@@ -126,7 +126,13 @@ public final class ModItems {
 	);
 	public static final Item IRON_SPECKS = register(ModItemIds.IRON_SPECKS, Item::new, new Item.Properties());
 	public static final Item STEEL_INGOT = register(ModItemIds.STEEL_INGOT, Item::new, new Item.Properties());
-
+	public static final Item HEATED_STEEL_INGOT = register(
+			ModItemIds.HEATED_STEEL_INGOT,
+			properties -> new HeatedMetalItem(properties, () -> STEEL_INGOT),
+			new Item.Properties()
+	);
+	public static final Item STEEL_SHEET = register(ModItemIds.STEEL_SHEET, Item::new, new Item.Properties());
+	public static final Item STEEL_BLADE = register(ModItemIds.STEEL_BLADE, Item::new, new Item.Properties());
 	private ModItems() {
 	}
 

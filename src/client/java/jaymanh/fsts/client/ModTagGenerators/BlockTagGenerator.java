@@ -2,7 +2,6 @@ package jaymanh.fsts.client.ModTagGenerators;
 
 import jaymanh.fsts.block.ModBlockIds;
 import jaymanh.fsts.block.ModBlockItemIds;
-import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.tags.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -31,7 +30,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.HIDE_BED)
 				.add(ModBlockItemIds.THATCH)
 				.add(ModBlockItemIds.WORK_STUMP)
-				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP);
+				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP)
+				.add(ModBlockItemIds.WOODEN_ROLLERS);
 
 		builder(ModTags.FSTS_CHARCOAL_FLAMMABLE)
                 .add(ModBlockItemIds.CHARCOAL_BLOCK);
@@ -100,7 +100,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.UNFINISHED_WORK_STUMP)
 				.add(ModBlockItemIds.BELLOWS)
 				.add(ModBlockItemIds.BRONZE_CHEST)
-				.add(ModBlockItemIds.TRIP_HAMMER);
+				.add(ModBlockItemIds.TRIP_HAMMER)
+				.add(ModBlockItemIds.WOODEN_ROLLERS);
 
 		builder(BlockTags.BEDS)
 				.add(ModBlockItemIds.HIDE_BED);
@@ -118,7 +119,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.STORAGE_POT)
 				.add(ModBlockItemIds.FORGE_HEARTH)
 				.add(ModBlockItemIds.DRIED_RUSTY_MUD)
-				.add(ModBlockItemIds.BRONZE_HOPPER);
+				.add(ModBlockItemIds.BRONZE_HOPPER)
+				.add(ModBlockItemIds.STEEL_SAW_BLADES);
 
 		builder(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(ModBlockItemIds.RUSTY_MUD);

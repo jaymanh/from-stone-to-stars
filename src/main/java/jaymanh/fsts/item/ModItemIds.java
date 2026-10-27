@@ -75,7 +75,10 @@ public final class ModItemIds {
 	public static final ResourceKey<Item> BRONZE_BOOTS = create("bronze_boots");
 	public static final ResourceKey<Item> IRON_SPECKS = create("iron_specks");
 	public static final ResourceKey<Item> STEEL_INGOT = create("steel_ingot");
+	public static final ResourceKey<Item> HEATED_STEEL_INGOT = create("heated_steel_ingot");
 	public static final ResourceKey<Item> BRONZE_REINFORCED_CRUCIBLE = create("bronze_reinforced_crucible");
+	public static final ResourceKey<Item> STEEL_SHEET = create("steel_sheet");
+	public static final ResourceKey<Item> STEEL_BLADE = create("steel_blade");
 
 
 	private ModItemIds() {

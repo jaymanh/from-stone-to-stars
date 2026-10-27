@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#from-stone-to-stars:crafting_hammers",
+    "from-stone-to-stars:steel_sheet"
+  ],
+  "result": {
+    "id": "from-stone-to-stars:steel_blade",
+    "count": 1
+  }
+}

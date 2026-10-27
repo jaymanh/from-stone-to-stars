@@ -2,7 +2,7 @@
 994aa01c3bf4d7147e42d193bd399462d0525404 data/from-stone-to-stars/tags/block/coal_blocks.json
 93de868885dd785c891bdbd8fe923928b3e4fdca data/from-stone-to-stars/tags/block/forge_frame.json
 70e744d66c140071c9b730bad06017a5bd6c84d9 data/from-stone-to-stars/tags/block/fsts_charcoal_flammable.json
-bab0e7b0a807f417b59e2034ff0d91be06c4e84d data/from-stone-to-stars/tags/block/fsts_wood_flammable.json
+b6f39601b4e0e9e2148835e3501c0042db410676 data/from-stone-to-stars/tags/block/fsts_wood_flammable.json
 8dec544dc192356a1a9be43011e4084b7401f316 data/from-stone-to-stars/tags/block/incorrect_for_bone_tool.json
 7fa7b6e07e813cf38a1c6fe3c38f400a126cf0e1 data/from-stone-to-stars/tags/block/incorrect_for_bronze_tool.json
 e2a59112edce555e0e8cea0417842c7b4e70ed56 data/from-stone-to-stars/tags/block/incorrect_for_flint_tool.json
@@ -16,7 +16,7 @@ ce7804509e2dc42227f78fe132a1605df1b0abe9 data/minecraft/tags/block/incorrect_for
 7e24f9e2de82672846dbf7cd838f93f7c96f0ed1 data/minecraft/tags/block/incorrect_for_gold_tool.json
 ce7804509e2dc42227f78fe132a1605df1b0abe9 data/minecraft/tags/block/incorrect_for_stone_tool.json
 7e24f9e2de82672846dbf7cd838f93f7c96f0ed1 data/minecraft/tags/block/incorrect_for_wooden_tool.json
-e3a21305167876f347bdc82484af0bd7f176bad5 data/minecraft/tags/block/mineable/axe.json
-824e0b31a375fbace3412102e19f1eca1370e9eb data/minecraft/tags/block/mineable/pickaxe.json
+9975488052f4a22161fbf4e482b57c71bb600d96 data/minecraft/tags/block/mineable/axe.json
+04e2a26792a56e70c984465af4d411fa1cf71cb9 data/minecraft/tags/block/mineable/pickaxe.json
 95b828478af8ca7a64abdc4344a56cfd8e137700 data/minecraft/tags/block/mineable/shovel.json
 0fb180e02a304154fb92d04e0940712b709ed904 data/minecraft/tags/block/needs_iron_tool.json

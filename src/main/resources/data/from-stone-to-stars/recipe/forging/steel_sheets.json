@@ -1,0 +1,10 @@
+{
+  "type": "from-stone-to-stars:forging",
+  "ingredient": "from-stone-to-stars:heated_steel_ingot",
+  "ingredient_count": 2,
+  "hits": 8,
+  "result": {
+    "id": "from-stone-to-stars:steel_sheet",
+    "count": 4
+  }
+}

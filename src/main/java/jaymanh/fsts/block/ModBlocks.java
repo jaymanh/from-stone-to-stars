@@ -291,6 +291,24 @@ public final class ModBlocks {
 			Block::new,
 			BlockBehaviour.Properties.of().strength(0.6f).sound(SoundType.STONE)
 	);
+	public static final Block STEEL_SAW_BLADES = register(
+			ModBlockItemIds.STEEL_SAW_BLADES,
+			SteelSawBlock::new,
+			BlockBehaviour.Properties.of().sound(SoundType.IRON)
+					.strength(2f)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
+	public static final Block WOODEN_ROLLERS = register(
+			ModBlockItemIds.WOODEN_ROLLERS,
+			WoodenRollersBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOD)
+					.sound(SoundType.WOOD)
+					.strength(1.0F, 2.0F)
+					.noOcclusion()
+					.ignitedByLava()
+	);
 
 	private ModBlocks() {
 	}

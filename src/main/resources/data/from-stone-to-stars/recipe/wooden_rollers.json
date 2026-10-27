@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:wooden_shaft"
+  },
+  "result": {
+    "id": "from-stone-to-stars:wooden_rollers",
+    "count": 1
+  }
+}

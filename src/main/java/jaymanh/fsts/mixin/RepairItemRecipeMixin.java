@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import jaymanh.fsts.item.ClayJugItem;
 import jaymanh.fsts.item.CrucibleItem;
 import jaymanh.fsts.tools.FlintKnifeItem;
+import jaymanh.fsts.tools.ForgingHammerItem;
 import jaymanh.fsts.tools.HammerstoneItem;
 import jaymanh.fsts.tools.LeatherSkinItem;
 
@@ -23,6 +24,7 @@ public class RepairItemRecipeMixin {
 		if (item instanceof LeatherSkinItem
 				|| item instanceof ClayJugItem
 				|| item instanceof HammerstoneItem
+				|| item instanceof ForgingHammerItem
 				|| item instanceof CrucibleItem
 				|| item instanceof FlintKnifeItem) {
 			cir.setReturnValue(false);
