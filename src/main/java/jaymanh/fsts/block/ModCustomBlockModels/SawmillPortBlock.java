@@ -7,6 +7,7 @@ import jaymanh.fsts.block.entity.SawArborBlockEntity;
 import jaymanh.fsts.block.entity.SawmillPortBlockEntity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -15,9 +16,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 /**
@@ -26,14 +32,24 @@ import net.minecraft.world.phys.BlockHitResult;
  */
 public class SawmillPortBlock extends BaseEntityBlock {
 	public static final MapCodec<SawmillPortBlock> CODEC = simpleCodec(SawmillPortBlock::new);
+	/** Direction logs travel through the mill; set by the saw arbor when formed. */
+	public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
+	/** True while the sawmill is cutting; drives the client animation. */
+	public static final BooleanProperty WORKING = BooleanProperty.create("working");
 
 	public SawmillPortBlock(Properties properties) {
 		super(properties);
+		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WORKING, false));
 	}
 
 	@Override
 	protected MapCodec<? extends SawmillPortBlock> codec() {
 		return CODEC;
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(FACING, WORKING);
 	}
 
 	@Override

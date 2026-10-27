@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "": { "model": "from-stone-to-stars:block/plank_outfeed" }
-  }
+  "multipart": [
+    { "apply": { "model": "from-stone-to-stars:block/plank_outfeed" } }
+  ]
 }

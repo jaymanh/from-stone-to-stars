@@ -3,6 +3,7 @@ package jaymanh.fsts.client;
 import jaymanh.fsts.block.entity.ModBlockEntities;
 import jaymanh.fsts.client.renderer.BronzeChestModel;
 import jaymanh.fsts.client.renderer.BronzeChestRenderer;
+import jaymanh.fsts.client.renderer.SawmillPortRenderer;
 import jaymanh.fsts.client.screen.ForgingStumpScreen;
 import jaymanh.fsts.inventory.ModMenus;
 
@@ -19,5 +20,6 @@ public class FromStoneToStarsClient implements ClientModInitializer {
 		ModelLayerRegistry.registerModelLayer(BronzeChestModel.LEFT, BronzeChestModel::createLeftLayer);
 		ModelLayerRegistry.registerModelLayer(BronzeChestModel.RIGHT, BronzeChestModel::createRightLayer);
 		BlockEntityRenderers.register(ModBlockEntities.BRONZE_CHEST, BronzeChestRenderer::new);
+		BlockEntityRenderers.register(ModBlockEntities.SAWMILL_PORT, SawmillPortRenderer::new);
 	}
 }

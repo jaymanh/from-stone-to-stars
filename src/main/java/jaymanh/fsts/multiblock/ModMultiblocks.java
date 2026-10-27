@@ -67,7 +67,7 @@ public final class ModMultiblocks {
 		AssemblyRegistry.register(new AssemblyDefinition(
 				SAWMILL_ID,
 				BlockPredicates.is(ModBlocks.SAW_ARBOR),
-				new AABB(-6.0, -3.0, -6.0, 7.0, 4.0, 7.0),
+				new AABB(-21.0, -3.0, -21.0, 22.0, 4.0, 22.0),
 				List.of(SawmillLayout.Rule.INSTANCE),
 				SawmillProcess::new,
 				Component.translatable("multiblock.from-stone-to-stars.sawmill")

@@ -28,7 +28,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
  * The arbor sits in one side column and faces into a wall of steel saw blades
  * (1–3 wide, 2–3 high) whose sides and top are framed. At ground level, each lane
  * continues both ways along the line through 1–4 rows of wooden rollers, ending in
- * a full row of log intakes on one end and plank outfeeds on the other.
+ * full rows of log intakes on one end and plank outfeeds on the other. Each end can be
+ * stacked deeper for storage: up to 2 intake rows or 4 outfeed rows per roller row.
  */
 public final class SawmillLayout {
 	public static final int MIN_WIDTH = 1;
@@ -37,6 +38,12 @@ public final class SawmillLayout {
 	public static final int MAX_BLADE_HEIGHT = 3;
 	public static final int MIN_BED = 1;
 	public static final int MAX_BED = 4;
+	/** Extra storage: rows of intakes allowed per infeed roller row. */
+	public static final int INTAKE_ROWS_PER_ROLLER_ROW = 2;
+	/** Extra storage: rows of outfeeds allowed per outfeed roller row. */
+	public static final int OUTFEED_ROWS_PER_ROLLER_ROW = 4;
+	public static final int MAX_INTAKES = MAX_WIDTH * MAX_BED * INTAKE_ROWS_PER_ROLLER_ROW;
+	public static final int MAX_OUTFEEDS = MAX_WIDTH * MAX_BED * OUTFEED_ROWS_PER_ROLLER_ROW;
 
 	public static final String RULE_ID = "sawmill_layout";
 
@@ -49,6 +56,9 @@ public final class SawmillLayout {
 	private final List<BlockPos> intakes;
 	private final List<BlockPos> outfeeds;
 	private final List<BlockPos> lanes;
+	private final Direction feedDirection;
+	private final int infeedRows;
+	private final int outfeedRows;
 
 	private SawmillLayout(
 			int width,
@@ -59,8 +69,14 @@ public final class SawmillLayout {
 			List<BlockPos> outfeedRollers,
 			List<BlockPos> intakes,
 			List<BlockPos> outfeeds,
-			List<BlockPos> lanes
+			List<BlockPos> lanes,
+			Direction feedDirection,
+			int infeedRows,
+			int outfeedRows
 	) {
+		this.feedDirection = feedDirection;
+		this.infeedRows = infeedRows;
+		this.outfeedRows = outfeedRows;
 		this.width = width;
 		this.bladeHeight = bladeHeight;
 		this.blades = List.copyOf(blades);
@@ -86,6 +102,29 @@ public final class SawmillLayout {
 
 	public List<BlockPos> outfeedRollers() {
 		return this.outfeedRollers;
+	}
+
+	/** All intakes, nearest row to the rollers first, {@link #width()} per row. */
+	public List<BlockPos> intakes() {
+		return this.intakes;
+	}
+
+	/** All outfeeds, nearest row to the rollers first, {@link #width()} per row. */
+	public List<BlockPos> outfeeds() {
+		return this.outfeeds;
+	}
+
+	/** Direction logs travel, from the intakes toward the outfeeds. */
+	public Direction feedDirection() {
+		return this.feedDirection;
+	}
+
+	public int infeedRows() {
+		return this.infeedRows;
+	}
+
+	public int outfeedRows() {
+		return this.outfeedRows;
 	}
 
 	/** Bottom blade of each lane, where logs pass through. */
@@ -134,9 +173,9 @@ public final class SawmillLayout {
 		OUTFEED
 	}
 
-	private record Bed(Optional<Component> failure, List<BlockPos> rollers, List<BlockPos> ends, BedEnd end) {
+	private record Bed(Optional<Component> failure, List<BlockPos> rollers, List<BlockPos> ends, BedEnd end, Direction direction, int rows) {
 		static Bed fail(Component reason) {
-			return new Bed(Optional.of(reason), List.of(), List.of(), null);
+			return new Bed(Optional.of(reason), List.of(), List.of(), null, null, 0);
 		}
 	}
 
@@ -247,7 +286,10 @@ public final class SawmillLayout {
 				outfeed.rollers(),
 				infeed.ends(),
 				outfeed.ends(),
-				lanes
+				lanes,
+				infeed.direction().getOpposite(),
+				infeed.rows(),
+				outfeed.rows()
 		));
 	}
 
@@ -290,16 +332,48 @@ public final class SawmillLayout {
 
 		BedEnd end = null;
 		for (BlockPos pos : endRow) {
-			BlockState state = level.getBlockState(pos);
-			BedEnd here = state.is(ModBlocks.LOG_INTAKE) ? BedEnd.INTAKE
-					: state.is(ModBlocks.PLANK_OUTFEED) ? BedEnd.OUTFEED
-					: null;
+			BedEnd here = endAt(level, pos);
 			if (here == null || (end != null && here != end)) {
 				return Bed.fail(translatable("bed_end", blockName(level, pos), posText(pos)));
 			}
 			end = here;
 		}
-		return new Bed(Optional.empty(), rollers, endRow, end);
+
+		int maxEndRows = rows * (end == BedEnd.INTAKE ? INTAKE_ROWS_PER_ROLLER_ROW : OUTFEED_ROWS_PER_ROLLER_ROW);
+		List<BlockPos> ends = new ArrayList<>(endRow);
+		int endRows = 1;
+		while (true) {
+			List<BlockPos> row = rowAt(lanes, direction, rows + endRows + 1);
+			int matching = 0;
+			BlockPos firstOther = null;
+			for (BlockPos pos : row) {
+				if (endAt(level, pos) == end) {
+					matching++;
+				} else if (firstOther == null) {
+					firstOther = pos;
+				}
+			}
+			if (matching == 0) {
+				break;
+			}
+			if (firstOther != null) {
+				return Bed.fail(translatable("partial_end_row", blockName(level, firstOther), posText(firstOther)));
+			}
+			endRows++;
+			if (endRows > maxEndRows) {
+				String key = end == BedEnd.INTAKE ? "too_many_intake_rows" : "too_many_outfeed_rows";
+				return Bed.fail(translatable(key, maxEndRows, rows));
+			}
+			ends.addAll(row);
+		}
+		return new Bed(Optional.empty(), rollers, ends, end, direction, rows);
+	}
+
+	private static BedEnd endAt(LevelAccessor level, BlockPos pos) {
+		BlockState state = level.getBlockState(pos);
+		return state.is(ModBlocks.LOG_INTAKE) ? BedEnd.INTAKE
+				: state.is(ModBlocks.PLANK_OUTFEED) ? BedEnd.OUTFEED
+				: null;
 	}
 
 	private static List<BlockPos> rowAt(List<BlockPos> lanes, Direction direction, int distance) {

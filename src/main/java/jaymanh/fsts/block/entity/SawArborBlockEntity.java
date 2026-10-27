@@ -3,6 +3,7 @@ package jaymanh.fsts.block.entity;
 import java.util.List;
 import java.util.Optional;
 
+import jaymanh.fsts.block.ModCustomBlockModels.SawmillPortBlock;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.multiblock.AssemblyMatch;
 import jaymanh.fsts.multiblock.AssemblyMatcher;
@@ -16,6 +17,7 @@ import jaymanh.fsts.rotation.RotationStatus;
 import jaymanh.fsts.util.LogPlanks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -31,6 +33,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -43,11 +46,13 @@ import net.minecraft.world.phys.AABB;
 public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 	public static final int PLANKS_PER_LOG = 6;
 	public static final int LOGS_PER_INFEED_ROLLER = 16;
-	public static final int MAX_SLOTS = SawmillLayout.MAX_WIDTH * SawmillLayout.MAX_BED;
+	public static final int MAX_INPUT_SLOTS = SawmillLayout.MAX_WIDTH * SawmillLayout.MAX_BED + SawmillLayout.MAX_INTAKES;
+	public static final int MAX_OUTPUT_SLOTS = SawmillLayout.MAX_WIDTH * SawmillLayout.MAX_BED + SawmillLayout.MAX_OUTFEEDS;
 	private static final int ASSEMBLY_RETRY_TICKS = 40;
+	private static final int PORT_SYNC_TICKS = 10;
 
-	private final NonNullList<ItemStack> input = NonNullList.withSize(MAX_SLOTS, ItemStack.EMPTY);
-	private final NonNullList<ItemStack> output = NonNullList.withSize(MAX_SLOTS, ItemStack.EMPTY);
+	private final NonNullList<ItemStack> input = NonNullList.withSize(MAX_INPUT_SLOTS, ItemStack.EMPTY);
+	private final NonNullList<ItemStack> output = NonNullList.withSize(MAX_OUTPUT_SLOTS, ItemStack.EMPTY);
 
 	private FormedMultiblock formed;
 	private boolean participantsLinked;
@@ -100,7 +105,14 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 			current.tick(level);
 		}
 
+		if (current.isActive() && this.layout != null && level.getGameTime() % PORT_SYNC_TICKS == 0) {
+			this.syncPorts(level, this.layout, this.isSpinning() && this.isNetworkActive() && this.canCut());
+		}
+
 		if (!current.isActive()) {
+			if (this.layout != null) {
+				this.syncPorts(level, this.layout, false);
+			}
 			ActiveMultiblocks.unregister(level, current);
 			this.formed = null;
 			this.layout = null;
@@ -141,6 +153,38 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 		RotationNetwork.update(level, this.worldPosition);
 	}
 
+	/** Points every port along the line and tells it whether to animate and which wood to show. */
+	private void syncPorts(ServerLevel level, SawmillLayout layout, boolean working) {
+		ItemStack log = ItemStack.EMPTY;
+		for (int slot = 0; slot < this.inputSlots() && log.isEmpty(); slot++) {
+			log = this.input.get(slot);
+		}
+		ItemStack planks = log.isEmpty() ? ItemStack.EMPTY : new ItemStack(planksFor(log));
+		Direction feed = layout.feedDirection();
+		List<BlockPos> intakes = layout.intakes();
+		for (int i = 0; i < intakes.size(); i++) {
+			syncPort(level, intakes.get(i), feed, working && i < layout.width(), log, layout.infeedRows() + 1);
+		}
+		List<BlockPos> outfeeds = layout.outfeeds();
+		for (int i = 0; i < outfeeds.size(); i++) {
+			syncPort(level, outfeeds.get(i), feed, working && i < layout.width(), planks, layout.outfeedRows() + 1);
+		}
+	}
+
+	private static void syncPort(ServerLevel level, BlockPos pos, Direction feed, boolean working, ItemStack display, int distance) {
+		BlockState state = level.getBlockState(pos);
+		if (!(state.getBlock() instanceof SawmillPortBlock)) {
+			return;
+		}
+		BlockState updated = state.setValue(SawmillPortBlock.FACING, feed).setValue(SawmillPortBlock.WORKING, working);
+		if (updated != state) {
+			level.setBlock(pos, updated, Block.UPDATE_CLIENTS);
+		}
+		if (working && level.getBlockEntity(pos) instanceof SawmillPortBlockEntity port) {
+			port.setDisplay(display, distance);
+		}
+	}
+
 	public boolean isFormed() {
 		return this.formed != null && this.formed.isActive() && this.layout != null;
 	}
@@ -155,11 +199,17 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 	}
 
 	public int inputSlots() {
-		return this.isFormed() ? Math.min(MAX_SLOTS, this.layout.infeedRollers().size()) : 0;
+		if (!this.isFormed()) {
+			return 0;
+		}
+		return Math.min(MAX_INPUT_SLOTS, this.layout.infeedRollers().size() + this.layout.intakes().size());
 	}
 
 	public int outputSlots() {
-		return this.isFormed() ? Math.min(MAX_SLOTS, this.layout.outfeedRollers().size()) : 0;
+		if (!this.isFormed()) {
+			return 0;
+		}
+		return Math.min(MAX_OUTPUT_SLOTS, this.layout.outfeedRollers().size() + this.layout.outfeeds().size());
 	}
 
 	public ItemStack getInput(int slot) {
@@ -245,7 +295,7 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 
 	public boolean takeAllOutput(Player player) {
 		boolean took = false;
-		for (int slot = 0; slot < MAX_SLOTS; slot++) {
+		for (int slot = 0; slot < MAX_OUTPUT_SLOTS; slot++) {
 			ItemStack stack = this.output.get(slot);
 			if (!stack.isEmpty()) {
 				this.output.set(slot, ItemStack.EMPTY);
@@ -468,6 +518,9 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 			FormedMultiblock current = this.formed;
 			if (current == null) {
 				current = ActiveMultiblocks.get(serverLevel, pos).orElse(null);
+			}
+			if (this.layout != null) {
+				this.syncPorts(serverLevel, this.layout, false);
 			}
 			if (current != null) {
 				if (current.isActive()) {
