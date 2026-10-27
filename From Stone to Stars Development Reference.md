@@ -6,7 +6,7 @@
 
 This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Ages 0 and 1 cite the numbers that ship in 0.8.0. Later ages leave recipe counts for a balancing pass.
 
-> **Implementation status (2026-10-12):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, and a steel alloy already exist as the door. The planned factory is steel parts, an ironworks that crushes and smelts, and a drill that bores eight blocks. That factory is not built. Ages after Age 2 describe intended gameplay.
+> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory, an ironworks that crushes and smelts and a drill that bores eight blocks, is not built. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
 
 ## Contents
 
@@ -71,7 +71,7 @@ The proposed structure uses twelve substantial ages. Names may evolve, but every
 | --- | --- | --- | --- | --- | --- |
 | 0 | Primitive and Stone | Survival and settlement | Pebbles, flint tools, hideworking, bone-hafted tools, fire, charcoal, clay bricks, thatch, snares | Tanning rack, snares, fish traps, charcoal pile, brick drying pit | Establish a permanent settlement |
 | 1 | Zinc and Bronze | Soft metal and first motion | Bronze tools, forge and bellows, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, bronze hopper | Water wheel → shaft (max 8) → a yard machine, fed by a slow turning hopper | Turn river power into dependable metalwork |
-| 2 | Iron and Steel | Mechanical engineering | Iron tools, steel plates and rods, ironworks, marked-face drill | A strong wheel turns a drill and an ironworks; a weak wheel turns one of them | Run one riverside line that feeds itself |
+| 2 | Iron and Steel | Mechanical engineering | Iron tools, steel sheets and blades, sawmill, ironworks, marked-face drill | A strong wheel turns a drill and an ironworks; a weak wheel turns one of them | Run one riverside line that feeds itself |
 | 3 | Steam | Industrial Revolution | Boilers, engines, turbines, pipes, pumps, pressure tanks, locomotives, cranes | Steam network feeding multiple machines | Generate and distribute controlled steam power |
 | 4 | Electricity | Second Industrial Revolution | Generators, wire, batteries, motors, transformers, electromagnets, lighting, rail | Electrical grid and powered machinery | Generate, store, and use electricity |
 | 5 | Electronics | Information and control | Transistors, boards, logic gates, sensors, timers, computers, controllers, storage | Condition-based factory control | Build a responsive automated process |
@@ -94,7 +94,7 @@ Soft metal and the first connected workshop. Bronze tools and a river mill teach
 
 #### Iron and Steel
 
-Iron, steel, and the first line that feeds itself. The material path is already in the mod. The ironworks and the drill are planned below and are not built.
+Iron, steel, and the first line that feeds itself. The material path, steel parts, and the sawmill are already in the mod. The ironworks and the drill are planned below and are not built.
 
 ### Age 0 Primitive and Stone
 
@@ -128,7 +128,7 @@ Zinc ore, raw zinc, zinc ingots, and bronze tools use those names in code. Cruci
 | Vanilla feature | Treatment |
 | --- | --- |
 | Wooden / stone / copper tool recipes and wooden/stone tool loot | Removed. |
-| Plank recipes (overworld woods, bamboo, crimson, warped) | Removed; bone saw supplies planks. |
+| Plank recipes (overworld woods, bamboo, crimson, warped) | Removed; bone saw supplies planks. The Age 2 sawmill is the bulk source. |
 | Crafting table recipe | Vanilla recipe removed. The work stump is the Age 0 table. A later craft returns a vanilla table: bronze plate, nails, leather strips, and an unfinished work stump. |
 | Furnace, flint and steel, barrel, shield | Recipes removed. |
 | Bucket | Vanilla recipe removed. The Age 1 bronze bucket picks up and places water, lava, and powder snow. |
@@ -413,7 +413,7 @@ age0/zinc_gleam
 
 ### Age 2 Iron and Steel
 
-Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a line that feeds itself. The door below ships in 0.8.0. The ironworks, the drill, the steel parts, and the `age2` advancements are the plan. They are not in the mod yet.
+Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a line that feeds itself. The iron door ships in 0.8.0. Steel parts and the sawmill have been added since. The ironworks, the drill, and the `age2` advancements are the plan. They are not in the mod yet.
 
 > **Age motto:** The yard learned to turn. The ironworks has to keep feeding itself.
 
@@ -430,7 +430,7 @@ Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, a
 
 #### What already exists
 
-This is the iron a player can make in 0.8.0. It is a hand workshop that uses the Age 1 machines.
+This is the iron and steel a player can make today. It is a hand workshop that uses the Age 1 machines, plus the sawmill.
 
 | Step | Live behaviour |
 | --- | --- |
@@ -445,15 +445,51 @@ This is the iron a player can make in 0.8.0. It is a hand workshop that uses the
 | Iron hammer and knife | Mod tools, from a tool head, a nail, and a stick. The hammer strikes the forging stump and flints gravel. The knife is a short blade. |
 | Crushed iron | Once raw iron exists: 1 raw iron, 16 hits → 2 crushed iron, each smelted into an ingot. Copper, gold, and zinc follow the same pattern. |
 | Vanilla blast furnace | Crafted from iron ingots around a basic smelter, on smooth stone. It is a hotter furnace the player can build. It is not the ironworks named in the age table. |
-| Steel | Crucible: 6 iron ingots + 1 item from `#minecraft:coals` → 2 steel ingots (200 ticks, 0.7 experience). No recipe consumes the ingot yet. |
+| Steel | Crucible: 6 iron ingots + 1 item from `#minecraft:coals` → 2 steel ingots (200 ticks, 0.7 experience). |
+| Steel parts | Blast a steel ingot for 100 ticks into heated steel (same 60-second cool-down). Forging: 2 heated steel, 8 hits → 4 steel sheets. Shapeless craft: a hammer + 1 steel sheet → 1 steel blade. Four blades in a 2×2 → 1 steel saw blades block. |
+| Crafting hammers | Hammerstone, bronze hammer, and iron hammer (`crafting_hammers`) return from a craft 1 durability more worn. A hammer on its last point is used up. |
+| Sawmill | A formed multiblock and the first steel machine. Details below. |
 
 There is no `age2` advancement tree yet. The tree in **Proof of Iron** is the one to write.
+
+#### Sawmill
+
+The sawmill shipped ahead of the ironworks. It is the steel saw from the earlier plan, built as a formed multiblock rather than one block. It replaces the bone saw's four clicks per log with a bed of rollers on the wheel.
+
+| Piece | Recipe | Role |
+| --- | --- | --- |
+| Saw arbor | Planks, 1 steel ingot, 2 wooden shafts, 1 rotation gear | Controller. Turned from the back by a shaft. Holds the shared log and plank stores. |
+| Steel saw blades | 4 steel blades | The blade wall. Each column is one lane. |
+| Wooden rollers | 3 wooden shafts | The bed. Each roller is one storage slot. |
+| Log intake | Planks around wooden rollers | Input end. All intakes share one log store. |
+| Plank outfeed | Planks around wooden rollers | Output end. All outfeeds share one plank store. |
+
+```text
+side view (logs travel ->)         front view of the blade wall
+         F  F  F  F                       F F F F F
+         F  S                             F S S S F
+I  R  R  S  R  R  O                       A S S S F
+```
+
+| Rule | Live behaviour |
+| --- | --- |
+| Blade wall | The arbor faces into steel saw blades 1–3 wide and 2–3 high, all facing along the line. |
+| Frame | The arbor's column above or below it, the far side of the blades, and a beam across the top. Any log, plank, cobblestone, or stone bricks (`sawmill_frame`). |
+| Bed | At the bottom of each blade column, 1–4 full rows of wooden rollers run out both ways along the line. |
+| Ends | One end is full rows of log intakes, the other full rows of plank outfeeds. Up to 2 intake rows per infeed roller row and 4 outfeed rows per outfeed roller row. |
+| Storage | Each infeed roller or intake holds 16 logs. Each outfeed roller or outfeed holds a stack of planks. |
+| Forming | It assembles itself when the arbor turns, retrying every 2 seconds. Clicking the arbor shows its status or why it won't form. |
+| Cutting | Each lane cuts one log into 6 planks per cycle. The cycle is 40 ticks at 2 blades high and 34 at 3. It stops when the arbor stops or the plank store has no room. |
+| Loading | Logs go into any intake by hand or by hopper. Logs dropped on the infeed rollers are pulled in every 10 ticks. Hoppers can pull planks from any outfeed. Empty hand on an outfeed takes all planks. |
+| Wheel cost | 1 per lane once formed (`SAW_ARBOR_COST_PER_LANE`). A weak wheel runs a 1-lane mill. A strong wheel runs a 2-lane mill, or a 1-lane mill and one other machine. A 3-lane mill overloads any single wheel. |
+
+The ports animate logs and planks moving along the bed. JEI has a sawmill category and info pages for each piece. Jade and WTHIT do not have a sawmill-specific overlay yet.
 
 #### Steel
 
 Steel is the machine metal. It is not a new mining tier. Iron stays the tool that mines iron ore. A steel pick that opens diamond would skip the rest of the age table, so this age forges no steel tools and no steel armor.
 
-The crucible recipe stays: 6 iron ingots + 1 `#minecraft:coals` → 2 steel ingots. Heat a steel ingot the way bronze, copper, and iron already heat (blasting recipe, 60 seconds of cool-down off the fire). Forge it on the stump into **steel plates** and **steel rods**. Counts wait for a balance pass. Those two parts are what the ironworks and the drill are made of. Until they exist, the ingot has nowhere to go, which is the hole in 0.8.0.
+The crucible recipe stays: 6 iron ingots + 1 `#minecraft:coals` → 2 steel ingots. Heated steel forges on the stump into **steel sheets**, and a hammer cuts a sheet into a **steel blade**. Sheets fill the role the earlier plan called plates. Blades currently go only into saw blades. A **steel rod** does not exist yet. Either add it for the drill, or build the drill from sheets and blades. Sheets, blades, and the saw arbor's ingot are the live uses of steel. The ironworks and the drill should be made from the same parts.
 
 The ironworks can also run that same alloy when it is fed iron ingots and coal, so a finished line can make the parts for the next machine. The crucible recipe remains the hand way.
 
@@ -467,7 +503,7 @@ Nothing in this age changes `RotationConstants`. Wooden shafts still stop at 8 b
 | Ironworks | 1 for the whole line | Crush, then smelt. |
 | Drill | 1 | Bore a face and drop the pieces. |
 | Vanilla hopper | 0 | Moves items and does not ask the wheel. |
-| Steel saw (later, optional) | 1 | Competes for a slot. Not part of the proof. |
+| Sawmill (ships) | 1 per lane | Competes for a slot. Not part of the proof. |
 
 The intended strong-wheel line is a gear, then two backs: the drill, and the ironworks under it. The drill's output is the block below it, which is the ironworks input. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall. A vanilla hopper under the ironworks takes the ingots away for free.
 
@@ -502,7 +538,7 @@ Fuel amounts and the crush-then-smelt timing wait for a balance pass. The first 
 
 #### Drill
 
-One block. Steel rod, steel plate, and an iron pick head, counts in the balance pass. The shaft enters the back. It bites the block it faces.
+One block. Steel sheets, an iron pick head, and either a new steel rod or steel blades, counts in the balance pass. The shaft enters the back. It bites the block it faces.
 
 | Rule | Plan |
 | --- | --- |
@@ -520,14 +556,14 @@ An earlier pass of this age named pistons, springs, bearings, chains, pumps, and
 
 | Name | In this plan |
 | --- | --- |
-| Steel | Plates and rods. The machines are made of them. |
+| Steel | Sheets and blades ship. A rod is still open. The machines are made of them. |
 | Blast furnace | The ironworks hearth. The vanilla blast furnace stays. |
 | Piston, spring | Crafting pieces inside the drill head. Not a rotation piston, and not a replacement for the vanilla piston. |
 | Bearing | The drill's mount on the shaft. Gears still turn corners. |
 | Chain | No longer shaft. Wooden shafts stay capped at 8. |
 | Pump | Steam. The ironworks carries its own draft. |
 | Drill | The 8-block bore above. |
-| Saw | Optional, after the line is worth using. A steel saw as one machine, logs into planks, faster than the bone saw, costing a wheel slot. Not part of Proof of Iron. The bone saw stays the early plank tool. |
+| Saw | Ships as the sawmill multiblock, ahead of the line. Logs into planks, far faster than the bone saw, 1 wheel slot per lane. Not part of Proof of Iron. The bone saw stays the early plank tool. |
 
 #### The line
 
@@ -559,16 +595,17 @@ age1/iron_stain
 
 #### Implementation order
 
-1. Heated steel, then steel plate and steel rod on the forging stump. Steel has a craft. No new block yet.
-2. Ironworks: the three-block line, one machine cost, hopper faces, crush then smelt, its own draft.
+1. ~~Heated steel and steel parts on the forging stump.~~ Done: heated steel, sheets, blades, saw blades. A steel rod is still open.
+2. Ironworks: the three-block line, one machine cost, hopper faces, crush then smelt, its own draft. **Next.**
 3. Drill: 8-block bore, drops into the block below, iron-pick rules.
 4. The `age2` advancements above.
-5. A steel saw only after the line is worth leaving running.
+5. ~~A steel saw.~~ Done early as the sawmill multiblock.
 
 #### Design rules for this age
 
 - If a village chest can hand the player an iron pick, rusty mud is optional. Keep found iron stripped.
-- If steel is a second ingot with nothing to craft, it is not an age. Plates and rods are the job. The machines are built out of them.
+- If steel is a second ingot with nothing to craft, it is not an age. Sheets and blades are the job. The machines are built out of them.
+- If the sawmill makes planks cheap before the player has steel, every camp becomes a vanilla house. Keep it behind steel.
 - If the "factory" is one hopper into the Age 1 quern, Age 1 already shipped. Age 2 removes the carry from crusher to furnace, and then the swing at the vein.
 - The vanilla blast furnace and the forge stay. The ironworks earns its place by crushing and smelting in one spinning line.
 - Shafts stay capped at 8. Wheel capacity stays 1 or 2. A part that raises either number has stolen Age 2's constraint.
@@ -581,7 +618,7 @@ age1/iron_stain
 
 | Discipline | Age 2 expression |
 | --- | --- |
-| Engineering | Steel plates and rods, the drill head, the three-block ironworks |
+| Engineering | Steel sheets and blades, the sawmill, the drill head, the three-block ironworks |
 | Energy | The same water wheel, now asked to run two machines when the stream is strong |
 | Chemistry | Specks to iron, iron and coal to steel, crushed ore to ingots inside the line |
 | Biology | Unchanged from Age 1 |
@@ -591,7 +628,7 @@ age1/iron_stain
 
 #### Iron and Steel (summary)
 
-The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. The plan spends steel on an ironworks and a drill. A strong wheel turns both. A weak wheel turns one. The player still walks the drill forward when the eight blocks are gone.
+The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. Steel already forges into sheets and blades, and the sawmill is the first steel machine on the wheel. The plan spends steel next on an ironworks and a drill. A strong wheel turns both. A weak wheel turns one. The player still walks the drill forward when the eight blocks are gone.
 
 ### Steam
 
@@ -628,7 +665,7 @@ Research should reward demonstrated competence. A breakthrough is unlocked when 
 | --- | --- |
 | Settlement (Age 0) | Start fire; fire clay bricks; finish a tanning-rack process; set a snare or fish trap; sleep in a hide bed; haft a bone axe; build a work stump. |
 | Bronze (Age 1) | Alloy a bronze ingot; haft a bronze tool; spin a water wheel in flowing water; finish a powered quern grind or a trip-hammer forging; pump the bellows on a lit forge. |
-| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; run a spinning ironworks through a smelt; bore a block with a spinning drill. The ingot and the pick are playable. Steel has no part to craft yet. The ironworks, the drill, and the `age2` tree are planned, not built. |
+| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; run a spinning ironworks through a smelt; bore a block with a spinning drill. The ingot, the pick, steel parts, and the sawmill are playable. The ironworks, the drill, and the `age2` tree are planned, not built. |
 | Steam | Build a steam engine; turn steam into mechanical power; run a multi-machine line on that power. The first steel ingot belongs to Age 2. |
 | Electricity | Produce copper wire; build a generator; store a threshold of mechanical energy; create an electromagnetic device; deliver electrical power to a machine. |
 | Electronics | Manufacture a circuit board; install a sensor; automate a condition-based response; retain operational data or a timing program. |
@@ -679,7 +716,7 @@ Factory layout should matter. Machines are part of a connected environment and s
 | Era | Logistics method | New design question |
 | --- | --- | --- |
 | Early (Age 0–1) | Shelves, storage pots, bronze chests; a rotation-powered bronze hopper | Where do I keep materials, and how do I pass one stack into the mill? |
-| Mechanical (Age 2) | Drill drops into the ironworks; a vanilla hopper takes the ingots. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
+| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Planned: the drill drops into the ironworks; a vanilla hopper takes the ingots. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
 | Industrial | Item pipes and pumps | How do I route materials through a larger footprint? |
 | Electronic | Addressed logistics network | How does demand choose the destination? |
 | Advanced | Drones and mobile routing | How do I serve flexible or remote sites? |
@@ -799,7 +836,7 @@ All player-facing companion mods are **optional**. The game must launch and Age 
 | --- | --- | --- | --- | --- |
 | Mod Menu | `modmenu` | Config button in the mod list | `modmenu` entrypoint | Live. Button is a no-op unless YACL is also installed. |
 | YetAnotherConfigLib | `yet_another_config_lib_v3` | Config screen | Called from Mod Menu factory | Live. Dev runtime includes YACL so the screen can be tested. |
-| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, brick drying, forge assembly, manual bone sawing, grinding, crucible alloying, forging, and world interactions (axe bark, work-stump hewing). Info pages cover the related blocks, including the quern, trip hammer, forging stump, and bronze hopper. |
+| JEI | `jei` | Recipe viewer | `jei_mod_plugin` entrypoint | Live. Categories for tanning, charcoal pile, brick drying, forge assembly, manual bone sawing, grinding, crucible alloying, forging, sawmill, and world interactions (axe bark, work-stump hewing). Info pages cover the related blocks, including the quern, trip hammer, forging stump, bronze hopper, and every sawmill piece. |
 | EMI | `emi` | Recipe viewer (preferred long-term on Fabric) | `emi` entrypoint, not registered yet | **Blocked:** no 26.2 Maven artifact. Placeholder: `FstsEmiPlugin`. |
 | Jade | `jade` | Look-at overlay | `jade` entrypoint | Live. Pebbles show waterlogged state. Tanning racks show hide %. Lit kindling shows charcoal-pile burn. Placed bone saws show stroke progress. Snares and fish traps show bait. Forge and other multiblocks show assembly. Rotation blocks show spinning, stalled, or overloaded. |
 | WTHIT | `wthit` | Look-at overlay | `wthit_plugins.json` | Live. Pebbles, tanning, charcoal piles, bone saws, snares, and rotation match Jade. Forge assembly is Jade only. |
@@ -868,4 +905,6 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-10-12 — Age 1 ships; Age 2 is iron and steel.** Doc aligned to 0.8.0. Age 1 is the bronze yard: forge, bellows, crucibles (8 and 32 uses), bronze tools, bucket, and chest, water wheel (capacity 1 or 2), shafts to 8 blocks, gears that pass the full turn, trip hammer (15 ticks a hit), powered quern (8 ticks a grind), bronze hopper (16 ticks a move, one machine cost). Crushed ore doubles a raw ore at 16 hits. The `age1` advancements parent off First Bronze, with the mill and the forge in parallel. Age 2's door ships: rusty mud to specks to iron, heated-iron tool heads and plates, vanilla iron tools and armor, iron knife and hammer, and a steel alloy nothing crafts with yet. Shafts stay put. Overload and the 8-block cap are the limits. Found iron loot stays stripped so the stain remains the door.
 
 **2026-10-12 — Age 2 plan.** Steel is machine metal: heat it, forge plates and rods, build an ironworks and a drill. No steel tools, no diamond mining. The ironworks is a three-block line (drive, crusher, hearth), one machine cost, crush-then-smelt, its own draft, input top and sides, output bottom. The drill bores 8 blocks, iron-pick rules, and drops into the block below. A strong wheel runs both when the drill sits on the ironworks. A bronze hopper between them would stall the wheel. Vanilla hoppers do not cost rotation. Pumps, pipes, belts, longer shafts, and a higher wheel capacity wait. Proof of Iron is planned and not in the datapack. Saw is optional and later.
+
+**2026-10-27 — Steel parts and the sawmill.** Heated steel (100-tick blast, 60-second cool-down) forges at 2 ingots and 8 hits into 4 steel sheets. A hammer cuts a sheet into a steel blade, and four blades make a steel saw blades block. Sheets take the place of the planned plates. No rod exists yet, so the drill recipe is open. Hammers in `crafting_hammers` now come back from crafts 1 durability more worn. The saw shipped ahead of the ironworks as a formed sawmill: a saw arbor, a blade wall 1–3 wide and 2–3 high framed in logs, planks, cobblestone, or stone bricks, 1–4 rows of wooden rollers each way, and log intakes and plank outfeeds at the ends. One log becomes 6 planks per lane per cycle (40 ticks, 34 at 3 high). It costs 1 rotation per lane, so wheel capacity still caps it at 2 lanes, and `RotationConstants` did not raise any limit. JEI covers it. Jade and WTHIT do not yet. The ironworks is next.
 
