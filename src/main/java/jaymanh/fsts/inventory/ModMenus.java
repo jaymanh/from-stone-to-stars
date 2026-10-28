@@ -13,6 +13,11 @@ public final class ModMenus {
 			FromStoneToStars.id("forging_stump"),
 			new MenuType<>(ForgingStumpMenu::new, FeatureFlags.VANILLA_SET)
 	);
+	public static final MenuType<TappingSpoutMenu> TAPPING_SPOUT = Registry.register(
+			BuiltInRegistries.MENU,
+			FromStoneToStars.id("tapping_spout"),
+			new MenuType<>(TappingSpoutMenu::new, FeatureFlags.VANILLA_SET)
+	);
 
 	private ModMenus() {
 	}

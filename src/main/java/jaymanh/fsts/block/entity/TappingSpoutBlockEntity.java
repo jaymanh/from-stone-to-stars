@@ -1,13 +1,16 @@
 package jaymanh.fsts.block.entity;
 
 import jaymanh.fsts.block.ModCustomBlockModels.TappingSpoutBlock;
+import jaymanh.fsts.inventory.TappingSpoutMenu;
 import jaymanh.fsts.item.HeatedMetalItem;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.HopperBlockEntity;
@@ -16,7 +19,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The forge's output. Only the forge fills it. Hoppers pull from any face, and it pushes one item
+ * The forge's output. Only the forge fills it; players can view and take but not insert.
+ * Hoppers pull from any face, and it pushes one item
  * at a time into the block it faces. Heated metal stays hot while it waits here.
  */
 public class TappingSpoutBlockEntity extends ForgeStoreBlockEntity {
@@ -86,6 +90,11 @@ public class TappingSpoutBlockEntity extends ForgeStoreBlockEntity {
 	@Override
 	protected Component getDefaultName() {
 		return Component.translatable("container.from-stone-to-stars.tapping_spout");
+	}
+
+	@Override
+	protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+		return new TappingSpoutMenu(containerId, inventory, this);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import jaymanh.fsts.client.renderer.BronzeChestModel;
 import jaymanh.fsts.client.renderer.BronzeChestRenderer;
 import jaymanh.fsts.client.renderer.SawmillPortRenderer;
 import jaymanh.fsts.client.screen.ForgingStumpScreen;
+import jaymanh.fsts.client.screen.TappingSpoutScreen;
 import jaymanh.fsts.inventory.ModMenus;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -16,6 +17,7 @@ public class FromStoneToStarsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		MenuScreens.register(ModMenus.FORGING_STUMP, ForgingStumpScreen::new);
+		MenuScreens.register(ModMenus.TAPPING_SPOUT, TappingSpoutScreen::new);
 		ModelLayerRegistry.registerModelLayer(BronzeChestModel.SINGLE, BronzeChestModel::createSingleLayer);
 		ModelLayerRegistry.registerModelLayer(BronzeChestModel.LEFT, BronzeChestModel::createLeftLayer);
 		ModelLayerRegistry.registerModelLayer(BronzeChestModel.RIGHT, BronzeChestModel::createRightLayer);
