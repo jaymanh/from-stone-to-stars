@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I I",
+    "SGS",
+    "III"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:steel_sheet",
+    "G": "from-stone-to-stars:rotation_gear",
+    "I": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "from-stone-to-stars:ore_crusher",
+    "count": 1
+  }
+}

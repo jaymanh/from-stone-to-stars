@@ -55,6 +55,8 @@ public class ModTags {
 	 * so this tag mirrors the recipe ingredients. The server still checks the recipes themselves.
 	 */
 	public static final TagKey<Item> FORGING_INGREDIENTS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "forging_ingredients"));
+	/** Results that mark a forging recipe as a crush recipe, which the ore crusher also runs. */
+	public static final TagKey<Item> CRUSHED_ORES = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "crushed_ores"));
 
     public static final TagKey<Item> SNARE_MEAT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_meat_bait"));
     public static final TagKey<Item> SNARE_PLANT_BAIT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "snare_plant_bait"));

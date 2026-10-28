@@ -8,15 +8,21 @@ import jaymanh.fsts.block.entity.WoodenShaftBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class WoodenShaftBlock extends RotationNetworkBlock {
 	public static final MapCodec<WoodenShaftBlock> CODEC = simpleCodec(WoodenShaftBlock::new);
+	private static final VoxelShape SHAPE_X = Block.box(0.0, 5.0, 5.0, 16.0, 11.0, 11.0);
+	private static final VoxelShape SHAPE_Y = Block.box(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
+	private static final VoxelShape SHAPE_Z = Block.box(5.0, 5.0, 0.0, 11.0, 11.0, 16.0);
 
 	public WoodenShaftBlock(Properties properties) {
 		super(properties);
@@ -46,6 +52,15 @@ public class WoodenShaftBlock extends RotationNetworkBlock {
 	@Override
 	protected RenderShape getRenderShape(BlockState state) {
 		return RenderShape.MODEL;
+	}
+
+	@Override
+	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return switch (state.getValue(BlockStateProperties.AXIS)) {
+			case X -> SHAPE_X;
+			case Y -> SHAPE_Y;
+			case Z -> SHAPE_Z;
+		};
 	}
 
 	@Override

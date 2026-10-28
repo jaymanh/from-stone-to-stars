@@ -6,7 +6,7 @@
 
 This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Ages 0 and 1 cite the numbers that ship in 0.8.0. Later ages leave recipe counts for a balancing pass.
 
-> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory is not built. It is an ironworks, made of steel fittings that upgrade the Age 1 forge, and a drill that bores eight blocks. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
+> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory is mostly not built. It is an ironworks, made of steel fittings that upgrade the Age 1 forge, and a drill that bores eight blocks. The first fitting, the powered bellows, exists. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
 
 ## Contents
 
@@ -449,6 +449,11 @@ This is the iron and steel a player can make today. It is a hand workshop that u
 | Steel parts | Blast a steel ingot for 100 ticks into heated steel (same 60-second cool-down). Forging: 2 heated steel, 8 hits → 4 steel sheets. Shapeless craft: a hammer + 1 steel sheet → 1 steel blade. Four blades in a 2×2 → 1 steel saw blades block. |
 | Crafting hammers | Hammerstone, bronze hammer, and iron hammer (`crafting_hammers`) return from a craft 1 durability more worn. A hammer on its last point is used up. |
 | Sawmill | A formed multiblock and the first steel machine. Details below. |
+| Powered bellows | The first ironworks fitting. Crafted from a steel sheet, a bellows, and a wooden gear, stacked in a column. Stands in the forge's bellows bank like a plain bellows, facing the hearth, with a shaft into the back. While it spins, the burn climbs at a net 1 tick per tick to the coal-pad max and holds there. When the shaft stops, the burn counts down as normal. It does not relight a cold forge. It can still be pumped by hand. Costs 1 wheel capacity. The bag squeezes once a second while it turns. Jade shows "Powered by bellows" on a lit forge while one spins. |
+| Steel-lined hearth | Use a steel sheet on a forge hearth, lit or not, to line it. It uses up the sheet, and breaking the hearth gives the sheet back. A lined hearth adds as much cook speed as another hearth, so it counts as two. The model gets a steel band and a raised lip around the fire. Jade shows "Steel-lined hearths: X/Y" on a lit forge, and "Steel-lined" on a cold lined hearth. No recipe needs lining yet. |
+| Forge input | Two steel sheets, a chest, and five bricks. Takes a frame cell beside the hearths. Holds nine stacks. Players and hoppers fill it from any side, and hoppers cannot pull from it. While the forge is lit, the hearth draws anything it can smelt or fire, taking from each input in turn, and tops up a part-used stack from any input. Items it cannot use stay put. |
+| Tapping spout | One steel sheet, a chest, and six bricks. Takes a frame cell beside the hearths or beside the coal pad, facing away from the forge. Holds nine stacks that only the forge can fill: results, and inputs the hearth cannot fire, such as a spent crucible. Several spouts fill in turn. It pushes one item every 8 ticks into the block it faces, and hoppers pull from any side. Use opens it, and sneak-use with an empty hand takes everything. Heated metal stays hot inside. |
+| Ore crusher | Two steel sheets, a wooden gear, and five iron ingots. Sits on a forge input, with a shaft into the back. Costs 1 wheel capacity. While it spins, the head strikes every 15 ticks, like the trip hammer, and runs the stump's crush recipes (1 raw ore, 16 hits, 2 crushed). Each strike counts as 4 hits, so one ore takes 4 strikes (3 seconds), four times the trip hammer's speed. Crushed ore goes straight into the input below. Whatever does not fit waits inside, and crushing pauses until it clears. Ore goes in by hand, from hoppers on the top and sides, or as items dropped on top. An empty hand takes everything back. It works whether or not the forge is lit. |
 
 There is no `age2` advancement tree yet. The tree in **Proof of Iron** is the one to write.
 
@@ -502,12 +507,12 @@ Nothing in this age changes `RotationConstants`. Wooden shafts still stop at 8 b
 | Powered quern, trip hammer, bronze hopper | 1 each | Age 1. Still the yard. |
 | Powered bellows (forge fitting) | 1 each | Holds the forge burn at its max. One is enough. More recover faster after a stall. |
 | Ore crusher (forge fitting) | 1 | Doubles raw ore before it reaches the hearth. |
-| Other forge fittings | 0 | Inputs, outputs, lining, and the spout do not ask the wheel. |
+| Other forge fittings | 0 | Inputs, lining, and the tapping spout do not ask the wheel. |
 | Drill | 1 | Bore a face and drop the pieces. |
 | Vanilla hopper | 0 | Moves items and does not ask the wheel. |
 | Sawmill (ships) | 1 per lane | Competes for a slot. Not part of the proof. |
 
-The intended strong-wheel line is a gear, then two backs: the drill, and a powered bellows on the forge. The drill drops raw ore straight into a forge input under it. The forge blasts each raw ore into one ingot, and an output block or a spout takes the ingots away. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall.
+The intended strong-wheel line is a gear, then two backs: the drill, and a powered bellows on the forge. The drill drops raw ore straight into a forge input under it. The forge blasts each raw ore into one ingot, and a tapping spout takes the ingots away. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall.
 
 The ore crusher doubles that ore, but it is a third machine. Running it means a second wheel. More wheels or more ingots per ore is the choice this age asks the player to make.
 
@@ -527,15 +532,14 @@ What the forge asks of the player today:
 | --- | --- | --- |
 | Powered bellows | In the bellows bank, in place of a plain bellows. Faces the hearth like the rest of the bank. The shaft enters its back. | While it spins, burn climbs slowly to the coal-pad max and holds there. When the shaft stops, burn counts down as normal, and at zero the fire goes out. It can still be pumped by hand. It does not relight a fire that has gone out. |
 | Forge input | Replaces a frame cell beside the hearths, on the hearth layer. | A multi-stack store that feeds the hearth. The player and hoppers insert from every face except the one touching the hearth. |
-| Forge output | Replaces a frame cell beside the hearths, on the hearth layer. | A multi-stack store that finished items move into. Hoppers pull from every face. An empty hand takes everything. |
 | Steel-lined hearth | Use a steel sheet on a forge hearth. | A lined hearth counts as two hearths for cook speed. Steel alloying needs every hearth lined. |
-| Ore crusher | On top of a forge input. Its own shaft enters its back. | Runs the stump's crush recipes (1 raw ore, 16 hits → 2 crushed) at trip-hammer pace and drops the crushed ore into the input below. The drill can drop into it. |
-| Tapping spout | Replaces a frame cell beside the coal pad, facing out. | Pushes finished items one at a time into the block it faces. Heated metal leaves hot. A spout into a forging stump under a trip hammer forges the metal before it cools. |
+| Ore crusher | On top of a forge input. Its own shaft enters its back. | Runs the stump's crush recipes (1 raw ore, 16 hits → 2 crushed) four times faster than a trip hammer and drops the crushed ore into the input below. The drill can drop into it. |
+| Tapping spout | Replaces a frame cell beside the hearths or beside the coal pad, facing out. | The forge's only output fitting. A multi-stack store that finished items move into. It pushes one item at a time into the block it faces, if that block takes items. Hoppers pull from every face. The player opens it, or sneak-uses it with an empty hand to take everything. Heated metal stays hot inside and leaves hot. A spout into a forging stump under a trip hammer forges the metal before it cools. |
 
 ```text
 hearth layer, top view                  coal layer, top view
         [in][in]                              F   F
-  [out] [H] [H] [B]                      F  [C] [C]  F
+    F   [H] [H] [B]                      F  [C] [C]  F
     F   [H] [H] [PB] <- shaft      [spout]  [C] [C]  F
          F   F                                F   F
 
@@ -545,14 +549,13 @@ A crusher sits on top of an input. The chimney rises from the hearths.
 
 **Inputs and alloying.**
 
-- With one forge input, the hearth runs blasting recipes from it.
-- With two or more inputs, the hearth checks `crucible_alloying` recipes first. Each ingredient has to sit in a different input. Put 4 copper in one and 1 zinc in the other, and the forge makes 5 bronze with no crucible. If no alloy matches, the inputs smelt in turn.
+- The hearth checks `crucible_alloying` recipes first. Each ingredient has to sit in a different input, so two-metal alloys need two inputs and one-ingredient alloys (iron from specks) work from one. Put 4 copper in one and 1 zinc in the other, and the forge makes 5 bronze with no crucible. If no alloy matches, the inputs smelt in turn.
 - Steel (6 iron ingots + 1 `#minecraft:coals` → 2 steel) needs every hearth lined. Bronze and the other crucible alloys do not.
 - Crucibles stay the hand way, and the only way to alloy in the basic smelter or a vanilla blast furnace.
 
-**Outputs.** Finished items go to a forge output if there is one. Otherwise they stay in the hearth's result slot. A spout pushes from the output blocks if there are any, otherwise from the result slot. Heated metal stays hot in the output blocks, the same as in the hearth.
+**Output.** Finished items go into a tapping spout if there is one. With several spouts, they fill in turn. With none, they stay in the hearth's result slot, as on a plain forge. The spout is one block that does both jobs: it stores, so the player can take from it, and it pushes into the block it faces.
 
-**Forming.** The forge forms exactly as it does today. Inputs, outputs, and the spout count as frame cells. The powered bellows counts as a bellows. Breaking a fitting on a lit forge breaks the structure, the same as breaking a frame block. Jade lists the fittings it found. A forge with a powered bellows, an input, an output, a spout, a crusher, and every hearth lined shows as **Ironworks**.
+**Forming.** The forge forms exactly as it does today. Inputs and spouts count as frame cells. The powered bellows counts as a bellows. Breaking a fitting on a lit forge breaks the structure, the same as breaking a frame block. Jade lists the fittings it found. A forge with a powered bellows, an input, a spout, a crusher, and every hearth lined shows as **Ironworks**.
 
 **What does not change.** Coal blocks are still never used up. Bigger coal pads still mean a longer burn, which now also means the forge lasts longer when the wheel stops. More hearths still cook faster. Hand bellows still work. A plain forge with no fittings plays the way it does in Age 1.
 
@@ -561,11 +564,11 @@ A crusher sits on top of an input. The chimney rises from the hearths.
 | Value | First pass |
 | --- | --- |
 | Powered bellows refill | `TICKS_PER_BELLOWS_PUMP` (160 ticks) every 80 ticks per spinning powered bellows. That is a net climb of about 1 burn tick per tick for one bellows. |
-| Input and output stores | 9 slots each. |
-| Crusher | One hit every 15 ticks, the trip hammer's pace. |
-| Recipes | Powered bellows: bellows, steel sheet, rotation gear. Input and output: steel sheets around a bronze chest. Lining: 1 steel sheet per hearth. Crusher: steel blades, steel sheets, rotation gear. Spout: steel sheets. |
+| Input and spout stores | 9 slots each. |
+| Crusher | One strike every 15 ticks, the trip hammer's pace, but each strike counts as 4 hits. One raw ore takes 3 seconds, four times the trip hammer. |
+| Recipes | Powered bellows: bellows, steel sheet, rotation gear. Input and spout: steel sheets around a bronze chest. Lining: 1 steel sheet per hearth. Crusher: 2 steel sheets, 5 iron ingots, rotation gear. |
 
-The forge with fittings should not be faster than a player standing at a trip hammer and a lined hearth. It wins by being left alone.
+Dedicated steel machines should beat the Age 1 hand-and-yard version of the same job. They cost steel and wheel capacity, and that price buys speed. The crusher crushes four times faster than a trip hammer on a stump. The forge with fittings also runs unattended.
 
 #### Drill
 
@@ -602,7 +605,7 @@ An earlier pass of this age named pistons, springs, bearings, chains, pumps, and
 flowing water -> wheel -> shaft (max 8) -> gear
     -> drill, dropping down into a forge input
     -> forge, held at full burn by a powered bellows
-    -> forge output or tapping spout -> chest
+    -> tapping spout -> chest
 ```
 
 A second wheel on the ore crusher, between the drill and the input, doubles the ore.
@@ -630,13 +633,12 @@ age1/iron_stain
 
 1. ~~Heated steel and steel parts on the forging stump.~~ Done: heated steel, sheets, blades, saw blades. A steel rod is still open.
 2. Ironworks fittings on the forge. **Next.** Each one ships on its own:
-    1. Forge input and output: multi-stack stores in the hearth-side frame cells. `ForgeLayout` accepts them as frame and resolves them as `INPUT` and `OUTPUT`. The master hearth pulls from the inputs and pushes into the outputs.
-    2. Powered bellows: a `RotationNetworkBlock` bellows. `ForgeProcess` refills burn while any powered bellows spins.
-    3. Alloying from two or more inputs, reusing `crucible_alloying` recipes.
-    4. Steel-lined hearth: a blockstate on the forge hearth, double cook speed, gates steel alloying.
-    5. Tapping spout in the coal-side frame cells.
-    6. Ore crusher on top of an input.
-    7. Jade and JEI: list the fittings, and name the full set **Ironworks**.
+    1. ~~Forge input and tapping spout.~~ Done: nine-slot stores (`ForgeStoreBlockEntity`) in the frame cells. `ForgeLayout` accepts inputs beside the hearths and spouts beside the hearths or the coal pad, and resolves them as `INPUT` and `OUTPUT`. The master hearth exchanges with them each cook step while lit. Each spout pushes into the block it faces.
+    2. ~~Powered bellows.~~ Done: `PoweredBellowsBlock`, a `RotationNetworkBlock` bellows driven from the back. `ForgeProcess` adds 2 burn ticks per tick for each spinning powered bellows, capped at the coal max.
+    3. ~~Alloying from the inputs.~~ Done: the master hearth runs `crucible_alloying` recipes straight from the forge inputs, one ingredient per input. Steel needs every hearth lined.
+    4. ~~Steel-lined hearth.~~ Done: a `lined` blockstate on `ForgeHearthBlock`, set by using a steel sheet. Each lined hearth adds one to `ForgeProcess.cookSpeed()`. The steel-alloying gate waits for recipes that need it.
+    5. ~~Ore crusher on top of an input.~~ Done: `OreCrusherBlock`, a rear-driven `RotationNetworkBlock` that runs forging recipes whose result is tagged `crushed_ores` and stores the output in the `ForgeInputBlockEntity` below.
+    6. Jade and JEI: list the fittings, and name the full set **Ironworks**.
 3. Drill: 8-block bore, drops into the block below, iron-pick rules.
 4. The `age2` advancements above.
 5. ~~A steel saw.~~ Done early as the sawmill multiblock.
@@ -757,7 +759,7 @@ Factory layout should matter. Machines are part of a connected environment and s
 | Era | Logistics method | New design question |
 | --- | --- | --- |
 | Early (Age 0–1) | Shelves, storage pots, bronze chests; a rotation-powered bronze hopper | Where do I keep materials, and how do I pass one stack into the mill? |
-| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Planned: forge inputs and outputs hold several stacks and take hoppers; the drill drops into a forge input; a tapping spout pushes the ingots out. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
+| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Planned: forge inputs and tapping spouts hold several stacks and take hoppers; the drill drops into a forge input; the spout pushes the ingots out. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
 | Industrial | Item pipes and pumps | How do I route materials through a larger footprint? |
 | Electronic | Addressed logistics network | How does demand choose the destination? |
 | Advanced | Drones and mobile routing | How do I serve flexible or remote sites? |
@@ -949,5 +951,15 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 
 **2026-10-27 — Steel parts and the sawmill.** Heated steel (100-tick blast, 60-second cool-down) forges at 2 ingots and 8 hits into 4 steel sheets. A hammer cuts a sheet into a steel blade, and four blades make a steel saw blades block. Sheets take the place of the planned plates. No rod exists yet, so the drill recipe is open. Hammers in `crafting_hammers` now come back from crafts 1 durability more worn. The saw shipped ahead of the ironworks as a formed sawmill: a saw arbor, a blade wall 1–3 wide and 2–3 high framed in logs, planks, cobblestone, or stone bricks, 1–4 rows of wooden rollers each way, and log intakes and plank outfeeds at the ends. One log becomes 6 planks per lane per cycle (40 ticks, 34 at 3 high). It costs 1 rotation per lane, so wheel capacity still caps it at 2 lanes, and `RotationConstants` did not raise any limit. JEI covers it. Jade and WTHIT do not yet. The ironworks is next.
 
-**2026-10-28 — The ironworks upgrades the forge.** The three-block ironworks is dropped. A separate machine would have retired the forge one age after it shipped and wasted the player's biggest Age 1 build. The ironworks is now the forge plus steel fittings, and each fitting works alone. A powered bellows climbs the burn to the coal-pad max and holds it while spinning. Without power the burn counts down as normal. Forge input and output blocks are multi-stack stores that hoppers can reach. Two inputs alloy without a crucible, one ingredient per input. Steel-lined hearths double cook speed and gate steel. An ore crusher sits on an input. A tapping spout pushes results, still hot, into the block it faces. The powered bellows and the crusher cost 1 rotation each. Other fittings cost nothing. Coal blocks are still never used up.
+**2026-10-28 — The ironworks upgrades the forge.** The three-block ironworks is dropped. A separate machine would have retired the forge one age after it shipped and wasted the player's biggest Age 1 build. The ironworks is now the forge plus steel fittings, and each fitting works alone. A powered bellows climbs the burn to the coal-pad max and holds it while spinning. Without power the burn counts down as normal. Forge inputs are multi-stack stores that hoppers can reach. Two inputs alloy without a crucible, one ingredient per input. Steel-lined hearths double cook speed and gate steel. An ore crusher sits on an input. The tapping spout is the only output fitting: it stores results for the player and hoppers, and pushes them, still hot, into the block it faces. The powered bellows and the crusher cost 1 rotation each. Other fittings cost nothing. Coal blocks are still never used up.
+
+**2026-10-28 — Powered bellows ships.** The first fitting. Steel sheet over a bellows over a wooden gear. It counts as a bellows in `ForgeLayout` and joins plain bellows in one bank. Each spinning powered bellows adds 2 burn ticks per tick (`POWERED_BELLOWS_REFILL_PER_TICK`), so one climbs at a net 1 per tick to the coal max. The forge rescans the bank every 10 ticks. Forge particles now follow game time, because a burn held at max would otherwise spawn them every tick. Jade shows "Powered by bellows" on a lit hearth while any powered bellows spins. WTHIT shows rotation only.
+
+**2026-10-28 — Steel-lined hearth ships.** Using a steel sheet on a forge hearth sets `lined=true` and consumes the sheet. The loot table returns the sheet. The block is still a `FORGE_HEARTH`, so lining a lit forge keeps it formed. `ForgeProcess` counts lined hearths in the same 10-tick fitting scan, and cook speed is hearths plus lined hearths. The steel plate texture is now the shared `steel_plate.png`, used by the powered bellows and the hearth lining. The steel-alloying gate is deferred until a recipe needs it.
+
+**2026-10-28 — Forge input and tapping spout ship.** Both are nine-slot stores on `ForgeStoreBlockEntity`. Inputs resolve as `INPUT` alongside the bellows. `ForgeProcess` now counts bank bellows by block, so inputs do not strengthen a hand pump. Spouts resolve as `OUTPUT`. The forge rescans both every 10 ticks. On each cook step, the master hearth sends its result and any input it cannot fire to the spouts, then fills its input slot from the inputs. A crucible stays in the input slot after firing, so without the spent-input rule it would block an automated forge. The exchange runs only while the forge is lit, because the layout is only known then. Spouts refuse items from players and hoppers. Inputs refuse hopper extraction.
+
+**2026-10-28 — Forge alloying ships.** When the hearth's input slot is empty, the master hearth tries `crucible_alloying` recipes before it feeds the next smeltable stack. Recipes with more ingredients go first. Each ingredient has to be found in a different forge input, so a one-ingredient alloy (iron from specks) works from a single input. A recipe that makes steel also needs every hearth lined. The ingredients leave the inputs when the alloy starts. The alloy then cooks on the hearth's own timer (`alloy` and `alloyProgress`, saved with the hearth) at the forge's cook speed, and shows on the blast furnace progress arrow. A finished alloy waits for room in the result slot, pays its experience as orbs, and then goes to the spouts like any result. No input is taken while an alloy cooks. If the forge goes out, the alloy waits for the next lighting. Breaking the master hearth drops the alloy's result, so the metals are never lost. Jade shows "Alloying 5 Bronze Ingot" on a lit forge.
+
+**2026-10-28 — Ore crusher ships.** The crusher is not part of the forge layout. It checks for a `ForgeInputBlockEntity` directly below and stores into it, so it works on a cold forge, and the hearth picks up the crushed ore once it is lit. Crush recipes are ordinary `forging` recipes whose result is in the new `from-stone-to-stars:crushed_ores` item tag. The tag keeps the crusher off nails, plates, and the other stump recipes. A datapack crush recipe only needs its result tagged. Strikes use `ORE_CRUSHER_TICKS_PER_HIT`, which equals the trip hammer's 15. Each strike adds `ORE_CRUSHER_HITS_PER_STRIKE` (4) hits, so crushing runs four times faster than the trip hammer while the head keeps a readable pace. The hit count resets when the ore changes and is saved with the block. A second slot holds crushed ore that the input had no room for. The crusher has no GUI. Jade and WTHIT show its rotation status.
 

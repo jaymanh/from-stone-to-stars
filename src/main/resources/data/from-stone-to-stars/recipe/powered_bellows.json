@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "S",
+    "B",
+    "G"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:steel_sheet",
+    "B": "from-stone-to-stars:bellows",
+    "G": "from-stone-to-stars:rotation_gear"
+  },
+  "result": {
+    "id": "from-stone-to-stars:powered_bellows",
+    "count": 1
+  }
+}

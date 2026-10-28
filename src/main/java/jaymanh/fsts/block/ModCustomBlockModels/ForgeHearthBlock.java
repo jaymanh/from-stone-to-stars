@@ -11,6 +11,7 @@ import jaymanh.fsts.block.entity.ModBlockEntities;
 import jaymanh.fsts.multiblock.AssemblyMatch;
 import jaymanh.fsts.multiblock.AssemblyMatcher;
 import jaymanh.fsts.multiblock.AssemblyRegistry;
+import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.multiblock.ModMultiblocks;
 import jaymanh.fsts.tools.ModTools;
 
@@ -37,6 +38,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -47,11 +50,20 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  */
 public class ForgeHearthBlock extends AbstractFurnaceBlock {
 	public static final MapCodec<ForgeHearthBlock> CODEC = simpleCodec(ForgeHearthBlock::new);
+	/** Lined with a steel sheet. A lined hearth counts twice toward the forge's cook speed. */
+	public static final BooleanProperty LINED = BooleanProperty.create("lined");
 
 	private static final VoxelShape SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
 
 	public ForgeHearthBlock(Properties properties) {
 		super(properties);
+		this.registerDefaultState(this.defaultBlockState().setValue(LINED, false));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		super.createBlockStateDefinition(builder);
+		builder.add(LINED);
 	}
 
 	@Override
@@ -98,6 +110,9 @@ public class ForgeHearthBlock extends AbstractFurnaceBlock {
 			InteractionHand hand,
 			BlockHitResult hit
 	) {
+		if (stack.is(ModItems.STEEL_SHEET)) {
+			return line(stack, state, level, pos, player);
+		}
 		if (state.getValue(LIT)) {
 			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
@@ -140,6 +155,19 @@ public class ForgeHearthBlock extends AbstractFurnaceBlock {
 				stack.shrink(1);
 			}
 		}
+		return InteractionResult.SUCCESS;
+	}
+
+	private static InteractionResult line(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player) {
+		if (state.getValue(LINED)) {
+			return InteractionResult.TRY_WITH_EMPTY_HAND;
+		}
+		if (level.isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+		level.setBlock(pos, state.setValue(LINED, true), Block.UPDATE_ALL);
+		level.playSound(null, pos, SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+		stack.consume(1, player);
 		return InteractionResult.SUCCESS;
 	}
 

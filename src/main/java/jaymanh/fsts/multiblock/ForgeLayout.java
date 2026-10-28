@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.BellowsBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TappingSpoutBlock;
 import jaymanh.fsts.tags.ModTags;
 
 import net.minecraft.core.BlockPos;
@@ -22,9 +24,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
  * <pre>
  *   chimney air 1x1–3x3 (≥2 tall), framed
  *   hearth layer: 1x1–5x5 hearths on coal centre; sides framed;
- *                 exactly one side is a bellows bank (rectangle OK); optional 1 air access gap
- *   coal pad 1x1–5x5 with frame under and around sides
+ *                 exactly one side is a bellows bank (rectangle OK); optional 1 air access gap;
+ *                 forge inputs and tapping spouts may stand in for side frame
+ *   coal pad 1x1–5x5 with frame under and around sides; tapping spouts may stand in for side frame
  * </pre>
+ * Tapping spouts must face away from the forge.
  */
 public final class ForgeLayout {
 	public static final int MIN_COAL = 1;
@@ -42,6 +46,8 @@ public final class ForgeLayout {
 	private final List<BlockPos> bellows;
 	private final List<BlockPos> chimneyAir;
 	private final List<BlockPos> accessAir;
+	private final List<BlockPos> inputs;
+	private final List<BlockPos> spouts;
 	private final Direction bellowsSide;
 
 	private ForgeLayout(
@@ -51,6 +57,8 @@ public final class ForgeLayout {
 			List<BlockPos> bellows,
 			List<BlockPos> chimneyAir,
 			List<BlockPos> accessAir,
+			List<BlockPos> inputs,
+			List<BlockPos> spouts,
 			Direction bellowsSide
 	) {
 		this.coal = List.copyOf(coal);
@@ -59,6 +67,8 @@ public final class ForgeLayout {
 		this.bellows = List.copyOf(bellows);
 		this.chimneyAir = List.copyOf(chimneyAir);
 		this.accessAir = List.copyOf(accessAir);
+		this.inputs = List.copyOf(inputs);
+		this.spouts = List.copyOf(spouts);
 		this.bellowsSide = bellowsSide;
 	}
 
@@ -93,6 +103,12 @@ public final class ForgeLayout {
 		}
 		if (!this.accessAir.isEmpty()) {
 			list.add(new ComponentRule.ResolvedComponent(this.accessAir, MultiblockRole.ORIGIN, "access"));
+		}
+		if (!this.inputs.isEmpty()) {
+			list.add(new ComponentRule.ResolvedComponent(this.inputs, MultiblockRole.INPUT, "forge_inputs"));
+		}
+		if (!this.spouts.isEmpty()) {
+			list.add(new ComponentRule.ResolvedComponent(this.spouts, MultiblockRole.OUTPUT, "tapping_spouts"));
 		}
 		return list;
 	}
@@ -132,6 +148,7 @@ public final class ForgeLayout {
 
 		List<BlockPos> coal = coalRect.cells(coalSeed.getY());
 		List<BlockPos> frame = new ArrayList<>();
+		List<BlockPos> spouts = new ArrayList<>();
 
 		for (BlockPos c : coal) {
 			BlockPos under = c.below();
@@ -145,6 +162,14 @@ public final class ForgeLayout {
 			for (Direction dir : Direction.Plane.HORIZONTAL) {
 				BlockPos side = c.relative(dir);
 				if (coalRect.contains(side.getX(), side.getZ())) {
+					continue;
+				}
+				BlockState sideState = level.getBlockState(side);
+				if (sideState.is(ModBlocks.TAPPING_SPOUT)) {
+					if (!facesOut(sideState, dir)) {
+						return fail("spout_wrong_facing", posText(side));
+					}
+					spouts.add(side.immutable());
 					continue;
 				}
 				if (!isFrame(level, side)) {
@@ -181,6 +206,7 @@ public final class ForgeLayout {
 			return Attempt.fail(sides.failure().orElseThrow());
 		}
 		frame.addAll(sides.frame());
+		spouts.addAll(sides.spouts());
 		List<BlockPos> bellows = sides.bellows();
 		List<BlockPos> accessAir = sides.accessAir();
 
@@ -207,6 +233,8 @@ public final class ForgeLayout {
 				bellows,
 				chimney.air(),
 				accessAir,
+				sides.inputs(),
+				spouts,
 				sides.bellowsSide()
 		));
 	}
@@ -278,14 +306,12 @@ public final class ForgeLayout {
 			Direction bellowsSide,
 			List<BlockPos> bellows,
 			List<BlockPos> frame,
-			List<BlockPos> accessAir
+			List<BlockPos> accessAir,
+			List<BlockPos> inputs,
+			List<BlockPos> spouts
 	) {
-		static SidesAttempt ok(Direction side, List<BlockPos> bellows, List<BlockPos> frame, List<BlockPos> access) {
-			return new SidesAttempt(Optional.empty(), side, bellows, frame, access);
-		}
-
 		static SidesAttempt fail(Component reason) {
-			return new SidesAttempt(Optional.of(reason), Direction.NORTH, List.of(), List.of(), List.of());
+			return new SidesAttempt(Optional.of(reason), Direction.NORTH, List.of(), List.of(), List.of(), List.of(), List.of());
 		}
 
 		boolean ok() {
@@ -305,7 +331,7 @@ public final class ForgeLayout {
 
 		Direction bellowsSide = null;
 		for (SideCells side : sides) {
-			boolean anyBellows = side.cells().stream().anyMatch(p -> level.getBlockState(p).is(ModBlocks.BELLOWS));
+			boolean anyBellows = side.cells().stream().anyMatch(p -> BellowsBlock.isBellows(level.getBlockState(p)));
 			if (anyBellows) {
 				if (bellowsSide != null) {
 					return SidesAttempt.fail(Component.translatable("multiblock.from-stone-to-stars.fail.forge.bellows_multiple_sides"));
@@ -320,12 +346,14 @@ public final class ForgeLayout {
 		List<BlockPos> bellows = new ArrayList<>();
 		List<BlockPos> frame = new ArrayList<>();
 		List<BlockPos> accessAir = new ArrayList<>();
+		List<BlockPos> inputs = new ArrayList<>();
+		List<BlockPos> spouts = new ArrayList<>();
 		int airGaps = 0;
 
 		for (SideCells side : sides) {
 			if (side.side() == bellowsSide) {
 				for (BlockPos cell : side.cells()) {
-					if (!level.getBlockState(cell).is(ModBlocks.BELLOWS)) {
+					if (!BellowsBlock.isBellows(level.getBlockState(cell))) {
 						return SidesAttempt.fail(Component.translatable(
 								"multiblock.from-stone-to-stars.fail.forge.bellows_incomplete_side",
 								blockName(level, cell),
@@ -360,6 +388,16 @@ public final class ForgeLayout {
 						accessAir.add(cell.immutable());
 					} else if (isFrame(level, cell)) {
 						frame.add(cell.immutable());
+					} else if (state.is(ModBlocks.FORGE_INPUT)) {
+						inputs.add(cell.immutable());
+					} else if (state.is(ModBlocks.TAPPING_SPOUT)) {
+						if (!facesOut(state, side.side())) {
+							return SidesAttempt.fail(Component.translatable(
+									"multiblock.from-stone-to-stars.fail.forge.spout_wrong_facing",
+									posText(cell)
+							));
+						}
+						spouts.add(cell.immutable());
 					} else {
 						return SidesAttempt.fail(Component.translatable(
 								"multiblock.from-stone-to-stars.fail.forge.unexpected_beside_hearth",
@@ -371,7 +409,11 @@ public final class ForgeLayout {
 			}
 		}
 
-		return SidesAttempt.ok(bellowsSide, bellows, frame, accessAir);
+		return new SidesAttempt(Optional.empty(), bellowsSide, bellows, frame, accessAir, inputs, spouts);
+	}
+
+	private static boolean facesOut(BlockState spout, Direction outward) {
+		return spout.getValue(TappingSpoutBlock.FACING) == outward;
 	}
 
 	private static List<BlockPos> sideCells(Rect hearth, int y, Direction side) {
@@ -416,7 +458,7 @@ public final class ForgeLayout {
 			for (BlockPos p : found) {
 				for (Direction dir : Direction.values()) {
 					BlockPos n = p.relative(dir);
-					if (found.contains(n) || !level.getBlockState(n).is(ModBlocks.BELLOWS)) {
+					if (found.contains(n) || !BellowsBlock.isBellows(level.getBlockState(n))) {
 						continue;
 					}
 					if (!facesTowardHearth(level, n, faceToward)) {

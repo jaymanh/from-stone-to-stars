@@ -113,6 +113,30 @@ public final class ModBlockEntities {
 			ModBlocks.BRONZE_HOPPER
 	);
 
+	public static final BlockEntityType<PoweredBellowsBlockEntity> POWERED_BELLOWS = register(
+			"powered_bellows",
+			PoweredBellowsBlockEntity::new,
+			ModBlocks.POWERED_BELLOWS
+	);
+
+	public static final BlockEntityType<ForgeInputBlockEntity> FORGE_INPUT = register(
+			"forge_input",
+			ForgeInputBlockEntity::new,
+			ModBlocks.FORGE_INPUT
+	);
+
+	public static final BlockEntityType<TappingSpoutBlockEntity> TAPPING_SPOUT = register(
+			"tapping_spout",
+			TappingSpoutBlockEntity::new,
+			ModBlocks.TAPPING_SPOUT
+	);
+
+	public static final BlockEntityType<OreCrusherBlockEntity> ORE_CRUSHER = register(
+			"ore_crusher",
+			OreCrusherBlockEntity::new,
+			ModBlocks.ORE_CRUSHER
+	);
+
 	public static final BlockEntityType<SawArborBlockEntity> SAW_ARBOR = register(
 			"saw_arbor",
 			SawArborBlockEntity::new,

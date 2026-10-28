@@ -1,12 +1,20 @@
 {
   "variants": {
-    "facing=north,lit=false": { "model": "from-stone-to-stars:block/forge_hearth" },
-    "facing=south,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 180 },
-    "facing=west,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 270 },
-    "facing=east,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 90 },
-    "facing=north,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit" },
-    "facing=south,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 180 },
-    "facing=west,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 270 },
-    "facing=east,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 90 }
+    "facing=north,lined=false,lit=false": { "model": "from-stone-to-stars:block/forge_hearth" },
+    "facing=south,lined=false,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 180 },
+    "facing=west,lined=false,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 270 },
+    "facing=east,lined=false,lit=false": { "model": "from-stone-to-stars:block/forge_hearth", "y": 90 },
+    "facing=north,lined=false,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit" },
+    "facing=south,lined=false,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 180 },
+    "facing=west,lined=false,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 270 },
+    "facing=east,lined=false,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lit", "y": 90 },
+    "facing=north,lined=true,lit=false": { "model": "from-stone-to-stars:block/forge_hearth_lined" },
+    "facing=south,lined=true,lit=false": { "model": "from-stone-to-stars:block/forge_hearth_lined", "y": 180 },
+    "facing=west,lined=true,lit=false": { "model": "from-stone-to-stars:block/forge_hearth_lined", "y": 270 },
+    "facing=east,lined=true,lit=false": { "model": "from-stone-to-stars:block/forge_hearth_lined", "y": 90 },
+    "facing=north,lined=true,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lined_lit" },
+    "facing=south,lined=true,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lined_lit", "y": 180 },
+    "facing=west,lined=true,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lined_lit", "y": 270 },
+    "facing=east,lined=true,lit=true": { "model": "from-stone-to-stars:block/forge_hearth_lined_lit", "y": 90 }
   }
 }

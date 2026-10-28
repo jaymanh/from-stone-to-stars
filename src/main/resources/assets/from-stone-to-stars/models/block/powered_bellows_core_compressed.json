@@ -1,0 +1,495 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "from-stone-to-stars:block/steel_plate",
+    "steel": "from-stone-to-stars:block/steel_plate",
+    "bag": "from-stone-to-stars:block/powered_bellows_bag",
+    "axle": "minecraft:block/stripped_oak_log",
+    "axle_end": "minecraft:block/stripped_oak_log_top"
+  },
+  "elements": [
+    {
+      "name": "base",
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        2,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            14,
+            13,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            3,
+            14,
+            13,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            3,
+            14,
+            12,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            4,
+            14,
+            13,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            12
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            3,
+            4,
+            13,
+            13
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "bag",
+      "from": [
+        4,
+        2,
+        4
+      ],
+      "to": [
+        12,
+        5,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            12,
+            3
+          ],
+          "texture": "#bag"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            12,
+            3
+          ],
+          "texture": "#bag"
+        },
+        "west": {
+          "uv": [
+            4,
+            0,
+            12,
+            3
+          ],
+          "texture": "#bag"
+        },
+        "east": {
+          "uv": [
+            4,
+            0,
+            12,
+            3
+          ],
+          "texture": "#bag"
+        },
+        "up": {
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "texture": "#bag"
+        },
+        "down": {
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "texture": "#bag"
+        }
+      }
+    },
+    {
+      "name": "board",
+      "from": [
+        3,
+        5,
+        3
+      ],
+      "to": [
+        13,
+        6,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            10,
+            13,
+            11
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            3,
+            10,
+            13,
+            11
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            3,
+            10,
+            12,
+            11
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            4,
+            10,
+            13,
+            11
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            12
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            3,
+            4,
+            13,
+            13
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "nozzle",
+      "from": [
+        6,
+        3,
+        1
+      ],
+      "to": [
+        10,
+        7,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            9,
+            10,
+            13
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            6,
+            9,
+            10,
+            13
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            1,
+            9,
+            4,
+            13
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            12,
+            9,
+            15,
+            13
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            6,
+            1,
+            10,
+            4
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            6,
+            12,
+            10,
+            15
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "crank_housing",
+      "from": [
+        4,
+        0,
+        12
+      ],
+      "to": [
+        12,
+        7,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            9,
+            12,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            4,
+            9,
+            12,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            12,
+            9,
+            15,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            1,
+            9,
+            4,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            4,
+            12,
+            12,
+            15
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            4,
+            1,
+            12,
+            4
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "axle",
+      "from": [
+        6,
+        3,
+        15
+      ],
+      "to": [
+        10,
+        7,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            9,
+            10,
+            13
+          ],
+          "texture": "#axle_end"
+        },
+        "south": {
+          "uv": [
+            6,
+            9,
+            10,
+            13
+          ],
+          "texture": "#axle_end"
+        },
+        "west": {
+          "uv": [
+            15,
+            9,
+            16,
+            13
+          ],
+          "texture": "#axle"
+        },
+        "east": {
+          "uv": [
+            0,
+            9,
+            1,
+            13
+          ],
+          "texture": "#axle"
+        },
+        "up": {
+          "uv": [
+            6,
+            15,
+            10,
+            16
+          ],
+          "texture": "#axle"
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            10,
+            1
+          ],
+          "texture": "#axle"
+        }
+      }
+    },
+    {
+      "name": "crank_rod",
+      "from": [
+        7,
+        6,
+        11
+      ],
+      "to": [
+        9,
+        7,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            9,
+            9,
+            10
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            7,
+            9,
+            9,
+            10
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            11,
+            9,
+            12,
+            10
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            4,
+            9,
+            5,
+            10
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            7,
+            11,
+            9,
+            12
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            7,
+            4,
+            9,
+            5
+          ],
+          "texture": "#steel"
+        }
+      }
+    }
+  ]
+}

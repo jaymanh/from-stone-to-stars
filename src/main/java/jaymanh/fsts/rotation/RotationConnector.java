@@ -18,7 +18,9 @@ public final class RotationConnector {
 				|| state.is(ModBlocks.POWERED_QUERN)
 				|| state.is(ModBlocks.TRIP_HAMMER)
 				|| state.is(ModBlocks.BRONZE_HOPPER)
-				|| state.is(ModBlocks.SAW_ARBOR);
+				|| state.is(ModBlocks.SAW_ARBOR)
+				|| state.is(ModBlocks.POWERED_BELLOWS)
+				|| state.is(ModBlocks.ORE_CRUSHER);
 	}
 
 	public static boolean canConnect(Level level, BlockPos from, BlockPos to, Direction direction) {
@@ -28,42 +30,27 @@ public final class RotationConnector {
 			return false;
 		}
 
-		if (fromState.is(ModBlocks.ROTATION_GEAR) || toState.is(ModBlocks.ROTATION_GEAR)) {
+		boolean viaGear = fromState.is(ModBlocks.ROTATION_GEAR) || toState.is(ModBlocks.ROTATION_GEAR);
+		return accepts(fromState, direction, viaGear) && accepts(toState, direction.getOpposite(), viaGear);
+	}
+
+	/** Shafts only ever connect along their axis; a gear neighbour lifts every other block's face restriction. */
+	private static boolean accepts(BlockState state, Direction side, boolean viaGear) {
+		if (state.is(ModBlocks.WOODEN_SHAFT)) {
+			return shaftConnectsToNode(state, side);
+		}
+		if (viaGear || state.is(ModBlocks.ROTATION_GEAR)) {
 			return true;
 		}
-
-		if (fromState.is(ModBlocks.BRONZE_HOPPER) && !hopperAccepts(fromState, direction)) {
-			return false;
+		if (state.is(ModBlocks.BRONZE_HOPPER)) {
+			return hopperAccepts(state, side);
 		}
-		if (toState.is(ModBlocks.BRONZE_HOPPER) && !hopperAccepts(toState, direction.getOpposite())) {
-			return false;
+		if (state.is(ModBlocks.WATER_WHEEL)) {
+			return waterWheelConnects(state, side);
 		}
-
-		if (fromState.is(ModBlocks.WATER_WHEEL)) {
-			return waterWheelConnects(fromState, direction);
+		if (isRearDriven(state)) {
+			return driveConnects(state, side);
 		}
-		if (toState.is(ModBlocks.WATER_WHEEL)) {
-			return waterWheelConnects(toState, direction.getOpposite());
-		}
-
-		if (isRearDriven(fromState)) {
-			return driveConnects(fromState, direction);
-		}
-		if (isRearDriven(toState)) {
-			return driveConnects(toState, direction.getOpposite());
-		}
-
-		if (fromState.is(ModBlocks.WOODEN_SHAFT) && toState.is(ModBlocks.WOODEN_SHAFT)) {
-			return shaftConnects(fromState, toState, direction);
-		}
-
-		if (fromState.is(ModBlocks.WOODEN_SHAFT)) {
-			return shaftConnectsToNode(fromState, direction);
-		}
-		if (toState.is(ModBlocks.WOODEN_SHAFT)) {
-			return shaftConnectsToNode(toState, direction.getOpposite());
-		}
-
 		return true;
 	}
 
@@ -80,19 +67,16 @@ public final class RotationConnector {
 	}
 
 	private static boolean isRearDriven(BlockState state) {
-		return state.is(ModBlocks.POWERED_QUERN) || state.is(ModBlocks.TRIP_HAMMER) || state.is(ModBlocks.SAW_ARBOR);
+		return state.is(ModBlocks.POWERED_QUERN)
+				|| state.is(ModBlocks.TRIP_HAMMER)
+				|| state.is(ModBlocks.SAW_ARBOR)
+				|| state.is(ModBlocks.POWERED_BELLOWS)
+				|| state.is(ModBlocks.ORE_CRUSHER);
 	}
 
 	/** Shaft enters the back of a facing machine, opposite the side the player looks at. */
 	private static boolean driveConnects(BlockState state, Direction direction) {
 		return direction == state.getValue(BlockStateProperties.HORIZONTAL_FACING).getOpposite();
-	}
-
-	private static boolean shaftConnects(BlockState from, BlockState to, Direction direction) {
-		if (!shaftConnectsToNode(from, direction)) {
-			return false;
-		}
-		return direction.getAxis() == from.getValue(BlockStateProperties.AXIS);
 	}
 
 	private static boolean shaftConnectsToNode(BlockState shaft, Direction direction) {

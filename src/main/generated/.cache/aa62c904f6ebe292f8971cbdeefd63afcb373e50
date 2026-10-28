@@ -18,6 +18,6 @@ ce7804509e2dc42227f78fe132a1605df1b0abe9 data/minecraft/tags/block/incorrect_for
 ce7804509e2dc42227f78fe132a1605df1b0abe9 data/minecraft/tags/block/incorrect_for_stone_tool.json
 7e24f9e2de82672846dbf7cd838f93f7c96f0ed1 data/minecraft/tags/block/incorrect_for_wooden_tool.json
 f30e1dcd5ecaaa6461d6558ed53037864a1cf832 data/minecraft/tags/block/mineable/axe.json
-04e2a26792a56e70c984465af4d411fa1cf71cb9 data/minecraft/tags/block/mineable/pickaxe.json
+7a092740ea97a5d5263e9f5b43076086a7a95598 data/minecraft/tags/block/mineable/pickaxe.json
 95b828478af8ca7a64abdc4344a56cfd8e137700 data/minecraft/tags/block/mineable/shovel.json
 0fb180e02a304154fb92d04e0940712b709ed904 data/minecraft/tags/block/needs_iron_tool.json

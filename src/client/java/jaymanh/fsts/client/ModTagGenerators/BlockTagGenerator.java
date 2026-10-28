@@ -123,7 +123,11 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.FORGE_HEARTH)
 				.add(ModBlockItemIds.DRIED_RUSTY_MUD)
 				.add(ModBlockItemIds.BRONZE_HOPPER)
-				.add(ModBlockItemIds.STEEL_SAW_BLADES);
+				.add(ModBlockItemIds.STEEL_SAW_BLADES)
+				.add(ModBlockItemIds.POWERED_BELLOWS)
+				.add(ModBlockItemIds.FORGE_INPUT)
+				.add(ModBlockItemIds.TAPPING_SPOUT)
+				.add(ModBlockItemIds.ORE_CRUSHER);
 
 		builder(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(ModBlockItemIds.RUSTY_MUD);

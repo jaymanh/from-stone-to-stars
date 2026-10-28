@@ -136,7 +136,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 						SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
 						SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
 						SimpleProcessRecipe.any(Items.BRICKS, Items.COBBLESTONE),
-						SimpleProcessRecipe.item(ModBlocks.BELLOWS),
+						SimpleProcessRecipe.any(ModBlocks.BELLOWS, ModBlocks.POWERED_BELLOWS),
 						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
 				),
 				List.of(),
@@ -265,6 +265,10 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.BRONZE_CHEST, Component.translatable("jei.from-stone-to-stars.info.bronze_chest"));
 		registration.addIngredientInfo(ModBlocks.FORGE_HEARTH, Component.translatable("jei.from-stone-to-stars.info.forge_hearth"));
 		registration.addIngredientInfo(ModBlocks.BELLOWS, Component.translatable("jei.from-stone-to-stars.info.bellows"));
+		registration.addIngredientInfo(ModBlocks.POWERED_BELLOWS, Component.translatable("jei.from-stone-to-stars.info.powered_bellows"));
+		registration.addIngredientInfo(ModBlocks.FORGE_INPUT, Component.translatable("jei.from-stone-to-stars.info.forge_input"));
+		registration.addIngredientInfo(ModBlocks.TAPPING_SPOUT, Component.translatable("jei.from-stone-to-stars.info.tapping_spout"));
+		registration.addIngredientInfo(ModBlocks.ORE_CRUSHER, Component.translatable("jei.from-stone-to-stars.info.ore_crusher"));
 		registration.addIngredientInfo(ModBlocks.SAW_ARBOR, Component.translatable("jei.from-stone-to-stars.info.saw_arbor"));
 		registration.addIngredientInfo(ModBlocks.STEEL_SAW_BLADES, Component.translatable("jei.from-stone-to-stars.info.steel_saw_blades"));
 		registration.addIngredientInfo(ModBlocks.WOODEN_ROLLERS, Component.translatable("jei.from-stone-to-stars.info.wooden_rollers"));
@@ -331,6 +335,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(BRICK_DRYING, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(FORGE, ModBlocks.FORGE_HEARTH);
 		registration.addCraftingStation(FORGE, ModBlocks.BELLOWS);
+		registration.addCraftingStation(FORGE, ModBlocks.POWERED_BELLOWS);
 		registration.addCraftingStation(FORGE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);

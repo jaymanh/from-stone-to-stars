@@ -107,7 +107,9 @@ public final class RotationNetwork {
 		return state.is(ModBlocks.POWERED_QUERN)
 				|| state.is(ModBlocks.TRIP_HAMMER)
 				|| state.is(ModBlocks.BRONZE_HOPPER)
-				|| state.is(ModBlocks.SAW_ARBOR);
+				|| state.is(ModBlocks.SAW_ARBOR)
+				|| state.is(ModBlocks.POWERED_BELLOWS)
+				|| state.is(ModBlocks.ORE_CRUSHER);
 	}
 
 	private static int machineCost(Level level, BlockPos pos) {

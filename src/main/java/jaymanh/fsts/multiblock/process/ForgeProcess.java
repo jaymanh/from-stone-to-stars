@@ -1,7 +1,12 @@
 package jaymanh.fsts.multiblock.process;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.BellowsBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
+import jaymanh.fsts.block.entity.PoweredBellowsBlockEntity;
 import jaymanh.fsts.multiblock.FormedMultiblock;
 import jaymanh.fsts.multiblock.ForgeLayout;
 import jaymanh.fsts.multiblock.MultiblockProcess;
@@ -20,7 +25,8 @@ import net.minecraft.world.level.block.state.BlockState;
 /**
  * Forge heat that powers blasting smelting on the hearth cluster.
  * Burn time scales with coal (5 minutes for the minimum pad).
- * Hearth count speeds smelting; bellows pumps refill toward the coal max.
+ * Hearth count speeds smelting, and each steel-lined hearth counts twice; bellows pumps refill toward the coal max.
+ * Spinning powered bellows climb the burn to the coal max and hold it there.
  */
 public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.ProgressAware, FormedMultiblock.DurationAware {
 	/** Minimum coal blocks for burn scaling. */
@@ -31,11 +37,23 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 	public static final int TICKS_PER_COAL = BURN_TICKS_FOR_MIN_COAL / MIN_COAL_BLOCKS;
 	/** Extra burn time per bellows when the player pumps (capped by coal max). */
 	public static final int TICKS_PER_BELLOWS_PUMP = 20 * 8;
+	/**
+	 * Burn added each tick by each spinning powered bellows. The fire uses 1 a tick,
+	 * so one powered bellows climbs at a net 1 a tick until it reaches the coal max.
+	 */
+	public static final int POWERED_BELLOWS_REFILL_PER_TICK = 2;
+	/** How often the forge rechecks its fittings: bellows, lined hearths, inputs, and spouts. */
+	private static final int FITTING_SCAN_INTERVAL = 10;
 
 	private final int maxBurnTicks;
 	private final int hearthCount;
 	private int burnTicksRemaining;
 	private int burnTicksTotal;
+	private int bankBellows;
+	private int drivingBellows;
+	private int linedHearths;
+	private List<BlockPos> inputs = List.of();
+	private List<BlockPos> spouts = List.of();
 
 	public ForgeProcess(StructureMatch match) {
 		int coal = Math.max(MIN_COAL_BLOCKS, match.positionsWithRole(MultiblockRole.CONSUMED).size());
@@ -49,8 +67,24 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 		return this.hearthCount;
 	}
 
-	public int bellowsCount(StructureMatch match) {
-		return match.positionsWithRole(MultiblockRole.INPUT).size();
+	/** Lined hearths at the last scan. */
+	public int linedHearths() {
+		return this.linedHearths;
+	}
+
+	/** Cook steps per interval: one per hearth, plus one more for each lined hearth. */
+	public int cookSpeed() {
+		return this.hearthCount + this.linedHearths;
+	}
+
+	/** Forge inputs at the last scan, for the master hearth to draw from. */
+	public List<BlockPos> inputs() {
+		return this.inputs;
+	}
+
+	/** Tapping spouts at the last scan, for the master hearth to fill. */
+	public List<BlockPos> spouts() {
+		return this.spouts;
 	}
 
 	public void restoreBurn(int totalTicks, int elapsedProgress) {
@@ -61,8 +95,8 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 	/**
 	 * @return ticks actually added
 	 */
-	public int pumpBellows(StructureMatch match) {
-		int bellows = Math.max(1, bellowsCount(match));
+	public int pumpBellows() {
+		int bellows = Math.max(1, this.bankBellows);
 		int add = bellows * TICKS_PER_BELLOWS_PUMP;
 		int before = this.burnTicksRemaining;
 		this.burnTicksRemaining = Mth.clamp(this.burnTicksRemaining + add, 0, this.maxBurnTicks);
@@ -90,15 +124,74 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 		return this.burnTicksRemaining;
 	}
 
+	/** Powered bellows in the bank that were spinning at the last scan. */
+	public int drivingBellows() {
+		return this.drivingBellows;
+	}
+
+	private void scanInputRole(ServerLevel level, StructureMatch match) {
+		int bellows = 0;
+		int driving = 0;
+		List<BlockPos> inputs = new ArrayList<>();
+		for (BlockPos pos : match.positionsWithRole(MultiblockRole.INPUT)) {
+			BlockState state = level.getBlockState(pos);
+			if (state.is(ModBlocks.FORGE_INPUT)) {
+				inputs.add(pos);
+				continue;
+			}
+			if (BellowsBlock.isBellows(state)) {
+				bellows++;
+			}
+			if (level.getBlockEntity(pos) instanceof PoweredBellowsBlockEntity powered && powered.isDriving()) {
+				driving++;
+			}
+		}
+		this.bankBellows = bellows;
+		this.drivingBellows = driving;
+		this.inputs = List.copyOf(inputs);
+	}
+
+	private static List<BlockPos> findSpouts(ServerLevel level, StructureMatch match) {
+		List<BlockPos> spouts = new ArrayList<>();
+		for (BlockPos pos : match.positionsWithRole(MultiblockRole.OUTPUT)) {
+			if (level.getBlockState(pos).is(ModBlocks.TAPPING_SPOUT)) {
+				spouts.add(pos);
+			}
+		}
+		return List.copyOf(spouts);
+	}
+
+	private static int countLinedHearths(ServerLevel level, StructureMatch match) {
+		int lined = 0;
+		for (BlockPos pos : match.positionsWithRole(MultiblockRole.CONTROLLER)) {
+			BlockState state = level.getBlockState(pos);
+			if (state.is(ModBlocks.FORGE_HEARTH) && state.getValue(ForgeHearthBlock.LINED)) {
+				lined++;
+			}
+		}
+		return lined;
+	}
+
+	private void scanFittings(ServerLevel level, StructureMatch match) {
+		this.scanInputRole(level, match);
+		this.spouts = findSpouts(level, match);
+		this.linedHearths = countLinedHearths(level, match);
+	}
+
 	@Override
 	public void onFormed(ServerLevel level, FormedMultiblock formed) {
 		setAllHearthsLit(level, formed, true);
+		this.scanFittings(level, formed.match());
 	}
 
 	@Override
 	public boolean tick(ServerLevel level, FormedMultiblock formed) {
-		this.burnTicksRemaining--;
-		if (this.burnTicksRemaining % 20 == 0) {
+		if (level.getGameTime() % FITTING_SCAN_INTERVAL == 0L) {
+			this.scanFittings(level, formed.match());
+		}
+		int refill = this.drivingBellows * POWERED_BELLOWS_REFILL_PER_TICK;
+		this.burnTicksRemaining = Math.min(this.maxBurnTicks, this.burnTicksRemaining - 1 + refill);
+		if (level.getGameTime() % 20 == 0L) {
 			BlockPos origin = formed.match().origin();
 			level.sendParticles(ParticleTypes.FLAME, origin.getX() + 0.5, origin.getY() + 0.6, origin.getZ() + 0.5, 2, 0.2, 0.1, 0.2, 0.01);
 			level.sendParticles(ParticleTypes.LARGE_SMOKE, origin.getX() + 0.5, origin.getY() + 1.0, origin.getZ() + 0.5, 2, 0.25, 0.15, 0.25, 0.0);

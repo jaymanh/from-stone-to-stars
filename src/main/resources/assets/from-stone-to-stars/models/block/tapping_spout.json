@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "from-stone-to-stars:block/forge_fitting_side",
+    "side": "from-stone-to-stars:block/forge_fitting_side",
+    "front": "from-stone-to-stars:block/tapping_spout_front",
+    "steel": "from-stone-to-stars:block/steel_plate"
+  },
+  "elements": [
+    {
+      "name": "body",
+      "from": [0, 0, 2],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": { "uv": [0, 0, 16, 16], "texture": "#front" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#side", "cullface": "south" },
+        "west": { "uv": [2, 0, 16, 16], "texture": "#side", "cullface": "west" },
+        "east": { "uv": [0, 0, 14, 16], "texture": "#side", "cullface": "east" },
+        "up": { "uv": [0, 2, 16, 16], "texture": "#steel", "cullface": "up" },
+        "down": { "uv": [0, 0, 16, 14], "texture": "#steel", "cullface": "down" }
+      }
+    },
+    {
+      "name": "nozzle",
+      "from": [6, 5, 0],
+      "to": [10, 8, 2],
+      "faces": {
+        "north": { "uv": [6, 8, 10, 11], "texture": "#front" },
+        "west": { "uv": [0, 8, 2, 11], "texture": "#steel" },
+        "east": { "uv": [14, 8, 16, 11], "texture": "#steel" },
+        "up": { "uv": [6, 0, 10, 2], "texture": "#steel" },
+        "down": { "uv": [6, 14, 10, 16], "texture": "#steel" }
+      }
+    }
+  ]
+}

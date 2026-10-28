@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,struck=false": { "model": "from-stone-to-stars:block/ore_crusher" },
+    "facing=south,struck=false": { "model": "from-stone-to-stars:block/ore_crusher", "y": 180 },
+    "facing=west,struck=false": { "model": "from-stone-to-stars:block/ore_crusher", "y": 270 },
+    "facing=east,struck=false": { "model": "from-stone-to-stars:block/ore_crusher", "y": 90 },
+    "facing=north,struck=true": { "model": "from-stone-to-stars:block/ore_crusher_struck" },
+    "facing=south,struck=true": { "model": "from-stone-to-stars:block/ore_crusher_struck", "y": 180 },
+    "facing=west,struck=true": { "model": "from-stone-to-stars:block/ore_crusher_struck", "y": 270 },
+    "facing=east,struck=true": { "model": "from-stone-to-stars:block/ore_crusher_struck", "y": 90 }
+  }
+}

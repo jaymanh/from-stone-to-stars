@@ -21,6 +21,10 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 			Registries.ITEM,
 			Identifier.fromNamespaceAndPath("c", "leathers")
 	);
+	private static final TagKey<Item> C_WOODEN_CHESTS = TagKey.create(
+			Registries.ITEM,
+			Identifier.fromNamespaceAndPath("c", "chests/wooden")
+	);
 
 	public ItemTagGeneration(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
 		super(output, registryLookupFuture);
@@ -86,6 +90,15 @@ public class ItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
 
 		builder(C_LEATHERS)
 				.add(ModItemIds.RAW_LEATHER);
+
+		builder(ModTags.CRUSHED_ORES)
+				.add(ModItemIds.CRUSHED_IRON)
+				.add(ModItemIds.CRUSHED_COPPER)
+				.add(ModItemIds.CRUSHED_GOLD)
+				.add(ModItemIds.CRUSHED_ZINC);
+
+		builder(C_WOODEN_CHESTS)
+				.add(ModBlockItemIds.BRONZE_CHEST.item());
 
 		builder(ModTags.SNARE_MEAT_BAIT)
 				.addOptionalTag(ItemTags.MEAT);

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "BCS",
+    "BBB"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:steel_sheet",
+    "B": "minecraft:brick",
+    "C": "#c:chests/wooden"
+  },
+  "result": {
+    "id": "from-stone-to-stars:tapping_spout",
+    "count": 1
+  }
+}

@@ -213,6 +213,45 @@ public final class ModBlocks {
 					.noOcclusion()
 					.ignitedByLava()
 	);
+	public static final Block POWERED_BELLOWS = register(
+			ModBlockItemIds.POWERED_BELLOWS,
+			PoweredBellowsBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
+	public static final Block FORGE_INPUT = register(
+			ModBlockItemIds.FORGE_INPUT,
+			ForgeInputBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.COLOR_RED)
+					.sound(SoundType.METAL)
+					.strength(2.5F, 6.0F)
+					.requiresCorrectToolForDrops()
+	);
+	public static final Block TAPPING_SPOUT = register(
+			ModBlockItemIds.TAPPING_SPOUT,
+			TappingSpoutBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.COLOR_RED)
+					.sound(SoundType.METAL)
+					.strength(2.5F, 6.0F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
+	public static final Block ORE_CRUSHER = register(
+			ModBlockItemIds.ORE_CRUSHER,
+			OreCrusherBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
 	public static final Block FORGING_STUMP = register(
 			ModBlockItemIds.FORGING_STUMP,
 			ForgingStumpBlock::new,

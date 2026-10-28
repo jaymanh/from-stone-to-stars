@@ -6,6 +6,7 @@ import java.util.function.Function;
 import com.mojang.serialization.MapCodec;
 
 import jaymanh.fsts.advancement.AgeAdvancements;
+import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
 import jaymanh.fsts.multiblock.FacingNeighborRule;
 import jaymanh.fsts.multiblock.FormedMultiblock;
@@ -56,12 +57,12 @@ public class BellowsBlock extends Block {
 	/** Matches bellows_core bag element. */
 	private static final VoxelShape CORE = Block.box(4.0, 0.0, 4.0, 12.0, 10.0, 12.0);
 	/** Matches bellows_side (north) element. */
-	private static final VoxelShape ARM_NORTH = Block.box(5.0, 2.0, 0.0, 11.0, 8.0, 4.0);
-	private static final VoxelShape ARM_SOUTH = Block.box(5.0, 2.0, 12.0, 11.0, 8.0, 16.0);
-	private static final VoxelShape ARM_WEST = Block.box(0.0, 2.0, 5.0, 4.0, 8.0, 11.0);
-	private static final VoxelShape ARM_EAST = Block.box(12.0, 2.0, 5.0, 16.0, 8.0, 11.0);
+	static final VoxelShape ARM_NORTH = Block.box(5.0, 2.0, 0.0, 11.0, 8.0, 4.0);
+	static final VoxelShape ARM_SOUTH = Block.box(5.0, 2.0, 12.0, 11.0, 8.0, 16.0);
+	static final VoxelShape ARM_WEST = Block.box(0.0, 2.0, 5.0, 4.0, 8.0, 11.0);
+	static final VoxelShape ARM_EAST = Block.box(12.0, 2.0, 5.0, 16.0, 8.0, 11.0);
 	/** Matches bellows_up element. */
-	private static final VoxelShape ARM_UP = Block.box(5.0, 10.0, 5.0, 11.0, 16.0, 11.0);
+	static final VoxelShape ARM_UP = Block.box(5.0, 10.0, 5.0, 11.0, 16.0, 11.0);
 	/** Matches bellows_core nozzle (north-facing default). */
 	private static final Map<Direction, VoxelShape> NOZZLE = Map.of(
 			Direction.NORTH, Block.box(6.0, 3.0, 1.0, 10.0, 7.0, 4.0),
@@ -108,7 +109,10 @@ public class BellowsBlock extends Block {
 	}
 
 	private VoxelShape shapeFor(BlockState state) {
-		VoxelShape shape = Shapes.or(CORE, NOZZLE.get(state.getValue(FACING)));
+		return withArms(Shapes.or(CORE, NOZZLE.get(state.getValue(FACING))), state);
+	}
+
+	static VoxelShape withArms(VoxelShape shape, BlockState state) {
 		if (state.getValue(NORTH)) {
 			shape = Shapes.or(shape, ARM_NORTH);
 		}
@@ -129,11 +133,12 @@ public class BellowsBlock extends Block {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		BlockGetter level = context.getLevel();
-		BlockPos pos = context.getClickedPos();
-		Direction facing = context.getHorizontalDirection();
-		return this.defaultBlockState()
-				.setValue(FACING, facing)
+		return withConnections(this.defaultBlockState().setValue(FACING, context.getHorizontalDirection()), context.getLevel(), context.getClickedPos());
+	}
+
+	static BlockState withConnections(BlockState state, BlockGetter level, BlockPos pos) {
+		Direction facing = state.getValue(FACING);
+		return state
 				.setValue(NORTH, connectsTo(level.getBlockState(pos.north()), facing))
 				.setValue(EAST, connectsTo(level.getBlockState(pos.east()), facing))
 				.setValue(SOUTH, connectsTo(level.getBlockState(pos.south()), facing))
@@ -152,6 +157,10 @@ public class BellowsBlock extends Block {
 			BlockState neighborState,
 			RandomSource random
 	) {
+		return updateConnection(state, direction, neighborState);
+	}
+
+	static BlockState updateConnection(BlockState state, Direction direction, BlockState neighborState) {
 		BooleanProperty property = PROPERTY_BY_DIRECTION.get(direction);
 		if (property == null) {
 			return state;
@@ -159,13 +168,21 @@ public class BellowsBlock extends Block {
 		return state.setValue(property, connectsTo(neighborState, state.getValue(FACING)));
 	}
 
+	/** Plain or powered. Both fill the forge's bellows bank. */
+	public static boolean isBellows(BlockState state) {
+		return state.is(ModBlocks.BELLOWS) || state.is(ModBlocks.POWERED_BELLOWS);
+	}
+
 	private static boolean connectsTo(BlockState neighbor, Direction facing) {
-		return neighbor.getBlock() instanceof BellowsBlock
-				&& neighbor.getValue(FACING) == facing;
+		return isBellows(neighbor) && neighbor.getValue(FACING) == facing;
 	}
 
 	@Override
 	protected BlockState rotate(BlockState state, Rotation rotation) {
+		return rotateBellows(state, rotation);
+	}
+
+	static BlockState rotateBellows(BlockState state, Rotation rotation) {
 		Direction facing = rotation.rotate(state.getValue(FACING));
 		BlockState rotated = switch (rotation) {
 			case CLOCKWISE_180 -> state
@@ -191,6 +208,13 @@ public class BellowsBlock extends Block {
 	@Override
 	protected BlockState mirror(BlockState state, Mirror mirror) {
 		return switch (mirror) {
+			case LEFT_RIGHT, FRONT_BACK -> mirrorBellows(state, mirror);
+			default -> super.mirror(state, mirror);
+		};
+	}
+
+	static BlockState mirrorBellows(BlockState state, Mirror mirror) {
+		return switch (mirror) {
 			case LEFT_RIGHT -> state
 					.setValue(NORTH, state.getValue(SOUTH))
 					.setValue(SOUTH, state.getValue(NORTH))
@@ -199,12 +223,16 @@ public class BellowsBlock extends Block {
 					.setValue(EAST, state.getValue(WEST))
 					.setValue(WEST, state.getValue(EAST))
 					.setValue(FACING, mirror.mirror(state.getValue(FACING)));
-			default -> super.mirror(state, mirror);
+			default -> state;
 		};
 	}
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+		return pumpByHand(state, level, pos);
+	}
+
+	static InteractionResult pumpByHand(BlockState state, Level level, BlockPos pos) {
 		if (level.isClientSide()) {
 			return InteractionResult.SUCCESS;
 		}
@@ -224,7 +252,7 @@ public class BellowsBlock extends Block {
 		}
 
 		ForgeHearthBlockEntity master = hearth.getMaster();
-		int added = forge.pumpBellows(formed.match());
+		int added = forge.pumpBellows();
 		AgeAdvancements.grantNearby(serverLevel, pos, "age1/hotter_fire", "pumped");
 		AgeAdvancements.grantNearby(serverLevel, pos, "age1/bronze_yard", "bellows");
 		if (added <= 0) {

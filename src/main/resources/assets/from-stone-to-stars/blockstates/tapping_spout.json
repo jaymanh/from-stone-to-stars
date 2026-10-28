@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "from-stone-to-stars:block/tapping_spout" },
+    "facing=south": { "model": "from-stone-to-stars:block/tapping_spout", "y": 180 },
+    "facing=west": { "model": "from-stone-to-stars:block/tapping_spout", "y": 270 },
+    "facing=east": { "model": "from-stone-to-stars:block/tapping_spout", "y": 90 }
+  }
+}

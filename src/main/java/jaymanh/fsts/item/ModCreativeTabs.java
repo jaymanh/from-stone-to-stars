@@ -96,6 +96,10 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.BASIC_SMELTER);
 				output.accept(ModBlocks.FORGE_HEARTH);
 				output.accept(ModBlocks.BELLOWS);
+				output.accept(ModBlocks.POWERED_BELLOWS);
+				output.accept(ModBlocks.FORGE_INPUT);
+				output.accept(ModBlocks.TAPPING_SPOUT);
+				output.accept(ModBlocks.ORE_CRUSHER);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 				output.accept(ModBlocks.WATER_WHEEL);

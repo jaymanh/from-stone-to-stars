@@ -1,9 +1,11 @@
 // 26.2	-999999999-01-01T00:00:00	From Stone to Stars/Tags for minecraft:item
+0b4ac377b56e037dc20187ddaa96d24d7c123216 data/c/tags/item/chests/wooden.json
 72a74154226a0f73a9d6ed001adefd39e10336ad data/c/tags/item/leathers.json
 1e728b9f26d70051e5af015b1fd01b812fd5dc10 data/from-stone-to-stars/tags/item/bone_repair_item.json
 c9d25549d25582e19af5349da048adb9368da9ed data/from-stone-to-stars/tags/item/bronze_armor_repair.json
 57aea63b49d90a9eaee98b617155588dd11e76b3 data/from-stone-to-stars/tags/item/bronze_repair_item.json
 994aa01c3bf4d7147e42d193bd399462d0525404 data/from-stone-to-stars/tags/item/coal_blocks.json
+12b509cf6af4abeb60a071bfc2d789cdbb954249 data/from-stone-to-stars/tags/item/crushed_ores.json
 6c1208c4f482c7b9560dda2452b7cb7ac5a8acbb data/from-stone-to-stars/tags/item/fishing_bait.json
 4333e5b0d3c082c5e91baec1955d1a9d418dc318 data/from-stone-to-stars/tags/item/flint_repair_item.json
 37df38dbae6f991e23b40cf7b6110098ad502d68 data/from-stone-to-stars/tags/item/knives.json
