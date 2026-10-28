@@ -6,7 +6,7 @@
 
 This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Ages 0 and 1 cite the numbers that ship in 0.8.0. Later ages leave recipe counts for a balancing pass.
 
-> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory, an ironworks that crushes and smelts and a drill that bores eight blocks, is not built. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
+> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory is not built. It is an ironworks, made of steel fittings that upgrade the Age 1 forge, and a drill that bores eight blocks. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
 
 ## Contents
 
@@ -71,7 +71,7 @@ The proposed structure uses twelve substantial ages. Names may evolve, but every
 | --- | --- | --- | --- | --- | --- |
 | 0 | Primitive and Stone | Survival and settlement | Pebbles, flint tools, hideworking, bone-hafted tools, fire, charcoal, clay bricks, thatch, snares | Tanning rack, snares, fish traps, charcoal pile, brick drying pit | Establish a permanent settlement |
 | 1 | Zinc and Bronze | Soft metal and first motion | Bronze tools, forge and bellows, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, bronze hopper | Water wheel → shaft (max 8) → a yard machine, fed by a slow turning hopper | Turn river power into dependable metalwork |
-| 2 | Iron and Steel | Mechanical engineering | Iron tools, steel sheets and blades, sawmill, ironworks, marked-face drill | A strong wheel turns a drill and an ironworks; a weak wheel turns one of them | Run one riverside line that feeds itself |
+| 2 | Iron and Steel | Mechanical engineering | Iron tools, steel sheets and blades, sawmill, ironworks, marked-face drill | A strong wheel turns a drill and the forge's powered bellows; a weak wheel turns one of them | Run one riverside line that feeds itself |
 | 3 | Steam | Industrial Revolution | Boilers, engines, turbines, pipes, pumps, pressure tanks, locomotives, cranes | Steam network feeding multiple machines | Generate and distribute controlled steam power |
 | 4 | Electricity | Second Industrial Revolution | Generators, wire, batteries, motors, transformers, electromagnets, lighting, rail | Electrical grid and powered machinery | Generate, store, and use electricity |
 | 5 | Electronics | Information and control | Transistors, boards, logic gates, sensors, timers, computers, controllers, storage | Condition-based factory control | Build a responsive automated process |
@@ -417,7 +417,7 @@ Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a li
 
 > **Age motto:** The yard learned to turn. The ironworks has to keep feeding itself.
 
-Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, and a machine farther than 8 blocks from the wheel is out of range. Age 2 does not raise those numbers. A weak stream runs the ironworks **or** the drill. A strong stream runs both, when the drill drops straight into the ironworks. That pair is the factory. A third spinning machine stalls it.
+Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, and a machine farther than 8 blocks from the wheel is out of range. Age 2 does not raise those numbers. A weak stream runs the drill **or** one powered fitting on the forge. A strong stream runs the drill and a powered bellows, when the drill drops straight into a forge input. That pair is the factory. A third spinning machine, such as the ore crusher, stalls it.
 
 #### Entry and exit
 
@@ -425,7 +425,7 @@ Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, a
 | --- | --- |
 | **Enter Age 2** | **Iron Stain**, already an Age 1 goal. Dig rusty mud with a shovel. Dried rusty mud, iron specks, raw iron, iron ore, and deepslate iron ore count for the same advancement. |
 | **First iron** | The live path below. Playable now. It is the door. |
-| **Prove Iron** | Planned `age2` tree: an iron ingot, an iron pick, iron ore actually mined, a steel ingot, a spinning ironworks that finishes a smelt, and a spinning drill that breaks a block. |
+| **Prove Iron** | Planned `age2` tree: an iron ingot, an iron pick, iron ore actually mined, a steel ingot, a forge that finishes a smelt from an input block while a powered bellows spins, and a spinning drill that breaks a block. |
 | **Exit toward steam** | That proof. Steam owns boilers, pressure, pipes, and pumps. The first steel ingot belongs here, and it is spent on the machines. |
 
 #### What already exists
@@ -491,7 +491,7 @@ Steel is the machine metal. It is not a new mining tier. Iron stays the tool tha
 
 The crucible recipe stays: 6 iron ingots + 1 `#minecraft:coals` → 2 steel ingots. Heated steel forges on the stump into **steel sheets**, and a hammer cuts a sheet into a **steel blade**. Sheets fill the role the earlier plan called plates. Blades currently go only into saw blades. A **steel rod** does not exist yet. Either add it for the drill, or build the drill from sheets and blades. Sheets, blades, and the saw arbor's ingot are the live uses of steel. The ironworks and the drill should be made from the same parts.
 
-The ironworks can also run that same alloy when it is fed iron ingots and coal, so a finished line can make the parts for the next machine. The crucible recipe remains the hand way.
+A forge with steel-lined hearths and two input blocks can run that same alloy, iron ingots in one input and coal in the other, so a finished line can make the parts for the next fitting. The crucible recipe remains the hand way.
 
 #### Wheel budget
 
@@ -500,41 +500,72 @@ Nothing in this age changes `RotationConstants`. Wooden shafts still stop at 8 b
 | Machine | Cost | Role in the line |
 | --- | --- | --- |
 | Powered quern, trip hammer, bronze hopper | 1 each | Age 1. Still the yard. |
-| Ironworks | 1 for the whole line | Crush, then smelt. |
+| Powered bellows (forge fitting) | 1 each | Holds the forge burn at its max. One is enough. More recover faster after a stall. |
+| Ore crusher (forge fitting) | 1 | Doubles raw ore before it reaches the hearth. |
+| Other forge fittings | 0 | Inputs, outputs, lining, and the spout do not ask the wheel. |
 | Drill | 1 | Bore a face and drop the pieces. |
 | Vanilla hopper | 0 | Moves items and does not ask the wheel. |
 | Sawmill (ships) | 1 per lane | Competes for a slot. Not part of the proof. |
 
-The intended strong-wheel line is a gear, then two backs: the drill, and the ironworks under it. The drill's output is the block below it, which is the ironworks input. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall. A vanilla hopper under the ironworks takes the ingots away for free.
+The intended strong-wheel line is a gear, then two backs: the drill, and a powered bellows on the forge. The drill drops raw ore straight into a forge input under it. The forge blasts each raw ore into one ingot, and an output block or a spout takes the ingots away. No bronze hopper sits between them. A bronze hopper in that gap would be a third machine, and the wheel would stall.
 
-A weak wheel runs the ironworks alone. The player fills it, or a vanilla hopper does. The drill waits for a stronger stream or a second wheel.
+The ore crusher doubles that ore, but it is a third machine. Running it means a second wheel. More wheels or more ingots per ore is the choice this age asks the player to make.
+
+A weak wheel runs one powered fitting alone. The player fills the inputs, or a vanilla hopper does. The drill waits for a stronger stream or a second wheel.
 
 #### Ironworks
 
-This is the age's blast furnace. The vanilla blast furnace stays the hand station: iron ingots around a basic smelter, on smooth stone, loaded by the player. The forge and the bellows stay the hand smithy. The ironworks is the one that keeps going.
+The ironworks is not a new machine. It is the Age 1 forge, upgraded with steel fittings. **Each fitting works on its own** and removes one chore the forge asks of the player. A forge with every fitting is the ironworks. A player who built a large forge in Age 1 keeps every block of it, and its size keeps paying off. The vanilla blast furnace stays the hand station.
 
-Shape, when it is built: three blocks in a row, formed in the world the way the forge is formed, and smaller on purpose.
+What the forge asks of the player today:
+
+- The burn counts down from the coal-pad max: 5 minutes per coal block. At zero the fire goes out and has to be relit.
+- The bellows only add burn when the player pumps them.
+- The hearth takes input from the top and gives output from the bottom. The chimney sits on top and the coal pad sits underneath, so no hopper can reach either face. It holds one input stack.
+
+| Fitting | Where it goes | What it does |
+| --- | --- | --- |
+| Powered bellows | In the bellows bank, in place of a plain bellows. Faces the hearth like the rest of the bank. The shaft enters its back. | While it spins, burn climbs slowly to the coal-pad max and holds there. When the shaft stops, burn counts down as normal, and at zero the fire goes out. It can still be pumped by hand. It does not relight a fire that has gone out. |
+| Forge input | Replaces a frame cell beside the hearths, on the hearth layer. | A multi-stack store that feeds the hearth. The player and hoppers insert from every face except the one touching the hearth. |
+| Forge output | Replaces a frame cell beside the hearths, on the hearth layer. | A multi-stack store that finished items move into. Hoppers pull from every face. An empty hand takes everything. |
+| Steel-lined hearth | Use a steel sheet on a forge hearth. | A lined hearth counts as two hearths for cook speed. Steel alloying needs every hearth lined. |
+| Ore crusher | On top of a forge input. Its own shaft enters its back. | Runs the stump's crush recipes (1 raw ore, 16 hits → 2 crushed) at trip-hammer pace and drops the crushed ore into the input below. The drill can drop into it. |
+| Tapping spout | Replaces a frame cell beside the coal pad, facing out. | Pushes finished items one at a time into the block it faces. Heated metal leaves hot. A spout into a forging stump under a trip hammer forges the metal before it cools. |
 
 ```text
-shaft -> [drive][crusher][hearth]
-                items drop in from above the crusher
-                ingots leave under the hearth
+hearth layer, top view                  coal layer, top view
+        [in][in]                              F   F
+  [out] [H] [H] [B]                      F  [C] [C]  F
+    F   [H] [H] [PB] <- shaft      [spout]  [C] [C]  F
+         F   F                                F   F
+
+H hearth   B bellows   PB powered bellows   C coal pad   F frame
+A crusher sits on top of an input. The chimney rises from the hearths.
 ```
 
-| Face | Rule |
+**Inputs and alloying.**
+
+- With one forge input, the hearth runs blasting recipes from it.
+- With two or more inputs, the hearth checks `crucible_alloying` recipes first. Each ingredient has to sit in a different input. Put 4 copper in one and 1 zinc in the other, and the forge makes 5 bronze with no crucible. If no alloy matches, the inputs smelt in turn.
+- Steel (6 iron ingots + 1 `#minecraft:coals` → 2 steel) needs every hearth lined. Bronze and the other crucible alloys do not.
+- Crucibles stay the hand way, and the only way to alloy in the basic smelter or a vanilla blast furnace.
+
+**Outputs.** Finished items go to a forge output if there is one. Otherwise they stay in the hearth's result slot. A spout pushes from the output blocks if there are any, otherwise from the result slot. Heated metal stays hot in the output blocks, the same as in the hearth.
+
+**Forming.** The forge forms exactly as it does today. Inputs, outputs, and the spout count as frame cells. The powered bellows counts as a bellows. Breaking a fitting on a lit forge breaks the structure, the same as breaking a frame block. Jade lists the fittings it found. A forge with a powered bellows, an input, an output, a spout, a crusher, and every hearth lined shows as **Ironworks**.
+
+**What does not change.** Coal blocks are still never used up. Bigger coal pads still mean a longer burn, which now also means the forge lasts longer when the wheel stops. More hearths still cook faster. Hand bellows still work. A plain forge with no fittings plays the way it does in Age 1.
+
+**First-pass numbers**, to be settled in a balance pass:
+
+| Value | First pass |
 | --- | --- |
-| Back of the drive | Shaft enters here, opposite the way the line faces. Same rule as the trip hammer. |
-| Top and sides of the crusher | Input. Raw ore, crushed ore, or iron ingots plus coal for steel. A player, a vanilla hopper, or the drill above. |
-| Bottom of the hearth | Output. Ingot or steel. A vanilla hopper can pull. |
-| Anywhere else | Closed. |
+| Powered bellows refill | `TICKS_PER_BELLOWS_PUMP` (160 ticks) every 80 ticks per spinning powered bellows. That is a net climb of about 1 burn tick per tick for one bellows. |
+| Input and output stores | 9 slots each. |
+| Crusher | One hit every 15 ticks, the trip hammer's pace. |
+| Recipes | Powered bellows: bellows, steel sheet, rotation gear. Input and output: steel sheets around a bronze chest. Lining: 1 steel sheet per hearth. Crusher: steel blades, steel sheets, rotation gear. Spout: steel sheets. |
 
-While the shaft spins and the hearth has charcoal or coal, the crusher runs the same forging recipes the stump uses, including 1 raw ore → 2 crushed pieces at 16 hits. The hearth then smelts those crushed pieces into ingots. The player does not move the pile between the two. An empty input keeps the last recipe, same rule as the forging stump, so the next stack restarts it.
-
-The line carries its own draft. The player does not pump it. Hand bellows remain how the forge stays hot.
-
-It stops when the shaft stops, the fuel is gone, or the output slot is full. It does not pull from chests on its own. Something has to put ore on the crusher: the player, a hopper, or the drill.
-
-Fuel amounts and the crush-then-smelt timing wait for a balance pass. The first pass should be slower than standing at a trip hammer and a blast furnace yourself, so the machine wins by being left alone, not by being faster than hands.
+The forge with fittings should not be faster than a player standing at a trip hammer and a lined hearth. It wins by being left alone.
 
 #### Drill
 
@@ -545,7 +576,7 @@ One block. Steel sheets, an iron pick head, and either a new steel rod or steel 
 | What it breaks | Blocks an iron pick can break. It stops on diamond-tier blocks, air, and fluids. |
 | How far | Up to 8 blocks forward, then it stops until the player moves it. The 8 matches the shaft cap. It is a bore, not a quarry. |
 | How fast | Slower than a player swinging an iron pick. The pick stays the better tool in the hand. |
-| Where the drops go | Into the inventory under the drill. That block should be the ironworks crusher. If it is not an inventory, the drops fall on the ground. |
+| Where the drops go | Into the inventory under the drill. That block should be a forge input, or an ore crusher on top of one. If it is not an inventory, the drops fall on the ground. |
 | When it is idle | Shaft stopped, the 8 blocks are used up, or the next block is too hard. |
 
 Rusty mud stays the first iron, dug with a shovel before any pick exists. The drill does not gather muddy disks. It is for the vein the iron pick has already proved the player can take.
@@ -557,11 +588,11 @@ An earlier pass of this age named pistons, springs, bearings, chains, pumps, and
 | Name | In this plan |
 | --- | --- |
 | Steel | Sheets and blades ship. A rod is still open. The machines are made of them. |
-| Blast furnace | The ironworks hearth. The vanilla blast furnace stays. |
+| Blast furnace | The forge, upgraded with steel fittings into the ironworks. The vanilla blast furnace stays. |
 | Piston, spring | Crafting pieces inside the drill head. Not a rotation piston, and not a replacement for the vanilla piston. |
 | Bearing | The drill's mount on the shaft. Gears still turn corners. |
 | Chain | No longer shaft. Wooden shafts stay capped at 8. |
-| Pump | Steam. The ironworks carries its own draft. |
+| Pump | Steam. The powered bellows is the forge's draft. |
 | Drill | The 8-block bore above. |
 | Saw | Ships as the sawmill multiblock, ahead of the line. Logs into planks, far faster than the bone saw, 1 wheel slot per lane. Not part of Proof of Iron. The bone saw stays the early plank tool. |
 
@@ -569,10 +600,12 @@ An earlier pass of this age named pistons, springs, bearings, chains, pumps, and
 
 ```text
 flowing water -> wheel -> shaft (max 8) -> gear
-    -> drill, dropping down
-    -> ironworks, crushing then smelting
-    -> vanilla hopper -> chest
+    -> drill, dropping down into a forge input
+    -> forge, held at full burn by a powered bellows
+    -> forge output or tapping spout -> chest
 ```
+
+A second wheel on the ore crusher, between the drill and the input, doubles the ore.
 
 A chest the player filled, a hopper, and a trip hammer is Age 1. This line still mines after that chest is empty, for as long as the face holds and the wheel turns. When the bore ends, the player moves the drill. That walk is the rest of the labour.
 
@@ -586,9 +619,9 @@ age1/iron_stain
     age2/hafted_iron         inventory: minecraft:iron_pickaxe
     age2/the_vein            granted when the player mines iron ore or deepslate iron ore
     age2/steel               inventory: steel ingot
-    age2/ironworks           granted when a spinning ironworks finishes a smelt
+    age2/ironworks           granted when a forge finishes a smelt from an input block while a powered bellows spins
     age2/bore                granted when a spinning drill breaks a block
-    age2/proof_of_iron       goal: steel + ironworks finished + drill has bored
+    age2/proof_of_iron       goal: steel + ironworks smelt + drill has bored
 ```
 
 `inventory_changed` starts listening when the parent completes, same as Age 1. A stack already in inventory counts the next time it changes. Grants for the ironworks and the drill use `AgeAdvancements.grantNearby`: same dimension, within 16 blocks.
@@ -596,7 +629,14 @@ age1/iron_stain
 #### Implementation order
 
 1. ~~Heated steel and steel parts on the forging stump.~~ Done: heated steel, sheets, blades, saw blades. A steel rod is still open.
-2. Ironworks: the three-block line, one machine cost, hopper faces, crush then smelt, its own draft. **Next.**
+2. Ironworks fittings on the forge. **Next.** Each one ships on its own:
+    1. Forge input and output: multi-stack stores in the hearth-side frame cells. `ForgeLayout` accepts them as frame and resolves them as `INPUT` and `OUTPUT`. The master hearth pulls from the inputs and pushes into the outputs.
+    2. Powered bellows: a `RotationNetworkBlock` bellows. `ForgeProcess` refills burn while any powered bellows spins.
+    3. Alloying from two or more inputs, reusing `crucible_alloying` recipes.
+    4. Steel-lined hearth: a blockstate on the forge hearth, double cook speed, gates steel alloying.
+    5. Tapping spout in the coal-side frame cells.
+    6. Ore crusher on top of an input.
+    7. Jade and JEI: list the fittings, and name the full set **Ironworks**.
 3. Drill: 8-block bore, drops into the block below, iron-pick rules.
 4. The `age2` advancements above.
 5. ~~A steel saw.~~ Done early as the sawmill multiblock.
@@ -607,7 +647,8 @@ age1/iron_stain
 - If steel is a second ingot with nothing to craft, it is not an age. Sheets and blades are the job. The machines are built out of them.
 - If the sawmill makes planks cheap before the player has steel, every camp becomes a vanilla house. Keep it behind steel.
 - If the "factory" is one hopper into the Age 1 quern, Age 1 already shipped. Age 2 removes the carry from crusher to furnace, and then the swing at the vein.
-- The vanilla blast furnace and the forge stay. The ironworks earns its place by crushing and smelting in one spinning line.
+- The ironworks is an upgraded forge, not its replacement. Every fitting works alone on any forge, and a bigger forge makes a better ironworks. If a fresh machine can beat a large forge, Age 1's biggest build was wasted.
+- Powered bellows hold the burn. They do not relight it. When the wheel stops, the coal pad is the reserve.
 - Shafts stay capped at 8. Wheel capacity stays 1 or 2. A part that raises either number has stolen Age 2's constraint.
 - If the drill eats a chunk and walks itself to the next one, the player is a spectator. Eight blocks, then a walk.
 - If steel mines diamond, later ages lose their door. Iron tier is the ceiling here.
@@ -618,17 +659,17 @@ age1/iron_stain
 
 | Discipline | Age 2 expression |
 | --- | --- |
-| Engineering | Steel sheets and blades, the sawmill, the drill head, the three-block ironworks |
+| Engineering | Steel sheets and blades, the sawmill, the drill head, the forge's steel fittings |
 | Energy | The same water wheel, now asked to run two machines when the stream is strong |
 | Chemistry | Specks to iron, iron and coal to steel, crushed ore to ingots inside the line |
 | Biology | Unchanged from Age 1 |
-| Civil engineering | Fitting the drill on top of the ironworks inside eight blocks of the wheel |
+| Civil engineering | Fitting the drill over a forge input inside eight blocks of the wheel |
 | Science | Seeing which of the two machines stalled, and why the bore stopped |
 | Computing / aerospace | Absent |
 
 #### Iron and Steel (summary)
 
-The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. Steel already forges into sheets and blades, and the sawmill is the first steel machine on the wheel. The plan spends steel next on an ironworks and a drill. A strong wheel turns both. A weak wheel turns one. The player still walks the drill forward when the eight blocks are gone.
+The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. Steel already forges into sheets and blades, and the sawmill is the first steel machine on the wheel. The plan spends steel next on fittings that turn the Age 1 forge into the ironworks, and on a drill. A strong wheel turns the drill and a powered bellows. A weak wheel turns one. The player still walks the drill forward when the eight blocks are gone.
 
 ### Steam
 
@@ -665,7 +706,7 @@ Research should reward demonstrated competence. A breakthrough is unlocked when 
 | --- | --- |
 | Settlement (Age 0) | Start fire; fire clay bricks; finish a tanning-rack process; set a snare or fish trap; sleep in a hide bed; haft a bone axe; build a work stump. |
 | Bronze (Age 1) | Alloy a bronze ingot; haft a bronze tool; spin a water wheel in flowing water; finish a powered quern grind or a trip-hammer forging; pump the bellows on a lit forge. |
-| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; run a spinning ironworks through a smelt; bore a block with a spinning drill. The ingot, the pick, steel parts, and the sawmill are playable. The ironworks, the drill, and the `age2` tree are planned, not built. |
+| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; smelt from a forge input while a powered bellows spins; bore a block with a spinning drill. The ingot, the pick, steel parts, and the sawmill are playable. The ironworks, the drill, and the `age2` tree are planned, not built. |
 | Steam | Build a steam engine; turn steam into mechanical power; run a multi-machine line on that power. The first steel ingot belongs to Age 2. |
 | Electricity | Produce copper wire; build a generator; store a threshold of mechanical energy; create an electromagnetic device; deliver electrical power to a machine. |
 | Electronics | Manufacture a circuit board; install a sensor; automate a condition-based response; retain operational data or a timing program. |
@@ -716,7 +757,7 @@ Factory layout should matter. Machines are part of a connected environment and s
 | Era | Logistics method | New design question |
 | --- | --- | --- |
 | Early (Age 0–1) | Shelves, storage pots, bronze chests; a rotation-powered bronze hopper | Where do I keep materials, and how do I pass one stack into the mill? |
-| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Planned: the drill drops into the ironworks; a vanilla hopper takes the ingots. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
+| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Planned: forge inputs and outputs hold several stacks and take hoppers; the drill drops into a forge input; a tapping spout pushes the ingots out. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
 | Industrial | Item pipes and pumps | How do I route materials through a larger footprint? |
 | Electronic | Addressed logistics network | How does demand choose the destination? |
 | Advanced | Drones and mobile routing | How do I serve flexible or remote sites? |
@@ -746,12 +787,12 @@ These examples illustrate the intended texture of the game. They are not recipe 
 
 ```text
 flowing water -> wheel -> shaft (max 8) -> gear
-    -> drill, dropping down
-    -> ironworks (crush, then smelt)
-    -> vanilla hopper -> chest
+    -> drill, dropping into a forge input
+    -> forge with a powered bellows (the ironworks)
+    -> tapping spout -> chest
 ```
 
-This is the Age 2 plan, not a recipe. A weak wheel runs the drill or the ironworks. A strong wheel runs both when the drill sits on the ironworks. The Age 1 yard is the wheel, the shaft, and the trip hammer, and that part ships. Belts are a later age.
+This is the Age 2 plan, not a recipe. A weak wheel runs the drill or the powered bellows. A strong wheel runs both when the drill sits over a forge input. The Age 1 yard is the wheel, the shaft, and the trip hammer, and that part ships. Belts are a later age.
 
 ### Steam to Electricity Conversion
 
@@ -907,4 +948,6 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-10-12 — Age 2 plan.** Steel is machine metal: heat it, forge plates and rods, build an ironworks and a drill. No steel tools, no diamond mining. The ironworks is a three-block line (drive, crusher, hearth), one machine cost, crush-then-smelt, its own draft, input top and sides, output bottom. The drill bores 8 blocks, iron-pick rules, and drops into the block below. A strong wheel runs both when the drill sits on the ironworks. A bronze hopper between them would stall the wheel. Vanilla hoppers do not cost rotation. Pumps, pipes, belts, longer shafts, and a higher wheel capacity wait. Proof of Iron is planned and not in the datapack. Saw is optional and later.
 
 **2026-10-27 — Steel parts and the sawmill.** Heated steel (100-tick blast, 60-second cool-down) forges at 2 ingots and 8 hits into 4 steel sheets. A hammer cuts a sheet into a steel blade, and four blades make a steel saw blades block. Sheets take the place of the planned plates. No rod exists yet, so the drill recipe is open. Hammers in `crafting_hammers` now come back from crafts 1 durability more worn. The saw shipped ahead of the ironworks as a formed sawmill: a saw arbor, a blade wall 1–3 wide and 2–3 high framed in logs, planks, cobblestone, or stone bricks, 1–4 rows of wooden rollers each way, and log intakes and plank outfeeds at the ends. One log becomes 6 planks per lane per cycle (40 ticks, 34 at 3 high). It costs 1 rotation per lane, so wheel capacity still caps it at 2 lanes, and `RotationConstants` did not raise any limit. JEI covers it. Jade and WTHIT do not yet. The ironworks is next.
+
+**2026-10-28 — The ironworks upgrades the forge.** The three-block ironworks is dropped. A separate machine would have retired the forge one age after it shipped and wasted the player's biggest Age 1 build. The ironworks is now the forge plus steel fittings, and each fitting works alone. A powered bellows climbs the burn to the coal-pad max and holds it while spinning. Without power the burn counts down as normal. Forge input and output blocks are multi-stack stores that hoppers can reach. Two inputs alloy without a crucible, one ingredient per input. Steel-lined hearths double cook speed and gate steel. An ore crusher sits on an input. A tapping spout pushes results, still hot, into the block it faces. The powered bellows and the crusher cost 1 rotation each. Other fittings cost nothing. Coal blocks are still never used up.
 
