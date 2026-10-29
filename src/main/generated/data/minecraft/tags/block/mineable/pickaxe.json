@@ -17,6 +17,11 @@
     "from-stone-to-stars:powered_bellows",
     "from-stone-to-stars:forge_input",
     "from-stone-to-stars:tapping_spout",
-    "from-stone-to-stars:ore_crusher"
+    "from-stone-to-stars:ore_crusher",
+    "from-stone-to-stars:drill_head",
+    "from-stone-to-stars:rod_rack",
+    "from-stone-to-stars:ore_box",
+    "from-stone-to-stars:drive_housing",
+    "from-stone-to-stars:drill_string"
   ]
 }

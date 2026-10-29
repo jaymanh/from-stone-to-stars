@@ -20,7 +20,8 @@ public final class RotationConnector {
 				|| state.is(ModBlocks.BRONZE_HOPPER)
 				|| state.is(ModBlocks.SAW_ARBOR)
 				|| state.is(ModBlocks.POWERED_BELLOWS)
-				|| state.is(ModBlocks.ORE_CRUSHER);
+				|| state.is(ModBlocks.ORE_CRUSHER)
+				|| state.is(ModBlocks.DRIVE_HOUSING);
 	}
 
 	public static boolean canConnect(Level level, BlockPos from, BlockPos to, Direction direction) {
@@ -71,7 +72,8 @@ public final class RotationConnector {
 				|| state.is(ModBlocks.TRIP_HAMMER)
 				|| state.is(ModBlocks.SAW_ARBOR)
 				|| state.is(ModBlocks.POWERED_BELLOWS)
-				|| state.is(ModBlocks.ORE_CRUSHER);
+				|| state.is(ModBlocks.ORE_CRUSHER)
+				|| state.is(ModBlocks.DRIVE_HOUSING);
 	}
 
 	/** Shaft enters the back of a facing machine, opposite the side the player looks at. */

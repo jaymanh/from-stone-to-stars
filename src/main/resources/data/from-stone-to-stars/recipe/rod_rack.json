@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I I",
+    "I I",
+    "PSP"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "from-stone-to-stars:steel_sheet",
+    "P": "#minecraft:planks"
+  },
+  "result": {
+    "id": "from-stone-to-stars:rod_rack",
+    "count": 1
+  }
+}

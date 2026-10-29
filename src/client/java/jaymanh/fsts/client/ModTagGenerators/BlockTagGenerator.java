@@ -127,7 +127,25 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.POWERED_BELLOWS)
 				.add(ModBlockItemIds.FORGE_INPUT)
 				.add(ModBlockItemIds.TAPPING_SPOUT)
-				.add(ModBlockItemIds.ORE_CRUSHER);
+				.add(ModBlockItemIds.ORE_CRUSHER)
+				.add(ModBlockItemIds.DRILL_HEAD)
+				.add(ModBlockItemIds.ROD_RACK)
+				.add(ModBlockItemIds.ORE_BOX)
+				.add(ModBlockItemIds.DRIVE_HOUSING)
+				.add(ModBlockIds.DRILL_STRING);
+
+		builder(ModTags.DRILL_ORES)
+				.addOptionalTag(BlockTags.IRON_ORES)
+				.addOptionalTag(BlockTags.COPPER_ORES)
+				.addOptionalTag(BlockTags.GOLD_ORES)
+				.add(minecraftBlock("coal_ore"))
+				.add(minecraftBlock("deepslate_coal_ore"))
+				.add(minecraftBlock("redstone_ore"))
+				.add(minecraftBlock("deepslate_redstone_ore"))
+				.add(minecraftBlock("lapis_ore"))
+				.add(minecraftBlock("deepslate_lapis_ore"))
+				.add(ModBlockItemIds.ZINC_ORE)
+				.add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
 
 		builder(BlockTags.MINEABLE_WITH_SHOVEL)
 				.add(ModBlockItemIds.RUSTY_MUD);

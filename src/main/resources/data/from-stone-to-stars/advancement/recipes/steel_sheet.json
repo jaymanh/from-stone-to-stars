@@ -13,7 +13,11 @@
   },
   "rewards": {
     "recipes": [
-      "from-stone-to-stars:steel_blade"
+      "from-stone-to-stars:steel_blade",
+      "from-stone-to-stars:drill_head",
+      "from-stone-to-stars:drive_housing",
+      "from-stone-to-stars:rod_rack",
+      "from-stone-to-stars:ore_box"
     ]
   }
 }

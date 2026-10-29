@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "#minecraft:iron_ores",
+      "required": false
+    },
+    {
+      "id": "#minecraft:copper_ores",
+      "required": false
+    },
+    {
+      "id": "#minecraft:gold_ores",
+      "required": false
+    },
+    "minecraft:coal_ore",
+    "minecraft:deepslate_coal_ore",
+    "minecraft:redstone_ore",
+    "minecraft:deepslate_redstone_ore",
+    "minecraft:lapis_ore",
+    "minecraft:deepslate_lapis_ore",
+    "from-stone-to-stars:zinc_ore",
+    "from-stone-to-stars:deepslate_zinc_ore"
+  ]
+}

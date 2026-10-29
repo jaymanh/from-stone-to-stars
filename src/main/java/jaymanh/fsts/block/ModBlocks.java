@@ -252,6 +252,54 @@ public final class ModBlocks {
 					.requiresCorrectToolForDrops()
 					.noOcclusion()
 	);
+	public static final Block DRILL_HEAD = register(
+			ModBlockItemIds.DRILL_HEAD,
+			DrillHeadBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(4.0F, 6.0F)
+					.requiresCorrectToolForDrops()
+	);
+	public static final Block ROD_RACK = register(
+			ModBlockItemIds.ROD_RACK,
+			RodRackBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
+	public static final Block ORE_BOX = register(
+			ModBlockItemIds.ORE_BOX,
+			OreBoxBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+	);
+	public static final Block DRIVE_HOUSING = register(
+			ModBlockItemIds.DRIVE_HOUSING,
+			DriveHousingBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(4.0F, 6.0F)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()
+	);
+	public static final Block DRILL_STRING = register(
+			ModBlockIds.DRILL_STRING,
+			DrillStringBlock::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.METAL)
+					.sound(SoundType.METAL)
+					.strength(1.5F, 6.0F)
+					.noOcclusion()
+					.noLootTable()
+	);
 	public static final Block FORGING_STUMP = register(
 			ModBlockItemIds.FORGING_STUMP,
 			ForgingStumpBlock::new,

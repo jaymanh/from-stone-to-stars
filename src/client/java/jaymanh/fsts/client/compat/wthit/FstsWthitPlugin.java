@@ -1,6 +1,14 @@
 package jaymanh.fsts.client.compat.wthit;
 
 import jaymanh.fsts.FromStoneToStars;
+import jaymanh.fsts.block.ModCustomBlockModels.DriveHousingBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.DrillHeadBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.OreBoxBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.RodRackBlock;
+import jaymanh.fsts.block.entity.DriveHousingBlockEntity;
+import jaymanh.fsts.block.entity.DrillHeadBlockEntity;
+import jaymanh.fsts.block.entity.OreBoxBlockEntity;
+import jaymanh.fsts.block.entity.RodRackBlockEntity;
 import jaymanh.fsts.block.ModCustomBlockModels.KindlingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PebbleBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PlacedBoneSawBlock;
@@ -114,5 +122,14 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addBlockData(WthitMachineProvider.INSTANCE, OreCrusherBlockEntity.class);
 		registrar.addBlockData(WthitMachineProvider.INSTANCE, SawArborBlockEntity.class);
 		registrar.addBlockData(WthitMachineProvider.INSTANCE, SawmillPortBlockEntity.class);
+
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, DriveHousingBlock.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, DriveHousingBlockEntity.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, DrillHeadBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, RodRackBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, OreBoxBlock.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, DrillHeadBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, RodRackBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, OreBoxBlockEntity.class);
 	}
 }

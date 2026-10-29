@@ -48,6 +48,10 @@ public final class ModBlockItemIds {
 	public static final BlockItemId SAW_ARBOR = create("saw_arbor");
 	public static final BlockItemId LOG_INTAKE = create("log_intake");
 	public static final BlockItemId PLANK_OUTFEED = create("plank_outfeed");
+	public static final BlockItemId DRILL_HEAD = create("drill_head");
+	public static final BlockItemId ROD_RACK = create("rod_rack");
+	public static final BlockItemId ORE_BOX = create("ore_box");
+	public static final BlockItemId DRIVE_HOUSING = create("drive_housing");
 
 	private ModBlockItemIds() {
 	}

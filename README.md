@@ -19,7 +19,7 @@
 | Loader | Fabric Loader 0.19.5+, Fabric API |
 | Java | 25 |
 | Playable | **Age 0** (Primitive and Stone) and **Age 1** (Zinc and Bronze) |
-| In progress | **Age 2** (Iron and Steel). The route to iron is playable. The ironworks, drill, and steel parts are not built yet. |
+| In progress | **Age 2** (Iron and Steel). The route to iron, steel parts, the sawmill, the ironworks fittings, and the bore rig are in. The `age2` advancements are not. |
 
 The mod is in active development. Balance, recipes, and save data may change between versions.
 

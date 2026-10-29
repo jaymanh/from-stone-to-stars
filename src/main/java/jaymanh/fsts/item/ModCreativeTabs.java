@@ -100,6 +100,10 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.FORGE_INPUT);
 				output.accept(ModBlocks.TAPPING_SPOUT);
 				output.accept(ModBlocks.ORE_CRUSHER);
+				output.accept(ModBlocks.DRILL_HEAD);
+				output.accept(ModBlocks.ROD_RACK);
+				output.accept(ModBlocks.ORE_BOX);
+				output.accept(ModBlocks.DRIVE_HOUSING);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
 				output.accept(ModBlocks.WATER_WHEEL);
@@ -144,6 +148,7 @@ public final class ModCreativeTabs {
 
 				output.accept(ModItems.STEEL_SHEET);
 				output.accept(ModItems.STEEL_BLADE);
+				output.accept(ModItems.STEEL_DRILL_ROD);
 			})
 			.build();
 

@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
+import jaymanh.fsts.block.entity.DrillHeadBlockEntity;
 import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
 import jaymanh.fsts.block.entity.ForgeInputBlockEntity;
 import jaymanh.fsts.block.entity.ForgeStoreBlockEntity;
+import jaymanh.fsts.block.entity.OreBoxBlockEntity;
 import jaymanh.fsts.block.entity.OreCrusherBlockEntity;
 import jaymanh.fsts.block.entity.PoweredBellowsBlockEntity;
+import jaymanh.fsts.block.entity.RodRackBlockEntity;
 import jaymanh.fsts.block.entity.SawArborBlockEntity;
 import jaymanh.fsts.block.entity.SawmillPortBlockEntity;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
@@ -67,6 +70,10 @@ public final class MachineTooltips {
 	private static final String CRUSHER_HELD = "FstsCrusherHeld";
 
 	private static final String SAWMILL_STATUS = "FstsSawmillStatus";
+
+	private static final String DRILL_STATUS = "FstsDrillStatus";
+	private static final String DRILL_RODS_DOWN = "FstsDrillRodsDown";
+	private static final String RACK_RODS = "FstsRackRods";
 
 	private MachineTooltips() {
 	}
@@ -166,17 +173,16 @@ public final class MachineTooltips {
 		}
 		BlockPos pos = entity.getBlockPos();
 		switch (entity) {
+			case OreBoxBlockEntity box -> writeStore(tag, box);
 			case ForgeStoreBlockEntity store -> {
 				tag.putInt(FITTING_FORGE, forgeState(level, pos));
-				int used = 0;
-				for (int slot = 0; slot < store.getContainerSize(); slot++) {
-					if (!store.getItem(slot).isEmpty()) {
-						used++;
-					}
-				}
-				tag.putInt(STORE_USED, used);
-				tag.putInt(STORE_SIZE, store.getContainerSize());
+				writeStore(tag, store);
 			}
+			case DrillHeadBlockEntity drill -> {
+				putComponent(tag, DRILL_STATUS, drill.statusMessage(), registries);
+				tag.putInt(DRILL_RODS_DOWN, drill.rodsDown());
+			}
+			case RodRackBlockEntity rack -> tag.putInt(RACK_RODS, rack.rods());
 			case PoweredBellowsBlockEntity ignored -> tag.putInt(FITTING_FORGE, forgeState(level, pos));
 			case OreCrusherBlockEntity crusher -> writeCrusher(tag, crusher, level, pos);
 			case SawArborBlockEntity arbor -> writeSawmill(tag, arbor, registries);
@@ -212,7 +218,23 @@ public final class MachineTooltips {
 		if (data.contains(SAWMILL_STATUS)) {
 			lines.addAll(ProcessTooltips.progressLines(data));
 		}
+		getComponent(data, DRILL_STATUS, registries).ifPresent(lines::add);
+		addCount(lines, data, DRILL_RODS_DOWN, "tooltip.from-stone-to-stars.drill.rods_down");
+		if (data.contains(RACK_RODS)) {
+			lines.add(Component.translatable("tooltip.from-stone-to-stars.drill.rack_rods", data.getIntOr(RACK_RODS, 0), RodRackBlockEntity.CAPACITY));
+		}
 		return lines;
+	}
+
+	private static void writeStore(CompoundTag tag, ForgeStoreBlockEntity store) {
+		int used = 0;
+		for (int slot = 0; slot < store.getContainerSize(); slot++) {
+			if (!store.getItem(slot).isEmpty()) {
+				used++;
+			}
+		}
+		tag.putInt(STORE_USED, used);
+		tag.putInt(STORE_SIZE, store.getContainerSize());
 	}
 
 	/** 0 when no lit forge holds this position, 1 for a lit forge, 2 for a lit full ironworks. */

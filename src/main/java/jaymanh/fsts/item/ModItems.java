@@ -133,6 +133,7 @@ public final class ModItems {
 	);
 	public static final Item STEEL_SHEET = register(ModItemIds.STEEL_SHEET, Item::new, new Item.Properties());
 	public static final Item STEEL_BLADE = register(ModItemIds.STEEL_BLADE, Item::new, new Item.Properties());
+	public static final Item STEEL_DRILL_ROD = register(ModItemIds.STEEL_DRILL_ROD, Item::new, new Item.Properties().stacksTo(16));
 	private ModItems() {
 	}
 

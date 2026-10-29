@@ -38,6 +38,8 @@ public class ModTags {
 	public static final TagKey<Block> FORGE_FRAME = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "forge_frame"));
 	/** Side columns and top beam around the sawmill blade wall. */
 	public static final TagKey<Block> SAWMILL_FRAME = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "sawmill_frame"));
+	/** Ores the bore rig mines when a vein touches its hole. No diamond, emerald, or rusty mud. */
+	public static final TagKey<Block> DRILL_ORES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, "drill_ores"));
 
     public static final TagKey<Item> WATER_VESSELS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, "water_vessels"));
 

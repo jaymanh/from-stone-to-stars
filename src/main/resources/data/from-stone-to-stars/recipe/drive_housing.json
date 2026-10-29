@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    "IXI",
+    "SGS"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:steel_sheet",
+    "G": "from-stone-to-stars:rotation_gear",
+    "I": "from-stone-to-stars:steel_ingot",
+    "X": "minecraft:iron_block"
+  },
+  "result": {
+    "id": "from-stone-to-stars:drive_housing",
+    "count": 1
+  }
+}

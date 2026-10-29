@@ -1,0 +1,174 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "from-stone-to-stars:block/steel_plate",
+    "steel": "from-stone-to-stars:block/steel_plate",
+    "gear": "minecraft:block/iron_block",
+    "axle": "minecraft:block/stripped_oak_log",
+    "axle_end": "minecraft:block/stripped_oak_log_top"
+  },
+  "elements": [
+    {
+      "name": "body",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            15,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            15,
+            16
+          ],
+          "texture": "#steel"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            15
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            15
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "gear_plate",
+      "from": [
+        3,
+        3,
+        -0.01
+      ],
+      "to": [
+        13,
+        13,
+        0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#gear"
+        }
+      }
+    },
+    {
+      "name": "axle",
+      "from": [
+        6,
+        6,
+        15
+      ],
+      "to": [
+        10,
+        10,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ],
+          "texture": "#axle_end"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ],
+          "texture": "#axle_end"
+        },
+        "east": {
+          "uv": [
+            15,
+            6,
+            16,
+            10
+          ],
+          "texture": "#axle"
+        },
+        "west": {
+          "uv": [
+            15,
+            6,
+            16,
+            10
+          ],
+          "texture": "#axle"
+        },
+        "up": {
+          "uv": [
+            6,
+            15,
+            10,
+            16
+          ],
+          "texture": "#axle"
+        },
+        "down": {
+          "uv": [
+            6,
+            15,
+            10,
+            16
+          ],
+          "texture": "#axle"
+        }
+      }
+    }
+  ]
+}

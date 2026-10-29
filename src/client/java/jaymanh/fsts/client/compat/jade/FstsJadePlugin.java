@@ -1,5 +1,13 @@
 package jaymanh.fsts.client.compat.jade;
 
+import jaymanh.fsts.block.ModCustomBlockModels.DriveHousingBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.DrillHeadBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.OreBoxBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.RodRackBlock;
+import jaymanh.fsts.block.entity.DriveHousingBlockEntity;
+import jaymanh.fsts.block.entity.DrillHeadBlockEntity;
+import jaymanh.fsts.block.entity.OreBoxBlockEntity;
+import jaymanh.fsts.block.entity.RodRackBlockEntity;
 import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PoweredQuernBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.TripHammerBlock;
@@ -69,6 +77,10 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, OreCrusherBlockEntity.class);
 		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, SawArborBlockEntity.class);
 		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, SawmillPortBlockEntity.class);
+		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, DriveHousingBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, DrillHeadBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, RodRackBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, OreBoxBlockEntity.class);
 	}
 
 	@Override
@@ -96,5 +108,9 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, OreCrusherBlock.class);
 		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, SawArborBlock.class);
 		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, SawmillPortBlock.class);
+		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, DriveHousingBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, DrillHeadBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, RodRackBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, OreBoxBlock.class);
 	}
 }

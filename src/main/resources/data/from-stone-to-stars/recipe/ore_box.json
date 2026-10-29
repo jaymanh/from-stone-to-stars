@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ISI",
+    "ICI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "from-stone-to-stars:steel_sheet",
+    "C": "#c:chests/wooden"
+  },
+  "result": {
+    "id": "from-stone-to-stars:ore_box",
+    "count": 1
+  }
+}

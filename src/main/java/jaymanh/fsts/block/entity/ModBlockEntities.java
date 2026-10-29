@@ -137,6 +137,30 @@ public final class ModBlockEntities {
 			ModBlocks.ORE_CRUSHER
 	);
 
+	public static final BlockEntityType<DrillHeadBlockEntity> DRILL_HEAD = register(
+			"drill_head",
+			DrillHeadBlockEntity::new,
+			ModBlocks.DRILL_HEAD
+	);
+
+	public static final BlockEntityType<RodRackBlockEntity> ROD_RACK = register(
+			"rod_rack",
+			RodRackBlockEntity::new,
+			ModBlocks.ROD_RACK
+	);
+
+	public static final BlockEntityType<OreBoxBlockEntity> ORE_BOX = register(
+			"ore_box",
+			OreBoxBlockEntity::new,
+			ModBlocks.ORE_BOX
+	);
+
+	public static final BlockEntityType<DriveHousingBlockEntity> DRIVE_HOUSING = register(
+			"drive_housing",
+			DriveHousingBlockEntity::new,
+			ModBlocks.DRIVE_HOUSING
+	);
+
 	public static final BlockEntityType<SawArborBlockEntity> SAW_ARBOR = register(
 			"saw_arbor",
 			SawArborBlockEntity::new,

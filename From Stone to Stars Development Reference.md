@@ -587,7 +587,7 @@ side view
 | Piece | Recipe | Role |
 | --- | --- | --- |
 | Drill head | 2 steel sheets, 4 steel ingots, 2 steel blades, a piston, an iron tool head | Controller. Bores straight down from the block under it. Late Age 2, so it costs as much steel as the rest of the line together. |
-| Rod rack | 4 iron ingots, 2 planks, 1 steel sheet | Sits on top of the drill head. A dedicated store that only takes steel drill rods (8). |
+| Rod rack | 4 iron ingots, 2 planks, 1 steel sheet | Sits on top of the drill head. A dedicated store that only takes steel drill rods (8). Up to 8 racks stack in a column above the head. The rig takes rods from the top rack first and returns them to the bottom rack first. |
 | Ore box | 4 iron ingots, 1 steel sheet, a wooden chest | Beside the drill head. Holds what the rig brings up (9 slots). Hoppers pull from it. |
 | Drive housing | 4 steel sheets, 2 steel ingots, 2 wooden gears, an iron block | Beside the drill head, opposite the ore box. The wheel's shaft enters its back. Costs 1 wheel capacity. |
 | Steel drill rod | Forging stump: 2 heated steel ingots, 10 hits, 1 rod | Each rod lets the bore go 8 blocks deeper. This is the steel rod the age has been missing. |
@@ -599,7 +599,7 @@ The head and drive recipes unlock on a steel sheet, the rack and ore box with th
 | Forming | Like the sawmill, it forms when the drive turns, with the ore box and drive housing on opposite sides of the drill head and the rod rack on top. Clicking the drill head shows its status or why it won't form. |
 | Boring | One block of depth per bore step (first pass: 60 ticks). The rig lowers one rod from the rack for every 8 blocks of depth. Stone and other non-ore blocks are destroyed, not kept. Each block of the hole fills with a drill string block, a thin rod that shows the string. Caves, other air gaps, and water are crossed and still count toward depth. String blocks in water are waterlogged. |
 | Drill string | String blocks drop nothing when the player mines them. Only a recall brings rods back. |
-| How deep | Rods in the rack × 8. It stops when it runs out of rods, at bedrock, at lava, or at a block an iron pick cannot break. The rack holds 8 rods first pass, so a full rack reaches 64 blocks. |
+| How deep | Rods in the racks × 8. It stops when it runs out of rods, at bedrock, at lava, or at a block an iron pick cannot break. Each rack holds 8 rods, so one full rack reaches 64 blocks and a column of 8 full racks reaches 512, deeper than any world. |
 | Veins | At each new depth, the rig checks the 8 blocks around the hole, diagonals included. If one is in `drill_ores`, it mines the whole connected vein of that ore, including the deepslate form of the same ore, before it bores again. Vein size is capped for safety (first pass: 64 blocks). |
 | Vein time | Time scales with vein size: one ore block per mining step (first pass: 40 ticks). An 8-block iron vein takes 16 seconds. |
 | What it keeps | Ore drops as if mined with an unenchanted iron pick (raw iron, coal, and so on) into the ore box. Each mined ore block is replaced with stone, or deepslate for deepslate ores, so the ground keeps its shape and the vein leaves no cave behind. When the ore box is full, the rig waits. |

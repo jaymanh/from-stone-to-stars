@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SIS",
+    "BPB",
+    "IHI"
+  ],
+  "key": {
+    "S": "from-stone-to-stars:steel_sheet",
+    "I": "from-stone-to-stars:steel_ingot",
+    "B": "from-stone-to-stars:steel_blade",
+    "P": "minecraft:piston",
+    "H": "from-stone-to-stars:iron_tool_head"
+  },
+  "result": {
+    "id": "from-stone-to-stars:drill_head",
+    "count": 1
+  }
+}

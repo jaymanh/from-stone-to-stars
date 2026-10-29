@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "particle": "from-stone-to-stars:block/steel_plate",
+    "side": "from-stone-to-stars:block/steel_plate",
+    "top": "from-stone-to-stars:block/forge_input_top",
+    "bottom": "from-stone-to-stars:block/steel_plate"
+  }
+}
