@@ -7,6 +7,14 @@ import jaymanh.fsts.block.ModCustomBlockModels.BronzeHopperBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PoweredBellowsBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.OreCrusherBlock;
 import jaymanh.fsts.block.entity.OreCrusherBlockEntity;
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeInputBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SawArborBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SawmillPortBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TappingSpoutBlock;
+import jaymanh.fsts.block.entity.ForgeInputBlockEntity;
+import jaymanh.fsts.block.entity.SawArborBlockEntity;
+import jaymanh.fsts.block.entity.SawmillPortBlockEntity;
+import jaymanh.fsts.block.entity.TappingSpoutBlockEntity;
 import jaymanh.fsts.block.ModCustomBlockModels.RotationGearBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WaterWheelBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WoodenShaftBlock;
@@ -54,6 +62,13 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, BronzeHopperBlockEntity.class);
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, PoweredBellowsBlockEntity.class);
 		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, OreCrusherBlockEntity.class);
+		registration.registerBlockDataProvider(JadeRotationProvider.Data.INSTANCE, SawArborBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, ForgeInputBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, TappingSpoutBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, PoweredBellowsBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, OreCrusherBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, SawArborBlockEntity.class);
+		registration.registerBlockDataProvider(JadeMachineProvider.Data.INSTANCE, SawmillPortBlockEntity.class);
 	}
 
 	@Override
@@ -74,5 +89,12 @@ public final class FstsJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, BronzeHopperBlock.class);
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, PoweredBellowsBlock.class);
 		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, OreCrusherBlock.class);
+		registration.registerBlockComponent(JadeRotationProvider.INSTANCE, SawArborBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, ForgeInputBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, TappingSpoutBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, PoweredBellowsBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, OreCrusherBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, SawArborBlock.class);
+		registration.registerBlockComponent(JadeMachineProvider.INSTANCE, SawmillPortBlock.class);
 	}
 }

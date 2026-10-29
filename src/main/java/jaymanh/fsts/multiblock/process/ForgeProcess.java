@@ -50,7 +50,9 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 	private int burnTicksRemaining;
 	private int burnTicksTotal;
 	private int bankBellows;
+	private int poweredBellows;
 	private int drivingBellows;
+	private int crushers;
 	private int linedHearths;
 	private List<BlockPos> inputs = List.of();
 	private List<BlockPos> spouts = List.of();
@@ -129,25 +131,54 @@ public final class ForgeProcess implements MultiblockProcess, FormedMultiblock.P
 		return this.drivingBellows;
 	}
 
+	/** Powered bellows in the bank at the last scan, spinning or not. */
+	public int poweredBellows() {
+		return this.poweredBellows;
+	}
+
+	/** Ore crushers sitting on this forge's inputs at the last scan. */
+	public int crushers() {
+		return this.crushers;
+	}
+
+	/** Every fitting present: a powered bellows, an input with a crusher on it, a spout, and every hearth lined. */
+	public boolean isIronworks() {
+		return this.poweredBellows > 0
+				&& !this.inputs.isEmpty()
+				&& this.crushers > 0
+				&& !this.spouts.isEmpty()
+				&& this.linedHearths >= this.hearthCount;
+	}
+
 	private void scanInputRole(ServerLevel level, StructureMatch match) {
 		int bellows = 0;
+		int powered = 0;
 		int driving = 0;
+		int crushers = 0;
 		List<BlockPos> inputs = new ArrayList<>();
 		for (BlockPos pos : match.positionsWithRole(MultiblockRole.INPUT)) {
 			BlockState state = level.getBlockState(pos);
 			if (state.is(ModBlocks.FORGE_INPUT)) {
 				inputs.add(pos);
+				if (level.getBlockState(pos.above()).is(ModBlocks.ORE_CRUSHER)) {
+					crushers++;
+				}
 				continue;
 			}
 			if (BellowsBlock.isBellows(state)) {
 				bellows++;
 			}
-			if (level.getBlockEntity(pos) instanceof PoweredBellowsBlockEntity powered && powered.isDriving()) {
-				driving++;
+			if (level.getBlockEntity(pos) instanceof PoweredBellowsBlockEntity bellowsEntity) {
+				powered++;
+				if (bellowsEntity.isDriving()) {
+					driving++;
+				}
 			}
 		}
 		this.bankBellows = bellows;
+		this.poweredBellows = powered;
 		this.drivingBellows = driving;
+		this.crushers = crushers;
 		this.inputs = List.copyOf(inputs);
 	}
 

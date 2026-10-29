@@ -13,6 +13,16 @@ import jaymanh.fsts.block.ModCustomBlockModels.BronzeHopperBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.PoweredBellowsBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.OreCrusherBlock;
 import jaymanh.fsts.block.entity.OreCrusherBlockEntity;
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeHearthBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.ForgeInputBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SawArborBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.SawmillPortBlock;
+import jaymanh.fsts.block.ModCustomBlockModels.TappingSpoutBlock;
+import jaymanh.fsts.block.entity.ForgeHearthBlockEntity;
+import jaymanh.fsts.block.entity.ForgeInputBlockEntity;
+import jaymanh.fsts.block.entity.SawArborBlockEntity;
+import jaymanh.fsts.block.entity.SawmillPortBlockEntity;
+import jaymanh.fsts.block.entity.TappingSpoutBlockEntity;
 import jaymanh.fsts.block.ModCustomBlockModels.RotationGearBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WaterWheelBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.WoodenShaftBlock;
@@ -41,6 +51,8 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 	public static final Identifier BONE_SAW = FromStoneToStars.id("bone_saw");
 	public static final Identifier SNARE = FromStoneToStars.id("snare");
 	public static final Identifier ROTATION = FromStoneToStars.id("rotation");
+	public static final Identifier FORGE = FromStoneToStars.id("forge");
+	public static final Identifier MACHINES = FromStoneToStars.id("machines");
 
 	@Override
 	public void register(IRegistrar registrar) {
@@ -50,6 +62,8 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addConfig(BONE_SAW, true);
 		registrar.addConfig(SNARE, true);
 		registrar.addConfig(ROTATION, true);
+		registrar.addConfig(FORGE, true);
+		registrar.addConfig(MACHINES, true);
 
 		registrar.addComponent(WthitPebbleProvider.INSTANCE, TooltipPosition.BODY, PebbleBlock.class);
 
@@ -82,5 +96,23 @@ public final class FstsWthitPlugin implements IWailaPlugin {
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, PoweredBellowsBlockEntity.class);
 		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, OreCrusherBlock.class);
 		registrar.addBlockData(WthitRotationProvider.INSTANCE, OreCrusherBlockEntity.class);
+		registrar.addComponent(WthitRotationProvider.INSTANCE, TooltipPosition.BODY, SawArborBlock.class);
+		registrar.addBlockData(WthitRotationProvider.INSTANCE, SawArborBlockEntity.class);
+
+		registrar.addComponent(WthitForgeProvider.INSTANCE, TooltipPosition.BODY, ForgeHearthBlock.class);
+		registrar.addBlockData(WthitForgeProvider.INSTANCE, ForgeHearthBlockEntity.class);
+
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, ForgeInputBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, TappingSpoutBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, PoweredBellowsBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, OreCrusherBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, SawArborBlock.class);
+		registrar.addComponent(WthitMachineProvider.INSTANCE, TooltipPosition.BODY, SawmillPortBlock.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, ForgeInputBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, TappingSpoutBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, PoweredBellowsBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, OreCrusherBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, SawArborBlockEntity.class);
+		registrar.addBlockData(WthitMachineProvider.INSTANCE, SawmillPortBlockEntity.class);
 	}
 }
