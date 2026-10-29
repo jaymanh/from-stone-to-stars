@@ -65,7 +65,7 @@ You can make iron before you can mine iron ore. Dig rusty mud and dry it, forge 
 
 Because progression is gated, many vanilla shortcuts are removed or replaced:
 
-- Wooden, stone, and copper tools, planks, the crafting table, furnace, chest, barrel, bucket, flint and steel, shield, boats, and wool beds have their recipes removed. Several come back later through mod recipes. For example, a bronze chest crafts into a vanilla chest.
+- Wooden, stone, and copper tools, planks, the crafting table, furnace, chest, barrel, bucket, shield, boats, and wool beds have their recipes removed. Several come back later through mod recipes. For example, a bronze chest crafts into a vanilla chest. Flint and steel takes a steel ingot instead of iron.
 - Iron ingots, nuggets, blocks, raw iron, iron and chainmail gear are removed from loot.
 - Mob explosions don't break blocks, so nobody can blast past a gate.
 

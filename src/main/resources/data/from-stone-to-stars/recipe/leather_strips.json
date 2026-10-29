@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "#c:leathers",
+    "minecraft:leather",
     "#from-stone-to-stars:knives"
   ],
   "result": {

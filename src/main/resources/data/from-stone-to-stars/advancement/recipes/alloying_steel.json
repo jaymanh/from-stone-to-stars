@@ -1,0 +1,48 @@
+{
+  "criteria": {
+    "has_crucible": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:crucible"
+          }
+        ]
+      }
+    },
+    "has_bronze_reinforced_crucible": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:bronze_reinforced_crucible"
+          }
+        ]
+      }
+    },
+    "has_iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_crucible",
+      "has_bronze_reinforced_crucible"
+    ],
+    [
+      "has_iron_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "from-stone-to-stars:alloying/steel"
+    ]
+  }
+}

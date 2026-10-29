@@ -82,7 +82,7 @@ public final class VanillaProgression {
 		add(ids,
 				"wooden_sword", "wooden_shovel", "wooden_pickaxe", "wooden_axe", "wooden_hoe", "wooden_spear",
 				"stone_sword", "stone_shovel", "stone_pickaxe", "stone_axe", "stone_hoe", "stone_spear",
-				"crafting_table", "furnace", "bucket", "flint_and_steel", "chest",
+				"crafting_table", "furnace", "bucket", "chest",
 				"bamboo_planks", "bamboo_raft", "bamboo_chest_raft",
 				"crimson_planks", "warped_planks", "bread", "bone_meal", "leather", "barrel",
 				"copper_sword", "copper_shovel", "copper_pickaxe", "copper_axe", "copper_hoe", "copper_spear",

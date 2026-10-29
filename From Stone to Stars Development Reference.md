@@ -130,7 +130,8 @@ Zinc ore, raw zinc, zinc ingots, and bronze tools use those names in code. Cruci
 | Wooden / stone / copper tool recipes and wooden/stone tool loot | Removed. |
 | Plank recipes (overworld woods, bamboo, crimson, warped) | Removed; bone saw supplies planks. The Age 2 sawmill is the bulk source. |
 | Crafting table recipe | Vanilla recipe removed. The work stump is the Age 0 table. A later craft returns a vanilla table: bronze plate, nails, leather strips, and an unfinished work stump. |
-| Furnace, flint and steel, barrel, shield | Recipes removed. |
+| Furnace, barrel, shield | Recipes removed. |
+| Flint and steel | Vanilla recipe replaced: 1 steel ingot + 1 flint. Unlocks when the player holds a steel ingot. |
 | Bucket | Vanilla recipe removed. The Age 1 bronze bucket picks up and places water, lava, and powder snow. |
 | Chest | Vanilla recipe removed. One bronze chest crafts into one vanilla chest. |
 | Found iron | Ingots, nuggets, blocks, raw iron, iron tools and armor, and chainmail are stripped from loot. Block drops and end-city chests stay. |
