@@ -53,7 +53,7 @@ public class RodRackBlockEntity extends BlockEntity implements WorldlyContainer 
 	 * @return rods that did not fit
 	 */
 	public int addRods(int count) {
-		int fit = Math.min(count, CAPACITY - this.rods());
+		int fit = Math.max(0, Math.min(count, CAPACITY - this.rods()));
 		if (fit > 0) {
 			if (this.items.getFirst().isEmpty()) {
 				this.items.set(0, new ItemStack(ModItems.STEEL_DRILL_ROD, fit));
@@ -153,7 +153,7 @@ public class RodRackBlockEntity extends BlockEntity implements WorldlyContainer 
 
 	@Override
 	public boolean canPlaceItem(int slot, ItemStack stack) {
-		return stack.is(ModItems.STEEL_DRILL_ROD);
+		return stack.is(ModItems.STEEL_DRILL_ROD) && this.rods() < CAPACITY;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import java.util.Set;
 import com.mojang.serialization.Codec;
 
 import jaymanh.fsts.block.ModBlocks;
+import jaymanh.fsts.block.ModCustomBlockModels.DriveHousingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.DrillStringBlock;
 import jaymanh.fsts.item.ModItems;
 import jaymanh.fsts.tags.ModTags;
@@ -179,8 +180,13 @@ public class DrillHeadBlockEntity extends BlockEntity {
 			return null;
 		}
 		for (Direction side : Direction.Plane.HORIZONTAL) {
-			if (this.level.getBlockEntity(this.worldPosition.relative(side)) instanceof OreBoxBlockEntity box
-					&& this.level.getBlockEntity(this.worldPosition.relative(side.getOpposite())) instanceof DriveHousingBlockEntity drive) {
+			BlockPos drivePos = this.worldPosition.relative(side.getOpposite());
+			BlockState driveState = this.level.getBlockState(drivePos);
+			// The drive's front must face this head, so one drive can only ever run one rig.
+			if (driveState.is(ModBlocks.DRIVE_HOUSING)
+					&& driveState.getValue(DriveHousingBlock.FACING) == side
+					&& this.level.getBlockEntity(this.worldPosition.relative(side)) instanceof OreBoxBlockEntity box
+					&& this.level.getBlockEntity(drivePos) instanceof DriveHousingBlockEntity drive) {
 				return new Parts(racks, box, drive);
 			}
 		}

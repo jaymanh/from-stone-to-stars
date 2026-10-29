@@ -589,7 +589,7 @@ side view
 | Drill head | 2 steel sheets, 4 steel ingots, 2 steel blades, a piston, an iron tool head | Controller. Bores straight down from the block under it. Late Age 2, so it costs as much steel as the rest of the line together. |
 | Rod rack | 4 iron ingots, 2 planks, 1 steel sheet | Sits on top of the drill head. A dedicated store that only takes steel drill rods (8). Up to 8 racks stack in a column above the head. The rig takes rods from the top rack first and returns them to the bottom rack first. |
 | Ore box | 4 iron ingots, 1 steel sheet, a wooden chest | Beside the drill head. Holds what the rig brings up (9 slots). Hoppers pull from it. |
-| Drive housing | 4 steel sheets, 2 steel ingots, 2 wooden gears, an iron block | Beside the drill head, opposite the ore box. The wheel's shaft enters its back. Costs 1 wheel capacity. |
+| Drive housing | 4 steel sheets, 2 steel ingots, 2 wooden gears, an iron block | Beside the drill head, opposite the ore box, its front facing the head. The wheel's shaft enters its back. Costs 1 wheel capacity. It drives only the head it faces, so one drive can't run several rigs. |
 | Steel drill rod | Forging stump: 2 heated steel ingots, 10 hits, 1 rod | Each rod lets the bore go 8 blocks deeper. This is the steel rod the age has been missing. |
 
 The head and drive recipes unlock on a steel sheet, the rack and ore box with them. The rod unlocks on a steel ingot.
