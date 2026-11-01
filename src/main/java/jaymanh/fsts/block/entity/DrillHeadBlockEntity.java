@@ -264,7 +264,7 @@ public class DrillHeadBlockEntity extends BlockEntity {
 		for (ItemStack drop : drops) {
 			parts.box().store(drop);
 		}
-		level.setBlock(target, replacementFor(state), Block.UPDATE_ALL);
+		level.setBlock(target, fillFor(target), Block.UPDATE_ALL);
 		level.playSound(null, this.worldPosition, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.8F, 0.8F);
 		this.vein.remove(target);
 		this.progress = 0;
@@ -274,8 +274,7 @@ public class DrillHeadBlockEntity extends BlockEntity {
 	private void recallStep(ServerLevel level, Parts parts) {
 		if (this.depth > 0) {
 			BlockPos cell = this.worldPosition.below(this.depth);
-			BlockState fill = cell.getY() < 0 ? Blocks.DEEPSLATE.defaultBlockState() : Blocks.STONE.defaultBlockState();
-			level.setBlock(cell, fill, Block.UPDATE_ALL);
+			level.setBlock(cell, fillFor(cell), Block.UPDATE_ALL);
 			this.depth--;
 			if (this.depth % BLOCKS_PER_ROD == 0) {
 				level.playSound(null, this.worldPosition, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 0.8F, 0.8F);
@@ -376,10 +375,8 @@ public class DrillHeadBlockEntity extends BlockEntity {
 		return id.getNamespace() + ":" + id.getPath().replace("deepslate_", "");
 	}
 
-	private static BlockState replacementFor(BlockState ore) {
-		return BuiltInRegistries.BLOCK.getKey(ore.getBlock()).getPath().startsWith("deepslate_")
-				? Blocks.DEEPSLATE.defaultBlockState()
-				: Blocks.STONE.defaultBlockState();
+	private static BlockState fillFor(BlockPos pos) {
+		return pos.getY() < 0 ? Blocks.DEEPSLATE.defaultBlockState() : Blocks.STONE.defaultBlockState();
 	}
 
 	/** Anything an unenchanted iron pick could take that is not a block entity or the bottom of the world. */
