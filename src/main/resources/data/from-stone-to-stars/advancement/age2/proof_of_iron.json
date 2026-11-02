@@ -1,0 +1,44 @@
+{
+  "parent": "from-stone-to-stars:age2/bore",
+  "criteria": {
+    "steel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:steel_ingot"
+          }
+        ]
+      }
+    },
+    "ironworks": {
+      "trigger": "minecraft:impossible"
+    },
+    "bore": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:steel_sheet"
+    },
+    "frame": "goal",
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.proof_of_iron.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.proof_of_iron.description"
+    }
+  },
+  "requirements": [
+    [
+      "steel"
+    ],
+    [
+      "ironworks"
+    ],
+    [
+      "bore"
+    ]
+  ]
+}

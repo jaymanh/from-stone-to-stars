@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age2/first_iron",
+  "criteria": {
+    "steel_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "from-stone-to-stars:steel_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:steel_ingot"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.steel.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.steel.description"
+    }
+  },
+  "requirements": [
+    [
+      "steel_ingot"
+    ]
+  ]
+}

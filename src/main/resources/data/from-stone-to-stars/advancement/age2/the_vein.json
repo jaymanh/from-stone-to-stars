@@ -1,0 +1,24 @@
+{
+  "parent": "from-stone-to-stars:age2/hafted_iron",
+  "criteria": {
+    "mined_iron_ore": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_ore"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.the_vein.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.the_vein.description"
+    }
+  },
+  "requirements": [
+    [
+      "mined_iron_ore"
+    ]
+  ]
+}

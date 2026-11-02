@@ -9,6 +9,7 @@ import java.util.Set;
 
 import com.mojang.serialization.Codec;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.ModCustomBlockModels.DriveHousingBlock;
 import jaymanh.fsts.block.ModCustomBlockModels.DrillStringBlock;
@@ -264,6 +265,8 @@ public class DrillHeadBlockEntity extends BlockEntity {
 		for (ItemStack drop : drops) {
 			parts.box().store(drop);
 		}
+		AgeAdvancements.grantNearby(level, this.worldPosition, "age2/bore", "ore");
+		AgeAdvancements.grantNearby(level, this.worldPosition, "age2/proof_of_iron", "bore");
 		level.setBlock(target, fillFor(target), Block.UPDATE_ALL);
 		level.playSound(null, this.worldPosition, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 0.8F, 0.8F);
 		this.vein.remove(target);

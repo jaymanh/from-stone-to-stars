@@ -6,7 +6,7 @@
 
 This living reference defines the intended player fantasy, progression structure, systems language, and open design questions for **From Stone to Stars**. Update it as features are prototyped, tested, and scoped. Ages 0 and 1 cite the numbers that ship in 0.8.0. Later ages leave recipe counts for a balancing pass.
 
-> **Implementation status (2026-10-27):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The planned factory is mostly not built. It is an ironworks, made of steel fittings that upgrade the Age 1 forge, and a bore rig that drives steel rods straight down and mines the ore veins its hole touches. The ironworks fittings exist. There is no `age2` advancement tree yet. Ages after Age 2 describe intended gameplay.
+> **Implementation status (2026-11-02):** Age 0 and Age 1 are playable in 0.8.0. Age 0 is the settlement. Age 1 is the bronze workshop: tools, forge and bellows, crucibles, bronze bucket and chest, water wheel, shafts, gears, trip hammer, powered quern, a rotation-powered bronze hopper, crushed-ore doubling, and the `age1` advancements. Age 2 is iron and steel. Rusty mud, iron forged from heated ingots, the steel alloy, heated steel, steel sheets, steel blades, and steel saw blades exist. The first steel machine is the sawmill, a formed multiblock that turns logs into planks on the water wheel. The factory is built: an ironworks, made of steel fittings that upgrade the Age 1 forge, and a bore rig that drives steel rods straight down and mines the ore veins its hole touches. The bore rig has been playtested. The `age2` advancement tree exists. Ages after Age 2 describe intended gameplay.
 
 ## Contents
 
@@ -94,7 +94,7 @@ Soft metal and the first connected workshop. Bronze tools and a river mill teach
 
 #### Iron and Steel
 
-Iron, steel, and the first line that feeds itself. The material path, steel parts, the sawmill, and the ironworks fittings are already in the mod. The bore rig is planned below and is not built.
+Iron, steel, and the first line that feeds itself. The material path, steel parts, the sawmill, the ironworks fittings, the bore rig, and the `age2` advancements are in the mod.
 
 ### Age 0 Primitive and Stone
 
@@ -242,7 +242,7 @@ Age 0 ends when the camp is obviously a settlement. Surfaced by the `age0` advan
 2. Tan a hide and haft a bone axe
 3. Work stump, fire (charcoal), fired clay / smelter
 4. Set a trap; sleep (hide bed)
-5. **Proof of Settlement** goal advancement
+5. **Settled In** goal advancement
 6. **Zinc Gleam** — mine raw zinc; bronze opens Age 1
 
 #### Discipline mapping for Age 0
@@ -286,7 +286,7 @@ Age 1 is playable in 0.8.0. It is the first **soft-metal** chapter, and the camp
 | Gate | Requirement |
 | --- | --- |
 | **Enter Age 1** | Obtain a **bronze ingot**. Age 0 teaches zinc mining and the crucible. Alloying 4 copper and 1 zinc into 5 bronze is the door. |
-| **Prove Bronze** | The `age1` advancements: haft a bronze tool, spin a water wheel, finish a powered grind or forging, and pump a lit forge. **Bronze Yard** asks for the tool, the finished process, and the bellows together. |
+| **Prove Bronze** | The `age1` advancements: haft a bronze tool, spin a water wheel, finish a powered grind or forging, and pump a lit forge. **The Bronze Age** asks for the tool, the finished process, and the bellows together. |
 | **Exit toward Age 2** | **Iron Stain.** Dig rusty mud. That path yields iron before any iron ore can be mined. Bronze tools are blocked from iron-tier and diamond-tier blocks. |
 
 #### What ships today
@@ -351,9 +351,6 @@ Mine copper + zinc (a bronze pick reaches both, and gold)
 ```text
 Raw ore -> 16 hits on the stump or under the trip hammer -> 2 crushed ore -> smelt each into an ingot
 ```
-
-Broken bronze does not yet recast in a crucible. Repair is the live loop. Recast is still open.
-
 #### Food, water, and camp
 
 - The powered quern takes the click-grind off bread. Farms stay manual.
@@ -414,7 +411,7 @@ age0/zinc_gleam
 
 ### Age 2 Iron and Steel
 
-Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a line that feeds itself. The iron door ships in 0.8.0. Steel parts, the sawmill, and the ironworks fittings have been added since. The bore rig and the `age2` advancements are the plan. They are not in the mod yet.
+Age 2 is the next chapter. Its theme is iron and steel, and its new verb is a line that feeds itself. The iron door ships in 0.8.0. Steel parts, the sawmill, the ironworks fittings, the bore rig, and the `age2` advancements have been added since.
 
 > **Age motto:** The yard learned to turn. The ironworks has to keep feeding itself.
 
@@ -426,7 +423,7 @@ Age 1 already spent the wheel's budget: capacity 1 or 2, each machine costs 1, a
 | --- | --- |
 | **Enter Age 2** | **Iron Stain**, already an Age 1 goal. Dig rusty mud with a shovel. Dried rusty mud, iron specks, raw iron, iron ore, and deepslate iron ore count for the same advancement. |
 | **First iron** | The live path below. Playable now. It is the door. |
-| **Prove Iron** | Planned `age2` tree: an iron ingot, an iron pick, iron ore actually mined, a steel ingot, a forge that finishes a smelt from an input block while a powered bellows spins, and a bore rig that brings up ore. |
+| **Prove Iron** | The `age2` tree: an iron ingot, an iron pick, iron ore actually mined, a steel ingot, a forge that finishes a smelt from an input block while a powered bellows spins, and a bore rig that brings up ore. |
 | **Exit toward steam** | That proof. Steam owns boilers, pressure, pipes, and pumps. The first steel ingot belongs here, and it is spent on the machines. |
 
 #### What already exists
@@ -456,7 +453,7 @@ This is the iron and steel a player can make today. It is a hand workshop that u
 | Tapping spout | One steel sheet, a chest, and seven bricks. Takes a frame cell beside the hearths or beside the coal pad, facing away from the forge. Holds nine stacks that only the forge can fill: results, and inputs the hearth cannot fire, such as a spent crucible. Several spouts fill in turn. It pushes one item every 8 ticks into the block it faces, and hoppers pull from any side. Use opens it, and sneak-use with an empty hand takes everything. Heated metal stays hot inside. |
 | Ore crusher | Two steel sheets, a wooden gear, and five iron ingots. Sits on a forge input, with a shaft into the back. Costs 1 wheel capacity. While it spins, the head strikes every 15 ticks, like the trip hammer, and runs the stump's crush recipes (1 raw ore, 16 hits, 2 crushed). Each strike counts as 4 hits, so one ore takes 4 strikes (3 seconds), four times the trip hammer's speed. Crushed ore goes straight into the input below. Whatever does not fit waits inside, and crushing pauses until it clears. Ore goes in by hand, from hoppers on the top and sides, or as items dropped on top. An empty hand takes everything back. It works whether or not the forge is lit. |
 
-There is no `age2` advancement tree yet. The tree in **Proof of Iron** is the one to write.
+The bore rig is described in its own section below. The `age2` tree is in **Proof of Iron**.
 
 #### Sawmill
 
@@ -641,20 +638,21 @@ A chest the player filled, a hopper, and a trip hammer is Age 1. This line still
 
 #### Proof of Iron
 
-Planned tree. Not written into `data/` yet. Nodes under **First Iron** are parallel, except the goal, which wants all three proofs. The pick and the mill are not one forced order: steel can be alloyed before the first bore rig exists.
+Live tree in `data/from-stone-to-stars/advancement/age2/`. **First Iron** splits into two branches. The pick branch is the hand path: haft an iron pick, then mine iron ore with it. The steel branch is the machine path: both steel machines cost steel, so **Ironworks** and **Down the Hole** sit under **Crucible Steel**. **Planks by the River** (a sawmill forms) also sits under steel, but the goal does not ask for it. The goal, **The Iron Age**, hangs off the bore, the last machine of the age, and still wants all three proofs. The two branches are not one forced order: steel can be alloyed before the first iron pick exists.
 
 ```text
 age1/iron_stain
-  age2/first_iron            inventory: iron ingot
-    age2/hafted_iron         inventory: minecraft:iron_pickaxe
-    age2/the_vein            granted when the player mines iron ore or deepslate iron ore
-    age2/steel               inventory: steel ingot
-    age2/ironworks           granted when a forge finishes a smelt from an input block while a powered bellows spins
-    age2/bore                granted when a bore rig mines its first ore block
-    age2/proof_of_iron       goal: steel + ironworks smelt + bore rig has brought up ore
+  age2/first_iron              inventory: iron ingot
+    age2/hafted_iron           inventory: minecraft:iron_pickaxe
+      age2/the_vein            granted when the player mines iron ore or deepslate iron ore
+    age2/steel                 inventory: steel ingot
+      age2/sawmill             granted when a sawmill forms
+      age2/ironworks           granted when a forge finishes a smelt from an input block while a powered bellows spins
+      age2/bore                granted when a bore rig mines its first ore block
+        age2/proof_of_iron     goal: steel + ironworks smelt + bore rig has brought up ore
 ```
 
-`inventory_changed` starts listening when the parent completes, same as Age 1. A stack already in inventory counts the next time it changes. Grants for the ironworks and the bore rig use `AgeAdvancements.grantNearby`: same dimension, within 16 blocks.
+`inventory_changed` starts listening when the parent completes, same as Age 1. A stack already in inventory counts the next time it changes. **The Vein** is granted from a Fabric block-break hook on `#minecraft:iron_ores`, so ore the bore rig mines does not count. Grants for the ironworks and the bore rig use `AgeAdvancements.grantNearby`: same dimension, within 16 blocks. The ironworks counts a smelt only when the hearth drew that stack from a forge input, or an alloy from the inputs finishes, while at least one powered bellows is driving.
 
 #### Implementation order
 
@@ -666,8 +664,8 @@ age1/iron_stain
     4. ~~Steel-lined hearth.~~ Done: a `lined` blockstate on `ForgeHearthBlock`, set by using a steel sheet. Each lined hearth adds one to `ForgeProcess.cookSpeed()`. The steel-alloying gate waits for recipes that need it.
     5. ~~Ore crusher on top of an input.~~ Done: `OreCrusherBlock`, a rear-driven `RotationNetworkBlock` that runs forging recipes whose result is tagged `crushed_ores` and stores the output in the `ForgeInputBlockEntity` below.
     6. Jade and JEI: list the fittings, and name the full set **Ironworks**. Jade and WTHIT done: `ForgeProcess.isIronworks()` wants a powered bellows, an input with a crusher on it, a spout, and every hearth lined. JEI is still open.
-3. ~~Bore rig.~~ Done as one piece of work: `DrillHeadBlockEntity` ticks the rig and finds its parts each tick (rack above, ore box and `DriveHousingBlock` on opposite sides), so there is no separate forming step. It covers the rod on the stump, boring with its stop conditions, vein mining in the 3×3 ring, the `DrillStringBlock` (no loot table), the recall with rod breakage, and Jade, WTHIT, and JEI info. Not yet playtested.
-4. The `age2` advancements above.
+3. ~~Bore rig.~~ Done as one piece of work: `DrillHeadBlockEntity` ticks the rig and finds its parts each tick (rack above, ore box and `DriveHousingBlock` on opposite sides), so there is no separate forming step. It covers the rod on the stump, boring with its stop conditions, vein mining in the 3×3 ring, the `DrillStringBlock` (no loot table), the recall with rod breakage, and Jade, WTHIT, and JEI info. Playtested.
+4. ~~The `age2` advancements above.~~ Done.
 5. ~~A steel saw.~~ Done early as the sawmill multiblock.
 
 #### Design rules for this age
@@ -698,7 +696,7 @@ age1/iron_stain
 
 #### Iron and Steel (summary)
 
-The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. Steel already forges into sheets and blades, and the sawmill is the first steel machine on the wheel. Steel has gone into fittings that turn the Age 1 forge into the ironworks. Next it goes into a bore rig and its drill rods. A strong wheel turns the rig and a powered bellows. A weak wheel turns one. When the rods run out, the player recalls the drill, loses a few rods, and moves the rig.
+The stain, the crucible, and the forging stump already make iron, and an iron pick already reaches iron ore. Steel already forges into sheets and blades, and the sawmill is the first steel machine on the wheel. Steel has gone into fittings that turn the Age 1 forge into the ironworks, and into a bore rig and its drill rods. A strong wheel turns the rig and a powered bellows. A weak wheel turns one. When the rods run out, the player recalls the drill, loses a few rods, and moves the rig.
 
 ### Steam
 
@@ -735,7 +733,7 @@ Research should reward demonstrated competence. A breakthrough is unlocked when 
 | --- | --- |
 | Settlement (Age 0) | Start fire; fire clay bricks; finish a tanning-rack process; set a snare or fish trap; sleep in a hide bed; haft a bone axe; build a work stump. |
 | Bronze (Age 1) | Alloy a bronze ingot; haft a bronze tool; spin a water wheel in flowing water; finish a powered quern grind or a trip-hammer forging; pump the bellows on a lit forge. |
-| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; smelt from a forge input while a powered bellows spins; bring up ore with a bore rig. The ingot, the pick, steel parts, the sawmill, and the ironworks are playable. The bore rig and the `age2` tree are planned, not built. |
+| Iron / mechanical line (Age 2) | Alloy an iron ingot from the stain; haft an iron pick and mine iron ore; alloy steel; smelt from a forge input while a powered bellows spins; bring up ore with a bore rig. All of it is playable, and the `age2` tree tracks it. |
 | Steam | Build a steam engine; turn steam into mechanical power; run a multi-machine line on that power. The first steel ingot belongs to Age 2. |
 | Electricity | Produce copper wire; build a generator; store a threshold of mechanical energy; create an electromagnetic device; deliver electrical power to a machine. |
 | Electronics | Manufacture a circuit board; install a sensor; automate a condition-based response; retain operational data or a timing program. |
@@ -786,7 +784,7 @@ Factory layout should matter. Machines are part of a connected environment and s
 | Era | Logistics method | New design question |
 | --- | --- | --- |
 | Early (Age 0–1) | Shelves, storage pots, bronze chests; a rotation-powered bronze hopper | Where do I keep materials, and how do I pass one stack into the mill? |
-| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Forge inputs and tapping spouts hold several stacks and take hoppers, and the spout pushes the ingots out. Planned: a vanilla hopper carries ore from the bore rig's ore box to a forge input. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
+| Mechanical (Age 2) | Sawmill intakes and outfeeds share one store each and take hoppers. Forge inputs and tapping spouts hold several stacks and take hoppers, and the spout pushes the ingots out. A vanilla hopper carries ore from the bore rig's ore box to a forge input. No belts. | How do I fit two machines on one strong wheel, inside eight blocks of water? |
 | Industrial | Item pipes and pumps | How do I route materials through a larger footprint? |
 | Electronic | Addressed logistics network | How does demand choose the destination? |
 | Advanced | Drones and mobile routing | How do I serve flexible or remote sites? |
@@ -821,7 +819,7 @@ flowing water -> wheel -> shaft (max 8) -> gear
     -> tapping spout -> chest
 ```
 
-This is the Age 2 plan, not a recipe. A weak wheel runs the bore rig or the powered bellows. A strong wheel runs both. The Age 1 yard is the wheel, the shaft, and the trip hammer, and that part ships. Belts are a later age.
+This is the Age 2 line, and it ships. A weak wheel runs the bore rig or the powered bellows. A strong wheel runs both. The Age 1 yard is the wheel, the shaft, and the trip hammer, and that part ships. Belts are a later age.
 
 ### Steam to Electricity Conversion
 
@@ -995,4 +993,6 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-10-29 — Drill redesigned as the bore rig.** The 8-block forward drill was worse than an iron pick: a few stone per run, sitting wherever the forge was, and jamming the input with cobblestone. A drill that emptied a chunk was too strong for a pre-steam age. The bore rig is the middle ground, a percussion bore like the pre-steam brine wells. It is a four-block formed multiblock: a drill head, a rod rack on top, an ore box and a drive housing on either side, and 1 wheel capacity. It bores straight down, and each steel drill rod buys 8 blocks of depth. When any ore in `drill_ores` sits in the 3×3 ring around the hole, diagonals included, it mines that whole connected vein, one block per step, so bigger veins take longer. Only ore comes up, and stone is destroyed. Mined ore is replaced with stone or deepslate. The bore crosses water and stops at lava. The hole fills with drill string blocks that drop nothing when mined. Recalling the drill winds the string up, seals the hole with stone, and gives back each used rod with a 75% chance. Breaking the rig without a recall loses every rod that was down. So moving the rig costs steel and a rebuild. Diamond, emerald, and rusty mud are excluded.
 
 **2026-10-29 — Bore rig built.** A steel drill rod is 2 heated steel ingots on the stump. The drill head and drive housing are priced as late Age 2 machines. The head takes 4 steel ingots, 2 sheets, 2 blades, a piston, and an iron tool head. The drive takes 4 sheets, 2 steel ingots, 2 wooden gears, and an iron block. The rack and ore box stay cheap: iron, one sheet, and planks or a chest. The rig checks its parts every tick instead of forming once. It bores every 60 ticks, mines a vein ore every 40, and recalls one block every 10. Rods break 25% of the time on recall. The vein cap is 64. `drill_ores` uses the vanilla iron, copper, and gold ore tags plus the coal, redstone, lapis, and zinc blocks listed directly. Jade and WTHIT show the drill head's status and the rods that are down, the rack's rod count, and the ore box's used slots. The drive housing shows rotation. Not yet playtested.
+
+**2026-11-02 — Bore rig playtested; `age2` advancements ship.** The bore rig works as specified. Vein ore and recall fill are now both chosen by height: deepslate below y=0, stone above. The `age2` tree parents **First Iron** to Age 1 **Iron Stain**. Under it, **A Harder Pick** leads to **The Vein**, and **Crucible Steel** leads to **Ironworks** and **Down the Hole** (bore). The goal, **The Iron Age**, sits under Down the Hole. Advancement titles were also reworded to read as player-facing names: the tab is now **From Stone to Stars** (was Look Down), and Proof of Settlement, Hafted, Hafted Metal, and Bronze Yard became Settled In, Bound to Bone, Bronze in Hand, and The Bronze Age. Advancement IDs are unchanged. The Vein uses a Fabric block-break hook, so only ore the player mines counts. Ironworks is granted when a forge finishes a smelt it drew from a forge input, or an alloy from the inputs, while a powered bellows is driving. Down the Hole is granted when a bore rig stores its first vein ore. Bronze recasting is dropped from the plan.
 

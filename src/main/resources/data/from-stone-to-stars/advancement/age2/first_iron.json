@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age1/iron_stain",
+  "criteria": {
+    "iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_ingot"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.first_iron.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.first_iron.description"
+    }
+  },
+  "requirements": [
+    [
+      "iron_ingot"
+    ]
+  ]
+}

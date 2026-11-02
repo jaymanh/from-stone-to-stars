@@ -1,0 +1,24 @@
+{
+  "parent": "from-stone-to-stars:age2/steel",
+  "criteria": {
+    "formed": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:saw_arbor"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.sawmill.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.sawmill.description"
+    }
+  },
+  "requirements": [
+    [
+      "formed"
+    ]
+  ]
+}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.component.CrucibleCharge;
 import jaymanh.fsts.item.CrucibleItem;
 import jaymanh.fsts.item.ModItems;
@@ -61,6 +62,8 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 	private int nextSpout;
 	private @Nullable CrucibleCharge alloy;
 	private int alloyProgress;
+	/** The stack in the input slot was drawn from a forge input. */
+	private boolean fedFromInputs;
 
 	public ForgeHearthBlockEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.FORGE_HEARTH, pos, state, RecipeType.BLASTING);
@@ -188,21 +191,32 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 				return;
 			}
 			int speed = 1;
+			ForgeProcess forge = null;
 			FormedMultiblock formed = hearth.getFormed();
-			if (formed != null && formed.process() instanceof ForgeProcess forge) {
+			if (formed != null && formed.process() instanceof ForgeProcess process) {
+				forge = process;
 				speed = Math.max(1, forge.cookSpeed());
 				hearth.exchangeWithFittings(serverLevel, forge);
 			}
 			for (int i = 0; i < speed; i++) {
 				if (hearth.alloy != null) {
-					hearth.tickAlloy(serverLevel);
+					if (hearth.tickAlloy(serverLevel)) {
+						hearth.onSmeltFromInputs(serverLevel, forge);
+					}
 					continue;
 				}
+				int resultBefore = hearth.items.get(SLOT_RESULT).getCount();
 				AbstractFurnaceBlockEntity.serverTick(serverLevel, pos, state, hearth);
+				if (hearth.fedFromInputs && hearth.items.get(SLOT_RESULT).getCount() > resultBefore) {
+					hearth.onSmeltFromInputs(serverLevel, forge);
+				}
 				state = level.getBlockState(pos);
 				if (!state.hasProperty(AbstractFurnaceBlock.LIT)) {
 					return;
 				}
+			}
+			if (hearth.items.get(SLOT_INPUT).isEmpty()) {
+				hearth.fedFromInputs = false;
 			}
 			HeatedMetalItem.keepHot(hearth, serverLevel.getGameTime());
 
@@ -338,8 +352,20 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 						&& slot.getCount() + result.getCount() <= this.getMaxStackSize(slot));
 	}
 
-	/** One cook step of the alloy. A finished alloy waits until the result slot has room. */
-	private void tickAlloy(ServerLevel level) {
+	/** Grants the ironworks advancement when a smelt fed from the inputs finishes under a spinning powered bellows. */
+	private void onSmeltFromInputs(ServerLevel level, @Nullable ForgeProcess forge) {
+		if (forge != null && forge.drivingBellows() > 0) {
+			AgeAdvancements.grantNearby(level, this.worldPosition, "age2/ironworks", "smelted");
+			AgeAdvancements.grantNearby(level, this.worldPosition, "age2/proof_of_iron", "ironworks");
+		}
+	}
+
+	/**
+	 * One cook step of the alloy. A finished alloy waits until the result slot has room.
+	 *
+	 * @return whether the alloy finished this step
+	 */
+	private boolean tickAlloy(ServerLevel level) {
 		int total = this.alloy.cookingTime();
 		if (this.alloyProgress < total) {
 			this.alloyProgress++;
@@ -347,11 +373,11 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 		this.dataAccess.set(DATA_COOKING_PROGRESS, this.alloyProgress);
 		this.dataAccess.set(DATA_COOKING_TOTAL_TIME, total);
 		if (this.alloyProgress < total) {
-			return;
+			return false;
 		}
 		ItemStack result = this.alloy.createResult();
 		if (!this.resultFits(result)) {
-			return;
+			return false;
 		}
 		ItemStack slot = this.items.get(SLOT_RESULT);
 		if (slot.isEmpty()) {
@@ -364,6 +390,7 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 		this.alloyProgress = 0;
 		this.dataAccess.set(DATA_COOKING_PROGRESS, 0);
 		this.setChanged();
+		return true;
 	}
 
 	private static void awardExperience(ServerLevel level, BlockPos pos, float experience) {
@@ -403,6 +430,7 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 						int moved = Math.min(space, stack.getCount());
 						current.grow(input.removeItem(slot, moved).getCount());
 						space -= moved;
+						this.fedFromInputs = true;
 						this.setChanged();
 					}
 				}
@@ -416,6 +444,7 @@ public class ForgeHearthBlockEntity extends AbstractFurnaceBlockEntity {
 				ItemStack stack = input.getItem(slot);
 				if (!stack.isEmpty() && canFire(level, stack)) {
 					this.setItem(SLOT_INPUT, input.removeItem(slot, this.getMaxStackSize(stack)));
+					this.fedFromInputs = true;
 					this.nextInput = (index + 1) % inputs.size();
 					this.setChanged();
 					return;

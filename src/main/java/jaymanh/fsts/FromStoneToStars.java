@@ -1,5 +1,6 @@
 package jaymanh.fsts;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.ModBlocks;
 import jaymanh.fsts.block.entity.ModBlockEntities;
 import jaymanh.fsts.compat.energy.TeamRebornEnergyCompat;
@@ -49,6 +50,7 @@ public class FromStoneToStars implements ModInitializer {
 		UseInteractions.initialise();
 		BedRainSleep.initialize();
 		HeatedMetalItem.initialize();
+		AgeAdvancements.initialize();
 	}
 
 	public static Identifier id(String path) {

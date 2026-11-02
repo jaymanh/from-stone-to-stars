@@ -1,0 +1,24 @@
+{
+  "parent": "from-stone-to-stars:age2/steel",
+  "criteria": {
+    "smelted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "from-stone-to-stars:powered_bellows"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.ironworks.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.ironworks.description"
+    }
+  },
+  "requirements": [
+    [
+      "smelted"
+    ]
+  ]
+}

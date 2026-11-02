@@ -1,0 +1,31 @@
+{
+  "parent": "from-stone-to-stars:age2/first_iron",
+  "criteria": {
+    "iron_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_pickaxe"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.from-stone-to-stars.age2.hafted_iron.title"
+    },
+    "description": {
+      "translate": "advancements.from-stone-to-stars.age2.hafted_iron.description"
+    }
+  },
+  "requirements": [
+    [
+      "iron_pickaxe"
+    ]
+  ]
+}

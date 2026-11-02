@@ -3,6 +3,7 @@ package jaymanh.fsts.block.entity;
 import java.util.List;
 import java.util.Optional;
 
+import jaymanh.fsts.advancement.AgeAdvancements;
 import jaymanh.fsts.block.ModCustomBlockModels.SawmillPortBlock;
 import jaymanh.fsts.multiblock.ActiveMultiblocks;
 import jaymanh.fsts.multiblock.AssemblyMatch;
@@ -151,6 +152,7 @@ public class SawArborBlockEntity extends AbstractRotationBlockEntity {
 		this.setChanged();
 		level.playSound(null, this.worldPosition, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
 		RotationNetwork.update(level, this.worldPosition);
+		AgeAdvancements.grantNearby(level, this.worldPosition, "age2/sawmill", "formed");
 	}
 
 	/** Points every port along the line and tells it whether to animate and which wood to show. */
