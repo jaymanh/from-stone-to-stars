@@ -21,7 +21,11 @@ public final class ProcessRecipeCategory extends AbstractRecipeCategory<SimplePr
 	private static final int PADDING = 4;
 
 	public ProcessRecipeCategory(IGuiHelper guiHelper, IRecipeType<SimpleProcessRecipe> recipeType, Component title, ItemLike icon) {
-		super(recipeType, title, guiHelper.createDrawableItemLike(icon), 120, 44);
+		this(guiHelper, recipeType, title, icon, 120);
+	}
+
+	public ProcessRecipeCategory(IGuiHelper guiHelper, IRecipeType<SimpleProcessRecipe> recipeType, Component title, ItemLike icon, int width) {
+		super(recipeType, title, guiHelper.createDrawableItemLike(icon), width, 44);
 	}
 
 	@Override

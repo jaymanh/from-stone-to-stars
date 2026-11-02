@@ -25,6 +25,8 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -59,7 +61,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				new ProcessRecipeCategory(guiHelper, TANNING, Component.translatable("jei.from-stone-to-stars.tanning"), ModBlocks.TANNING_RACK),
 				new ProcessRecipeCategory(guiHelper, CHARCOAL_PILE, Component.translatable("jei.from-stone-to-stars.charcoal_pile"), ModBlocks.KINDLING),
 				new ProcessRecipeCategory(guiHelper, BRICK_DRYING, Component.translatable("jei.from-stone-to-stars.brick_drying"), ModBlocks.CLAY_BRICKS),
-				new ProcessRecipeCategory(guiHelper, FORGE, Component.translatable("jei.from-stone-to-stars.forge"), ModBlocks.FORGE_HEARTH),
+				new ProcessRecipeCategory(guiHelper, FORGE, Component.translatable("jei.from-stone-to-stars.forge"), ModBlocks.FORGE_HEARTH, 152),
 				new ProcessRecipeCategory(guiHelper, BONE_SAW, Component.translatable("jei.from-stone-to-stars.bone_saw"), ModTools.BONE_SAW),
 				new ProcessRecipeCategory(guiHelper, SAWMILL, Component.translatable("jei.from-stone-to-stars.sawmill"), ModBlocks.SAW_ARBOR),
 				new ProcessRecipeCategory(guiHelper, GRINDING, Component.translatable("jei.from-stone-to-stars.grinding"), ModBlocks.MORTAR_AND_PESTLE),
@@ -130,19 +132,37 @@ public final class FstsJeiPlugin implements IModPlugin {
 				)
 		));
 
-		registration.addRecipes(FORGE, List.of(new SimpleProcessRecipe(
-				FromStoneToStars.id("forge/heat"),
-				List.of(
+		ItemStack ironworks = new ItemStack(ModBlocks.FORGE_HEARTH);
+		ironworks.set(DataComponents.CUSTOM_NAME, Component.translatable("jei.from-stone-to-stars.ironworks").withStyle(ChatFormatting.GOLD));
+		registration.addRecipes(FORGE, List.of(
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("forge/heat"),
+						List.of(
+								SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
+								SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
+								SimpleProcessRecipe.any(Items.BRICKS, Items.COBBLESTONE),
+								SimpleProcessRecipe.any(ModBlocks.BELLOWS, ModBlocks.POWERED_BELLOWS),
+								SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						),
+						List.of(),
 						SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
-						SimpleProcessRecipe.any(ModBlocks.CHARCOAL_BLOCK, Items.COAL_BLOCK),
-						SimpleProcessRecipe.any(Items.BRICKS, Items.COBBLESTONE),
-						SimpleProcessRecipe.any(ModBlocks.BELLOWS, ModBlocks.POWERED_BELLOWS),
-						SimpleProcessRecipe.any(ModTools.BOW_AND_DRILL, Items.FLINT_AND_STEEL, Items.FIRE_CHARGE)
+						ForgeProcess.BURN_TICKS_FOR_MIN_COAL
 				),
-				List.of(),
-				SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
-				ForgeProcess.BURN_TICKS_FOR_MIN_COAL
-		)));
+				new SimpleProcessRecipe(
+						FromStoneToStars.id("forge/ironworks"),
+						List.of(
+								SimpleProcessRecipe.item(ModBlocks.FORGE_HEARTH),
+								SimpleProcessRecipe.item(ModItems.STEEL_SHEET),
+								SimpleProcessRecipe.item(ModBlocks.POWERED_BELLOWS),
+								SimpleProcessRecipe.item(ModBlocks.FORGE_INPUT),
+								SimpleProcessRecipe.item(ModBlocks.ORE_CRUSHER),
+								SimpleProcessRecipe.item(ModBlocks.TAPPING_SPOUT)
+						),
+						List.of(),
+						SimpleProcessRecipe.stack(ironworks),
+						0
+				)
+		));
 
 		registration.addRecipes(GRINDING, List.of(
 				new SimpleProcessRecipe(
@@ -210,6 +230,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_tool_heads"), ModItems.HEATED_IRON_INGOT, 3, ModItems.IRON_TOOL_HEAD, 2, 4),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_plates"), ModItems.HEATED_IRON_INGOT, 4, ModItems.IRON_PLATE, 2, 4),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/steel_sheets"), ModItems.HEATED_STEEL_INGOT, 2, ModItems.STEEL_SHEET, 4, 8),
+				ForgingJeiRecipe.of(FromStoneToStars.id("forging/steel_drill_rod"), ModItems.HEATED_STEEL_INGOT, 2, ModItems.STEEL_DRILL_ROD, 1, 10),
 				ForgingJeiRecipe.of(FromStoneToStars.id("forging/iron_specks"), ModBlocks.DRIED_RUSTY_MUD, 1, ModItems.IRON_SPECKS, 1, 8)
 		));
 
@@ -341,6 +362,9 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(FORGE, ModBlocks.FORGE_HEARTH);
 		registration.addCraftingStation(FORGE, ModBlocks.BELLOWS);
 		registration.addCraftingStation(FORGE, ModBlocks.POWERED_BELLOWS);
+		registration.addCraftingStation(FORGE, ModBlocks.FORGE_INPUT);
+		registration.addCraftingStation(FORGE, ModBlocks.TAPPING_SPOUT);
+		registration.addCraftingStation(FORGE, ModBlocks.ORE_CRUSHER);
 		registration.addCraftingStation(FORGE, ModTools.BOW_AND_DRILL);
 		registration.addCraftingStation(BONE_SAW, ModTools.BONE_SAW);
 		registration.addCraftingStation(GRINDING, ModBlocks.MORTAR_AND_PESTLE);
@@ -353,6 +377,7 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addCraftingStation(FORGING, ModBlocks.TRIP_HAMMER);
 		registration.addCraftingStation(FORGING, ModTools.BRONZE_HAMMER);
 		registration.addCraftingStation(FORGING, ModTools.IRON_HAMMER);
+		registration.addCraftingStation(FORGING, ModBlocks.ORE_CRUSHER);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.FLINT_AXE);
 		registration.addCraftingStation(WORLD_INTERACTION, ModTools.BONE_AXE);
 	}
