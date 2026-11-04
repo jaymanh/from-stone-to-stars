@@ -73,6 +73,7 @@ public final class MachineTooltips {
 
 	private static final String DRILL_STATUS = "FstsDrillStatus";
 	private static final String DRILL_RODS_DOWN = "FstsDrillRodsDown";
+	private static final String DRILL_UPGRADE = "FstsDrillUpgrade";
 	private static final String RACK_RODS = "FstsRackRods";
 
 	private MachineTooltips() {
@@ -181,6 +182,10 @@ public final class MachineTooltips {
 			case DrillHeadBlockEntity drill -> {
 				putComponent(tag, DRILL_STATUS, drill.statusMessage(), registries);
 				tag.putInt(DRILL_RODS_DOWN, drill.rodsDown());
+				Component upgrade = drill.upgradeMessage();
+				if (upgrade != null) {
+					putComponent(tag, DRILL_UPGRADE, upgrade, registries);
+				}
 			}
 			case RodRackBlockEntity rack -> tag.putInt(RACK_RODS, rack.rods());
 			case PoweredBellowsBlockEntity ignored -> tag.putInt(FITTING_FORGE, forgeState(level, pos));
@@ -220,6 +225,7 @@ public final class MachineTooltips {
 		}
 		getComponent(data, DRILL_STATUS, registries).ifPresent(lines::add);
 		addCount(lines, data, DRILL_RODS_DOWN, "tooltip.from-stone-to-stars.drill.rods_down");
+		getComponent(data, DRILL_UPGRADE, registries).ifPresent(lines::add);
 		if (data.contains(RACK_RODS)) {
 			lines.add(Component.translatable("tooltip.from-stone-to-stars.drill.rack_rods", data.getIntOr(RACK_RODS, 0), RodRackBlockEntity.CAPACITY));
 		}

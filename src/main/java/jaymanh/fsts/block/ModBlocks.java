@@ -290,6 +290,24 @@ public final class ModBlocks {
 					.requiresCorrectToolForDrops()
 					.noOcclusion()
 	);
+	public static final Block FORTUNE_UPGRADE = register(
+			ModBlockItemIds.FORTUNE_UPGRADE,
+			Block::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.LAPIS)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+	);
+	public static final Block SILK_TOUCH_UPGRADE = register(
+			ModBlockItemIds.SILK_TOUCH_UPGRADE,
+			Block::new,
+			BlockBehaviour.Properties.of()
+					.mapColor(MapColor.WOOL)
+					.sound(SoundType.METAL)
+					.strength(3.0F, 4.8F)
+					.requiresCorrectToolForDrops()
+	);
 	public static final Block DRILL_STRING = register(
 			ModBlockIds.DRILL_STRING,
 			DrillStringBlock::new,

@@ -132,6 +132,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
 				.add(ModBlockItemIds.ROD_RACK)
 				.add(ModBlockItemIds.ORE_BOX)
 				.add(ModBlockItemIds.DRIVE_HOUSING)
+				.add(ModBlockItemIds.FORTUNE_UPGRADE)
+				.add(ModBlockItemIds.SILK_TOUCH_UPGRADE)
 				.add(ModBlockIds.DRILL_STRING);
 
 		builder(ModTags.DRILL_ORES)

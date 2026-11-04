@@ -19,6 +19,7 @@ import jaymanh.fsts.tags.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -27,6 +28,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -53,13 +55,20 @@ public class DrillHeadBlockEntity extends BlockEntity {
 	public static final int MAX_VEIN = 64;
 
 	public enum Status {
-		UNFORMED, NO_POWER, BORING, MINING_VEIN, RECALLING, RECALLED, NO_RODS, BLOCKED, LAVA, BOTTOM, ORE_BOX_FULL
+		UNFORMED, NO_POWER, BORING, MINING_VEIN, RECALLING, RECALLED, NO_RODS, BLOCKED, LAVA, BOTTOM, ORE_BOX_FULL, UPGRADE_CONFLICT
 	}
 
 	public static final int MAX_RACKS = 8;
+	/** Upgrade blocks stack this high on each of the head's two free sides. */
+	public static final int MAX_UPGRADE_STACK = 3;
+	public static final int MAX_FORTUNE = 3;
 
 	/** {@code racks} runs upward from the rack sitting on the drill head. */
-	private record Parts(List<RodRackBlockEntity> racks, OreBoxBlockEntity box, DriveHousingBlockEntity drive) {
+	private record Parts(List<RodRackBlockEntity> racks, OreBoxBlockEntity box, DriveHousingBlockEntity drive, int fortune, boolean silkTouch) {
+		boolean conflicting() {
+			return this.fortune > 0 && this.silkTouch;
+		}
+
 		int rods() {
 			int rods = 0;
 			for (RodRackBlockEntity rack : this.racks) {
@@ -153,6 +162,10 @@ public class DrillHeadBlockEntity extends BlockEntity {
 			}
 			return;
 		}
+		if (parts.conflicting()) {
+			head.stall(Status.UPGRADE_CONFLICT);
+			return;
+		}
 		if (!head.vein.isEmpty()) {
 			head.status = Status.MINING_VEIN;
 			if (head.progress >= VEIN_TICKS) {
@@ -188,10 +201,53 @@ public class DrillHeadBlockEntity extends BlockEntity {
 					&& driveState.getValue(DriveHousingBlock.FACING) == side
 					&& this.level.getBlockEntity(this.worldPosition.relative(side)) instanceof OreBoxBlockEntity box
 					&& this.level.getBlockEntity(drivePos) instanceof DriveHousingBlockEntity drive) {
-				return new Parts(racks, box, drive);
+				int fortune = 0;
+				boolean silkTouch = false;
+				for (Direction free : new Direction[] {side.getClockWise(), side.getCounterClockWise()}) {
+					BlockPos base = this.worldPosition.relative(free);
+					for (int up = 0; up < MAX_UPGRADE_STACK; up++) {
+						BlockState upgrade = this.level.getBlockState(base.above(up));
+						if (upgrade.is(ModBlocks.FORTUNE_UPGRADE)) {
+							fortune++;
+						} else if (upgrade.is(ModBlocks.SILK_TOUCH_UPGRADE)) {
+							silkTouch = true;
+						} else {
+							break;
+						}
+					}
+				}
+				return new Parts(racks, box, drive, Math.min(fortune, MAX_FORTUNE), silkTouch);
 			}
 		}
 		return null;
+	}
+
+	/** The upgrade the rig mines with, or null for a plain iron pick. */
+	public @Nullable Component upgradeMessage() {
+		Parts parts = this.findParts();
+		if (parts == null || (parts.fortune() == 0 && !parts.silkTouch())) {
+			return null;
+		}
+		if (parts.conflicting()) {
+			return Component.translatable("block.from-stone-to-stars.drill_head.upgrade.conflict");
+		}
+		if (parts.silkTouch()) {
+			return Component.translatable("block.from-stone-to-stars.drill_head.upgrade.silk_touch");
+		}
+		return Component.translatable("block.from-stone-to-stars.drill_head.upgrade.fortune",
+				Component.translatable("enchantment.level." + parts.fortune()));
+	}
+
+	/** An unenchanted iron pick, or one with the rig's silk touch or fortune. */
+	private static ItemStack miningTool(ServerLevel level, Parts parts) {
+		ItemStack pick = new ItemStack(Items.IRON_PICKAXE);
+		var enchantments = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+		if (parts.silkTouch()) {
+			pick.enchant(enchantments.getOrThrow(Enchantments.SILK_TOUCH), 1);
+		} else if (parts.fortune() > 0) {
+			pick.enchant(enchantments.getOrThrow(Enchantments.FORTUNE), parts.fortune());
+		}
+		return pick;
 	}
 
 	private void boreStep(ServerLevel level, Parts parts) {
@@ -257,7 +313,7 @@ public class DrillHeadBlockEntity extends BlockEntity {
 			this.setChanged();
 			return;
 		}
-		List<ItemStack> drops = Block.getDrops(state, level, target, null, null, new ItemStack(Items.IRON_PICKAXE));
+		List<ItemStack> drops = Block.getDrops(state, level, target, null, null, miningTool(level, parts));
 		if (!parts.box().canFit(drops)) {
 			this.stall(Status.ORE_BOX_FULL);
 			return;

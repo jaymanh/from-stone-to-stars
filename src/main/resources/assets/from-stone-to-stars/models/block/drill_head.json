@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "from-stone-to-stars:block/steel_plate",
-    "north": "from-stone-to-stars:block/steel_plate",
-    "south": "from-stone-to-stars:block/steel_plate",
-    "east": "from-stone-to-stars:block/steel_plate",
-    "west": "from-stone-to-stars:block/steel_plate",
-    "up": "from-stone-to-stars:block/forge_input_top",
-    "down": "minecraft:block/iron_block"
+    "particle": "from-stone-to-stars:block/drill_head_side",
+    "north": "from-stone-to-stars:block/drill_head_side",
+    "south": "from-stone-to-stars:block/drill_head_side",
+    "east": "from-stone-to-stars:block/drill_head_side",
+    "west": "from-stone-to-stars:block/drill_head_side",
+    "up": "from-stone-to-stars:block/drill_head_top",
+    "down": "from-stone-to-stars:block/drill_head_bottom"
   }
 }

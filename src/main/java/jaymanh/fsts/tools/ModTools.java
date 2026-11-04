@@ -131,6 +131,13 @@ public class ModTools {
                     .enchantable(ToolMaterial.IRON.enchantmentValue())
                     .repairable(ItemTags.IRON_TOOL_MATERIALS)
     );
+    public static final Item PROSPECTORS_PICK = register(
+            ModItemIds.PROSPECTORS_PICK,
+            ProspectorsPickItem::new,
+            new Item.Properties()
+                    .durability(128)
+                    .repairable(ItemTags.IRON_TOOL_MATERIALS)
+    );
 
     public static final Item BRONZE_HELMET = register(
             ModItemIds.BRONZE_HELMET,

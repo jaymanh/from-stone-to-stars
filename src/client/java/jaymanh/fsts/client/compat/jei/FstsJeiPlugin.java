@@ -293,8 +293,11 @@ public final class FstsJeiPlugin implements IModPlugin {
 		registration.addIngredientInfo(ModBlocks.DRILL_HEAD, Component.translatable("jei.from-stone-to-stars.info.drill_head"));
 		registration.addIngredientInfo(ModBlocks.ROD_RACK, Component.translatable("jei.from-stone-to-stars.info.rod_rack"));
 		registration.addIngredientInfo(ModBlocks.ORE_BOX, Component.translatable("jei.from-stone-to-stars.info.ore_box"));
+		registration.addIngredientInfo(ModBlocks.FORTUNE_UPGRADE, Component.translatable("jei.from-stone-to-stars.info.fortune_upgrade"));
+		registration.addIngredientInfo(ModBlocks.SILK_TOUCH_UPGRADE, Component.translatable("jei.from-stone-to-stars.info.silk_touch_upgrade"));
 		registration.addIngredientInfo(ModBlocks.DRIVE_HOUSING, Component.translatable("jei.from-stone-to-stars.info.drive_housing"));
 		registration.addIngredientInfo(ModItems.STEEL_DRILL_ROD, Component.translatable("jei.from-stone-to-stars.info.steel_drill_rod"));
+		registration.addIngredientInfo(ModTools.PROSPECTORS_PICK, Component.translatable("jei.from-stone-to-stars.info.prospectors_pick"));
 		registration.addIngredientInfo(ModBlocks.SAW_ARBOR, Component.translatable("jei.from-stone-to-stars.info.saw_arbor"));
 		registration.addIngredientInfo(ModBlocks.STEEL_SAW_BLADES, Component.translatable("jei.from-stone-to-stars.info.steel_saw_blades"));
 		registration.addIngredientInfo(ModBlocks.WOODEN_ROLLERS, Component.translatable("jei.from-stone-to-stars.info.wooden_rollers"));

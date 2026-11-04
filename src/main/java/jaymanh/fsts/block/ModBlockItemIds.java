@@ -52,6 +52,8 @@ public final class ModBlockItemIds {
 	public static final BlockItemId ROD_RACK = create("rod_rack");
 	public static final BlockItemId ORE_BOX = create("ore_box");
 	public static final BlockItemId DRIVE_HOUSING = create("drive_housing");
+	public static final BlockItemId FORTUNE_UPGRADE = create("fortune_upgrade");
+	public static final BlockItemId SILK_TOUCH_UPGRADE = create("silk_touch_upgrade");
 
 	private ModBlockItemIds() {
 	}

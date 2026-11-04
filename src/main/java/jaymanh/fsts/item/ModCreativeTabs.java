@@ -103,6 +103,8 @@ public final class ModCreativeTabs {
 				output.accept(ModBlocks.DRILL_HEAD);
 				output.accept(ModBlocks.ROD_RACK);
 				output.accept(ModBlocks.ORE_BOX);
+				output.accept(ModBlocks.FORTUNE_UPGRADE);
+				output.accept(ModBlocks.SILK_TOUCH_UPGRADE);
 				output.accept(ModBlocks.DRIVE_HOUSING);
 				output.accept(ModTools.HAMMERSTONE);
 				output.accept(ModBlocks.MORTAR_AND_PESTLE);
@@ -149,6 +151,7 @@ public final class ModCreativeTabs {
 				output.accept(ModItems.STEEL_SHEET);
 				output.accept(ModItems.STEEL_BLADE);
 				output.accept(ModItems.STEEL_DRILL_ROD);
+				output.accept(ModTools.PROSPECTORS_PICK);
 			})
 			.build();
 

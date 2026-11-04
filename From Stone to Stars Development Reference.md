@@ -591,6 +591,17 @@ side view
 
 The head and drive recipes unlock on a steel sheet, the rack and ore box with them. The rod unlocks on a steel ingot.
 
+**Drill upgrades.** Two blocks stand on the drill head's two open sides, the ones without the ore box or drive housing, in a column up to 3 high on each side. A gap ends the column. They change the pick the rig mines veins with:
+
+| Upgrade | Recipe | Effect |
+| --- | --- | --- |
+| Fortune drill upgrade | 4 steel sheets, 4 lapis blocks, 1 gold ingot | Each one adds a level of Fortune, up to Fortune III however many are fitted. |
+| Silk touch drill upgrade | 4 steel sheets, 4 wool, 1 steel blade | One gives Silk Touch, so ore comes up as ore blocks. More add nothing. |
+
+Fortune and silk touch can't be mixed. With both fitted, the rig stops boring and mining with the status "remove either the fortune or the silk touch upgrades". A recall still runs. Both recipes unlock on a steel sheet, with the rest of the rig. Jade and WTHIT show the active upgrade on the drill head. The bore itself is unchanged: upgrades only affect ore drops. Fortune multiplies raw ore, which the ore crusher can double again, so a fully upgraded line is the age's biggest ore yield. It is priced in lapis and gold the rig itself digs up.
+
+**Prospector's pick.** An iron tool head, a nail, and a steel drill rod; unlocks on a steel drill rod. 128 uses, repaired with iron, 2-second cooldown. Use it on the block a drill head would stand on. It counts, for each `drill_ores` ore, the veins that the 3×3 column a bore from there would touch, down to the bottom of the world. A vein is traced the way the rig traces it (same ore, deepslate form included, 26-way neighbours, capped at 64 blocks) and counts once however many blocks of it the column passes. It does not give depths. The chat output is colour coded: a gold header, each ore name in its ore's colour, and the vein count in white. It reads only the column, so it tells the player where to drill, not where every vein is.
+
 | Rule | Plan |
 | --- | --- |
 | Forming | Like the sawmill, it forms when the drive turns, with the ore box and drive housing on opposite sides of the drill head and the rod rack on top. Clicking the drill head shows its status or why it won't form. |
@@ -599,14 +610,14 @@ The head and drive recipes unlock on a steel sheet, the rack and ore box with th
 | How deep | Rods in the racks × 8. It stops when it runs out of rods, at bedrock, at lava, or at a block an iron pick cannot break. Each rack holds 8 rods, so one full rack reaches 64 blocks and a column of 8 full racks reaches 512, deeper than any world. |
 | Veins | At each new depth, the rig checks the 8 blocks around the hole, diagonals included. If one is in `drill_ores`, it mines the whole connected vein of that ore, including the deepslate form of the same ore, before it bores again. Vein size is capped for safety (first pass: 64 blocks). |
 | Vein time | Time scales with vein size: one ore block per mining step (first pass: 40 ticks). An 8-block iron vein takes 16 seconds. |
-| What it keeps | Ore drops as if mined with an unenchanted iron pick (raw iron, coal, and so on) into the ore box. Each mined ore block is replaced with stone, or deepslate below y=0, so the ground keeps its shape and the vein leaves no cave behind. When the ore box is full, the rig waits. |
+| What it keeps | Ore drops as if mined with an iron pick (raw iron, coal, and so on) into the ore box. The pick is unenchanted unless drill upgrades give it Fortune or Silk Touch. Each mined ore block is replaced with stone, or deepslate below y=0, so the ground keeps its shape and the vein leaves no cave behind. When the ore box is full, the rig waits. |
 | Recall | Sneak-use the drill head with an empty hand to recall the drill. Boring stops, and the string winds back up from the bottom, one block per step (first pass: 10 ticks). Each block of the hole fills with stone as the string leaves it, or deepslate below y=0, including the cells that were air or water. Recalling needs the drive turning, the same as boring. When the string is up, every rod that went down has a chance to break (first pass: 25% each). Lowered 4, get back about 3. Partly used rods count as used. Surviving rods go back into the rack. |
 | Breaking without a recall | Breaking any rig piece while rods are down leaves the string in the hole. Those rods are lost, because string blocks drop nothing. Unused rods in the rack and ore in the ore box drop as normal. |
-| When it is idle | Drive stopped, rack empty, depth limit reached, ore box full, the bore is blocked, or it has been recalled. Jade and WTHIT say which. |
+| When it is idle | Drive stopped, rack empty, depth limit reached, ore box full, the bore is blocked, fortune and silk touch upgrades are both fitted, or it has been recalled. Jade and WTHIT say which. |
 
 `drill_ores` (first pass): iron, copper, zinc, gold, coal, redstone, and lapis ores, stone and deepslate forms. Diamond and emerald are left out, so steel does not open diamond. Rusty mud is left out too. It stays the first iron, dug with a shovel before any pick exists.
 
-Moving the rig is the real cost. The player recalls the drill, waits for the string to wind up, loses some rods, breaks four blocks, and builds it again within 8 blocks of the wheel. A player who skips the recall loses every rod that was down. The recall seals the hole with stone, so a used site leaves no shaft and no cave behind. A new hole only pays when it might cross a vein, so the player still reads the ground.
+Moving the rig is the real cost. The player recalls the drill, waits for the string to wind up, loses some rods, breaks four blocks, and builds it again within 8 blocks of the wheel. A player who skips the recall loses every rod that was down. The recall seals the hole with stone, so a used site leaves no shaft and no cave behind. A new hole only pays when it might cross a vein, so the player still reads the ground, with the prospector's pick.
 
 #### What the old machine list means
 
@@ -638,7 +649,7 @@ A chest the player filled, a hopper, and a trip hammer is Age 1. This line still
 
 #### Proof of Iron
 
-Live tree in `data/from-stone-to-stars/advancement/age2/`. **First Iron** splits into two branches. The pick branch is the hand path: haft an iron pick, then mine iron ore with it. The steel branch is the machine path: both steel machines cost steel, so **Ironworks** and **Down the Hole** sit under **Crucible Steel**. **Planks by the River** (a sawmill forms) also sits under steel, but the goal does not ask for it. The goal, **The Iron Age**, hangs off the bore, the last machine of the age, and still wants all three proofs. The two branches are not one forced order: steel can be alloyed before the first iron pick exists.
+Live tree in `data/from-stone-to-stars/advancement/age2/`. **First Iron** splits into two branches. The pick branch is the hand path: haft an iron pick, then mine iron ore with it. The steel branch is the machine path: both steel machines cost steel, so **Ironworks** and **Down the Hole** sit under **Crucible Steel**. **Planks by the River** (a sawmill forms) and **Reading the Ground** (a prospector's pick reading) also sit under steel, but the goal does not ask for them. The goal, **The Iron Age**, hangs off the bore, the last machine of the age, and still wants all three proofs. The two branches are not one forced order: steel can be alloyed before the first iron pick exists.
 
 ```text
 age1/iron_stain
@@ -647,6 +658,7 @@ age1/iron_stain
       age2/the_vein            granted when the player mines iron ore or deepslate iron ore
     age2/steel                 inventory: steel ingot
       age2/sawmill             granted when a sawmill forms
+      age2/prospector          granted when the player uses a prospector's pick
       age2/ironworks           granted when a forge finishes a smelt from an input block while a powered bellows spins
       age2/bore                granted when a bore rig mines its first ore block
         age2/proof_of_iron     goal: steel + ironworks smelt + bore rig has brought up ore
@@ -997,4 +1009,8 @@ Add dated decisions, prototype findings, balance targets, and deferred ideas her
 **2026-11-02 — Bore rig playtested; `age2` advancements ship.** The bore rig works as specified. Vein ore and recall fill are now both chosen by height: deepslate below y=0, stone above. The `age2` tree parents **First Iron** to Age 1 **Iron Stain**. Under it, **A Harder Pick** leads to **The Vein**, and **Crucible Steel** leads to **Ironworks** and **Down the Hole** (bore). The goal, **The Iron Age**, sits under Down the Hole. Advancement titles were also reworded to read as player-facing names: the tab is now **From Stone to Stars** (was Look Down), and Proof of Settlement, Hafted, Hafted Metal, and Bronze Yard became Settled In, Bound to Bone, Bronze in Hand, and The Bronze Age. Advancement IDs are unchanged. The Vein uses a Fabric block-break hook, so only ore the player mines counts. Ironworks is granted when a forge finishes a smelt it drew from a forge input, or an alloy from the inputs, while a powered bellows is driving. Down the Hole is granted when a bore rig stores its first vein ore. Bronze recasting is dropped from the plan.
 
 **2026-11-02 — JEI Ironworks and doc cleanup.** JEI's Forge Assembly category gains an Ironworks recipe: hearth, steel sheet, powered bellows, forge input, ore crusher, and tapping spout, giving a gold-named "Ironworks" hearth. The category is wider so its rows fit. The forge input, spout, and crusher are forge catalysts, and the crusher is a forging catalyst. The steel drill rod forging recipe, which was missing from JEI, is listed. The doc now matches the code on the sawmill overlay, the steel-lining gate, the input and spout recipes, and the input's faces. Age 2 has no open build items.
+
+**2026-11-04 — Prospector's pick.** The first of the suggested Age 2 additions. The bore rig asked the player to read the ground but gave them nothing to read it with. The pick is a hand tool (iron tool head, nail, steel drill rod) that counts the `drill_ores` veins the 3×3 column a bore would touch, per ore, in colour-coded chat, without depths. It reads the column only, not the veins around it, so the player still has to pick a spot. Using it grants **Reading the Ground** under Crucible Steel. JEI has an info page.
+
+**2026-11-04 — Drill upgrades.** Fortune and silk touch drill upgrade blocks stand on the drill head's open sides, up to 3 high per side. Fortune stacks to III. Silk touch is one block. Mixing them stops the rig (`UPGRADE_CONFLICT`) rather than silently picking one, so the player can see why. They change only the tool the vein drops are rolled with. Recipes use steel sheets with lapis blocks and gold, or with wool and a steel blade. Jade, WTHIT, and JEI cover them.
 

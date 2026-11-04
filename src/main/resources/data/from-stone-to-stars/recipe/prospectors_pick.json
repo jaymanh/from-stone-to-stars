@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "H",
+    "N",
+    "R"
+  ],
+  "key": {
+    "H": "from-stone-to-stars:iron_tool_head",
+    "N": "#from-stone-to-stars:nails",
+    "R": "from-stone-to-stars:steel_drill_rod"
+  },
+  "result": {
+    "id": "from-stone-to-stars:prospectors_pick",
+    "count": 1
+  }
+}
